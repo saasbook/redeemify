@@ -1,0 +1,43 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1426038654.761033:@value{I"
+class:EFI"BundledAsset;
+FI"id;
+F"%54491f27566338d1683e0c336be665bbI"logical_path;
+FI"sessions.css;
+TI"pathname;
+FI"3$root/app/assets/stylesheets/sessions.css.scss;
+TI"content_type;
+FI"text/css;
+FI"
+mtime;
+FI"2015-03-10T22:41:47-03:00;
+FI"	body;
+FI"„/* line 4, ../../app/assets/stylesheets/sessions.css.scss */
+.auth_providers {
+  height: 90px;
+}
+
+/* line 8, ../../app/assets/stylesheets/sessions.css.scss */
+.auth_provider {
+  float: left;
+  text-decoration: none;
+  margin-right: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+/* line 15, ../../app/assets/stylesheets/sessions.css.scss */
+.auth_provider img {
+  display: block;
+}
+;
+FI"asset_paths;
+F[I"3$root/app/assets/stylesheets/sessions.css.scss;
+TI"dependency_paths;
+F[{I"	path;
+FI"3$root/app/assets/stylesheets/sessions.css.scss;
+TI"
+mtime;
+FIu:	TimeaÉ€öÃù¦
+:@_zoneI"ADT;
+T:nano_numi':nano_deni:submicro"€p:offsetiþÐÕI"hexdigest;
+F"%70bc34f9a7913fed890eea7c338dde2dI"_version;
+F"%d3399da1890ef54eecbcf24324b9c72a

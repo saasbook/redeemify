@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Redeemify::Application.load_tasks
+Auth::Application.load_tasks

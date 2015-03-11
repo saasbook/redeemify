@@ -1,0 +1,65 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1426038655.1073973:@value{I"
+class:EFI"BundledAsset;
+FI"id;
+F"%736008033c88ec83242b4936b2b11191I"logical_path;
+FI"application.js;
+TI"pathname;
+FI"0$root/app/assets/javascripts/application.js;
+TI"content_type;
+FI"application/javascript;
+FI"
+mtime;
+FI"2015-03-10T22:41:47-03:00;
+FI"	body;
+FI"”// This is a manifest file that'll be compiled into including all the files listed below.
+// Add new JavaScript/Coffee code in separate files in this directory and they'll automatically
+// be included in the compiled file accessible from http://example.com/assets/application.js
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// the compiled file.
+//
+;
+;
+FI"asset_paths;
+F[	I"i/home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/jquery-rails-3.1.2/vendor/assets/javascripts/jquery.js;
+TI"m/home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/jquery-rails-3.1.2/vendor/assets/javascripts/jquery_ujs.js;
+TI"4$root/app/assets/javascripts/sessions.js.coffee;
+TI"0$root/app/assets/javascripts/application.js;
+TI"dependency_paths;
+F[
+{I"	path;
+FI"0$root/app/assets/javascripts/application.js;
+TI"
+mtime;
+FIu:	TimeaÉ€öÃù¦
+:@_zoneI"ADT;
+T:nano_numi':nano_deni:submicro"€p:offsetiþÐÕI"hexdigest;
+F"%2c62fece79fa28adb8194c3e19149245{I"	path;
+FI"!$root/app/assets/javascripts;
+TI"
+mtime;
+FIu;aÉ€öÃù¦
+;I"ADT;
+T;i';i;"€p;iþÐÕI"hexdigest;
+F"%bee14add5668797d3108a685ed92db82{I"	path;
+FI"i/home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/jquery-rails-3.1.2/vendor/assets/javascripts/jquery.js;
+TI"
+mtime;
+FIu;"É€´b¥¸
+;I"ADT;
+T;iK;i;"3;iþÐÕI"hexdigest;
+F"%cc2905e6a3f64bbd1ae9f25d2cb49bdc{I"	path;
+FI"m/home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/jquery-rails-3.1.2/vendor/assets/javascripts/jquery_ujs.js;
+TI"
+mtime;
+FIu;"É€´b¥¸
+;I"ADT;
+T;iK;i;"3;iþÐÕI"hexdigest;
+F"%7ff8081cf49a3a4eeec339d138bdefcd{I"	path;
+FI"4$root/app/assets/javascripts/sessions.js.coffee;
+TI"
+mtime;
+FIu;aÉ€öÃù¦
+;I"ADT;
+T;i';i;"€p;iþÐÕI"hexdigest;
+F"%188ac374da7e51b6da9b69a466f52402I"_version;
+F"%d3399da1890ef54eecbcf24324b9c72a
