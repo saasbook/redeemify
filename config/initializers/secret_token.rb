@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Redeemify::Application.config.secret_token = '8847beb647c7065c061317e1456c067382c8f72ec28afa8e1144c81925c5595e917a10f384d3f699b0678dc8fa26e9d719dfe0f752203dd4640bff5b8e35cd7c'
+Auth::Application.config.secret_token = '54dbc827559c9523a2dd044c78e22a5306adace5f32da8d1e40ad1b5ae220ebaf0511d41f8893f8e3f41036c3776788f76eb73677e2bc6c592647c54ce182530'

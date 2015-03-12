@@ -8,6 +8,7 @@ gem 'rails', '3.1.3'
 gem 'rails3-generators'
 group :development, :test do
   gem 'sqlite3'
+  gem 'rspec-rails', '~> 3.0'
 end
 group :production do
   gem 'pg'
