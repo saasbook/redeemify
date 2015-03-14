@@ -22879,3 +22879,394 @@ Connecting to database specified by database.yml
   [1m[35m (6.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150313052019')
   [1m[36m (5.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150309074935')[0m
   [1m[35m (6.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20111203202102')
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-13 21:19:49 -0700
+Connecting to database specified by database.yml
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (2.6ms)
+Compiled jquery.js  (3ms)  (pid 94120)
+Compiled jquery_ujs.js  (0ms)  (pid 94120)
+Compiled application.js  (18ms)  (pid 94120)
+Completed 200 OK in 72.6ms (Views: 51.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-13 21:19:49 -0700
+Served asset /sessions.js - 200 OK (1ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-03-13 21:19:49 -0700
+Served asset /layout.css - 200 OK (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-13 21:19:49 -0700
+Served asset /jquery_ujs.js - 200 OK (2ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-13 21:19:49 -0700
+Served asset /sessions.css - 200 OK (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-13 21:19:49 -0700
+Served asset /jquery.js - 200 OK (2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-13 21:20:05 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5.7ms (Views: 5.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-13 21:20:05 -0700
+Served asset /sessions.css - 200 OK (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-13 21:20:05 -0700
+Served asset /jquery.js - 200 OK (0ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-03-13 21:20:05 -0700
+Served asset /layout.css - 200 OK (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-13 21:20:05 -0700
+Served asset /jquery_ujs.js - 200 OK (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-13 21:20:05 -0700
+Served asset /sessions.js - 200 OK (0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at 2015-03-13 21:20:08 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-13 21:20:12 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 7.5ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-13 21:21:03 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 7.3ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-03-13 21:21:03 -0700
+Served asset /layout.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-13 21:21:03 -0700
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-13 21:21:03 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-13 21:21:03 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-13 21:21:03 -0700
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-13 21:21:43 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 7.4ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-03-13 21:21:43 -0700
+Served asset /layout.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-13 21:21:43 -0700
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-13 21:21:43 -0700
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-13 21:21:43 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-13 21:21:43 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-13 21:22:22 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5.7ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-13 21:22:22 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-03-13 21:22:22 -0700
+Served asset /layout.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-13 21:22:22 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-13 21:22:22 -0700
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-13 21:22:22 -0700
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/sessions/enter" for 127.0.0.1 at 2015-03-13 21:23:20 -0700
+Processing by SessionsController#enter as HTML
+  Rendered sessions/enter.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 9.7ms (Views: 9.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-13 21:23:20 -0700
+Served asset /sessions.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-03-13 21:23:20 -0700
+Served asset /layout.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-13 21:23:20 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-13 21:23:20 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-13 21:23:20 -0700
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-13 21:25:29 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 6.1ms (Views: 5.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-13 21:25:29 -0700
+Served asset /sessions.css - 200 OK (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-13 21:25:29 -0700
+Served asset /jquery_ujs.js - 200 OK (0ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-03-13 21:25:29 -0700
+Served asset /layout.css - 200 OK (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-13 21:25:29 -0700
+Served asset /jquery.js - 200 OK (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-13 21:25:29 -0700
+Served asset /sessions.js - 200 OK (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-13 21:25:58 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 7.1ms (Views: 6.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-03-13 21:25:58 -0700
+Served asset /layout.css - 200 OK (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-13 21:25:58 -0700
+Served asset /jquery_ujs.js - 200 OK (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-13 21:25:58 -0700
+Served asset /sessions.css - 200 OK (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-13 21:25:58 -0700
+Served asset /jquery.js - 200 OK (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-13 21:25:58 -0700
+Served asset /sessions.js - 200 OK (1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-13 21:33:21 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 9.9ms (Views: 9.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-03-13 21:33:21 -0700
+Served asset /layout.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-13 21:33:21 -0700
+Served asset /sessions.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-13 21:33:21 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-13 21:33:21 -0700
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-13 21:33:21 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-13 21:45:14 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 8.5ms (Views: 8.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-03-13 21:45:14 -0700
+Served asset /layout.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-13 21:45:15 -0700
+Served asset /sessions.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-13 21:45:15 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-13 21:45:15 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-13 21:45:15 -0700
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-13 22:02:20 -0700
+Connecting to database specified by database.yml
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 82.3ms (Views: 48.8ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-03-13 22:02:20 -0700
+Served asset /layout.css - 200 OK (6ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-13 22:02:20 -0700
+Served asset /sessions.css - 200 OK (2ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-13 22:02:20 -0700
+Served asset /sessions.js - 200 OK (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-13 22:02:20 -0700
+Served asset /jquery_ujs.js - 200 OK (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-13 22:02:20 -0700
+Served asset /jquery.js - 200 OK (2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-13 22:03:41 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5.5ms (Views: 5.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-13 22:03:41 -0700
+Served asset /sessions.css - 200 OK (0ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-03-13 22:03:41 -0700
+Served asset /layout.css - 200 OK (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-13 22:03:41 -0700
+Served asset /jquery.js - 200 OK (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-13 22:03:41 -0700
+Served asset /sessions.js - 200 OK (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-13 22:03:41 -0700
+Served asset /jquery_ujs.js - 200 OK (0ms)
+
+
+Started GET "/auth/google_oauth2" for 127.0.0.1 at 2015-03-13 22:07:26 -0700
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at 2015-03-13 22:07:32 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-13 22:08:25 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 9.9ms (Views: 9.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-03-13 22:08:25 -0700
+Served asset /layout.css - 200 OK (3ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-13 22:08:25 -0700
+Served asset /sessions.css - 200 OK (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-13 22:08:25 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-13 22:08:25 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-13 22:08:25 -0700
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at 2015-03-13 22:08:28 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-13 22:10:27 -0700
+Connecting to database specified by database.yml
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 66.2ms (Views: 36.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-13 22:10:27 -0700
+Served asset /sessions.css - 200 OK (6ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-03-13 22:10:27 -0700
+Served asset /layout.css - 200 OK (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-13 22:10:27 -0700
+Served asset /jquery.js - 200 OK (3ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-13 22:10:27 -0700
+Served asset /sessions.js - 200 OK (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-13 22:10:27 -0700
+Served asset /jquery_ujs.js - 200 OK (3ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at 2015-03-13 22:10:29 -0700
