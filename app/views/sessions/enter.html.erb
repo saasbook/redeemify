@@ -1,0 +1,11 @@
+ <h1>session#enter Redeem your code</h1>
+
+  
+  <%= form_tag("/sessions/offer", method: "get") do %>
+    <%= label_tag(:code, "Enter your code Here:") %>
+    <%= text_field_tag(:code) %>
+    <%= submit_tag("Submit") %>
+  <% end %>
+
+
+  <p><%= link_to "Log out", logout_path %></p>

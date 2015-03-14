@@ -1,10 +1,11 @@
 <h1>Hello Offer page</h1>
+<% if current_user != nil %>
+	<% if current_user.code != "" %>
+		<p><%=@current_code%></p>
+		<p><%= current_user.code%></p>
 
-<% if current_user.code != "" %>
-	<p><%=@current_code%></p>
-	<p><%= current_user.code%></p>
-
-	<p><%= link_to "Log out", logout_path %></p>
+		<p><%= link_to "Log out", logout_path, id: "logout-link" %></p>
+	<% end %>
 <% else %>
 	<strong><h1>You haven't redeem your code</h1></strong>
 <% end %>

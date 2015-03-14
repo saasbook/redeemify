@@ -3,8 +3,10 @@
 # newer version of cucumber-rails. Consider adding your own code to a new file
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
-
+require 'simplecov'
+SimpleCov.start 'rails'
 require 'cucumber/rails'
+
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
@@ -27,6 +29,18 @@ require 'cucumber/rails'
 # recommended as it will mask a lot of errors for you!
 #
 ActionController::Base.allow_rescue = false
+
+Capybara.default_host = 'example.org'
+
+OmniAuth.config.test_mode = true
+OmniAuth.config.add_mock(:facebook, {
+  :uid => '12345',
+  :nickname => 'fooman',
+  :user_info => {
+    :first_name => 'Foo',
+    :last_name => 'Man'
+  }
+})
 
 # Remove/comment out the lines below if your app doesn't have a database.
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.

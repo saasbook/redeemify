@@ -1,0 +1,35 @@
+Before('@omniauth_test') do
+  OmniAuth.config.test_mode = true
+  omniauth_hash = { 'provider' => 'amazon',
+                    'uid' => '24323423',
+                    'info' => {
+                        'name' => 'Thanh',
+                        'email' => 'tiome123@gmail.com',
+                        'nickname' => 'Tyem'
+                    },
+                    'extra' => {'raw_info' =>
+                                    { 'location' => 'UC Berkeley',
+                                      'gravatar_id' => '123456789'
+                                    }
+                    }
+  }
+
+  OmniAuth.config.add_mock(:amazon, omniauth_hash)
+
+
+
+
+  OmniAuth.config.test_mode = true
+
+  # the symbol passed to mock_auth is the same as the name of the provider set up in the initializer
+  #OmniAuth.config.mock_auth[:amazon] = {
+  #  "provider"=>"amazon",
+  ##  "uid"=>"http://xxxx.com/openid?id=118181138998978630963",
+  #  "name"=>"Test User",
+    #"code"=>"123"
+#
+end
+
+#After('@omniauth_test') do
+#  OmniAuth.config.test_mode = false
+#end

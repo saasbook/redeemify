@@ -3,6 +3,11 @@ ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
+
+require 'simplecov'
+SimpleCov.start 'rails'
+
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 OmniAuth.config.test_mode = true
@@ -21,6 +26,24 @@ OmniAuth.config.test_mode = true
   }
  
   OmniAuth.config.add_mock(:amazon, omniauth_hash)
+
+omniauth_hash2 = { 'provider' => 'github',
+                    'uid' => '24323423',
+                    'info' => {
+                        'name' => 'Thanh',
+                        'email' => 'tiome123@gmail.com',
+                        'nickname' => 'Tyem'
+                    },
+                    'extra' => {'raw_info' =>
+                                    { 'location' => 'UC Berkeley',
+                                      'gravatar_id' => '123456789'
+                                    }
+                    }
+  }
+ 
+  OmniAuth.config.add_mock(:github, omniauth_hash2)
+
+
 
 
 
