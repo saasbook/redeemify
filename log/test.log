@@ -27061,3 +27061,364 @@ Processing by SessionsController#new as HTML
   Rendered sessions/new.html.erb within layouts/application (0.5ms)
 Completed 200 OK in 1.9ms (Views: 1.7ms | ActiveRecord: 0.0ms)
   [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 74.9ms (Views: 40.1ms | ActiveRecord: 28.2ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"provider"=>"amazon"}
+  [1m[35mVendor Load (0.1ms)[0m  SELECT "vendors".* FROM "vendors" WHERE "vendors"."provider" = 'amazon' AND "vendors"."uid" = '24323423' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."provider" = 'amazon' AND "users"."uid" = '24323423' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (34.0ms)[0m  [1mINSERT INTO "users" ("code", "created_at", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["code", ""], ["created_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00], ["name", "Thanh"], ["provider", "amazon"], ["uid", "24323423"], ["updated_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/sessions/new
+Completed 302 Found in 42.9ms (ActiveRecord: 34.6ms)
+Processing by SessionsController#failure as HTML
+  Parameters: {"provider"=>"amazon"}
+Redirected to http://test.host/
+Completed 302 Found in 0.6ms (ActiveRecord: 0.0ms)
+Processing by SessionsController#new as HTML
+  Parameters: {"provider"=>"amazon"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 3.3ms (Views: 1.9ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"provider"=>"amazon"}
+  [1m[35mVendor Load (0.1ms)[0m  SELECT "vendors".* FROM "vendors" WHERE "vendors"."provider" = 'amazon' AND "vendors"."uid" = '24323423' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."provider" = 'amazon' AND "users"."uid" = '24323423' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO "users" ("code", "created_at", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["code", ""], ["created_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00], ["name", "Thanh"], ["provider", "amazon"], ["uid", "24323423"], ["updated_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/sessions/new
+Completed 302 Found in 4.6ms (ActiveRecord: 1.6ms)
+Processing by SessionsController#offer as HTML
+  Parameters: {"provider"=>"amazon"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "code" = NULL, "updated_at" = '2015-03-14 03:09:06.199176' WHERE "users"."id" = 1[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 200 OK in 4.7ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+Processing by SessionsController#show as HTML
+  Parameters: {"provider"=>"amazon"}
+Completed 200 OK in 1.3ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" [0m
+Processing by SessionsController#create as HTML
+  Parameters: {"provider"=>"amazon"}
+  [1m[35mVendor Load (0.1ms)[0m  SELECT "vendors".* FROM "vendors" WHERE "vendors"."provider" = 'amazon' AND "vendors"."uid" = '24323423' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."provider" = 'amazon' AND "users"."uid" = '24323423' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "users" ("code", "created_at", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["code", ""], ["created_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00], ["name", "Thanh"], ["provider", "amazon"], ["uid", "24323423"], ["updated_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/sessions/new
+Completed 302 Found in 4.7ms (ActiveRecord: 1.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" [0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"provider"=>"amazon"}
+  [1m[35mVendor Load (0.1ms)[0m  SELECT "vendors".* FROM "vendors" WHERE "vendors"."provider" = 'amazon' AND "vendors"."uid" = '24323423' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."provider" = 'amazon' AND "users"."uid" = '24323423' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("code", "created_at", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["code", ""], ["created_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00], ["name", "Thanh"], ["provider", "amazon"], ["uid", "24323423"], ["updated_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/sessions/new
+Completed 302 Found in 3.2ms (ActiveRecord: 0.5ms)
+Processing by SessionsController#offer as HTML
+  Parameters: {"provider"=>"amazon"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "code" = NULL, "updated_at" = '2015-03-14 03:09:06.229839' WHERE "users"."id" = 1[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 200 OK in 3.5ms (Views: 1.5ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Processing by SessionsController#new as HTML
+Completed 200 OK in 1.1ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Processing by SessionsController#create as HTML
+  Parameters: {"provider"=>"amazon"}
+  [1m[36mVendor Load (0.1ms)[0m  [1mSELECT "vendors".* FROM "vendors" WHERE "vendors"."provider" = 'amazon' AND "vendors"."uid" = '24323423' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."provider" = 'amazon' AND "users"."uid" = '24323423' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("code", "created_at", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["code", ""], ["created_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00], ["name", "Thanh"], ["provider", "amazon"], ["uid", "24323423"], ["updated_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/sessions/new
+Completed 302 Found in 4.7ms (ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by SessionsController#offer as HTML
+Completed 200 OK in 0.9ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"provider"=>"amazon"}
+  [1m[35mVendor Load (0.1ms)[0m  SELECT "vendors".* FROM "vendors" WHERE "vendors"."provider" = 'amazon' AND "vendors"."uid" = '24323423' LIMIT 1
+  [1m[36mUser Load (1.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."provider" = 'amazon' AND "users"."uid" = '24323423' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("code", "created_at", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["code", ""], ["created_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00], ["name", "Thanh"], ["provider", "amazon"], ["uid", "24323423"], ["updated_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/sessions/new
+Completed 302 Found in 5.1ms (ActiveRecord: 2.3ms)
+Processing by SessionsController#new as HTML
+  Parameters: {"provider"=>"amazon"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 1.5ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"provider"=>"amazon"}
+  [1m[35mVendor Load (0.1ms)[0m  SELECT "vendors".* FROM "vendors" WHERE "vendors"."provider" = 'amazon' AND "vendors"."uid" = '24323423' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."provider" = 'amazon' AND "users"."uid" = '24323423' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("code", "created_at", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["code", ""], ["created_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00], ["name", "Thanh"], ["provider", "amazon"], ["uid", "24323423"], ["updated_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/sessions/new
+Completed 302 Found in 3.5ms (ActiveRecord: 0.7ms)
+Processing by SessionsController#show as HTML
+  Parameters: {"provider"=>"amazon"}
+Completed 200 OK in 0.8ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Processing by SessionsController#create as HTML
+  Parameters: {"provider"=>"amazon"}
+  [1m[36mVendor Load (0.1ms)[0m  [1mSELECT "vendors".* FROM "vendors" WHERE "vendors"."provider" = 'amazon' AND "vendors"."uid" = '24323423' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."provider" = 'amazon' AND "users"."uid" = '24323423' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("code", "created_at", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["code", ""], ["created_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00], ["name", "Thanh"], ["provider", "amazon"], ["uid", "24323423"], ["updated_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/sessions/new
+Completed 302 Found in 4.4ms (ActiveRecord: 0.8ms)
+Processing by SessionsController#destroy as HTML
+  Parameters: {"provider"=>"amazon"}
+Redirected to http://test.host/
+Completed 302 Found in 0.7ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"provider"=>"amazon"}
+  [1m[35mVendor Load (0.1ms)[0m  SELECT "vendors".* FROM "vendors" WHERE "vendors"."provider" = 'amazon' AND "vendors"."uid" = '24323423' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."provider" = 'amazon' AND "users"."uid" = '24323423' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("code", "created_at", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["code", ""], ["created_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00], ["name", "Thanh"], ["provider", "amazon"], ["uid", "24323423"], ["updated_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/sessions/new
+Completed 302 Found in 3.6ms (ActiveRecord: 0.7ms)
+Processing by SessionsController#destroy as HTML
+  Parameters: {"provider"=>"amazon"}
+Redirected to http://test.host/
+Completed 302 Found in 0.9ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "vendors" ("created_at", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00], ["name", "thai"], ["provider", "amazon"], ["uid", "54321"], ["updated_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by VendorsController#home as HTML
+  [1m[35mVendor Load (0.1ms)[0m  SELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = ? LIMIT 1  [["id", 1]]
+Completed 200 OK in 3.1ms (Views: 1.5ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Processing by VendorsController#edit as HTML
+Completed 200 OK in 1.7ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Processing by VendorsController#index as HTML
+Completed 200 OK in 1.3ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.8ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "vendors" ("created_at", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00], ["name", "thai"], ["provider", "amazon"], ["uid", "54321"], ["updated_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "vendors" ("created_at", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00], ["name", "thai"], ["provider", "amazon"], ["uid", "54321"], ["updated_at", Sat, 14 Mar 2015 03:09:06 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by VendorsController#destroy as HTML
+Redirected to http://test.host/
+Completed 302 Found in 0.6ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (36.2ms)
+Completed 200 OK in 180.7ms (Views: 84.8ms | ActiveRecord: 2.4ms)
+Started GET "/auth/facebook" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Started GET "/auth/facebook/callback" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"provider"=>"facebook"}
+  [1m[35mVendor Load (0.2ms)[0m  SELECT "vendors".* FROM "vendors" WHERE "vendors"."provider" = 'facebook' AND "vendors"."uid" = '1234' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."provider" = 'facebook' AND "users"."uid" = '1234' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (3.3ms)[0m  [1mINSERT INTO "users" ("code", "created_at", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["code", ""], ["created_at", Sat, 14 Mar 2015 03:09:15 UTC +00:00], ["name", "foo"], ["provider", :facebook], ["uid", "1234"], ["updated_at", Sat, 14 Mar 2015 03:09:15 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/sessions/new
+Completed 302 Found in 62.6ms (ActiveRecord: 3.9ms)
+Started GET "/sessions/new" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 3.7ms (Views: 2.3ms | ActiveRecord: 0.2ms)
+Started GET "/sessions/enter" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#enter as HTML
+  Rendered sessions/enter.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 3.3ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+Started GET "/sessions/offer?utf8=%E2%9C%93&code=9283084&commit=Submit" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#offer as HTML
+  Parameters: {"utf8"=>"✓", "code"=>"9283084", "commit"=>"Submit"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  UPDATE "users" SET "code" = '9283084', "updated_at" = '2015-03-14 03:09:15.578790' WHERE "users"."id" = 1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered sessions/offer.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 13.3ms (Views: 9.4ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 2.2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+Started GET "/auth/facebook" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Started GET "/auth/facebook/callback" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"provider"=>"facebook"}
+  [1m[36mVendor Load (0.1ms)[0m  [1mSELECT "vendors".* FROM "vendors" WHERE "vendors"."provider" = 'facebook' AND "vendors"."uid" = '1234' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."provider" = 'facebook' AND "users"."uid" = '1234' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("code", "created_at", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["code", ""], ["created_at", Sat, 14 Mar 2015 03:09:15 UTC +00:00], ["name", "foo"], ["provider", :facebook], ["uid", "1234"], ["updated_at", Sat, 14 Mar 2015 03:09:15 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/sessions/new
+Completed 302 Found in 4.0ms (ActiveRecord: 0.8ms)
+Started GET "/sessions/new" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 3.5ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+Started GET "/sessions/offer?utf8=%E2%9C%93&code=9283084&commit=Submit" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#offer as HTML
+  Parameters: {"utf8"=>"✓", "code"=>"9283084", "commit"=>"Submit"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "code" = '9283084', "updated_at" = '2015-03-14 03:09:15.686270' WHERE "users"."id" = 1[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered sessions/offer.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 6.1ms (Views: 2.7ms | ActiveRecord: 0.4ms)
+Started GET "/logout" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#destroy as HTML
+Redirected to http://www.example.com/
+Completed 302 Found in 1.1ms (ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 2.6ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+Started GET "/auth/facebook" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Started GET "/auth/facebook/callback" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"provider"=>"facebook"}
+  [1m[35mVendor Load (0.1ms)[0m  SELECT "vendors".* FROM "vendors" WHERE "vendors"."provider" = 'facebook' AND "vendors"."uid" = '1234' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."provider" = 'facebook' AND "users"."uid" = '1234' LIMIT 1[0m
+Redirected to http://www.example.com/sessions/offer
+Completed 302 Found in 2.1ms (ActiveRecord: 0.2ms)
+Started GET "/sessions/offer" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#offer as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  UPDATE "users" SET "code" = NULL, "updated_at" = '2015-03-14 03:09:15.721526' WHERE "users"."id" = 1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered sessions/offer.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 5.3ms (Views: 2.6ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (4.4ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 3.0ms (Views: 2.6ms | ActiveRecord: 0.0ms)
+Started GET "/auth/facebook" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Started GET "/auth/facebook/callback" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Started GET "/auth/failure?message=invalid_crendentials&strategy=facebook" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#failure as HTML
+  Parameters: {"message"=>"invalid_crendentials", "strategy"=>"facebook"}
+Redirected to http://www.example.com/
+Completed 302 Found in 0.8ms (ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 6.7ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "vendors" ("created_at", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Sat, 14 Mar 2015 03:09:15 UTC +00:00], ["name", "vendor1"], ["provider", "facebook"], ["uid", "12345"], ["updated_at", Sat, 14 Mar 2015 03:09:15 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 7.6ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+Started GET "/auth/facebook" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Started GET "/auth/facebook/callback" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"provider"=>"facebook"}
+  [1m[35mVendor Load (0.2ms)[0m  SELECT "vendors".* FROM "vendors" WHERE "vendors"."provider" = 'facebook' AND "vendors"."uid" = '12345' LIMIT 1
+Redirected to http://www.example.com/vendors/home
+Completed 302 Found in 2.1ms (ActiveRecord: 0.2ms)
+Started GET "/vendors/home" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by VendorsController#home as HTML
+  [1m[36mVendor Load (0.2ms)[0m  [1mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered vendors/home.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 5.1ms (Views: 3.8ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "vendors" ("created_at", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Sat, 14 Mar 2015 03:09:15 UTC +00:00], ["name", "vendor1"], ["provider", "facebook"], ["uid", "12345"], ["updated_at", Sat, 14 Mar 2015 03:09:15 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 2.3ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+Started GET "/auth/facebook" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Started GET "/auth/facebook/callback" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"provider"=>"facebook"}
+  [1m[36mVendor Load (0.1ms)[0m  [1mSELECT "vendors".* FROM "vendors" WHERE "vendors"."provider" = 'facebook' AND "vendors"."uid" = '12345' LIMIT 1[0m
+Redirected to http://www.example.com/vendors/home
+Completed 302 Found in 1.3ms (ActiveRecord: 0.1ms)
+Started GET "/vendors/home" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by VendorsController#home as HTML
+  [1m[35mVendor Load (0.1ms)[0m  SELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered vendors/home.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 2.5ms (Views: 1.6ms | ActiveRecord: 0.1ms)
+Started GET "/logout" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#destroy as HTML
+Redirected to http://www.example.com/
+Completed 302 Found in 0.5ms (ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2015-03-14 00:09:15 -0300
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 3.0ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m

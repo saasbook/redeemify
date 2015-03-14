@@ -249,6 +249,7 @@ DEPENDENCIES
   pg
   rails (= 3.2.18)
   rails3-generators
+  rake
   rspec-rails (~> 3.0)
   sass-rails (~> 3.2.3)
   simplecov
