@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.18'
 gem 'rake'
 gem 'rails_12factor'
-gem 'ffi', '1.0.9'
+gem 'ffi', '1.9.6'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
