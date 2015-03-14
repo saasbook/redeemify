@@ -1,15 +1,20 @@
+
 body {
-  background-color: #4B7399;
+  
+  background-color: #ffffff;
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px;
-}
 
+}
+img.normal {
+  height:auto;
+}
 a img {
   border: none;
 }
 
 a {
-  color: #0000FF;
+  color: #ffffFF;
 }
 
 .clear {
@@ -18,21 +23,47 @@ a {
   overflow: hidden;
 }
 
-#container {
+/*#container {
   width: 75%;
   margin: 0 auto;
   background-color: #FFF;
   padding: 20px 40px;
-  border: solid 1px black;
+  
   margin-top: 20px;
   position: relative;
+}*/
+@font-face {
+    font-family: 'Circula';
+    src: url('/assets/circula-medium.otf');
+    font-weight: normal;
+    font-style: normal;
 }
-
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
   margin: 10px 0;
   margin-right: 150px;
 }
+
+#welcome { height: 10em; padding-top: 1em; text-align: center; width : 100%;
+  background: #6dbd9e; color: #FFFFFF; background-position: center}
+#welcome h1 { margin: 0; padding-top: 15px; font-family: 'Circula'; font-size: 72px ;letter-spacing: 10px}
+
+.loginwith { height: 40px; padding-top: 0em; text-align: center; width : 540px; margin-top: 5em; margin-left: auto; margin-right: auto;
+  background: #f65a5b; color: #FFFFFF; background-position: center}
+.loginwith h1 { margin: 0; padding-top: 3px; font-family: 'Circula'; font-size: 30px ; letter-spacing: 2px}
+
+/*#twitter-auth {margin-left: auto; margin-right: auto; margin-bottom: 10px}
+#google-auth { padding-right : 2px;}
+
+#facebook-auth {padding-right : 2px;}
+
+
+
+#github-auth {padding-left : 2px;}
+
+#amazon-auth {padding-left : 2px;}
+*/
+
 
 #flash_notice {
   background-color: #CFC;

@@ -28,32 +28,38 @@
 
 
 <% else %>
-  <strong><h1>Welcome to Redeemify</h1></strong>
+  
+  <div id="welcome">
+    <h1>REDEEMIFY</h1>
+  </div>
+  <div class = "loginwith">
+    <h1> LOGIN WITH </h1>
+  </div>
 
-
-  <p><strong>Please Sign in through one of these services:</strong></p>
+  
+  <!-- <p class="loginwith"><strong>Please Sign in through one of these services:</strong></p> -->
 
   <div class="auth_providers">
     <a id="google-auth" href="/auth/google_oauth2" class="auth_provider">
-      <%= image_tag "google_apps_64.png", size: "64x64", alt: "Google" %>
+      <%= image_tag "google_apps_64.png", size: "106x50", alt: "Google" %>
       Google
     </a>
     <a id="facebook-auth" href="/auth/facebook" class="auth_provider">
-      <%= image_tag "facebook_64.png", size: "64x64", alt: "Facebook" %>
+      <%= image_tag "facebook_64.png", size: "106x50", alt: "Facebook" %>
       Facebook
     </a>
     <a id="twitter-auth" href="/auth/twitter" class="auth_provider">
-      <%= image_tag "twitter_64.png", size: "64x64", alt: "Twitter" %>
+      <%= image_tag "twitter_64.png", size: "106x50", alt: "Twitter" %>
       Twitter
     </a>
 
     <a id="github-auth" href="/sessions/enter" class="auth_provider">
-      <%= image_tag "github_64.png", size: "64x64", alt: "Github" %>
+      <%= image_tag "github_64.png", size: "106x50", alt: "Github" %>
       GitHub
     </a>
 
     <a id="amazon-auth" href="/auth/amazon" class="auth_provider">
-      <%= image_tag "amazon_64.png", :size => "64x64", :alt => "amazon" %>
+      <%= image_tag "amazon_64.png", size: "106x50", :alt => "amazon" %>
       Amazon
     </a>
 
