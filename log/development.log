@@ -33340,3 +33340,136 @@ Served asset /jquery_ujs.js - 304 Not Modified (0ms)
 
 Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-14 09:16:55 -0300
 Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-14 09:42:48 -0300
+Connecting to database specified by database.yml
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 366.8ms (Views: 130.7ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-14 09:42:50 -0300
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 14.9ms (Views: 14.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-03-14 09:42:50 -0300
+Served asset /layout.css - 304 Not Modified (126ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-14 09:42:50 -0300
+Served asset /sessions.css - 304 Not Modified (19ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-14 09:42:50 -0300
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-14 09:42:50 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (17ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-14 09:42:50 -0300
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-03-14 09:42:50 -0300
+Served asset /layout.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-14 09:42:50 -0300
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-14 09:42:50 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-14 09:42:50 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-14 09:42:50 -0300
+Served asset /sessions.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/auth/amazon" for 127.0.0.1 at 2015-03-14 09:42:53 -0300
+
+
+Started GET "/auth/amazon/callback?code=ANRGvbzlYcTaEFXKhnNm&scope=profile+postal_code&state=0f404f01c906a6dee7d1a9d0894a893605caa0b1e3519621" for 127.0.0.1 at 2015-03-14 09:43:13 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"ANRGvbzlYcTaEFXKhnNm", "scope"=>"profile postal_code", "state"=>"0f404f01c906a6dee7d1a9d0894a893605caa0b1e3519621", "provider"=>"amazon"}
+  [1m[36mVendor Load (0.2ms)[0m  [1mSELECT "vendors".* FROM "vendors" WHERE "vendors"."provider" = 'amazon' AND "vendors"."uid" = 'amzn1.account.AERDYRWMZEB6JGZEGOSMHTOPYR4A' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."provider" = 'amazon' AND "users"."uid" = 'amzn1.account.AERDYRWMZEB6JGZEGOSMHTOPYR4A' LIMIT 1
+Redirected to http://localhost:3000/sessions/new
+Completed 302 Found in 14.4ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2015-03-14 09:43:14 -0300
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (33.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+Redirected to http://localhost:3000/sessions/offer
+Completed 302 Found in 34.7ms (ActiveRecord: 33.3ms)
+
+
+Started GET "/sessions/offer" for 127.0.0.1 at 2015-03-14 09:43:14 -0300
+Processing by SessionsController#offer as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  Rendered sessions/offer.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 12.5ms (Views: 11.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-03-14 09:43:14 -0300
+Served asset /layout.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-14 09:43:14 -0300
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-14 09:43:14 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-14 09:43:14 -0300
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-14 09:43:14 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2015-03-14 09:43:16 -0300
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2.7ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-14 09:43:16 -0300
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 7.7ms (Views: 7.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-03-14 09:43:16 -0300
+Served asset /layout.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-14 09:43:16 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-14 09:43:16 -0300
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-14 09:43:16 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-14 09:43:16 -0300
+Served asset /sessions.js - 304 Not Modified (5ms)
