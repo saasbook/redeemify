@@ -1,7 +1,7 @@
 
 body {
   
-  background-color: #99CCFF;
+  background-color: #ffffff;
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px;
 
@@ -14,7 +14,7 @@ a img {
 }
 
 a {
-  color: #CC00FF;
+  color: #000000;
 }
 
 .clear {
@@ -44,9 +44,14 @@ a {
   margin-right: 150px;
 }
 
-#welcome { height: 10em; padding-top: 1em; text-align: center; width : 100%;
-  background: #6dbd9e; color: #FFFFFF; background-position: center}
-#welcome h1 { margin: 0; padding-top: 15px; font-family: 'Circula'; font-size: 72px ;letter-spacing: 10px}
+#welcome { height: 10em ; width : 100%; 
+  background: #333742; color: #FFFFFF}
+
+
+
+#welcome h1 {font-family: 'Circula'; font-size: 72px ;letter-spacing: 10px; text-align: center}
+
+/*#welcome h1 #logo{padding: 10px;}*/
 
 .loginwith { height: 40px; padding-top: 0em; text-align: center; width : 540px; margin-top: 5em; margin-left: auto; margin-right: auto;
   background: #f65a5b; color: #FFFFFF; background-position: center}
@@ -64,7 +69,11 @@ a {
 #amazon-auth {padding-left : 2px;}
 */
 
-
+.auth_providers {
+  height: 150px;
+  width: 540px;
+  margin: 2px auto;
+}
 #flash_notice {
   background-color: #CFC;
   border: solid 1px #6C6;
