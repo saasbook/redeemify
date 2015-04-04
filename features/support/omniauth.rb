@@ -19,7 +19,8 @@ def set_omniauth_vendor(info)
   	"provider" => info[:provider],
     'uid' => info[:uid],
     "info" => {
-      "name" => info[:name]
+      "name" => info[:name],
+      "email" => info[:email]
       }
   }
 

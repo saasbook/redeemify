@@ -10,6 +10,9 @@ Scenario: successful login after entering valid credentials
 	And I have already registered with "Facebook"
     Then I am signed in with "Facebook"
 	Then I can see "Offer page"
+	And I press "Log out" link
+	Then I am signed in with "Facebook"
+	Then I can see "Already register"
 
 Scenario: unsuccessful login after entering invalid credentials, redirected back to home page
 

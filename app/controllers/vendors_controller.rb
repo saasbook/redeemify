@@ -7,7 +7,7 @@ class VendorsController < ApplicationController
   def import
     current_vendor=Vendor.find(session[:vendor_id])
     @info = {}
-    @info["description"] = params[:codeDescription] 
+    @info["description"] = params[:description] 
     @info["instruction"] = params[:instruction]
     @info["help"] = params[:helpLink]
     @info["expiration"] = params[:expiration]
@@ -72,10 +72,10 @@ class VendorsController < ApplicationController
   def edit
   end
 
-  def destroy
-    session[:vendor_id] = nil
-    redirect_to root_url, notice: "Signed out!"
-  end
+  # def destroy
+  #   session[:vendor_id] = nil
+  #   redirect_to root_url, notice: "Signed out!"
+  # end
 
   def hello
   end

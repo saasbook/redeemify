@@ -4,21 +4,18 @@ Feature: Vendor Upload (Story 2234)
 	So that I can have codes in the database
 	I want to upload my codes
 
-Scenario: 
+Background:
 
-	Given that I am a vendor
-	And I am on the vendor landing page
-	And I follow "Upload"
-	Then I should be on the vendor upload form page
-	And I should see the form fields
+	Given a vendor "vendor2" and user ID "54321" registered with "facebook"
+    Then I am on the user login page
 
 Scenario:
 	
-	Given that I am on the vendor landing page
-	And I fill in file_name with "My File"
-	And I fill in description with "Lalala"
-	And I fill in instructions with "My instructions"
-	And I fill in expiration date with "01-01-2016"
-	And I press Submit
-	Then I should be on the vendor landing page
-	And I should see "Successful upload"
+	Given I am signed in as a vendor "vendor2" and user ID "54321" with "facebook"
+	And I press "upload" link
+	Then I should be on the vendor upload page
+	And I attach a file with vendor codes inside
+	And I fill in "description" with "Lalala"
+	And I fill in "instruction" with "My instructions"
+	And I press "submit" button
+	Then I can see "Codes imported"

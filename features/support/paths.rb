@@ -12,13 +12,17 @@ module NavigationHelpers
   #
   def path_to(page_name)
     case page_name
-
+      
+    when /^the vendor upload page$/ then '/vendors/upload_page'
     when /^the code entry page$/ then '/sessions/enter'
-    when /^the offer page$/ then '/sessions/customer'
+    when /^the offer page$/ then '/sessions/offer'
     when /^the vendor page$/ then '/vendors/home'
     when /^the user login page$/ then root_url
     when /^the (RottenPotatoes )?home\s?page$/ then '/movies'
     when /^the movies page$/ then '/movies'
+
+
+
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
@@ -37,6 +41,8 @@ module NavigationHelpers
     when /^the Similar Movies page for "(.*)"/
       m = Movie.find_by_title($1)
       same_director_path(m)
+
+
 
 
     else

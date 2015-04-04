@@ -1,19 +1,27 @@
-<p>Account from: <%= current_user.provider.upcase  %> | <%= current_user.name %> | <%= link_to "Log out", logout_path, :id => "logout-link" %></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redeemify</title>
+    <link href="/assets/application.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/assets/application.js" type="text/javascript"></script>
+    
+  </head>
+  <body>
+
+    <div id="container">
+        <div id="flash_notice">Offer page</div>
+      <p>Account from: FACEBOOK | foo | <a href="/logout" id="logout-link">Log out</a></p>
 <div id="welcome">
 
-    <h1> <%= image_tag('logo.png', :size => '100x100', :class => 'logo' ) %> REDEEMIFY</h1>
+    <h1> <img alt="Logo" class="logo" height="100" src="/assets/logo.png" width="100" /> REDEEMIFY</h1>
   </div>
 <div class = "customer">
     <h1>CUSTOMER</h1>
   </div>
 
- <% if current_user != nil %>
-  <% if current_user.code != "" %>
     <p>Customer register code:</p> 
-    <p><%=@current_code%></p>
-    <p><%= current_user.code%></p>
-  <% end %>
-<% end %> 
+    <p>9283084</p>
+    <p>9283084</p>
 
 <p class = "customer_notice"> Click on vendor to redeem your code! </p>
 <div class="customer_table">
@@ -31,15 +39,13 @@
     </tr>
   </thead>
   <tbody>
-    <% @list_codes.each do |vendor, code| %>
       <tr>
-        <td><%= vendor %></td>
-        <td><%= code %></td>
-        <td><%= @instruction[vendor] %></td>
-        <td><%= @expiration[vendor] %></td>
-        <td><%= @help[vendor] %></td>
+        <td>Github</td>
+        <td>12345</td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
-    <% end %>
   </tbody>
 </table>
 
@@ -64,26 +70,24 @@
        <th class = "description">DESCRIPTION</th> 
       <th class = "code">CODE</th>
 
-      <% @list_codes.each do |vendor, code| %>
       <tr>
-        <td><%= vendor %></td>
-        <td><%= code %></td>
+        <td>Github</td>
+        <td>12345</td>
       </tr>
-    <% end %>
       
     </tr>
     <tr class = "list">
-    	<td class = "vendor"><%= link_to("GITHUB","http://github.com") %></td>
+    	<td class = "vendor"><a href="http://github.com">GITHUB</a></td>
     	<td class = "description" >GitHub's description</td>
     	<td class = "code">234234DFSDF32</td>
     </tr>
    <tr class = "list">
-    	<td class = "vendor"><%= link_to("AMAZON","http://amazon.com") %></td>
+    	<td class = "vendor"><a href="http://amazon.com">AMAZON</a></td>
     	<td class = "description" >Amazon's description</td>
     	<td class = "code">234234DFSDF32</td>
     </tr>
     <tr class = "list">
-    	<td class = "vendor"><%= link_to("FACEBOOK","http://facebook.com") %></td>
+    	<td class = "vendor"><a href="http://facebook.com">FACEBOOK</a></td>
     	<td class = "description" >Facebook's description</td>
     	<td class = "code">234234DFSDF32</td>
     </tr>
@@ -105,3 +109,8 @@
 
 
 
+
+    </div>
+
+  </body>
+</html>

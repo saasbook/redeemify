@@ -5,7 +5,7 @@ gem 'rake'
 gem 'rails_12factor'
 gem 'ffi', '1.9.6'
 # gem 'debugger'
-gem 'byebug'
+# gem 'byebug'
 
 # gem 'bootstrap-sass', '~> 3.2.0'
 # gem 'momentjs-rails', '>= 2.9.0'

@@ -19,9 +19,9 @@ class Vendor < ActiveRecord::Base
 	    # temp = date.to_s #+ "," #+ info["description"]+ "," + info["expiration"] + "," + numberOfCodes.to_s + "||||"
 	    date = date.to_formatted_s(:long_ordinal)
 	    if history == nil
-		    history = date + "+++++" + info["description"]+ "+++++" + info["expiration"] + "+++++" + numberOfCodes.to_s + "|||||"
+		    history = "#{date}+++++#{info["description"]}+++++#{info["expiration"]}+++++#{numberOfCodes.to_s}|||||"
 	    else
-	    	history = history  + date + "+++++" + info["description"]+ "+++++" + info["expiration"] + "+++++" + numberOfCodes.to_s + "|||||"
+	    	history = "#{history}#{date}+++++#{info["description"]}+++++#{info["expiration"]}+++++#{numberOfCodes.to_s}|||||"
 	    end
 	    current_vendor.update_attribute(:history, history)
 

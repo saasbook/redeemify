@@ -18,7 +18,6 @@ Scenario: succesful logout after logged in
 
 	Given I am on the user login page
 	Then I am signed in as a vendor "vendor1" and user ID "12345" with "facebook"
-	Then show me the page
 	Then I press "Log out" link
 	Then I can see "Signed out!"
 
