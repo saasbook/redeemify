@@ -19,3 +19,9 @@ Scenario:
 	And I fill in "instruction" with "My instructions"
 	And I press "submit" button
 	Then I can see "Codes imported"
+	Then I press "upload" link
+	And I attach a file with vendor codes inside
+	And I fill in "description" with "Lalala"
+	And I fill in "instruction" with "My instructions"
+	And I press "submit" button
+	Then I can see "Codes imported"

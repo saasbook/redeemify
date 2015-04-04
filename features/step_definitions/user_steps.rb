@@ -30,7 +30,6 @@ Given /the following vendor codes exist/ do |vendor_codes_table|
     #vendorCode.vendor_id = code['vendor_id']
     #vendorCode.user_id = code['user_id']
     #vendorCode.save
-
     v.vendorCodes.create!(:code => code["code"], :vendor => v)
 
 
