@@ -43,34 +43,4 @@ describe VendorsController do
     end
   end
 
-
-   describe "#destroy" do
-    it "login and put into the session" do
-      session[:vendor_id].should be_nil
-
-      v = Vendor.create :name => "thai" , :uid => "54321", :provider => "amazon"
-      v.save!
-
-      session[:vendor_id] = v.id
-      session[:vendor_id].should_not be_nil
-    end
-
-
-    it "should clear the session" do
-      session[:vendor_id].should be_nil
-
-      v = Vendor.create :name => "thai" , :uid => "54321", :provider => "amazon"
-      v.save!
-
-      session[:vendor_id] = v.id
-      session[:vendor_id].should_not be_nil
-      delete :destroy
-      flash[:notice].should == "Signed out!"
-      session[:vendor_id].should be_nil
-      response.should redirect_to root_url
-    end
- 
-
-  end
-
 end
