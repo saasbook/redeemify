@@ -17,19 +17,7 @@ end
 
 Given /the following vendor codes exist/ do |vendor_codes_table|
   vendor_codes_table.hashes.each do |code|
-    #VendorCode.create(code)
-
-    #vendorCode = VendorCode.new
-    #vendorCode.code = code['code']
-    #vendorCode.vendor = Vendor.find_by_name(code['vendor'])
     v = Vendor.find_by_name(code['vendor'])
-    #vendorCode.vendor = v
-    #v.vendorCode
-    #vendorCode.created_at = code['created_at']
-    #vendorCode.updated_at = code['updated_at']
-    #vendorCode.vendor_id = code['vendor_id']
-    #vendorCode.user_id = code['user_id']
-    #vendorCode.save
     v.vendorCodes.create!(:code => code["code"], :vendor => v)
 
 
