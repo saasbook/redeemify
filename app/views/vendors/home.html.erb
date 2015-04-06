@@ -7,38 +7,20 @@
     <h1>VENDOR</h1>
   </div>
 
+<div class = "vendor_home_numcode">
 
+  <p class="r1">Number of codes used: <%= @codesUsed %></p>
+  <p class="r2">Number of codes remaining: <%= @codesRemain %></p>
+  <!-- <p>History: <%= @history %></p> -->
+
+</div>
+
+<!-- <div class = "up_view">
   <p><%= link_to "Upload New Codes", '/vendors/upload_page', :id => "upload" %></p>
   <p><%= link_to "View All Codes", '/vendors/viewCodes', :id => "viewCodes" %></p>
+</div> -->
 
 
-
-<p>Number of codes used: <%= @codesUsed %></p>
-<p>Number of codes remaining: <%= @codesRemain %></p>
-<p>History: <%= @history %></p>
-
-
-
-<table>
-  <thead>
-    <tr>
-      <th>Upload Date</th>
-      <th>Code Description</th>
-      <th>Expiration Date</th>
-      <th>Number of Codes Uploaded</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @histories_array.each do |history| %>
-      <tr>
-        <td><%= history[0] %></td>
-        <td><%= history[1] %></td>
-        <td><%= history[2] %></td>
-        <td><%= history[3] %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 
 
@@ -46,15 +28,15 @@
 
 <div class = "row1">
     <a  class = "vendor_ability">
-    	 <%= link_to image_tag("r1_c1.jpg", size: "170x40"), "http://" %>
+    	 <%= link_to image_tag("r1_c1.jpg", size: "150x30"), '/vendors/upload_page', :id => "upload" %>
 
     </a>
     <a  class = "vendor_ability">
-    	<%= link_to image_tag("r1_c2.jpg", size: "170x40"), "http://" %>
+    	<%= link_to image_tag("r1_c2.jpg", size: "150x30"), '/vendors/viewCodes', :id => "viewCodes" %>
      
     </a>
     <a  class = "vendor_ability">
-    	<%= link_to image_tag("r1_c3.jpg", size: "170x40"), "http://" %>
+    	<%= link_to image_tag("r2_c1.jpg", size: "150x30"), "http://" %>
  
     </a>
 
@@ -63,12 +45,36 @@
 
   <div class = "row2">
     <a  class = "vendor_ability">
-    	 <%= link_to image_tag("r2_c1.jpg", size: "170x40"), "http://" %>
+    	 <%= link_to image_tag("r1_c3.jpg", size: "150x30"), "http://" %>
     </a>
     <a  class = "vendor_ability">
-    	<%= link_to image_tag("r2_c2.jpg", size: "170x40"), "http://" %>
+    	<%= link_to image_tag("r2_c2.jpg", size: "150x30"), "http://" %>
      
     </a>
     
 
   </div>
+
+  <div class = "vendor_table">
+
+<table>
+  <thead class = "header">
+    <tr>
+      <th >Upload Date</th>
+      <th >Code Description</th>
+      <th >Expiration Date</th>
+      <th >Number of Codes Uploaded</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @histories_array.each do |history| %>
+      <tr class="<%= cycle('odd', 'even') %>">
+        <td><%= history[0] %></td>
+        <td id="description"><%= history[1] %></td>
+        <td><%= history[2] %></td>
+        <td><%= history[3] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

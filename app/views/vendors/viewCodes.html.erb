@@ -1,17 +1,30 @@
-<p><%= link_to "Back to HomePage", '/vendors/home' %></p>
+<p>Account from: <%= @vendor.provider.upcase  %> | <%= @vendor.name %> | <%= link_to "Log out", logout_path, :id => "logout-link" %></p>
+<div id="welcome">
 
-<table>
-  <thead>
+    <h1> <%= image_tag('logo.png', :size => '100x100', :class => 'logo' ) %> REDEEMIFY</h1>
+  </div>
+<div class = "vendor">
+    <h1>VENDOR</h1>
+  </div>
+  <div class = "upload_group">
+  <div class = "upload_vendor">
+<p class="vendor_name"><%= @vendor.name %></p>
+</div>
+</div>
+<p class="backtohome"><%= link_to image_tag("home.jpg",size:"30x30"), '/vendors/home' %></p>
+<div class="vendor_table">
+<table >
+  <thead class="header">
     <tr>
-      <th>Codes</th>
-      <th>Vendor</th>
+      <th class = "codes">Codes</th>
+      <th>Expiration Date</th>
     </tr>
   </thead>
   <tbody>
     <% @vendorcodes.each do |vendorcode| %>
-      <tr>
-        <td><%= vendorcode.code %></td>
-        <td><%= vendorcode.vendor.name %></td>
+      <tr class="<%= cycle('odd', 'even') %>">
+        <td class="codes"><%= vendorcode.code %></td>
+        <td><%= vendorcode.expiration %></td>
       </tr>
     <% end %>
   </tbody>

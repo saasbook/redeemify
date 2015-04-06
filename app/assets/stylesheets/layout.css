@@ -2,7 +2,7 @@
 body {
   
   background-color: #ffffff;
-  font-family: Verdana, Helvetica, Arial;
+  font-family: Helvetica , Arial, Verdana;
   font-size: 12px;
 
 }
@@ -38,6 +38,33 @@ a {
     font-weight: normal;
     font-style: normal;
 }
+
+/*input[type="submit"]
+{
+  width:80px;
+  height: 35px;
+  margin: auto;
+  background:url(submit.jpg);
+}*/
+
+textarea {background: none repeat scroll 0 0 rgba(197, 237, 255, 1);
+ 
+  
+  border-radius: 6px 6px 6px 6px;
+  border-style: none solid solid none;
+  border-width: medium 1px 1px medium;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset;
+  font-family: Helvetica;
+  font-size: 1em;
+  padding: 4px 6px;
+
+  transition: background-color 0.5s ease 0s;
+}
+textarea:focus {
+    background: none repeat scroll 0 0 #FFFFFF;
+    outline-width: 0;
+}
+
 #flash_notice, #flash_error, #flash_alert {
  /* padding: 5px 8px;*/
   /*margin: 10px 0;
@@ -49,10 +76,14 @@ a {
 #welcome {height: 10em ; width : 100%; padding-top: 5px;
   background: #333742; color: #FFFFFF}
 
+.up_view {height: 5em; width: 10em;}
 
+.vendor_home_numcode {background: #05e177;margin-left: auto; margin-right:auto; width: 300px; height: 100px; border-radius: 10px; margin-top: 20px }
+.vendor_home_numcode p {text-align: left; margin-left: 5%; font-size: 14px;color: #000000}
+.vendor_home_numcode p.r1{padding-top:25px}
 
 #welcome h1 {font-family: 'Circula'; font-size: 72px ;letter-spacing: 10px; text-align: center; margin: 0px auto;}
-p {font-size: 12px; text-align: right; color: #000000}
+/*p {font-size: 12px; text-align: right; color: #000000}*/
 
 /*#welcome h1 #logo{padding: 10px;}*/
 .customer { height: 40px; text-align: center; width : 300px; margin-top: 5em; margin-left: auto; margin-right: auto;
@@ -68,6 +99,10 @@ p {font-size: 12px; text-align: right; color: #000000}
 .loginwith h1 { margin: 0; padding-top: 3px; font-family: 'Circula'; font-size: 30px ; letter-spacing: 2px}
 
 
+
+
+#description {text-align: left; padding-left: 5px}
+
 /*#twitter-auth {margin-left: auto; margin-right: auto; margin-bottom: 10px}
 #google-auth { padding-right : 2px;}
 
@@ -79,18 +114,47 @@ p {font-size: 12px; text-align: right; color: #000000}
 
 #amazon-auth {padding-left : 2px;}
 */
-.customer_notice {color:red; text-align: left; font-style: italic;}
-table {width: 100%}
-.customer_table table, td, th {border-collapse: collapse; border: 2px solid black}
-.header {height: 40px; font-family: 'Circula'; font-size: 20px}
+.customer_notice {color:red; text-align: center; font-style: italic;}
 
+.vendor_table table {margin-top: 20px;border-collapse: collapse;}
+.vendor_table {width:90%; margin:auto;}
+.vendor_table table, th { border :none}
+.vendor_table table, tr, td { border : none; height:40px}
+.vendor_table table, td {border-left : solid 4px #44c4ff; border-right: solid 4px #44c4ff}
+
+.vendor_table table, tr, td {text-align: center}
+
+.customer_table table {border-collapse: collapse; border: 0px;}
+.customer_table table tr td {border-collapse: collapse; border: 0px;}
+.customer_table table, tr,td {border-collapse: collapse; }
+.customer_table{margin-top: 40px; width : 60%;margin-left: auto; margin-right: auto; background: #b2e4fa;border-radius: 10px}
+
+.codes {width:50%;}
+.upload_text{font-size: 15px; font-family: 'Circula';letter-spacing: 1px;margin-left: auto; margin-right: auto;
+              color: #f65a5b; height : 20px;}
+
+.header {height: 45px; font-family: 'Circula'; font-size: 20px;background: #44c4ff; color: #FFFFFF; letter-spacing: 1px}
+.upload_vendor {background: #f65a5b; width: 300px; margin-left: auto; margin-right: auto; 
+                color:#ffffff;font-family: 'Circula';border-radius: 3px;height:35px;text-align: center;letter-spacing: 1px}
+.upload_vendor p.vendor_name {font-size: 24px; text-align: center; color: white; padding-top: 3px}
 .row1 a {padding-left: 5px;
   padding-right: 5px; }
 
+.backtohome {height: 40px; width:40px;margin:auto;margin-top:10px;}
+
+.vendor_header { height:45px; background: #44c5ff;color : #000000; border-radius: 10px; font-size: 24px; font-family: 'Circula'; letter-spacing: 1px}
+
+.vendor_group1 {text-align: left;padding-left: 10px;width: 120px; font-size: 16px; font-family: 'Circula';letter-spacing: 1px}
+.vendor_group2 {text-align: left;padding-left: 10px}
+.vendor_odd {background : #d0f0ff}
+.odd{background: #d0f0ff;}
+.even{background: #eaf8ff;} 
+/*#b2e4fa*/
+.upload_group {text-align: center; margin-left: auto; margin-right: auto}
 .row1 {
   
-  width: 600px;
-  padding-top: 5em;
+  width: 550px;
+  padding-top: 20px;
   margin: auto;
 }
 
@@ -99,10 +163,12 @@ table {width: 100%}
 
 .row2 {
   
-  width: 400px;
-  padding-top: 2em;
+  width: 350px;
+  padding-top: 20px;
   margin: auto;
 }
+
+
 
 
 table td.vendor {text-align: center}

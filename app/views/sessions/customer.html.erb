@@ -2,25 +2,27 @@
 <div id="welcome">
 
     <h1> <%= image_tag('logo.png', :size => '100x100', :class => 'logo' ) %> REDEEMIFY</h1>
-  </div>
+</div>
 <div class = "customer">
     <h1>CUSTOMER</h1>
   </div>
-
- <% if current_user != nil %>
+<!--
+<% if current_user != nil %>
   <% if current_user.code != "" %>
     <p>Customer register code:</p> 
     <p><%=@current_code%></p>
     <p><%= current_user.code%></p>
   <% end %>
 <% end %> 
+-->
+<p class = "customer_notice"> Click on vendor's name to redeem your code! </p>
 
-<p class = "customer_notice"> Click on vendor to redeem your code! </p>
-<div class="customer_table">
 
 
+ <% @list_codes.each do |vendor, code| %>
+ <div class="customer_table">
 <table>
-  <thead>
+  <!-- <thead>
     <tr>
       <th>Vendor</th>
       <th>Code</th>
@@ -29,20 +31,36 @@
       <th>Help</th>
 
     </tr>
-  </thead>
-  <tbody>
-    <% @list_codes.each do |vendor, code| %>
+  </thead> -->
+
+  <!-- <tbody> -->
+
+   
+      <div class="vendor_group">
       <tr>
-        <td><%= vendor %></td>
-        <td><%= code %></td>
-        <td><%= @instruction[vendor] %></td>
-        <td><%= @expiration[vendor] %></td>
-        <td><%= @help[vendor] %></td>
+        <td colspan = "2" class="vendor_header"><%= link_to vendor,"https://github.com"%></td>
+      <tr class="vendor_odd">
+        <td class="vendor_group1">Code :</td>
+        <td class="vendor_group2"><%= code %></td>
+      <tr class="vendor_even">
+        <td class="vendor_group1">Expiration Date :</td>
+        <td class="vendor_group2"><%= @expiration[vendor] %></td>
+      <tr class="vendor_odd">
+        <td class="vendor_group1">Instruction :</td>
+        <td class="vendor_group2"><%= @instruction[vendor] %></td>
+      <tr class="vendor_even">
+        <td class="vendor_group1">Help :</td>
+        <td class="vendor_group2"><%= @help[vendor] %></td>
       </tr>
-    <% end %>
-  </tbody>
+      </div>
+  
+
+  <!-- </tbody> -->
 </table>
 
+
+</div>
+  <% end %>
 
 
 
