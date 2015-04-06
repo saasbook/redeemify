@@ -14,10 +14,7 @@
 <p class="backtohome"><%= link_to image_tag("home.jpg",size:"30x30"), '/vendors/home' %></p>
 <h3 class="upload_text">Attach .csv file</h3>  <%= form_tag import_vendors_path, multipart: true do %>
     <%= file_field_tag :file %> 
-    <!-- <h3>File Name: </h3> 
-    <%= text_field_tag :filename %> -->
-    <!-- <h3>Description: </h3> 
-    <%= text_field_tag :description %> -->
+    
     <h3 class="upload_text">Code Description: </h3> 
    <textarea name="description" id="description" cols="50" rows="4" placeholder="Code Description..."></textarea>
 
@@ -25,7 +22,7 @@
     <textarea name="instruction" id="instruction" cols="50" rows="4" placeholder ="Instruction to redeem the code..."></textarea>
 
     <h3 class="upload_text">Expiration Day</h3> 
-    <textarea name="expiration" id="expiration" cols="8" rows="1" placeholder="mm/dd/yyyy"></textarea>
+    <h3><input type="text" name="expiration" id="expiration" cols="8" rows="1" placeholder="mm/dd/yyyy"></h3>
 
     <h3 class="upload_text">Help link</h3> 
     <textarea name="helpLink" id = "helpLink" cols="50" rows="4" placeholder ="Help link..."></textarea>
@@ -37,29 +34,27 @@
     <%= submit_tag "SUBMIT", :id => "submit"%>
   <% end %>
 </div>
-<!-- 
-<div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker3'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-time"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker3').datetimepicker({
-                    format: 'LT'
-                });
-            });
-        </script>
-    </div>
-</div> -->
 
 
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#expiration" ).datepicker();
+  });
+  </script>
+</head>
+<body>
+ 
+ 
+ 
+</body>
+</html>
 
 

@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/saasbook/Documents/newThai2/redeemify/app/controllers/application_controller.rb": [
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -19,15 +19,152 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/newThai2/redeemify/app/helpers/application_helper.rb": [
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/newThai2/redeemify/app/helpers/sessions_helper.rb": [
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/helpers/sessions_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/newThai2/redeemify/app/controllers/sessions_controller.rb": [
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/models/admin_user.rb": [
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/admin/admin_user.rb": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/admin/dashboard.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/admin/users.rb": [
+        1,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/models/user.rb": [
+        1,
+        1,
+        1,
+        9,
+        9,
+        9,
+        9,
+        9,
+        null,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/admin/vendor_codes.rb": [
+        1,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/models/vendor_code.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/admin/vendors.rb": [
+        1,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/models/vendor.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/controllers/sessions_controller.rb": [
         1,
         null,
         1,
@@ -150,7 +287,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/newThai2/redeemify/app/controllers/vendors_controller.rb": [
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/controllers/vendors_controller.rb": [
         1,
         null,
         1,
@@ -248,68 +385,15 @@
         1,
         null,
         null,
-        null,
-        null
-      ],
-      "/home/saasbook/Documents/newThai2/redeemify/app/models/vendor.rb": [
-        1,
-        1,
-        1,
-        1,
-        null,
-        1,
-        0,
-        0,
-        0,
-        null,
-        0,
-        null,
-        0,
-        0,
-        0,
-        null,
-        0,
-        null,
-        null,
-        0,
-        0,
-        0,
-        null,
-        0,
-        null,
-        0,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/home/saasbook/Documents/newThai2/redeemify/app/models/user.rb": [
-        1,
-        1,
-        1,
-        9,
-        9,
-        9,
-        9,
-        9,
-        null,
-        null,
-        null
-      ],
-      "/home/saasbook/Documents/newThai2/redeemify/app/models/vendor_code.rb": [
-        1,
-        1,
-        1,
-        1,
         null,
         null
       ]
     },
-    "timestamp": 1428119519
+    "timestamp": 1428324119
   },
   "Cucumber Features": {
     "coverage": {
-      "/home/saasbook/Documents/newThai2/redeemify/app/controllers/application_controller.rb": [
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -319,7 +403,7 @@
         1,
         null,
         1,
-        62,
+        50,
         null,
         1,
         null,
@@ -327,15 +411,152 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/newThai2/redeemify/app/helpers/application_helper.rb": [
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/newThai2/redeemify/app/helpers/sessions_helper.rb": [
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/helpers/sessions_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/newThai2/redeemify/app/controllers/sessions_controller.rb": [
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/models/admin_user.rb": [
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/admin/admin_user.rb": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/admin/dashboard.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/admin/users.rb": [
+        1,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/models/user.rb": [
+        1,
+        1,
+        1,
+        3,
+        3,
+        3,
+        3,
+        3,
+        null,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/admin/vendor_codes.rb": [
+        1,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/models/vendor_code.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/admin/vendors.rb": [
+        1,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/models/vendor.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        2,
+        2,
+        2,
+        null,
+        4,
+        null,
+        4,
+        4,
+        4,
+        null,
+        2,
+        null,
+        null,
+        2,
+        2,
+        1,
+        null,
+        1,
+        null,
+        2,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/controllers/sessions_controller.rb": [
         1,
         null,
         1,
@@ -458,7 +679,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/newThai2/redeemify/app/controllers/vendors_controller.rb": [
+      "/Users/YoungNguyen/Desktop/group/push/redeemify/app/controllers/vendors_controller.rb": [
         1,
         null,
         1,
@@ -556,63 +777,10 @@
         1,
         null,
         null,
-        null,
-        null
-      ],
-      "/home/saasbook/Documents/newThai2/redeemify/app/models/vendor.rb": [
-        1,
-        1,
-        1,
-        1,
-        null,
-        1,
-        2,
-        2,
-        2,
-        null,
-        4,
-        null,
-        4,
-        4,
-        4,
-        null,
-        2,
-        null,
-        null,
-        2,
-        2,
-        1,
-        null,
-        1,
-        null,
-        2,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/home/saasbook/Documents/newThai2/redeemify/app/models/user.rb": [
-        1,
-        1,
-        1,
-        3,
-        3,
-        3,
-        3,
-        3,
-        null,
-        null,
-        null
-      ],
-      "/home/saasbook/Documents/newThai2/redeemify/app/models/vendor_code.rb": [
-        1,
-        1,
-        1,
-        1,
         null,
         null
       ]
     },
-    "timestamp": 1428119532
+    "timestamp": 1428324125
   }
 }

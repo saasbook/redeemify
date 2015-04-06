@@ -6,15 +6,7 @@
 <div class = "customer">
     <h1>CUSTOMER</h1>
   </div>
-<!--
-<% if current_user != nil %>
-  <% if current_user.code != "" %>
-    <p>Customer register code:</p> 
-    <p><%=@current_code%></p>
-    <p><%= current_user.code%></p>
-  <% end %>
-<% end %> 
--->
+
 <p class = "customer_notice"> Click on vendor's name to redeem your code! </p>
 
 
@@ -22,18 +14,7 @@
  <% @list_codes.each do |vendor, code| %>
  <div class="customer_table">
 <table>
-  <!-- <thead>
-    <tr>
-      <th>Vendor</th>
-      <th>Code</th>
-      <th>Instruction</th>
-      <th>Expiration Date</th>
-      <th>Help</th>
 
-    </tr>
-  </thead> -->
-
-  <!-- <tbody> -->
 
    
       <div class="vendor_group">
@@ -55,58 +36,12 @@
       </div>
   
 
-  <!-- </tbody> -->
 </table>
 
 
 </div>
   <% end %>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- <table class="listing" summary="Vendor list">
-    <tr class="header">
-     
-      <th class = "vendor">VENDOR</th>
-       <th class = "description">DESCRIPTION</th> 
-      <th class = "code">CODE</th>
-
-      <% @list_codes.each do |vendor, code| %>
-      <tr>
-        <td><%= vendor %></td>
-        <td><%= code %></td>
-      </tr>
-    <% end %>
-      
-    </tr>
-    <tr class = "list">
-    	<td class = "vendor"><%= link_to("GITHUB","http://github.com") %></td>
-    	<td class = "description" >GitHub's description</td>
-    	<td class = "code">234234DFSDF32</td>
-    </tr>
-   <tr class = "list">
-    	<td class = "vendor"><%= link_to("AMAZON","http://amazon.com") %></td>
-    	<td class = "description" >Amazon's description</td>
-    	<td class = "code">234234DFSDF32</td>
-    </tr>
-    <tr class = "list">
-    	<td class = "vendor"><%= link_to("FACEBOOK","http://facebook.com") %></td>
-    	<td class = "description" >Facebook's description</td>
-    	<td class = "code">234234DFSDF32</td>
-    </tr>
-   
-  </table> -->
 
 </div>
 
