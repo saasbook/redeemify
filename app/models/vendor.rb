@@ -1,7 +1,7 @@
 class Vendor < ActiveRecord::Base 
 	require 'csv'
 	has_many :vendorCodes
-	attr_accessible :history, :provider, :email, :name, :description
+	attr_accessible :history, :provider, :email, :name, :description, :website
 
   	def self.import(file, current_vendor, info)
   		numberOfCodes = 0

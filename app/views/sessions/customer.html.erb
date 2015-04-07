@@ -9,7 +9,7 @@
 
 <p class = "customer_notice"> Click on vendor's name to redeem your code! </p>
 
-
+<p>Your Provider Code:<%= @current_code %></p>
 
  <% @list_codes.each do |vendor, code| %>
  <div class="customer_table">
@@ -19,7 +19,7 @@
    
       <div class="vendor_group">
       <tr>
-        <td colspan = "2" class="vendor_header"><%= link_to vendor,"https://github.com"%></td>
+        <td colspan = "2" class="vendor_header"><%= link_to vendor, @website[vendor] %></td>
       <tr class="vendor_odd">
         <td class="vendor_group1">Code :</td>
         <td class="vendor_group2"><%= code %></td>
@@ -27,7 +27,7 @@
         <td class="vendor_group1">Expiration Date :</td>
         <td class="vendor_group2"><%= @expiration[vendor] %></td>
       <tr class="vendor_odd">
-        <td class="vendor_group1">Instruction :</td>
+        <td class="vendor_group1">Instructions :</td>
         <td class="vendor_group2"><%= @instruction[vendor] %></td>
       <tr class="vendor_even">
         <td class="vendor_group1">Help :</td>

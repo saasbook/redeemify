@@ -50,6 +50,7 @@ class SessionsController < ApplicationController
         @instruction = {}
         @help = {}
         @expiration = {}
+        @website = {}
         @vendors = Vendor.all
 
         @vendors.each do |vendor|
@@ -62,8 +63,9 @@ class SessionsController < ApplicationController
             @instruction[vendor.name] = code.instruction
             @help[vendor.name] = code.help
             @expiration[vendor.name] = code.expiration
+            @website[vendor.name] = vendor.website
           else
-            @list_codes[vendor.name] = "We are reloading with sleight of hand"
+            @list_codes[vendor.name] = "We run out of code for this vendor"
           end 
           # debugger
         end
@@ -75,6 +77,7 @@ class SessionsController < ApplicationController
         @instruction = {}
         @help = {}
         @expiration = {}
+        @website = {}
         @vendors = VendorCode.where(:user_id => current_user.id)
 
         @vendors.each do |vendor|
@@ -83,6 +86,7 @@ class SessionsController < ApplicationController
           @instruction[Vendor.find(vendor.vendor).name] = vendor.instruction
           @help[Vendor.find(vendor.vendor).name] = vendor.help
           @expiration[Vendor.find(vendor.vendor).name] = vendor.expiration
+          @website[vendor.name] = vendor.vendor.website
         end
       end
     end
