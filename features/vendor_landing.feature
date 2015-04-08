@@ -20,7 +20,7 @@ Background:
 Scenario: 
         
         Then I am on the user login page
-        Then I am signed in as a vendor "vendor1" and user ID "12345" with "facebook"
+        Then I am signed in as a vendor "Github" and user ID "12345" with "facebook"
         And I can see "Number of codes remaining: 4"
         And I can see "Number of codes used: 0"
         Then I press "viewCodes" link

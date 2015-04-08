@@ -1,11 +1,11 @@
-<p>Account from: <%= @vendor.provider.upcase  %> | <%= @vendor.name %> | <%= link_to "Log out", logout_path, :id => "logout-link" %></p>
+<p class="account">Account from: <%= @vendor.provider.upcase  %> | <%= @vendor.name %> | <%= link_to "Log out", logout_path, :id => "logout-link" %></p>
 <div id="welcome">
 
     <h1> <%= image_tag('logo.png', :size => '100x100', :class => 'logo' ) %> REDEEMIFY</h1>
   </div>
-<div class = "vendor">
+<!-- <div class = "vendor">
     <h1>VENDOR</h1>
-  </div>
+  </div> -->
 
 <div class = "vendor_home_numcode">
 
@@ -14,47 +14,13 @@
   <!-- <p>History: <%= @history %></p> -->
 
 </div>
-
-<!-- <div class = "up_view">
-  <p><%= link_to "Upload New Codes", '/vendors/upload_page', :id => "upload" %></p>
-  <p><%= link_to "View All Codes", '/vendors/viewCodes', :id => "viewCodes" %></p>
-</div> -->
-
-
-
-
-
-
+<br>
 
 <div class = "row1">
-    <a  class = "vendor_ability">
-    	 <%= link_to image_tag("r1_c1.jpg", size: "150x30"), '/vendors/upload_page', :id => "upload" %>
-
-    </a>
-    <a  class = "vendor_ability">
-    	<%= link_to image_tag("r1_c2.jpg", size: "150x30"), '/vendors/viewCodes', :id => "viewCodes" %>
-     
-    </a>
-    <a  class = "vendor_ability">
-    	<%= link_to image_tag("r2_c1.jpg", size: "150x30"), "http://" %>
- 
-    </a>
-
-
-  </div>
-
-  <div class = "row2">
-    <a  class = "vendor_ability">
-    	 <%= link_to image_tag("r1_c3.jpg", size: "150x30"), "http://" %>
-    </a>
-    <a  class = "vendor_ability">
-    	<%= link_to image_tag("r2_c2.jpg", size: "150x30"), "http://" %>
-     
-    </a>
-    
-
-  </div>
-
+	 <%= link_to "Upload New Codes", '/vendors/upload_page', :id => "upload" %>
+</div>
+   
+<h4 class="history">History</h4>
   <div class = "vendor_table">
 
 <table>

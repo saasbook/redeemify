@@ -1,4 +1,3 @@
-
 Feature: Enter Provider Code (Story 1b)
 
     As a user

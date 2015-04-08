@@ -1,20 +1,25 @@
-<p>Account from: <%= @vendor.provider.upcase  %> | <%= @vendor.name %> | <%= link_to "Log out", logout_path, :id => "logout-link" %></p>
+<p class="account">Account from: <%= @vendor.provider.upcase  %> | <%= @vendor.name %> | <%= link_to "Log out", logout_path, :id => "logout-link" %></p>
 <div id="welcome">
 
     <h1> <%= image_tag('logo.png', :size => '100x100', :class => 'logo' ) %> REDEEMIFY</h1>
 </div>
-<div class = "vendor">
+<!-- <div class = "vendor">
     <h1>VENDOR</h1>
 </div>
-
-<div class = "upload_group">
-<div class = "upload_vendor">
+ -->
+ <p class="backtohome"><%= link_to "Home", '/vendors/home' %></p>
+<!-- <div class = "upload_group"> -->
+<!-- <div class = "upload_vendor">
 <p class="vendor_name"><%= @vendor.name %></p>
-</div>
-<p class="backtohome"><%= link_to image_tag("home.jpg",size:"30x30"), '/vendors/home' %></p>
-<h3 class="upload_text">Attach .csv file</h3>  <%= form_tag import_vendors_path, multipart: true do %>
+</div> -->
+
+<h3 class="upload_text">Attach .csv file </h3>  <%= form_tag import_vendors_path, multipart: true do %>
+<p> (a one column CSV file with "code" as the header)</p>
     <%= file_field_tag :file %> 
-    
+    <!-- <h3>File Name: </h3> 
+    <%= text_field_tag :filename %> -->
+    <!-- <h3>Description: </h3> 
+    <%= text_field_tag :description %> -->
     <h3 class="upload_text">Code Description: </h3> 
    <textarea name="description" id="description" cols="50" rows="4" placeholder="Code Description..."></textarea>
 
@@ -22,18 +27,14 @@
     <textarea name="instruction" id="instruction" cols="50" rows="4" placeholder ="Instruction to redeem the code..."></textarea>
 
     <h3 class="upload_text">Expiration Day</h3> 
-    <h3><input type="text" name="expiration" id="expiration" cols="8" rows="1" placeholder="mm/dd/yyyy"></h3>
+    <!-- <textarea name="expiration" id="expiration" cols="8" rows="1" placeholder="mm/dd/yyyy"></textarea> -->
+    <h3><input type="text" name="expiration" id="expiration" value= "mm/dd/yyyy"></h3>
 
     <h3 class="upload_text">Help link</h3> 
     <textarea name="helpLink" id = "helpLink" cols="50" rows="4" placeholder ="Help link..."></textarea>
     <br>
     <br>
 
-
-
-    <%= submit_tag "SUBMIT", :id => "submit"%>
-  <% end %>
-</div>
 
 
 <html lang="en">
@@ -51,10 +52,46 @@
   </script>
 </head>
 <body>
- 
- 
- 
+    <!-- <h3><input type="text" name="expiration" id="expiration" value= "mm/dd/yyyy"></h3> -->
+
+
+   
+
 </body>
 </html>
+
+
+
+
+
+
+
+    <%= submit_tag "SUBMIT", :id => "submit"%>
+  <% end %>
+</div>
+<!-- 
+<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker3'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker3').datetimepicker({
+                    format: 'LT'
+                });
+            });
+        </script>
+    </div>
+</div> -->
+
+
 
 

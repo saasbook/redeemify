@@ -1,24 +1,20 @@
-<p>Account from: <%= current_user.provider.upcase  %> | <%= current_user.name %> | <%= link_to "Log out", logout_path, :id => "logout-link" %></p>
+<p class="account">Account from: <%= current_user.provider.upcase  %> | <%= current_user.name %> | <%= link_to "Log out", logout_path, :id => "logout-link" %></p>
 <div id="welcome">
 
     <h1> <%= image_tag('logo.png', :size => '100x100', :class => 'logo' ) %> REDEEMIFY</h1>
 </div>
-<div class = "customer">
-    <h1>CUSTOMER</h1>
-  </div>
+
+<p class="middle">Your Provider Code: <%= @current_code %></p>
 
 <p class = "customer_notice"> Click on vendor's name to redeem your code! </p>
-
-<p>Your Provider Code:<%= @current_code %></p>
-
  <% @list_codes.each do |vendor, code| %>
  <div class="customer_table">
 <table>
 
-
    
       <div class="vendor_group">
       <tr>
+        
         <td colspan = "2" class="vendor_header"><%= link_to vendor, @website[vendor] %></td>
       <tr class="vendor_odd">
         <td class="vendor_group1">Code :</td>
@@ -27,7 +23,7 @@
         <td class="vendor_group1">Expiration Date :</td>
         <td class="vendor_group2"><%= @expiration[vendor] %></td>
       <tr class="vendor_odd">
-        <td class="vendor_group1">Instructions :</td>
+        <td class="vendor_group1">Instruction :</td>
         <td class="vendor_group2"><%= @instruction[vendor] %></td>
       <tr class="vendor_even">
         <td class="vendor_group1">Help :</td>
@@ -35,13 +31,11 @@
       </tr>
       </div>
   
-
 </table>
 
 
 </div>
   <% end %>
-
 
 </div>
 

@@ -2,7 +2,7 @@
 body {
   
   background-color: #ffffff;
-  font-family: Helvetica , Arial, Verdana;
+  font-family: Helvetica Neue , Arial, Verdana;
   font-size: 12px;
 
 }
@@ -32,12 +32,12 @@ a {
   margin-top: 20px;
   position: relative;
 }*/
-@font-face {
-    font-family: 'Circula';
+/*@font-face {
+    font-family: Helvetica Neue;
     src: url('/assets/circula-medium.otf');
     font-weight: normal;
     font-style: normal;
-}
+}*/
 
 /*input[type="submit"]
 {
@@ -47,14 +47,14 @@ a {
   background:url(submit.jpg);
 }*/
 
-textarea {background: none repeat scroll 0 0 rgba(197, 237, 255, 1);
+textarea {
  
   
   border-radius: 6px 6px 6px 6px;
   border-style: none solid solid none;
   border-width: medium 1px 1px medium;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset;
-  font-family: Helvetica;
+  font-family: Helvetica Neue;
   font-size: 1em;
   padding: 4px 6px;
 
@@ -73,30 +73,32 @@ textarea:focus {
 
 .formcode {text-align: center; padding-top: 5px}
 
-#welcome {height: 10em ; width : 100%; padding-top: 5px;
+#welcome {height: 10em ; width : 100%; padding-top: 5px;letter-spacing: 5px;
   background: #333742; color: #FFFFFF}
+#welcome h1 {font-family: 'Circula'; letter-spacing: 5px;font-size: 72px ;
+  letter-spacing: 5px; text-align: center; margin: 0px auto;}
 
 .up_view {height: 5em; width: 10em;}
+.account{text-align: right}
+.vendor_home_numcode {background: #d7d7d7;  margin-left:  auto; margin-right:auto; width: 200px; height: 80px; border-radius: 2px; margin-top: 15px }
+.vendor_home_numcode p {text-align: left; margin-left: 5%; font-size: 12px;color: #000000}
+.vendor_home_numcode p.r1{padding-top:20px}
 
-.vendor_home_numcode {background: #05e177;margin-left: auto; margin-right:auto; width: 300px; height: 100px; border-radius: 10px; margin-top: 20px }
-.vendor_home_numcode p {text-align: left; margin-left: 5%; font-size: 14px;color: #000000}
-.vendor_home_numcode p.r1{padding-top:25px}
 
-#welcome h1 {font-family: 'Circula'; font-size: 72px ;letter-spacing: 10px; text-align: center; margin: 0px auto;}
 /*p {font-size: 12px; text-align: right; color: #000000}*/
 
 /*#welcome h1 #logo{padding: 10px;}*/
 .customer { height: 40px; text-align: center; width : 300px; margin-top: 5em; margin-left: auto; margin-right: auto;
   background: #05e177; color: #FFFFFF; background-position: center; margin-top: 10px}
-.customer h1 { margin: 0; padding-top: 3px; font-family: 'Circula'; font-size: 30px ; letter-spacing: 2px}
+.customer h1 { margin: 0; padding-top: 3px; font-family: Helvetica Neue; font-size: 30px ; letter-spacing: 2px}
 
 .vendor { height: 40px; text-align: center; width : 300px; margin-top: 5em; margin-left: auto; margin-right: auto;
   background: #44c4ff; color: #FFFFFF; background-position: center; margin-top: 10px}
-.vendor h1 { margin: 0; padding-top: 3px; font-family: 'Circula'; font-size: 30px ; letter-spacing: 2px}
+.vendor h1 { margin: 0; padding-top: 3px; font-family: Helvetica Neue; font-size: 30px ; letter-spacing: 2px}
 
 .loginwith { height: 40px; text-align: center; width : 540px; margin-top: 5em; margin-left: auto; margin-right: auto;
-  background: #f65a5b; color: #FFFFFF; background-position: center}
-.loginwith h1 { margin: 0; padding-top: 3px; font-family: 'Circula'; font-size: 30px ; letter-spacing: 2px}
+  background: #333742; color: #FFFFFF; background-position: center}
+.loginwith h1 { margin: 0; padding-top: 3px; font-family: Helvetica Neue; font-size: 30px ; letter-spacing: 2px}
 
 
 
@@ -116,58 +118,41 @@ textarea:focus {
 */
 .customer_notice {color:red; text-align: center; font-style: italic;}
 
-.vendor_table table {margin-top: 20px;border-collapse: collapse;}
-.vendor_table {width:90%; margin:auto;}
+.vendor_table table {margin-top: 20px;border-collapse: collapse; margin-left: auto; margin-right: auto ;width: 90%;}
 .vendor_table table, th { border :none}
 .vendor_table table, tr, td { border : none; height:40px}
-.vendor_table table, td {border-left : solid 4px #44c4ff; border-right: solid 4px #44c4ff}
+.vendor_table table, td {border-left : solid 1px #5a6065; border-right: solid 1px #5a6065}
 
 .vendor_table table, tr, td {text-align: center}
-
-.customer_table table {border-collapse: collapse; border: 0px;}
+.middle{text-align: center}
+.customer_table table {border-collapse: collapse; border: 0px;width : 100%;margin-left: auto; margin-right: auto;}
 .customer_table table tr td {border-collapse: collapse; border: 0px;}
 .customer_table table, tr,td {border-collapse: collapse; }
-.customer_table{margin-top: 40px; width : 60%;margin-left: auto; margin-right: auto; background: #b2e4fa;border-radius: 10px}
+.customer_table{margin-top: 20px; background: #f0f0f0;border-radius: 2px;width : 60%;margin-left: auto; margin-right: auto;}
 
 .codes {width:50%;}
-.upload_text{font-size: 15px; font-family: 'Circula';letter-spacing: 1px;margin-left: auto; margin-right: auto;
-              color: #f65a5b; height : 20px;}
+.upload_text{font-size: 12px; font-family: Helvetica Neue;margin-left: auto; margin-right: auto;
+              color: #000000; height : 20px;}
 
-.header {height: 45px; font-family: 'Circula'; font-size: 20px;background: #44c4ff; color: #FFFFFF; letter-spacing: 1px}
-.upload_vendor {background: #f65a5b; width: 300px; margin-left: auto; margin-right: auto; 
-                color:#ffffff;font-family: 'Circula';border-radius: 3px;height:35px;text-align: center;letter-spacing: 1px}
-.upload_vendor p.vendor_name {font-size: 24px; text-align: center; color: white; padding-top: 3px}
-.row1 a {padding-left: 5px;
-  padding-right: 5px; }
+.header {height: 20px; font-family: Helvetica Neue; font-size: 12px;background: #5a6065; color: #FFFFFF}
+.upload_vendor { margin-left: auto; margin-right: auto; font-family: Helvetica Neue}
+.upload_vendor p.vendor_name {font-size: 24px; text-align: center; padding-top: 3px}
 
-.backtohome {height: 40px; width:40px;margin:auto;margin-top:10px;}
 
-.vendor_header { height:45px; background: #44c5ff;color : #000000; border-radius: 10px; font-size: 24px; font-family: 'Circula'; letter-spacing: 1px}
+.backtohome {height: 40px; width:40px;text-align: left}
+.history{text-align: center; font-size: 18px}
+.vendor_header { height:40px; background: #5a6065;color : #FFFFFF; border-radius: 2px; font-size: 18px; font-family: Helvetica Neue; letter-spacing: 1px}
 
-.vendor_group1 {text-align: left;padding-left: 10px;width: 120px; font-size: 16px; font-family: 'Circula';letter-spacing: 1px}
+.vendor_group1 {text-align: left;padding-left: 10px;width: 120px; font-size: 12px; font-family: Helvetica Neue;letter-spacing: 1px}
 .vendor_group2 {text-align: left;padding-left: 10px}
-.vendor_odd {background : #d0f0ff}
-.odd{background: #d0f0ff;}
-.even{background: #eaf8ff;} 
+.vendor_odd {background : #d7d7d7}
+.odd{background: #f0f0f0;}
+.even{background: #d7d7d7;} 
 /*#b2e4fa*/
 .upload_group {text-align: center; margin-left: auto; margin-right: auto}
-.row1 {
+
+.row1 {text-align: center}
   
-  width: 550px;
-  padding-top: 20px;
-  margin: auto;
-}
-
-.row2 a {padding-left: 5px;
-  padding-right: 5px; }
-
-.row2 {
-  
-  width: 350px;
-  padding-top: 20px;
-  margin: auto;
-}
-
 
 
 

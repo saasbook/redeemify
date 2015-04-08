@@ -65,7 +65,7 @@ class SessionsController < ApplicationController
             @expiration[vendor.name] = code.expiration
             @website[vendor.name] = vendor.website
           else
-            @list_codes[vendor.name] = "We run out of code for this vendor"
+            @list_codes[vendor.name] = "We are reloading with sleight of hand"
           end 
           # debugger
         end

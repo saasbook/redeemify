@@ -1,6 +1,5 @@
 Auth::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
-  
 
   root to: "sessions#new"
   get 'sessions/customer'
@@ -26,6 +25,5 @@ Auth::Application.routes.draw do
     collection {post :import}
     resources :vendorcodes
   end
-  
   ActiveAdmin.routes(self)
 end
