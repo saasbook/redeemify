@@ -1,6 +1,6 @@
 Feature: User New Offer
 
-	As a vendor
+	As a user
 	So that I can see the new offer from vendors
     I want to be updated when any vendors change or add their offer
 
