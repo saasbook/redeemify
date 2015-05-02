@@ -16,11 +16,17 @@ Then /^show me the page$/ do
 end
 
 Given /the following vendor codes exist/ do |vendor_codes_table|
+  numberOfCodes = 0
+  v = 0
   vendor_codes_table.hashes.each do |code|
     v = Vendor.find_by_name(code['vendor'])
-    v.vendorCodes.create!(:code => code["code"], :vendor => v)
-
-
+    v.vendorCodes.create!(:code => code["code"], :name => v.name, :vendor => v)
+    numberOfCodes = numberOfCodes + 1
+  end
+  if v != 0
+    v.update_attribute(:uploadedCodes, v.uploadedCodes + numberOfCodes)
+    v.update_attribute(:totalCodes, v.totalCodes + numberOfCodes)
+    v.update_attribute(:unclaimCodes, v.unclaimCodes + numberOfCodes)
   end
 end
 
@@ -36,9 +42,14 @@ end
 
 Given /the following provider codes exist/ do |provider_codes_table|
   p = Provider.create!(:name => 'Amazon', :provider => 'facebook', :email => 'amazon@amazon.com')
+  numberOfCodes = 0
   provider_codes_table.hashes.each do |code|
-    p.providerCodes.create!(:code => code["code"], :provider => p)
+    p.providerCodes.create!(:code => code["code"], :name=> p.name, :provider => p)
+    numberOfCodes = numberOfCodes + 1
   end
+  p.update_attribute(:uploadedCodes, p.uploadedCodes + numberOfCodes)
+  p.update_attribute(:totalCodes, p.totalCodes + numberOfCodes)
+  p.update_attribute(:unclaimCodes, p.unclaimCodes + numberOfCodes)
 end
 
 Given /a provider "([^"]*)" exist$/ do |provider_name|
@@ -59,6 +70,36 @@ Given /the following vendors exist/ do |vendors_table|
   vendors_table.hashes.each do |vendor|
     Vendor.create(vendor)
   end
+end
+
+Then /the vendor "([^"]*)" should be "([^"]*)"$/ do |attribute, value|
+  if attribute == "uploadedCodes"
+    v = Vendor.find_by_name("Github")
+    if v.uploadedCodes != value.to_i
+      raise "uploadedCodes value is not the same with test value"
+    end
+  elsif attribute == "unclaimCodes"
+    v = Vendor.find_by_name("Github")
+    if v.unclaimCodes != value.to_i
+      raise "unclaimCodes value is not the same with test value"
+    end
+  end
+    
+end
+
+Then /the provider "([^"]*)" should be "([^"]*)"$/ do |attribute, value|
+  if attribute == "uploadedCodes"
+    p = Provider.find_by_name("Amazon")
+    if p.uploadedCodes != value.to_i
+      raise "uploadedCodes value is not the same with test value"
+    end
+  elsif attribute == "unclaimCodes"
+    p = Provider.find_by_name("Amazon")
+    if p.unclaimCodes != value.to_i
+      raise "unclaimCodes value is not the same with test value"
+    end
+  end
+    
 end
 
 Given /^(?:|I )am on (.+)$/ do |page_name|
@@ -105,7 +146,7 @@ And /^I have already registered with "([^"]*)" and provider code "([^"]*)"$/ do 
   click_link("#{provider.downcase}-auth")
   fill_in("code", :with => code)
   click_button("Submit")
-  click_link("logout-link")
+  click_link("logout")
 end
 
 
@@ -124,7 +165,7 @@ end
 
 When /^(?:|I )press "([^"]*)" link$/ do |link|
   if link.eql? "Log out"
-    click_link("logout-link")
+    click_link("logout")
   else
     click_link(link)
   end

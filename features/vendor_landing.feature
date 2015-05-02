@@ -22,6 +22,5 @@ Scenario:
         Then I am on the user login page
         Then I am signed in as a vendor "Github" and user ID "12345" with "facebook"
         And I have updated the vendor profile
-        And I can see "Number of codes remaining: 4"
-        And I can see "Number of codes used: 0"
-        Then I can see "Codes"
+        Then the vendor "uploadedCodes" should be "4"
+        Then the vendor "unclaimCodes" should be "4"

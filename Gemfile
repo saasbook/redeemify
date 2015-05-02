@@ -19,8 +19,6 @@ gem 'activeadmin'#, '0.6.2'
 
 # require 'rubygems'
 # require 'google_chart'
-
-
 gem 'gon'
 # gem 'rabl-rails'
 gem 'gchartrb'
@@ -39,6 +37,9 @@ group :development, :test do
   gem 'simplecov'
   gem 'test-unit'
   gem 'database_cleaner'
+  gem 'selenium-webdriver'
+  gem 'Selenium'
+  gem 'selenium-client'
 end
 group :production do
   gem 'pg'

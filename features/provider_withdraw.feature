@@ -15,5 +15,6 @@ Scenario:
         
     Then I am on the user login page
     Given I am signed in as a provider "Amazon"
+    Then the provider "uploadedCodes" should be "2"
     When I press "remove-unclaimed-codes" link
-    Then I can see "Number of codes remaining: 0"
+    Then the provider "unclaimCodes" should be "0"

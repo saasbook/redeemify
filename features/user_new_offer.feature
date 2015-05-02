@@ -14,7 +14,6 @@ Scenario: vendor change offer profile
     Given I am on the user login page
     And I have already registered with "facebook" and provider code "12345"
     Then I am signed in with "facebook"
-    Then I can see "Offer page"
     Given I press "logout" link
     Given I am on the user login page
     And I have already registered with "facebook" and provider code "12345"

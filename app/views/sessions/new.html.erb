@@ -1,5 +1,5 @@
 <% if current_user %>
- <p class="account">Login ith: <%= current_user.provider.upcase  %> | Name: <%= current_user.name %> | <%= link_to "Logout", logout_path, :id => "logout-link" %></p>
+ <p class="account">Login ith: <%= current_user.provider.upcase  %> | Name: <%= current_user.name %> | <%= link_to "Logout", logout_path, :id => "logout" %></p>
 <div id="welcome">
 
     <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %> </h1>
@@ -12,7 +12,7 @@
   <% if @vendor_user %>
   <div class = "button-single">
   <div class = "row1">
-    <%= link_to "Login as a vendor", '/sessions/change_to_vendor', {:id => "upload" , :style => 'color:#000'} %>
+    <%= link_to "Login as a vendor", '/sessions/change_to_vendor', {:id => "vendor-login" , :style => 'color:#000'} %>
   </div>
   <% end %>
   </div>
@@ -24,11 +24,11 @@
     <%= label_tag(:code, "Enter your code here:") %>
     <br>
     <div class = "field_text">
-     <%= text_field_tag(:code) %>
+     <%= text_field_tag :code , :id => "code" %>
      </div>
     <br>
  
-    <%= submit_tag("Submit") %>
+    <%= submit_tag "Submit", :id => "submit" %>
   <% end %>
   </div>
 

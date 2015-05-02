@@ -7,9 +7,9 @@
   
   <%= form_tag("/sessions/offer", method: "get") do %>
     <%= label_tag(:code, "Enter your code Here:") %>
-    <%= text_field_tag(:code) %>
-    <%= submit_tag("Submit") %>
+    <%= text_field_tag :code, :id => "code" %>
+    <%= submit_tag "Submit", :id => "submit" %>
   <% end %>
 
 
-  <p><%= link_to "Log out", logout_path %></p>
+  <p><%= link_to "Log out", logout_path, :id => "logout" %></p>

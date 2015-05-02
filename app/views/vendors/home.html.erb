@@ -1,4 +1,4 @@
-<p class="account">Login with: <%= @vendor.provider.upcase  %> | Name: <%= @vendor.name %> | <%= link_to "Logout", logout_path, :id => "logout-link" %></p>
+<p class="account">Login with: <%= @vendor.provider.upcase  %> | Name: <%= @vendor.name %> | <%= link_to "Logout", logout_path, :id => "logout" %></p>
 <div id="welcome">
 
     <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %></h1>
@@ -24,18 +24,18 @@
 
 <div class = "group-buttons">
 <div class = "row1">
-   <%= link_to "Login as a user", '/vendors/change_to_user', {:id => "upload", :style => 'color:#000'} %>
+   <%= link_to "Login as a user", '/vendors/change_to_user', {:id => "user-login", :style => 'color:#000'} %>
 </div>
 
 <div class = "row1">
    <%= link_to "Upload New Codes", '/vendors/upload_page', {:id => "upload", :style => 'color:#000'} %>
 </div>
 <div class = "row1">
-   <%= link_to "Update Your Profile", '/vendors/profile', {:id => "upload", :style => 'color:#000'} %>
+   <%= link_to "Update Your Profile", '/vendors/profile', {:id => "update-profile", :style => 'color:#000'} %>
 </div>
 
 <div class = "row1">
- <button type="button" onclick="confirmation()"> Download And Remove Unclaimed Codes</button> 
+ <button type="button" onclick="confirmation()" id="remove-unclaimed-codes"> Download And Remove Unclaimed Codes</button> 
 
 </div>
 </div>
@@ -46,7 +46,7 @@
    
 <h4 class="history">History</h4>
 
-<center><%= link_to "Clear History", '/vendors/clear_history', {:id => "upload", :style => 'color:#000'} %></center>
+<center><%= link_to "Clear History", '/vendors/clear_history', {:id => "clear-history", :style => 'color:#000'} %></center>
 
 
 

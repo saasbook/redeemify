@@ -24,4 +24,4 @@ Scenario:
     And I press "submit" button
     Then I can see "Total Offer Value"
     And I press "vendor-login" link
-    Then I can see "Number of codes remaining"
+    Then I can see "Number of Codes Uploaded"

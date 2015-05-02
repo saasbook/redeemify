@@ -21,7 +21,8 @@ Scenario:
     Then I am on the user login page
     Then I am signed in as a vendor "Github" and user ID "12345" with "facebook"
     And I have updated the vendor profile
-    And I can see "Number of codes remaining: 4"
-    When I press "remove-unclaimed-codes" link
-    Then I can see "Number of codes remaining: 0"
-    And I have downloaded the file
+    Then the vendor "uploadedCodes" should be "4"
+    Then the vendor "unclaimCodes" should be "4"
+    When I press "remove-unclaimed-codes" button
+    And I confirm popup
+    Then the vendor "unclaimCodes" should be "0"

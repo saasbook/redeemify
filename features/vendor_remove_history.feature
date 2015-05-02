@@ -1,4 +1,4 @@
-Feature: Vendor Withdraw Code
+Feature: Vendor Remove History
 
 	As a vendor/provider
 	So that I can keep track the information about the codes that I deleted
@@ -21,7 +21,7 @@ Scenario:
     Then I am on the user login page
     Then I am signed in as a vendor "Github" and user ID "12345" with "facebook"
     And I have updated the vendor profile
-    And I can see "Number of codes remaining: 4"
+    And I can see "4"
     When I press "remove-unclaimed-codes" link
-    Then I can see "Number of codes remaining: 0"
+    Then I can see "0"
     Then I can see "4 codes removed"
