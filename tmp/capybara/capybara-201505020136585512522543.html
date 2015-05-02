@@ -1,7 +1,24 @@
-<p class="account">Login with: <%= @vendor.provider.upcase  %> | Name: <%= @vendor.name %> | <%= link_to "Logout", logout_path, :id => "logout" %></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redeemify</title>
+    <script type="text/javascript">
+//<![CDATA[
+window.gon={};gon.codes={"uploaded":4,"used":0,"unclaim":4,"removed":0};gon.history=null;
+//]]>
+</script>
+    <link href="/assets/application.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/assets/application.js" type="text/javascript"></script>
+    
+  </head>
+  <body>
+
+    <div id="container">
+        <div id="flash_notice">home page, vendor</div>
+      <p class="account">Login with: FACEBOOK | Name: Github | <a href="/logout" id="logout">Logout</a></p>
 <div id="welcome">
 
-    <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %></h1>
+    <h1> <img alt="Logo" class="logo" height="100" src="/assets/logo.png" width="400" /></h1>
   </div>
 
 
@@ -14,28 +31,22 @@
 <br>
 
 
-<% if flash[:error] != nil %>
-    <% flash.keys.each do |k| %> 
-       <center><font color="red"><%= flash[k] %></font></center>
-    <% end %> 
-<br>
-<% end %>
 
 
 <div class = "group-buttons">
 <div class = "row1">
-   <%= link_to "Login as a user", '/vendors/change_to_user', {:id => "user-login", :style => 'color:#000'} %>
+   <a href="/vendors/change_to_user" id="user-login" style="color:#000">Login as a user</a>
 </div>
 
 <div class = "row1">
-   <%= link_to "Upload New Codes", '/vendors/upload_page', {:id => "upload", :style => 'color:#000'} %>
+   <a href="/vendors/upload_page" id="upload" style="color:#000">Upload New Codes</a>
 </div>
 <div class = "row1">
-   <%= link_to "Update Your Profile", '/vendors/profile', {:id => "update-profile", :style => 'color:#000'} %>
+   <a href="/vendors/profile" id="update-profile" style="color:#000">Update Your Profile</a>
 </div>
 
 <div class = "row1">
-<%= link_to "Download And Remove Unclaimed Codes", '/vendors/remove_codes', {:id => "remove-unclaimed-codes" , :style => 'color:#000'} %>
+<a href="/vendors/remove_codes" id="remove-unclaimed-codes" style="color:#000">Download And Remove Unclaimed Codes</a>
 
  <!-- <button type="button" onclick="confirmation()"> Download And Remove Unclaimed Codes</button>  -->
 
@@ -48,7 +59,7 @@
    
 <h4 class="history">History</h4>
 
-<center><%= link_to "Clear History", '/vendors/clear_history', {:id => "clear-history", :style => 'color:#000'} %></center>
+<center><a href="/vendors/clear_history" id="clear-history" style="color:#000">Clear History</a></center>
 
 <!-- <center><button type="button" onclick="confirmation2()">Clear History</button></center> -->
 
@@ -68,14 +79,6 @@
   
 <tbody>
   
-    <% @histories_array.each do |history| %>
-      <tr class="<%= cycle('evenn', 'oddd') -%>">
-        <td width = "20%"><%= history[0] %></td>
-        <td width = "60%" id="descriptions"><%= history[1] %></td>
-        <td width = "20%"><%= history[2] %></td>
-      </tr>
-
-    <% end %>
   </tbody>
 </table>
 </div>
@@ -150,3 +153,9 @@
 </html>
 
 
+
+    </div>
+
+
+  </body>
+</html>

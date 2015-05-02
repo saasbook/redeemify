@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150428012929) do
+ActiveRecord::Schema.define(:version => 20150502035130) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(:version => 20150428012929) do
     t.datetime "updated_at",    :null => false
     t.integer  "usedCodes"
     t.integer  "uploadedCodes"
-    t.integer  "totalCodes"
     t.integer  "unclaimCodes"
     t.integer  "removedCodes"
   end
@@ -109,7 +108,6 @@ ActiveRecord::Schema.define(:version => 20150428012929) do
     t.string   "expiration"
     t.integer  "usedCodes"
     t.integer  "uploadedCodes"
-    t.integer  "totalCodes"
     t.integer  "unclaimCodes"
     t.integer  "removedCodes"
   end

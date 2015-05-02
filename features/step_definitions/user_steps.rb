@@ -25,7 +25,6 @@ Given /the following vendor codes exist/ do |vendor_codes_table|
   end
   if v != 0
     v.update_attribute(:uploadedCodes, v.uploadedCodes + numberOfCodes)
-    v.update_attribute(:totalCodes, v.totalCodes + numberOfCodes)
     v.update_attribute(:unclaimCodes, v.unclaimCodes + numberOfCodes)
   end
 end
@@ -48,7 +47,6 @@ Given /the following provider codes exist/ do |provider_codes_table|
     numberOfCodes = numberOfCodes + 1
   end
   p.update_attribute(:uploadedCodes, p.uploadedCodes + numberOfCodes)
-  p.update_attribute(:totalCodes, p.totalCodes + numberOfCodes)
   p.update_attribute(:unclaimCodes, p.unclaimCodes + numberOfCodes)
 end
 
@@ -104,8 +102,9 @@ end
 
 Then /my user should be deleted$/ do
   u = User.find_by_name("foo")
-  if u != nil
+  if u
     raise "User is not deleted"
+  end
 end
 
 Given /^(?:|I )am on (.+)$/ do |page_name|
@@ -113,6 +112,7 @@ Given /^(?:|I )am on (.+)$/ do |page_name|
 end
 
 And /^I have updated the vendor profile/ do
+  click_link("update-profile")
   fill_in("cashValue", :with => "1")
   fill_in("expiration", :with => "11/11/2015")
   fill_in("description", :with => "description")

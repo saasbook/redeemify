@@ -24,7 +24,7 @@
     <%= label_tag(:code, "Enter your code here:") %>
     <br>
     <div class = "field_text">
-     <%= text_field_tag :code , :id => "code" %>
+     <%= text_field_tag :code, :id => "code" %>
      </div>
     <br>
  
@@ -75,4 +75,13 @@
     </a>
 
   </div>
+
+  <% if flash[:notice] != nil %>
+      <% flash.keys.each do |k| %> 
+         <center><font color="green"><%= flash[k] %></font></center>
+      <% end %> 
+  <% end %>
+
+
 <% end %>
+

@@ -9,7 +9,7 @@ gem 'sass', '~> 3.2.0'
 # gem 'sass-rails', '~> 3.2.6'
 gem 'activeadmin'#, '0.6.2'
 # gem 'debugger'
-#gem 'byebug'
+# gem 'byebug'
 # gem 'bootstrap-sass', '~> 3.2.0'
 # gem 'momentjs-rails', '>= 2.9.0'
 # gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
@@ -19,6 +19,8 @@ gem 'activeadmin'#, '0.6.2'
 
 # require 'rubygems'
 # require 'google_chart'
+
+
 gem 'gon'
 # gem 'rabl-rails'
 gem 'gchartrb'
@@ -37,9 +39,6 @@ group :development, :test do
   gem 'simplecov'
   gem 'test-unit'
   gem 'database_cleaner'
-  gem 'selenium-webdriver'
-  gem 'Selenium'
-  gem 'selenium-client'
 end
 group :production do
   gem 'pg'

@@ -6,6 +6,7 @@ Auth::Application.routes.draw do
   get 'sessions/index'
   get 'sessions/show'
   get 'sessions/enter'
+  get 'sessions/delete_page'
   get 'sessions/delete_account'
   get 'vendors/home'
   get 'vendors/edit'
@@ -15,7 +16,6 @@ Auth::Application.routes.draw do
   get 'vendors/remove_codes'
   get 'vendors/change_to_user'
   get 'vendors/clear_history'
-  get 'vendors/test'
   get 'sessions/change_to_vendor'
   get 'admin/login'
 
@@ -50,7 +50,7 @@ Auth::Application.routes.draw do
 
 
   resources :providers do
-    collection {post :import}
+    collection {post :import2}
     collection {post :update_profile}
     resources :providercodes
   end

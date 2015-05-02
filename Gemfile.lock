@@ -9,7 +9,6 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    Selenium (1.1.14)
     actionmailer (3.2.18)
       actionpack (= 3.2.18)
       mail (~> 2.5.4)
@@ -48,7 +47,6 @@ GEM
     activesupport (3.2.18)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
-    addressable (2.3.5)
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (3.0.3)
@@ -65,8 +63,6 @@ GEM
       xpath (~> 2.0)
     celluloid (0.16.0)
       timers (~> 4.0.0)
-    childprocess (0.3.5)
-      ffi (~> 1.0, >= 1.0.6)
     coderay (1.1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -162,8 +158,6 @@ GEM
       actionpack (>= 3.1)
       less (~> 2.6.0)
     libv8 (3.16.14.7)
-    libwebsocket (0.1.5)
-      addressable
     listen (2.10.0)
       celluloid (~> 0.16.0)
       rb-fsevent (>= 0.9.3)
@@ -287,18 +281,11 @@ GEM
       rspec-mocks (~> 3.2.0)
       rspec-support (~> 3.2.0)
     rspec-support (3.2.2)
-    rubyzip (0.9.9)
     sass (3.2.19)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    selenium-client (1.2.18)
-    selenium-webdriver (2.25.0)
-      childprocess (>= 0.2.5)
-      libwebsocket (~> 0.1.3)
-      multi_json (~> 1.0)
-      rubyzip
     shellany (0.0.1)
     simplecov (0.10.0)
       docile (~> 1.1.0)
@@ -343,7 +330,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  Selenium
   activeadmin
   capybara
   coffee-rails (~> 3.2.2)
@@ -370,8 +356,6 @@ DEPENDENCIES
   rspec-rails (~> 3.0)
   sass (~> 3.2.0)
   sass-rails (~> 3.2.6)
-  selenium-client
-  selenium-webdriver
   simplecov
   sqlite3
   test-unit

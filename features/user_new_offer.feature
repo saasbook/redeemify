@@ -12,7 +12,7 @@ Background:
     And a vendor "Github" and user ID "2" registered with "facebook"
 
     And the following vendor codes exist:
-    | code  | provider   | created_at | updated_at | vendor_id | user_id |
+    | code  | vendor     | created_at | updated_at | vendor_id | user_id |
     | 43143 | Github     | 01-01-2015 | 01-01-2016 | 1         |    nil  |
     | 23233 | Github     | 01-01-2015 | 01-01-2016 | 1         |    nil  |
 
@@ -32,7 +32,7 @@ Scenario: vendor change offer profile
     Given I press "logout" link
 
     Then the following vendor codes exist:
-    | code  | provider   | created_at | updated_at | vendor_id | user_id |
+    | code  | vendor     | created_at | updated_at | vendor_id | user_id |
     | asdad | Heroku     | 01-01-2015 | 01-01-2016 | 1         |    nil  |
 
     Given I am on the user login page

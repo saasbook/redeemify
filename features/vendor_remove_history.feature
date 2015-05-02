@@ -7,10 +7,11 @@ Feature: Vendor Remove History
 Background:
 	
 	Given a vendor "Github" and user ID "12345" registered with "facebook"
+    Given a provider "Amazon" exist
 
 Scenario: 
         
-    Then I am on the user login page
+    Given I am on the user login page
     Then I am signed in as a vendor "Github" and user ID "12345" with "facebook"
     And I have updated the vendor profile
     And I press "upload" link
@@ -19,4 +20,17 @@ Scenario:
     And I press "submit" button
     Then I can see "Codes imported"
     When I press "clear-history" link
-    Then I can see "All history has been removed"
+    Then I can see "Cleared History"
+
+Scenario:
+    
+    Given I am on the user login page
+    Then I am signed in as a provider "Amazon"
+    And I press "upload" link
+    Then I should be on the provider upload page
+    And I attach a file with provider codes inside
+    And I fill in "comments" with "test comments"
+    And I press "submit" button
+    Then I can see "Codes imported"
+    When I press "clear-history" link
+    Then I can see "Cleared History"

@@ -24,10 +24,7 @@ class SessionsController < ApplicationController
       session[:provider_id]= provider.id
       redirect_to '/providers/home', notice: "home page, Provider"
     else
-
       vendor = Vendor.find_by_provider_and_email(auth["provider"], auth["info"]["email"])
-
-
       if vendor != nil
         session[:vendor_id]= vendor.id
         redirect_to '/vendors/home', notice: "home page, vendor"
@@ -143,8 +140,28 @@ class SessionsController < ApplicationController
 
 
 
-  def delete_account
+  def delete_page
+    
+  end
 
+  def delete_account
+    current_user = User.find(session[:user_id])
+    if current_user != nil
+      current_user.update_attributes(:name => "anonymous", :email => "anonymous", :provider => "anonymous")
+      providerCode = ProviderCode.where(:user_id => current_user.id).first
+      providerCode.update_attributes(:user_name =>"anonymous", :email => "anonymous")
+      
+      vendors = Vendor.all
+      vendors.each do |vendor|
+        vendorCode = vendor.vendorCodes.where(:user_id => current_user.id).first
+        if vendorCode != nil
+          vendorCode.update_attributes(:user_name => "anonymous", :email => "anonymous")
+          
+        end
+      end
+      session[:user_id] = nil
+      redirect_to root_url, :flash => { :notice => "Your account has been deleted" }
+    end
   end
 
 

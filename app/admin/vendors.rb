@@ -9,7 +9,6 @@ ActiveAdmin.register Vendor do
     column :website
     column :helpLink
     
-    column "Current Total Codes", :totalCodes
     column "# Used Codes", :usedCodes
     column "# Unclaim Codes", :unclaimCodes
 

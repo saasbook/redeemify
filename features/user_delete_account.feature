@@ -15,5 +15,6 @@ Scenario: vendor change offer profile
     And I have already registered with "facebook" and provider code "12345"
     Then I am signed in with "facebook"
     When I press "delete-account" link
+    Then I press "delete-confirm" link
     Then my user should be deleted
  

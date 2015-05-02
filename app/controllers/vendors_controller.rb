@@ -12,10 +12,7 @@ class VendorsController < ApplicationController
       redirect_to '/vendors/upload_page', :flash => { :error => "You have not upload a file" }
     else
       current_vendor=Vendor.find(session[:vendor_id])
-      @info = {}
-      @info["comment"] = params[:comment] 
-      Vendor.import(params[:file], current_vendor,@info)
-    
+      Vendor.import(params[:file], current_vendor,params[:comment], "vendor")
       redirect_to '/vendors/home', notice: "Codes imported"
     end
   end
@@ -25,32 +22,14 @@ class VendorsController < ApplicationController
   def home
     @vendor = Vendor.find(session[:vendor_id])
 
-   
-    if @vendor.instruction.nil? || @vendor.description.nil? ||@vendor.helpLink.nil? || @vendor.cashValue.nil? || @vendor.expiration.nil?
-      redirect_to '/vendors/profile', :flash => { :error => "Please complete all fields of your profile" }
-    else
-      
-
-      @histories = @vendor.history
-      if @histories != nil
-        @histories = @histories.split("|||||")
-
-
-
-        @histories_array=[]
-        @histories.each do |history|
-          temp = history.split("+++++")
-          @histories_array.push(temp)
-        end
-        @histories_array.reverse!
-      else
-        @histories_array=[]
-      end
+    @histories_array = []
+    if @vendor.history != nil
+      @histories_array = Vendor.homeSet(@vendor.history)
     end
 
-
-    @hash = {"uploaded" => @vendor.uploadedCodes, "total" => @vendor.totalCodes, "used" => @vendor.usedCodes, "unclaim" => @vendor.unclaimCodes, "removed" => @vendor.removedCodes }
+    @hash = {"uploaded" => @vendor.uploadedCodes,"used" => @vendor.usedCodes, "unclaim" => @vendor.unclaimCodes, "removed" => @vendor.removedCodes }
     gon.codes = @hash
+    gon.history = @vendor.history
 
   end
 
@@ -100,7 +79,7 @@ class VendorsController < ApplicationController
     if flag.count == 0
       redirect_to '/vendors/home', :flash => { :error => "There's No Unclaimed Codes" }
     else
-      contents = Vendor.remove_unclaimed_codes(current_vendor)
+      contents = Vendor.remove_unclaimed_codes(current_vendor,"vendor")
       send_data contents,  :filename => "Unclaimed_Codes.txt" 
     end
   end
@@ -128,15 +107,6 @@ class VendorsController < ApplicationController
     else
       redirect_to '/sessions/customer', notice: "Changed to user account"
     end
-  end
-
-
-  def destroy
-    session[:user_id] = nil
-    session[:vendor_id] = nil
-    session[:provider_id] = nil
-    gon.clear
-    redirect_to root_url, notice: "Signed out!"
   end
 
 

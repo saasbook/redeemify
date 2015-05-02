@@ -5,7 +5,6 @@ ActiveAdmin.register Provider do
     column :created_at
     column :email
 
-    column "Current Total Codes", :totalCodes
     column "# Used Codes", :usedCodes
     column "# Unclaim Codes", :unclaimCodes
 
