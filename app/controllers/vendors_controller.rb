@@ -47,28 +47,17 @@ class VendorsController < ApplicationController
 
   def update_profile
     current_vendor=Vendor.find(session[:vendor_id])
-    if current_vendor.cashValue.nil?
-      current_vendor.update_attribute(:cashValue, "0")
-    end
-
+   
     @info = {}
     cash = params[:cashValue]
     cash = cash.gsub(/\s+/, "")
-    if cash != ""
-      @info["cashValue"] = cash
-    end
-    if params[:instruction] != ""
-      @info["instruction"] = params[:instruction]
-    end
-    if params[:description] != ""
-      @info["description"] = params[:description]
-    end
-    if params[:helpLink] != ""
-      @info["helpLink"] = params[:helpLink]
-    end
-    if params[:expiration] != ""
-      @info["expiration"] = params[:expiration]
-    end
+    @info["cashValue"] = cash
+
+    @info["instruction"] = params[:instruction]
+    @info["description"] = params[:description]
+    @info["helpLink"] = params[:helpLink]
+    @info["expiration"] = params[:expiration]
+
     Vendor.update_profile_vendor(current_vendor,@info)
     redirect_to '/vendors/home', notice: "Profile Updated"
   end
