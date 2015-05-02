@@ -1,8 +1,8 @@
 <% if current_user %>
- <p class="account">Account from: <%= current_user.provider.upcase  %> | <%= current_user.name %> | <%= link_to "Logout", logout_path, :id => "logout-link" %></p>
+ <p class="account">Login ith: <%= current_user.provider.upcase  %> | Name: <%= current_user.name %> | <%= link_to "Logout", logout_path, :id => "logout-link" %></p>
 <div id="welcome">
 
-    <h1> <%= image_tag('logo.png', :size => '100x100', :class => 'logo' ) %> REDEEMIFY  </h1> |
+    <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %> </h1>
     
   </div>
   <div class = "loginwith2">
@@ -28,7 +28,7 @@
      </div>
     <br>
  
-    <%= submit_tag "Submit", :id => "submit" %>
+    <%= submit_tag("Submit") %>
   <% end %>
   </div>
 
@@ -41,7 +41,7 @@
   
   <div id="welcome">
 
-    <h1> <%= image_tag('logo.png', :size => '100x100', :class => 'logo' ) %> REDEEMIFY</h1>
+    <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %></h1>
   </div>
   <div class = "loginwith">
     <h1> Login With </h1>
@@ -75,4 +75,13 @@
     </a>
 
   </div>
+
+  <% if flash[:notice] != nil %>
+      <% flash.keys.each do |k| %> 
+         <center><font color="green"><%= flash[k] %></font></center>
+      <% end %> 
+  <% end %>
+
+
 <% end %>
+

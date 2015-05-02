@@ -1,12 +1,20 @@
 <p class="account">Account from: <%= @provider.provider.upcase  %> | <%= @provider.name %> | <%= link_to "Log out", logout_path, :id => "logout-link" %></p>
 <div id="welcome">
 
-    <h1> <%= image_tag('logo.png', :size => '100x100', :class => 'logo' ) %> REDEEMIFY</h1>
+    <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %></h1>
 </div>
+<h4 class="loginwith3">Upload New Codes</h4>
 <div class = "home1">
  <p class="homee"><%= link_to "Home", '/providers/home' %></p>
 </div>
-<h3 class="upload_text">Attach .txt file </h3>  <%= form_tag import_providers_path, multipart: true do %>
+
+  <% if flash[:error] != nil %>
+    <% flash.keys.each do |k| %> 
+       <center><font color="red"><%= flash[k] %></font></center>
+    <% end %> 
+<% end %>
+
+<h3 class="upload_text">Attach .txt file </h3>  <%= form_tag import2_providers_path, multipart: true do %>
 <p class="upload_text"> (please upload '.txt' file, each code per line)</p>
 <div class = "upload_text">
 <br>
@@ -14,7 +22,8 @@
     <%= file_field_tag :file %> 
     </div>
     <br>
-    <h3 class="upload_text">Comment: </h3> 
+    <h3 class="upload_text">Comment: <span id='question'>?</span></h3> 
+    <div id='popup6'>Explain 6</div>
     <textarea name="comment" id="comments" cols="50" rows="4" placeholder="Comment..."></textarea>
 
     <br>
@@ -22,27 +31,7 @@
 
 
 
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>jQuery UI Datepicker - Default functionality</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script>
-  $(function() {
-    $( "#expiration" ).datepicker();
-  });
-  </script>
-</head>
-<body>
 
-
-   
-
-</body>
-</html>
 
   <div class = "upload_text">
     <%= submit_tag "Submit", :id => "submit"%>
@@ -52,5 +41,18 @@
 </div>
 
 
-
+ <script>
+  $(function() {
+    $( "#expiration" ).datepicker();
+  });
+  </script>
+ <script>
+    $(document).ready(function() {
+    $('#question').hover(function() {
+        $('#popup6').show();
+    }, function() {
+        $('#popup6').hide();
+    });
+});
+    </script>
 

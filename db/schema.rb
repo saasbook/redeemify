@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150416100937) do
+ActiveRecord::Schema.define(:version => 20150502035130) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -62,8 +62,12 @@ ActiveRecord::Schema.define(:version => 20150416100937) do
     t.string   "history"
     t.string   "provider"
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "usedCodes"
+    t.integer  "uploadedCodes"
+    t.integer  "unclaimCodes"
+    t.integer  "removedCodes"
   end
 
   create_table "users", :force => true do |t|
@@ -93,16 +97,19 @@ ActiveRecord::Schema.define(:version => 20150416100937) do
     t.string   "uid"
     t.string   "provider"
     t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "email"
     t.string   "history"
     t.string   "website"
     t.string   "instruction"
     t.string   "helpLink"
     t.string   "cashValue"
-    t.string   "comment"
     t.string   "expiration"
+    t.integer  "usedCodes"
+    t.integer  "uploadedCodes"
+    t.integer  "unclaimCodes"
+    t.integer  "removedCodes"
   end
 
 end

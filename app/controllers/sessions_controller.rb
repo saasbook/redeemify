@@ -24,10 +24,7 @@ class SessionsController < ApplicationController
       session[:provider_id]= provider.id
       redirect_to '/providers/home', notice: "home page, Provider"
     else
-
       vendor = Vendor.find_by_provider_and_email(auth["provider"], auth["info"]["email"])
-
-
       if vendor != nil
         session[:vendor_id]= vendor.id
         redirect_to '/vendors/home', notice: "home page, vendor"
@@ -38,7 +35,7 @@ class SessionsController < ApplicationController
         if user.code.nil? 
           redirect_to '/sessions/new', notice: "Signed in!"
         else
-          redirect_to '/sessions/customer', notice: "Offer page"
+          redirect_to '/sessions/customer'
         end
       end
     end
@@ -49,13 +46,18 @@ class SessionsController < ApplicationController
     if session[:user_id] != nil
       current_user = User.find(session[:user_id])
       # debugger
-      @list_codes, @instruction, @help, @expiration, @website, @cashValue, @total = {},{},{},{},{},{},0
+      @list_codes, @instruction, @description, @help, @expiration, @website, @cashValue, @total = {},{},{},{},{},{},{},0
 
       if current_user.code.nil? # provider code
         providerCode = ProviderCode.where(:code => params[:code], :user_id => nil).first
         if providerCode != nil # if provider code is match with enter code
           # 1st time
           providerCode.update_attributes(:user_id => current_user.id, :user_name => current_user.name, :email => current_user.email)
+          provider = Provider.all.first
+          provider.update_attribute(:usedCodes, provider.usedCodes + 1)
+          provider.update_attribute(:unclaimCodes, provider.unclaimCodes - 1)
+
+
           @current_code = params[:code]
 
           current_user.code = @current_code
@@ -67,20 +69,26 @@ class SessionsController < ApplicationController
             code = vendor.vendorCodes.where(:user_id=>nil).first
             if code != nil
               code.update_attributes(:user_id => current_user.id, :user_name => current_user.name, :email => current_user.email)
+              vendor.update_attribute(:usedCodes, vendor.usedCodes + 1)
+              vendor.update_attribute(:unclaimCodes, vendor.unclaimCodes - 1)
+
               @list_codes[vendor.name] = code.code
+              @total = @total + vendor.cashValue.gsub(/[^0-9\.]/,'').to_f
+              @total = @total.round(2) 
+            else
+              @list_codes[vendor.name] = "Not Available"
+              flash.now[:alert] = 'Some Offers\' code are not available at this time, please come back later'
+            end 
               @instruction[vendor.name] = vendor.instruction
               @help[vendor.name] = vendor.helpLink
               @expiration[vendor.name] = vendor.expiration
               @website[vendor.name] = vendor.website
               @cashValue[vendor.name] = vendor.cashValue
-              @total = @total + vendor.cashValue.gsub(/[^0-9\.]/,'').to_f
-            else
-              @list_codes[vendor.name] = "We are reloading with sleight of hand"
-            end 
+              @description[vendor.name] = vendor.description
             # debugger
           end
         else # the provider code is not match
-          redirect_to '/sessions/new', notice: "wrong code!"
+          redirect_to '/sessions/new', :flash => { :error => "wrong code!" }
         end
 
       else
@@ -88,21 +96,71 @@ class SessionsController < ApplicationController
         @current_code = current_user.code
         @vendorCodes = VendorCode.where(:user_id => current_user.id)
 
-        @vendorCodes.each do |vendorCode|
-          
-          @list_codes[Vendor.find(vendorCode.vendor).name] = vendorCode.code
-          @instruction[Vendor.find(vendorCode.vendor).name] = vendorCode.vendor.instruction
-          @help[Vendor.find(vendorCode.vendor).name] = vendorCode.vendor.helpLink
-          @expiration[Vendor.find(vendorCode.vendor).name] = vendorCode.vendor.expiration
-          @website[vendorCode.name] = vendorCode.vendor.website
-          @cashValue[vendorCode.name] = vendorCode.vendor.cashValue
-          @total = @total + vendorCode.vendor.cashValue.gsub(/[^0-9\.]/,'').to_f
+        @vendors = Vendor.all
+        @vendors.each do |vendor|
+          @vendorCodes = vendor.vendorCodes.where(:user_id => current_user.id).first
+          if @vendorCodes != nil
+            @list_codes[vendor.name] = @vendorCodes.code
+            @instruction[vendor.name] = vendor.instruction
+            @help[vendor.name] = vendor.helpLink
+            @expiration[vendor.name] = vendor.expiration
+            @website[vendor.name] = vendor.website
+            @cashValue[vendor.name] = vendor.cashValue
+            @description[vendor.name] = vendor.description
+            @total = @total + vendor.cashValue.gsub(/[^0-9\.]/,'').to_f
+            @total = @total.round(2)
+          else
+            code = vendor.vendorCodes.where(:user_id=>nil).first
+            if code != nil
+              code.update_attributes(:user_id => current_user.id, :user_name => current_user.name, :email => current_user.email)
+              vendor.update_attribute(:usedCodes, vendor.usedCodes + 1)
+              vendor.update_attribute(:unclaimCodes, vendor.unclaimCodes - 1)
+
+              @list_codes[vendor.name] = code.code
+              @total = @total + vendor.cashValue.gsub(/[^0-9\.]/,'').to_f
+              @total = @total.round(2)
+            else
+              @list_codes[vendor.name] = "Not Available"
+              flash.now[:alert] = 'Some Offers\' code are not available at this time, please come back later'
+            end 
+            @instruction[vendor.name] = vendor.instruction
+            @help[vendor.name] = vendor.helpLink
+            @expiration[vendor.name] = vendor.expiration
+            @website[vendor.name] = vendor.website
+            @cashValue[vendor.name] = vendor.cashValue
+            @description[vendor.name] = vendor.description
+          end
         end
-      end
+      end  #else
     end
-    # @vendor_user = Vendor.find_by_provider_and_email(current_user.provider, current_user.email)
     if session[:vendor_id] != nil
       @vendor_user = session[:vendor_id]
+    end
+  end
+
+
+
+  def delete_page
+    
+  end
+
+  def delete_account
+    current_user = User.find(session[:user_id])
+    if current_user != nil
+      current_user.update_attributes(:name => "anonymous", :email => "anonymous", :provider => "anonymous")
+      providerCode = ProviderCode.where(:user_id => current_user.id).first
+      providerCode.update_attributes(:user_name =>"anonymous", :email => "anonymous")
+      
+      vendors = Vendor.all
+      vendors.each do |vendor|
+        vendorCode = vendor.vendorCodes.where(:user_id => current_user.id).first
+        if vendorCode != nil
+          vendorCode.update_attributes(:user_name => "anonymous", :email => "anonymous")
+          
+        end
+      end
+      session[:user_id] = nil
+      redirect_to root_url, :flash => { :notice => "Your account has been deleted" }
     end
   end
 
@@ -111,8 +169,11 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     session[:vendor_id] = nil
     session[:provider_id] = nil
+    gon.clear
     redirect_to root_url, notice: "Signed out!"
   end
+
+
 
   def failure
     redirect_to root_url, alert: "Authentication failed, please try again."

@@ -1,29 +1,72 @@
-<p class="account">Account from: <%= current_user.provider.upcase  %> | <%= current_user.name %> | <%= link_to "Logout", logout_path, :id => "logout-link" %></p>
+<html lang="en">
+<head>
+<meta>
+<title>Redeemify | Customer</title>
+<script language="javascript" type="text/javascript">
+$(document).ready(function(){
+    $(".toggler").click(function(e){
+        e.preventDefault();
+        $('.cat'+$(this).attr('data-prod-cat')).toggle();
+    });
+});
+
+</script>
+</head>
+
+
+
+ <p class="account">Login with: <%= current_user.provider.upcase  %> | Name: <%= current_user.name %> | <%= link_to "Logout", logout_path, :id => "logout-link" %></p>
 <div id="welcome">
 
-    <h1> <%= image_tag('logo.png', :size => '100x100', :class => 'logo' ) %> REDEEMIFY</h1>
+    <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %></h1>
 </div>
+<center><%= link_to "Delete Account", '/sessions/delete_page', {:id => "upload", :style => 'color:#000'} %></center>
 
-<p class="middle">Your Provider Code: <%= @current_code %></p>
-<p class="middle">Total Offer Value: <%= @total %></p>
+<br>
+<div class = "customer_home_numcode">
+<p class="r1">Your Provider Code:  <%= @current_code %></p>
+<p class="r2">Total Offer Value: $<%= @total %></p>
+</div>
+<br>
+
+<% if flash[:alert] != nil %>
+    <% flash.keys.each do |k| %> 
+       <center><font color="red"><%= flash[k] %></font></center>
+    <% end %> 
+<br>
+<% end %>
+
+
 <p class = "customer_notice"> Click on vendor's name to redeem your code! </p>
 
 <% if @vendor_user %>
 <div class = "button-single">
   <div class = "row1">
-    <%= link_to "Login as a vendor", '/sessions/change_to_vendor', {:id => "vendor-login", :style => 'color:#000'} %>
+    <%= link_to "Login as a vendor", '/sessions/change_to_vendor', {:id => "upload", :style => 'color:#000'} %>
+
   </div>
   </div>
 <% end %>
-
+<br>
  <% @list_codes.each do |vendor, code| %>
- <div class="customer_table">
-<table>
+ <div class = "customer_table">
 
-      <div class="vendor_group">
-      <tr>
+
+   <!--    <div class="vendor_group"> -->
         
-        <td colspan = "2" class="vendor_header"><%= link_to vendor, @website[vendor],  {:style => 'color:#FFFFFF'} %></td>
+        <table class = "vendor_header">
+        <tr>
+          
+        <td class="vendor_name"><%= link_to vendor, @website[vendor],  {:style => 'color:#FFFFFF', :target => '_blank'} %> </td>
+        <td class="vendor_code"><%= code %></td>
+        <td class="vendor_value">$<%= @cashValue[vendor] %></td>
+        <td class="vendor_expiration"><%= @expiration[vendor] %></td>
+
+        <td class="show_hide"><a href="#" class="toggler" data-prod-cat="<%= cycle('1','2','3','4','5','6','7','8','9','10') -%>" style="color:#8e8e8e">Show/Hide</a></td>
+        </table>
+
+<div class="cat<%=current_cycle %>" style="display:none">
+<table>
       <tr class="vendor_oddd">
         <td class="vendor_group1">Code :</td>
         <td class="vendor_group3"><%= code %></td>
@@ -32,25 +75,30 @@
         <td class="vendor_group3"><%= @expiration[vendor] %></td>
       <tr class="vendor_oddd">
         <td class="vendor_group1">Cash Value :</td>
-        <td class="vendor_group3"><%= @cashValue[vendor] %></td>
+        <td class="vendor_group3">$<%= @cashValue[vendor] %></td>
       <tr class="vendor_even">
+        <td class="vendor_group1">Descriptions:</td>
+        <td class="vendor_group3"><%= @description[vendor] %></td>
+      <tr class="vendor_oddd">
         <td class="vendor_group1">Instructions :</td>
         <td class="vendor_group3"><%= @instruction[vendor] %></td>
-      <tr class="vendor_oddd">
+      <tr class="vendor_even">
         <td class="vendor_group1">Help :</td>
         <td class="vendor_group3"><%= @help[vendor] %></td>
-
-      </tr>
-      </div>
-  
 </table>
 
+      
+</div>
+  
 
 </div>
-  <% end %>
+<% end %>
 
-</div>
 
+
+
+
+      
 
 
 

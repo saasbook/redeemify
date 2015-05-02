@@ -1,46 +1,69 @@
-<p class="account">Account from: <%= @vendor.provider.upcase  %> | <%= @vendor.name %> | <%= link_to "Logout", logout_path, :id => "logout-link" %></p>
+<p class="account">Login with: <%= @vendor.provider.upcase  %> | Name: <%= @vendor.name %> | <%= link_to "Logout", logout_path, :id => "logout-link" %></p>
 <div id="welcome">
 
-    <h1> <%= image_tag('logo.png', :size => '100x100', :class => 'logo' ) %> REDEEMIFY</h1>
+    <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %></h1>
   </div>
-<!-- <div class = "vendor">
-    <h1>VENDOR</h1>
-  </div> -->
 
-<div class = "vendor_home_numcode">
 
-  <p class="r1">Number of codes used: <%= @codesUsed %></p>
-  <p class="r2">Number of codes remaining: <%= @codesRemain %></p>
-  <!-- <p>History: <%= @history %></p> -->
 
-</div>
+<center><div id="barchart_values" style="width: 900px; height: 150px;"></div></center>
+
 <br>
+<br>
+<br>
+<br>
+
+
+<% if flash[:error] != nil %>
+    <% flash.keys.each do |k| %> 
+       <center><font color="red"><%= flash[k] %></font></center>
+    <% end %> 
+<br>
+<% end %>
+
+
 <div class = "group-buttons">
 <div class = "row1">
-   <%= link_to "Login as a user", '/vendors/change_to_user', {:id => "user-login", :style => 'color:#000'} %>
+   <%= link_to "Login as a user", '/vendors/change_to_user', {:id => "upload", :style => 'color:#000'} %>
 </div>
 
 <div class = "row1">
-	 <%= link_to "Upload New Codes", '/vendors/upload_page', {:id => "upload", :style => 'color:#000'} %>
+   <%= link_to "Upload New Codes", '/vendors/upload_page', {:id => "upload", :style => 'color:#000'} %>
 </div>
 <div class = "row1">
-   <%= link_to "Update Your Profile", '/vendors/profile', {:id => "update-profile", :style => 'color:#000'} %>
+   <%= link_to "Update Your Profile", '/vendors/profile', {:id => "upload", :style => 'color:#000'} %>
 </div>
 
 <div class = "row1">
-   <%= link_to "Remove Unclaimed Codes", '/vendors/remove_codes', {:id => "remove-unclaimed-codes", :style => 'color:#000'} %>
+<%= link_to "Download And Remove Unclaimed Codes", '/vendors/remove_codes', {:id => "upload" , :style => 'color:#000'} %>
+
+ <!-- <button type="button" onclick="confirmation()"> Download And Remove Unclaimed Codes</button>  -->
+
 </div>
 </div>
+
+
+
+<br>
    
 <h4 class="history">History</h4>
+
+<center><%= link_to "Clear History", '/vendors/clear_history', {:id => "upload", :style => 'color:#000'} %></center>
+
+<!-- <center><button type="button" onclick="confirmation2()">Clear History</button></center> -->
+
+
+
+
+
 <div class = "vendor_table">
 
 <table>
 
     <tr class = "vendor_header">
-      <td width = "20%">Upload Date</td>
-      <td width = "60%">Comment</td>
-      <td width = "20%">Number of Codes Uploaded</td>
+      <td width = "25%">Upload/Remove Date</td>
+      <td width = "50%">Comment</td>
+      <td width = "25%">Number of Codes Uploaded/Removed</td>
     </tr>
   
 <tbody>
@@ -56,3 +79,74 @@
   </tbody>
 </table>
 </div>
+
+
+
+<html>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+ <script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Quantity", { role: "style" } ],
+        ["Uploaded", gon.codes["uploaded"], "#080dcc"],
+        ["Used", gon.codes["used"], "#c53711"],
+        ["Unclaimed", gon.codes["unclaim"], "#0c9200"],
+        ["Removed", gon.codes["removed"], "color: #000000"]
+
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Codes Data",
+        width: 400,
+        height: 200,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+      chart.draw(view, options);
+  }
+
+
+  function confirmation() {
+    if (gon.codes["unclaim"] == 0) {
+      alert("you have no unclaimed code to remove");
+    } 
+    else {
+      var answer = confirm("Do you want to remove " + gon.codes["unclaim"] + " unclaimed codes?")
+      unclaim = gon.codes["unclaim"]
+      if (answer){
+        window.location = "/vendors/remove_codes";
+        alert(unclaim + " unclaimed codes have been removed");
+        window.location = "/vendors/home";
+      }
+    }
+  }
+
+
+  function confirmation2() {
+    if (gon.history == null) {
+      alert("You have no history");
+    } 
+    else {
+      var answer = confirm("All the histories will be removed\n\n\t     Are you sure?")
+      if (answer) {
+        window.location = "/vendors/clear_history"
+      }
+    }
+  }
+
+  </script>
+
+</html>
+
+
