@@ -24,5 +24,5 @@ Scenario:
     Then the vendor "uploadedCodes" should be "4"
     Then the vendor "unclaimCodes" should be "4"
     When I press "remove-unclaimed-codes" button
-    And I confirm popup
+    Then show me the page
     Then the vendor "unclaimCodes" should be "0"

@@ -13,7 +13,6 @@ Scenario:
 	
 	Given I am signed in as a vendor "vendor2" and user ID "54321" with "facebook"
 	And I have updated the vendor profile
-	Then show me the page
 	And I press "upload" link
 	Then I should be on the vendor upload page
 	And I attach a file with vendor codes inside

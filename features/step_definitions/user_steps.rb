@@ -102,6 +102,12 @@ Then /the provider "([^"]*)" should be "([^"]*)"$/ do |attribute, value|
     
 end
 
+Then /my user should be deleted$/ do
+  u = User.find_by_name("foo")
+  if u != nil
+    raise "User is not deleted"
+end
+
 Given /^(?:|I )am on (.+)$/ do |page_name|
     visit path_to(page_name)
 end

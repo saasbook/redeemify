@@ -16,5 +16,4 @@ Scenario: vendor change offer profile
     Then I am signed in with "facebook"
     When I press "delete-account" link
     Then my user should be deleted
-    Then I should be on the user login page
  
