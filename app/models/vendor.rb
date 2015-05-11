@@ -12,10 +12,10 @@ class Vendor < ActiveRecord::Base
 		self.cashValue = "0.00"
 	end
 
+
   	def self.import(file, current, comment, type)
   		numberOfCodes = 0
   		date = ""
-    	# CSV.foreach(file.path, headers: true) do |row|
     	f = File.open(file.path, "r")
 		f.each_line do |row|
 			row = row.gsub(/\s+/, "")  # 12 3 4 --> 1234, 

@@ -17,14 +17,24 @@
   <% end %>
   </div>
 
+
   
   <div class = "formcode">
   
   <%= form_tag("/sessions/customer", method: "get") do %>
     <%= label_tag(:code, "Enter your code here:") %>
+
+    <% if flash[:error] != nil %>
+      <div class = "warning">
+          <% flash.keys.each do |k| %> 
+             <center><font color="black"><%= flash[k] %></font></center>
+          <% end %> 
+      </div>
+    <% end %>
+    
     <br>
     <div class = "field_text">
-     <%= text_field_tag :code, :id => "code" %>
+     <%= text_field_tag(:code) %>
      </div>
     <br>
  
@@ -43,6 +53,9 @@
 
     <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %></h1>
   </div>
+  <br>
+    <h5 class="logininstruction"><%= t 'customer.loginInstruction' %></h5>
+
   <div class = "loginwith">
     <h1> Login With </h1>
   </div>

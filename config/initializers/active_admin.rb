@@ -174,6 +174,7 @@ ActiveAdmin.setup do |config|
 
   config.show_comments_in_menu = false
 
+
   # == Download Links
   #
   # You can disable download links on resource listing pages,

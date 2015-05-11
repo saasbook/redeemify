@@ -2,4 +2,67 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+
+  customer:
+    login: "Logged via account: "
+    name: "Name: "
+    loginInstruction: "Instruction 1:\nInstruction 2:\nInstruction 3:\n"
+    yourcode: "Your Provider Code: "
+    offervalue: "Total Offer Value: "
+    instruction: "Click on vendor's name to redeem your code!"
+    showhide: "Show/Hide"
+    vendorcode: "Code:"
+    expirationdate: "Expiration Date:"
+    cashvalue: "Cash Value:"
+    description: "Descriptions:"
+    vendorinstruction: "Instructions:"
+    help: "Help:"
+    deleteaccount: "Delete your account"
+
+  deletepage:
+    attention: "Attention !!!"
+    line1: "If you delete your account, all of your informations will be removed from the app database."
+    line2: "Moreover, you will no longer have access to your provider and vendor offer's codes"
+    line3: "Are you sure?"
+
+  vendor:
+    login: "Logged via account: "
+    name: "Name: "
+    history: "History"
+    col1: "Upload/Remove Date"
+    col2: "Comment"
+    col3: "Number of Codes Uploaded/Removed"
+
+  editprofile:
+    header: "Update Your Profile "
+    cashvalue: "Cash Value "
+    expiration: "Expiration Date "
+    help: "Help Link "
+    description: "Offer's Descriptions "
+    instruction: "Instructions to redeem the code "
+    popup1: "Value for each coupon code, e.g 1.45 = $1.45"
+    popup2: "The date your coupons are expired"
+    popup3: "Offer's help link, e.g github.com/help"
+    popup4: "e.g This offer grants the user 5 additional free private repositories for 2 years."
+    popup5: "To redeem the offer, visit github.com/awesomedeal to enter the promo code!"
+
+  vendorupload:
+    header: "Upload New Codes"
+    line1: "Attach .txt file"
+    line2: "(please upload '.txt' file, each code per line)"
+    comment: "Comment: "
+    popup: "Comment for the upload. e.g: This is new 238 codes from github for this uploaded codes"
+
+  provider:
+    login: "Logged via account: "
+    name: "Name: "
+    history: "History"
+    col1: "Upload/Remove Date"
+    col2: "Comment"
+    col3: "Number of Codes Uploaded/Removed"
+  providerupload:
+    header: "Upload New Codes"
+    line1: "Attach .txt file"
+    line2: "(please upload '.txt' file, each code per line)"
+    comment: "Comment: "
+    popup: "Comment for the upload. e.g: This is new 238 codes from github for this uploaded codes "

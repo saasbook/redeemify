@@ -1,29 +1,47 @@
-<p class="account">Account from: <%= @provider.provider.upcase  %> | <%= @provider.name %> | <%= link_to "Log out", logout_path, :id => "logout" %></p>
+<p class="account"><%= t 'provider.login' %><%= @provider.provider.upcase  %> | <%= t 'provider.name' %> <%= @provider.name %> | <%= link_to "Log out", logout_path, :id => "logout" %></p>
 <div id="welcome">
 
     <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %></h1>
 </div>
-<h4 class="loginwith3">Upload New Codes</h4>
-<div class = "home1">
- <p class="homee"><%= link_to "Home", '/providers/home' %></p>
-</div>
 
-  <% if flash[:error] != nil %>
+<% if flash[:error] != nil %>
+<div class = "warning">
     <% flash.keys.each do |k| %> 
-       <center><font color="red"><%= flash[k] %></font></center>
+       <center><font color="black"><%= flash[k] %></font></center>
     <% end %> 
+</div>
+<br>
 <% end %>
 
-<h3 class="upload_text">Attach .txt file </h3>  <%= form_tag import2_providers_path, multipart: true do %>
-<p class="upload_text"> (please upload '.txt' file, each code per line)</p>
+    
+
+
+<% if flash[:notice] != nil %>
+<div class = "notice">
+    <% flash.keys.each do |k| %> 
+       <center><font color="black"><%= flash[k] %></font></center>
+    <% end %> 
+</div>
+<br>
+<% end %>
+
+
+<h4 class="loginwith3"><%= t 'providerupload.header' %></h4>
+ <div class = "home1">
+ <p class="homee"><%= link_to image_tag('home2.png', :size =>'40x40'), '/providers/home' %></p>
+</div>
+
+
+<h3 class="upload_text"><%= t 'providerupload.line1' %></h3>  <%= form_tag import2_providers_path, multipart: true do %>
+<p class="upload_text"><%= t 'providerupload.line2' %> </p>
 <div class = "upload_text">
 <br>
 
     <%= file_field_tag :file %> 
     </div>
     <br>
-    <h3 class="upload_text">Comment: <span id='question'>?</span></h3> 
-    <div id='popup6'>Explain 6</div>
+    <h3 class="upload_text"><%= t 'providerupload.comment' %><span id='question'>?</span></h3> 
+    <div id='popup6'><%= t 'providerupload.popup' %></div>
     <textarea name="comment" id="comments" cols="50" rows="4" placeholder="Comment..."></textarea>
 
     <br>

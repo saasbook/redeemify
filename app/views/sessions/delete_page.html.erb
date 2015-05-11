@@ -1,6 +1,10 @@
-<h1>Session#Delete user account</h1>
+<div class = "deletepage">
+<h4 style = "color:red"><%= t 'deletepage.attention' %></h4>
+<h5><%= t 'deletepage.line1' %> </h5>
+<h5><%= t 'deletepage.line2' %> </h5>
+<h5><%= t 'deletepage.line3' %> </h5>
 
-<%= link_to "Yes", '/sessions/delete_account', {:id => "delete-confirm" , :style => 'color:#000'} %>
-<br>
-<br>
-<%= link_to "No", '/sessions/customer', {:id => "delete-reject" , :style => 'color:#000'} %>
+<div class="button_delete" ><%= link_to "Yes", '/sessions/delete_account', {:id => "delete-confirm" , :style => 'color:red'} %> </div>
+
+<div class="button_delete" ><%= link_to "No", '/sessions/customer', {:id => "delete-reject" , :style => 'color:blue'} %></div>
+</div>

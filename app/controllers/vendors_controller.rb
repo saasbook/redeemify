@@ -91,7 +91,7 @@ class VendorsController < ApplicationController
      current_user =  User.create!(:provider => current_vendor.provider, :name => current_vendor.name, :email => current_vendor.email)
     end
     session[:user_id]=current_user.id
-    if current_user.code == nil #|| current_user.code==""
+    if current_user.code == nil 
       redirect_to '/sessions/new', notice: "Changed to user account"
     else
       redirect_to '/sessions/customer', notice: "Changed to user account"

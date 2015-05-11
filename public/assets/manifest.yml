@@ -3,6 +3,8 @@
 5logos/index.psd: 5logos-bbbe000bee0c9a76826ad07585e04408.psd
 amazon_64.png: amazon_64-c35129c4c9a85bb7cd929168051f7807.png
 amazon_64/index.png: amazon_64-c35129c4c9a85bb7cd929168051f7807.png
+delete_user-512.png: delete_user-512-f0a2daa05d4faa88310de755bf668609.png
+delete_user-512/index.png: delete_user-512-f0a2daa05d4faa88310de755bf668609.png
 facebook_64.png: facebook_64-8acdde0c37eef58828b3f3313288d20b.png
 facebook_64/index.png: facebook_64-8acdde0c37eef58828b3f3313288d20b.png
 github_64.png: github_64-10f84190f216ac6ac4b720db11edc1bb.png
@@ -11,6 +13,10 @@ google_apps_64.png: google_apps_64-666b2b76ea9d4eeb901bc52d25e83c6b.png
 google_apps_64/index.png: google_apps_64-666b2b76ea9d4eeb901bc52d25e83c6b.png
 header_bg.jpg: header_bg-eac49cd3955c7a26be79c2a2aeee8f68.jpg
 header_bg/index.jpg: header_bg-eac49cd3955c7a26be79c2a2aeee8f68.jpg
+home.jpg: home-524c3f892f9007fa3cb530a650c2458a.jpg
+home/index.jpg: home-524c3f892f9007fa3cb530a650c2458a.jpg
+home2.png: home2-5d6323881517e59a8cb7bfa71f7d2922.png
+home2/index.png: home2-5d6323881517e59a8cb7bfa71f7d2922.png
 logo.png: logo-c2fb2e99c6e308e5cd91618ea7d48cd4.png
 logo/index.png: logo-c2fb2e99c6e308e5cd91618ea7d48cd4.png
 r1_c1.jpg: r1_c1-7bfc2506e6ae901538588785f3349bef.jpg
@@ -33,8 +39,8 @@ application.js: application-636f08a56cc9e8f7e080f581c372182c.js
 application/index.js: application-636f08a56cc9e8f7e080f581c372182c.js
 active_admin.css: active_admin-048916cc3f47991c2e46c577252c794c.css
 active_admin/index.css: active_admin-048916cc3f47991c2e46c577252c794c.css
-application.css: application-a6f7ae3c20b151d1ad52964c5cd5a30e.css
-application/index.css: application-a6f7ae3c20b151d1ad52964c5cd5a30e.css
+application.css: application-13e2efcd7525d9257915326342888178.css
+application/index.css: application-13e2efcd7525d9257915326342888178.css
 fontawesome-webfont.eot: fontawesome-webfont-748acb824ec6cf781401beccead3cfb2.eot
 fontawesome-webfont/index.eot: fontawesome-webfont-748acb824ec6cf781401beccead3cfb2.eot
 fontawesome-webfont.svg: fontawesome-webfont-f8154a88507639e8ba69247dcd399af8.svg

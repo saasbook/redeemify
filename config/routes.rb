@@ -19,7 +19,6 @@ Auth::Application.routes.draw do
   get 'sessions/change_to_vendor'
   get 'admin/login'
 
-
   get 'vendors/new'
 
 

@@ -15,29 +15,35 @@ $(document).ready(function(){
 
 
 
- <p class="account">Login with: <%= current_user.provider.upcase  %> | Name: <%= current_user.name %> | <%= link_to "Logout", logout_path, :id => "logout" %></p>
+ <p class="account"><%= t 'customer.login' %> <%= current_user.provider.upcase  %> | <%= t 'customer.name' %> <%= current_user.name %> | <%= link_to "Logout", logout_path, :id => "logout" %></p>
 <div id="welcome">
 
     <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %></h1>
 </div>
-<center><%= link_to "Delete Account", '/sessions/delete_page', {:id => "delete-account", :style => 'color:#000'} %></center>
 
 <br>
+
+
+
+
 <div class = "customer_home_numcode">
-<p class="r1">Your Provider Code:  <%= @current_code %></p>
-<p class="r2">Total Offer Value: $<%= @total %></p>
+<a class="r1"><%= t 'customer.yourcode' %></a>
+<a style = "color:#1fb5fc">   <%= @current_code %></a>
+<br>
+<a class="r2"><%= t 'customer.offervalue' %></a>
+<a style="color:#7bd215"> $<%= @total %></a>
 </div>
 <br>
-
+<div class = "warning">
 <% if flash[:alert] != nil %>
     <% flash.keys.each do |k| %> 
-       <center><font color="red"><%= flash[k] %></font></center>
+       <center><font color="black"><%= flash[k] %></font></center>
     <% end %> 
-<br>
 <% end %>
+</div>
 
 
-<p class = "customer_notice"> Click on vendor's name to redeem your code! </p>
+<p class = "customer_notice"> <%= t 'customer.instruction' %> </p>
 
 <% if @vendor_user %>
 <div class = "button-single">
@@ -46,8 +52,9 @@ $(document).ready(function(){
 
   </div>
   </div>
+  <br>
 <% end %>
-<br>
+
  <% @list_codes.each do |vendor, code| %>
  <div class = "customer_table">
 
@@ -57,33 +64,33 @@ $(document).ready(function(){
         <table class = "vendor_header">
         <tr>
           
-        <td class="vendor_name"><%= link_to vendor, @website[vendor],  {:style => 'color:#FFFFFF', :target => '_blank'} %> </td>
-        <td class="vendor_code"><%= code %></td>
-        <td class="vendor_value">$<%= @cashValue[vendor] %></td>
+        <td class="vendor_name"><%= link_to vendor, @website[vendor],  {:style => 'color:#fd7330', :target => '_blank'} %> </td>
+        <td class="vendor_code" style ="color:#1fb5fc"><%= code %></td>
+        <td class="vendor_value" >$<%= @cashValue[vendor] %></td>
         <td class="vendor_expiration"><%= @expiration[vendor] %></td>
 
-        <td class="show_hide"><a href="#" class="toggler" data-prod-cat="<%= cycle('1','2','3','4','5','6','7','8','9','10') -%>" style="color:#8e8e8e">Show/Hide</a></td>
+        <td class="show_hide"><a href="#" class="toggler" data-prod-cat="<%= cycle('1','2','3','4','5','6','7','8','9','10') -%>" style="color:#8e8e8e"><%= t 'customer.showhide' %></a></td>
         </table>
 
 <div class="cat<%=current_cycle %>" style="display:none">
 <table>
       <tr class="vendor_oddd">
-        <td class="vendor_group1">Code :</td>
+        <td class="vendor_group1"><%= t 'customer.vendorcode' %></td>
         <td class="vendor_group3"><%= code %></td>
       <tr class="vendor_even">
-        <td class="vendor_group1">Expiration Date :</td>
+        <td class="vendor_group1"><%= t 'customer.expirationdate' %></td>
         <td class="vendor_group3"><%= @expiration[vendor] %></td>
       <tr class="vendor_oddd">
-        <td class="vendor_group1">Cash Value :</td>
+        <td class="vendor_group1"><%= t 'customer.cashvalue' %></td>
         <td class="vendor_group3">$<%= @cashValue[vendor] %></td>
       <tr class="vendor_even">
-        <td class="vendor_group1">Descriptions:</td>
+        <td class="vendor_group1"><%= t 'customer.description' %></td>
         <td class="vendor_group3"><%= @description[vendor] %></td>
       <tr class="vendor_oddd">
-        <td class="vendor_group1">Instructions :</td>
+        <td class="vendor_group1"><%= t 'customer.vendorinstruction' %></td>
         <td class="vendor_group3"><%= @instruction[vendor] %></td>
       <tr class="vendor_even">
-        <td class="vendor_group1">Help :</td>
+        <td class="vendor_group1"><%= t 'customer.help' %></td>
         <td class="vendor_group3"><%= @help[vendor] %></td>
 </table>
 
@@ -93,8 +100,11 @@ $(document).ready(function(){
 
 </div>
 <% end %>
+<h5 align="center"><%= t 'customer.deleteaccount' %></h5>
+<div class="home1">
 
-
+<p class="homee"><%= link_to image_tag('delete_user-512.png', :style => '30x20'), '/sessions/delete_page', {:id => "delete-account", :style => 'color:#000'} %></p>
+</div>
 
 
 

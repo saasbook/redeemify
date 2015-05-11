@@ -1,10 +1,29 @@
-<p class="account">Login with: <%= @vendor.provider.upcase  %> | Name: <%= @vendor.name %> | <%= link_to "Logout", logout_path, :id => "logout" %></p>
+<p class="account"><%= t 'vendor.login' %><%= @vendor.provider.upcase  %> | <%= t 'vendor.name' %> <%= @vendor.name %> | <%= link_to "Logout", logout_path, :id => "logout" %></p>
 <div id="welcome">
 
     <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %></h1>
   </div>
 
+<% if flash[:error] != nil %>
+<div class = "warning">
+    <% flash.keys.each do |k| %> 
+       <center><font color="black"><%= flash[k] %></font></center>
+    <% end %> 
+</div>
+<br>
+<% end %>
 
+    
+
+
+<% if flash[:notice] != nil %>
+<div class = "notice">
+    <% flash.keys.each do |k| %> 
+       <center><font color="black"><%= flash[k] %></font></center>
+    <% end %> 
+</div>
+<br>
+<% end %>
 
 <center><div id="barchart_values" style="width: 900px; height: 150px;"></div></center>
 
@@ -14,12 +33,7 @@
 <br>
 
 
-<% if flash[:error] != nil %>
-    <% flash.keys.each do |k| %> 
-       <center><font color="red"><%= flash[k] %></font></center>
-    <% end %> 
-<br>
-<% end %>
+
 
 
 <div class = "group-buttons">
@@ -34,24 +48,26 @@
    <%= link_to "Update Your Profile", '/vendors/profile', {:id => "update-profile", :style => 'color:#000'} %>
 </div>
 
-<div class = "row1">
-<%= link_to "Download And Remove Unclaimed Codes", '/vendors/remove_codes', {:id => "remove-unclaimed-codes" , :style => 'color:#000'} %>
 
- <!-- <button type="button" onclick="confirmation()"> Download And Remove Unclaimed Codes</button>  -->
-
+  <!--<%= link_to "Download And Remove Unclaimed Codes", '/vendors/remove_codes', {:id => "remove-unclaimed-codes" , :style => 'color:#000'} %> -->
+<div class = "button_confirm">
+ <form onclick="confirmation()" color = "#000" > Download And Remove Unclaimed Codes</form > 
 </div>
+
 </div>
 
 
 
 <br>
    
-<h4 class="history">History</h4>
+<h4 class="history"><%= t 'vendor.history' %></h4>
 
-<center><%= link_to "Clear History", '/vendors/clear_history', {:id => "clear-history", :style => 'color:#000'} %></center>
+<!-- <center><%= link_to "Clear History", '/vendors/clear_history', {:id => "clear-history", :style => 'color:#000'} %></center> -->
+<div class = "button_vendor">
 
-<!-- <center><button type="button" onclick="confirmation2()">Clear History</button></center> -->
+<form class = "button_confirm" onclick="confirmation2()">Clear History</form>
 
+</div>
 
 
 
@@ -61,9 +77,9 @@
 <table>
 
     <tr class = "vendor_header">
-      <td width = "25%">Upload/Remove Date</td>
-      <td width = "50%">Comment</td>
-      <td width = "25%">Number of Codes Uploaded/Removed</td>
+      <td width = "25%"><%= t 'vendor.col1' %></td>
+      <td width = "50%"><%= t 'vendor.col2' %></td>
+      <td width = "25%"><%= t 'vendor.col3' %></td>
     </tr>
   
 <tbody>

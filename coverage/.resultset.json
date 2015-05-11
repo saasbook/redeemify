@@ -1,7 +1,7 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/controllers/application_controller.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -19,58 +19,140 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/helpers/application_helper.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/helpers/sessions_helper.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/helpers/sessions_helper.rb": [
         1,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/models/admin_user.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/models/admin_user.rb": [
         1,
         null,
         null,
         1,
         null,
         null,
-        null,
-        1,
-        null,
-        null
-      ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/admin/admin_user.rb": [
-        1,
-        1,
-        null
-      ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/admin/dashboard.rb": [
-        1,
         null,
         1,
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/admin/provider_codes.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/admin_user.rb": [
         1,
         1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/models/provider_code.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/dashboard.rb": [
         1,
+        null,
         1,
+        null,
         1,
-        1,
-        null
-      ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/admin/providers.rb": [
-        1,
-        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/models/provider.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/provider_codes.rb": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/models/provider_code.rb": [
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/providers.rb": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/models/provider.rb": [
         1,
         1,
         1,
@@ -87,13 +169,34 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/admin/users.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/users.rb": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
         1,
         1,
         null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/models/user.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/models/user.rb": [
         1,
         1,
         1,
@@ -106,26 +209,72 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/admin/vendor_codes.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/vendor_codes.rb": [
         1,
         1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/models/vendor_code.rb": [
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/vendors.rb": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/models/vendor_code.rb": [
-        1,
-        1,
-        1,
-        1,
-        null
-      ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/admin/vendors.rb": [
-        1,
-        1,
-        null,
-        null
-      ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/models/vendor.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/models/vendor.rb": [
         1,
         null,
         1,
@@ -138,12 +287,12 @@
         12,
         12,
         12,
+        null,
         null,
         null,
         1,
         6,
         6,
-        null,
         6,
         6,
         18,
@@ -222,7 +371,7 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/controllers/providers_controller.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/controllers/providers_controller.rb": [
         1,
         null,
         1,
@@ -316,7 +465,7 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/controllers/sessions_controller.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/controllers/sessions_controller.rb": [
         1,
         null,
         1,
@@ -524,7 +673,7 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/controllers/vendors_controller.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/controllers/vendors_controller.rb": [
         1,
         1,
         null,
@@ -630,11 +779,11 @@
         null
       ]
     },
-    "timestamp": 1430543224
+    "timestamp": 1430546522
   },
   "RSpec": {
     "coverage": {
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/controllers/application_controller.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -652,58 +801,140 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/helpers/application_helper.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/helpers/sessions_helper.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/helpers/sessions_helper.rb": [
         1,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/models/admin_user.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/models/admin_user.rb": [
         1,
         null,
         null,
         1,
         null,
         null,
-        null,
-        1,
-        null,
-        null
-      ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/admin/admin_user.rb": [
-        1,
-        1,
-        null
-      ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/admin/dashboard.rb": [
-        1,
         null,
         1,
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/admin/provider_codes.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/admin_user.rb": [
         1,
         1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/models/provider_code.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/dashboard.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/provider_codes.rb": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/models/provider_code.rb": [
         1,
         1,
         1,
         1,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/admin/providers.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/providers.rb": [
         1,
         1,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/models/provider.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/models/provider.rb": [
         1,
         1,
         1,
@@ -720,13 +951,34 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/admin/users.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/users.rb": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
         1,
         1,
         null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/models/user.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/models/user.rb": [
         1,
         1,
         1,
@@ -739,26 +991,72 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/admin/vendor_codes.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/vendor_codes.rb": [
         1,
         1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/models/vendor_code.rb": [
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/vendors.rb": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/models/vendor_code.rb": [
-        1,
-        1,
-        1,
-        1,
-        null
-      ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/admin/vendors.rb": [
-        1,
-        1,
-        null,
-        null
-      ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/models/vendor.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/models/vendor.rb": [
         1,
         null,
         1,
@@ -773,10 +1071,10 @@
         2,
         null,
         null,
+        null,
         1,
         0,
         0,
-        null,
         0,
         0,
         0,
@@ -855,7 +1153,7 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/controllers/providers_controller.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/controllers/providers_controller.rb": [
         1,
         null,
         1,
@@ -949,7 +1247,7 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/controllers/sessions_controller.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/controllers/sessions_controller.rb": [
         1,
         null,
         1,
@@ -1157,7 +1455,7 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/group/FD/redeemify/app/controllers/vendors_controller.rb": [
+      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/controllers/vendors_controller.rb": [
         1,
         1,
         null,
@@ -1263,6 +1561,6 @@
         null
       ]
     },
-    "timestamp": 1430543215
+    "timestamp": 1430546514
   }
 }

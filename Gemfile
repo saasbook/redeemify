@@ -4,21 +4,9 @@ gem 'rails', '3.2.18'
 gem 'rake'
 gem 'rails_12factor'
 gem 'ffi', '1.9.6'
-# gem 'sass', '3.1.20'
 gem 'sass', '~> 3.2.0'
-# gem 'sass-rails', '~> 3.2.6'
 gem 'activeadmin'#, '0.6.2'
-# gem 'debugger'
-# gem 'byebug'
-# gem 'bootstrap-sass', '~> 3.2.0'
-# gem 'momentjs-rails', '>= 2.9.0'
-# gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
-# require 'rubygems'
-# require 'google_chart'
 
 
 gem 'gon'
@@ -27,7 +15,7 @@ gem 'gchartrb'
 
 gem "therubyracer"
 gem "less-rails"
-
+gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-3-x' # For 3.x
 gem 'rails3-generators'
 group :development, :test do
   gem 'sqlite3'
@@ -60,9 +48,11 @@ gem 'jquery-rails'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # gem 'omniauth-twitter'
+gem 'omniauth'
 gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-github'
 gem 'omniauth-amazon'
+gem 'figaro'
 #gem 'omniauth-youtube'

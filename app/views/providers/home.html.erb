@@ -1,11 +1,30 @@
 
 
-<p class="account">Account from: <%= @provider.provider.upcase  %> | <%= @provider.name %> | <%= link_to "Log out", logout_path, :id => "logout" %></p>
+<p class="account"><%= t 'provider.login' %><%= @provider.provider.upcase  %> | <%= t 'provider.name' %> <%= @provider.name %> | <%= link_to "Log out", logout_path, :id => "logout" %></p>
 <div id="welcome">
 
     <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %></h1>
   </div>
+<% if flash[:error] != nil %>
+<div class = "warning">
+    <% flash.keys.each do |k| %> 
+       <center><font color="black"><%= flash[k] %></font></center>
+    <% end %> 
+</div>
+<br>
+<% end %>
 
+    
+
+
+<% if flash[:notice] != nil %>
+<div class = "notice">
+    <% flash.keys.each do |k| %> 
+       <center><font color="black"><%= flash[k] %></font></center>
+    <% end %> 
+</div>
+<br>
+<% end %>
 
 <center><div id="barchart_values" style="width: 900px; height: 150px;"></div></center>
 
@@ -15,34 +34,31 @@
 <br>
 
 
-<% if flash[:error] != nil %>
-    <% flash.keys.each do |k| %> 
-       <center><font color="red"><%= flash[k] %></font></center>
-    <% end %> 
-<br>
-<% end %>
+
+
 
 
 <div class = "group-buttons2">
 <div class = "row1">
 	 <%= link_to "Upload New Codes", '/providers/upload_page', {:id => "upload" , :style => 'color:#000'} %>
 </div>
-<div class = "row1">
- <%= link_to "Download And Remove Unclaimed Codes", '/providers/remove_codes', {:id => "remove-unclaimed-codes" , :style => 'color:#000'} %>
-
-  <!-- <button type="button" onclick="confirmation()"> Download And Remove Unclaimed Codes</button> --> 
-
+<div class = "button_confirm">
+ <form onclick="confirmation()" color = "#000" > Download And Remove Unclaimed Codes</form > 
 </div>
 
 </div>
 
 <br>
    
-<h4 class="history">History</h4>
+<h4 class="history"><%= t 'provider.history' %></h4>
 
- <center><%= link_to "Clear History", '/providers/clear_history', {:id => "clear-history", :style => 'color:#000'} %></center> 
+ <!-- <center><%= link_to "Clear History", '/providers/clear_history', {:id => "clear-history", :style => 'color:#000'} %></center>  -->
 
-<!-- <center><button type="button" onclick="confirmation2()">Clear History</button></center> -->
+<div class = "button_vendor">
+
+<form class = "button_confirm" onclick="confirmation2()">Clear History</form>
+
+</div>
 
 
 <div class = "vendor_table">
@@ -50,9 +66,9 @@
 <table>
 
     <tr class = "vendor_header">
-      <td width = "25%">Upload/Remove Date</td>
-      <td width = "50%">Comment</td>
-      <td width = "25%">Number of Codes Uploaded/Removed</td>
+      <td width = "25%"><%= t 'provider.col1' %></td>
+      <td width = "50%"><%= t 'provider.col2' %></td>
+      <td width = "25%"><%= t 'provider.col3' %></td>
     </tr>
   
 <tbody>

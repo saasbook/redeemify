@@ -2,16 +2,17 @@
 
 
 
-<p class="account">Login with: <%= @vendor.provider.upcase  %> | Name: <%= @vendor.name %> | <%= link_to "Logout", logout_path, :id => "logout" %></p>
+<p class="account"><%= t 'vendor.login' %><%= @vendor.provider.upcase  %> | <%= t 'vendor.name' %> <%= @vendor.name %> | <%= link_to "Logout", logout_path, :id => "logout" %></p>
 <div id="welcome">
 
     <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %></h1>
 </div>
 
 
-<h4 class="loginwith3">Update Your Profile</h4>  <%= form_tag update_profile_vendors_path, multipart: true do %>
+<h4 class="loginwith3"><%= t 'editprofile.header' %></h4>  <%= form_tag update_profile_vendors_path, multipart: true do %>
+
     <div class = "home1">
- <p class="homee"><%= link_to "Home", '/vendors/home' %></p>
+ <p class="homee"><%= link_to image_tag('home2.png', :size =>'40x40'), '/vendors/home' %></p>
 </div>
 
 <% if flash[:error] != nil %>
@@ -22,24 +23,24 @@
 <% end %>
 
 
-    <h3 class="upload_text" >Cash Value <span id='question'>?</span></h3> 
+    <h3 class="upload_text" ><%= t 'editprofile.cashvalue' %><span id='question'>?</span></h3> 
     <textarea name="cashValue" id="cashValue" cols="8" rows="2"  ><%= @vendor.cashValue %></textarea>
 
-    <h3 class="upload_text">Expiration Day  <span id='question2'>?</span> </h3> 
+    <h3 class="upload_text"><%= t 'editprofile.expiration' %><span id='question2'>?</span> </h3> 
     <% if @vendor.expiration == nil %>
     <input type="text" name="expiration" id="expiration"  cols="1" rows="1" placeholder = "mm/dd/yyyy"></input>
     <% else %>
     <input type="text" name="expiration" id="expiration"  cols="1" rows="1" value =<%= @vendor.expiration %>></input>
     <% end %>
 
-    <h3 class="upload_text">Help link  <span id='question3'>?</span></h3> 
+    <h3 class="upload_text"><%= t 'editprofile.help' %><span id='question3'>?</span></h3> 
     <textarea name="helpLink" id = "helpLink" cols="50" rows="2"  ><%= @vendor.helpLink %></textarea>
 
 
-    <h3 class="upload_text">Offer's Description <span id='question4'>?</span></h3> 
+    <h3 class="upload_text"><%= t 'editprofile.description' %><span id='question4'>?</span></h3> 
     <textarea name="description" id = "description" cols="50" rows="4"  ><%= @vendor.description %></textarea>
 
-    <h3 class="upload_text">Instructions to redeem the code<span id='question5'>?</span></h3> 
+    <h3 class="upload_text"><%= t 'editprofile.instruction' %><span id='question5'>?</span></h3> 
     <textarea name="instruction" id="instruction" cols="50" rows="4" ><%= @vendor.instruction %></textarea>
 
     <br>
@@ -55,11 +56,11 @@
   </div>
   <br>
   <br>
-<div id='popup1'>Value for each coupon code, e.g 1.45 = $1.45</div>
-<div id='popup2'>The date your coupons are expired</div>
-<div id='popup3'>Explain 3 </div>
-<div id='popup4'>Explain 4</div>
-<div id='popup5'>Explain 5</div>
+<div id='popup1'><%= t 'editprofile.popup1' %></div>
+<div id='popup2'><%= t 'editprofile.popup2' %></div>
+<div id='popup3'><%= t 'editprofile.popup3' %></div>
+<div id='popup4'><%= t 'editprofile.popup4' %></div>
+<div id='popup5'><%= t 'editprofile.popup5' %></div>
    <script>
     $(document).ready(function() {
     $('#question').hover(function() {
