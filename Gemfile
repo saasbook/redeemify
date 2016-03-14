@@ -6,9 +6,6 @@ gem 'rails_12factor'
 gem 'ffi', '1.9.6'
 gem 'sass', '~> 3.2.0'
 gem 'activeadmin'#, '0.6.2'
-
-
-
 gem 'gon'
 # gem 'rabl-rails'
 gem 'gchartrb'
