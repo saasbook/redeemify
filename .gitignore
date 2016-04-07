@@ -2,3 +2,4 @@ coverage/
 application.yml
 db/*.sqlite3
 tmp/
+coverage
