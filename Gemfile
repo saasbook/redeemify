@@ -2,7 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.18'
 gem 'rake'
-gem 'rails_12factor'
 gem 'ffi', '1.9.6'
 gem 'sass', '~> 3.2.0'
 gem 'activeadmin'#, '0.6.2'
@@ -16,6 +15,7 @@ gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-3-x' # For 3.x
 gem 'rails3-generators'
 group :development, :test do
   gem 'debugger'
+  gem 'launchy'
   gem 'sqlite3'
   gem "factory_girl_rails"
   gem "guard-rspec"
@@ -27,6 +27,7 @@ group :development, :test do
   gem 'database_cleaner'
 end
 group :production do
+  gem 'rails_12factor'
   gem 'pg'
 end
 

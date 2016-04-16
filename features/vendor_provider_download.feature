@@ -23,5 +23,6 @@ Scenario:
     And I have updated the vendor profile
     Then the vendor "uploadedCodes" should be "4"
     Then the vendor "unclaimCodes" should be "4"
+    Then show me the page
     When I press "remove-unclaimed-codes" link
     Then the vendor "unclaimCodes" should be "0"

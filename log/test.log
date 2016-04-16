@@ -27783,3 +27783,131 @@ Processing by SessionsController#new as HTML
   Rendered sessions/new.html.erb within layouts/application (0.5ms)
 Completed 200 OK in 2.0ms (Views: 1.7ms | ActiveRecord: 0.0ms)
   [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (16.3ms)[0m  [1mINSERT INTO "providers" ("created_at", "email", "history", "name", "provider", "removedCodes", "unclaimCodes", "updated_at", "uploadedCodes", "usedCodes") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 07 Apr 2016 15:41:08 UTC +00:00], ["email", "amazon@amazon.com"], ["history", nil], ["name", "Amazon"], ["provider", "facebook"], ["removedCodes", 0], ["unclaimCodes", 0], ["updated_at", Thu, 07 Apr 2016 15:41:08 UTC +00:00], ["uploadedCodes", 0], ["usedCodes", 0]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "provider_codes" ("code", "created_at", "email", "name", "provider_id", "updated_at", "user_id", "user_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["code", "12345"], ["created_at", Thu, 07 Apr 2016 15:41:08 UTC +00:00], ["email", nil], ["name", "Amazon"], ["provider_id", 1], ["updated_at", Thu, 07 Apr 2016 15:41:08 UTC +00:00], ["user_id", nil], ["user_name", nil]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mUPDATE "providers" SET "uploadedCodes" = 1, "updated_at" = '2016-04-07 15:41:08.399927' WHERE "providers"."id" = 1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  UPDATE "providers" SET "unclaimCodes" = 1, "updated_at" = '2016-04-07 15:41:08.403541' WHERE "providers"."id" = 1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2016-04-07 08:41:08 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 25.8ms (Views: 19.9ms | ActiveRecord: 0.0ms)
+Started GET "/auth/facebook" for 127.0.0.1 at 2016-04-07 08:41:08 -0700
+Started GET "/auth/facebook/callback" for 127.0.0.1 at 2016-04-07 08:41:08 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"provider"=>"facebook"}
+  [1m[35mProvider Load (0.1ms)[0m  SELECT "providers".* FROM "providers" WHERE "providers"."provider" = 'facebook' AND "providers"."email" IS NULL LIMIT 1
+  [1m[36mVendor Load (0.4ms)[0m  [1mSELECT "vendors".* FROM "vendors" WHERE "vendors"."provider" = 'facebook' AND "vendors"."email" IS NULL LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."provider" = 'facebook' AND "users"."uid" = '1234' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("code", "created_at", "email", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["code", nil], ["created_at", Thu, 07 Apr 2016 15:41:08 UTC +00:00], ["email", nil], ["name", "foo"], ["provider", :facebook], ["uid", "1234"], ["updated_at", Thu, 07 Apr 2016 15:41:08 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/sessions/new
+Completed 302 Found in 10.3ms (ActiveRecord: 1.6ms)
+Started GET "/sessions/new" for 127.0.0.1 at 2016-04-07 08:41:08 -0700
+Processing by SessionsController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 3.5ms (Views: 2.3ms | ActiveRecord: 0.1ms)
+Started GET "/sessions/customer?utf8=%E2%9C%93&code=12345&commit=Submit" for 127.0.0.1 at 2016-04-07 08:41:08 -0700
+Processing by SessionsController#customer as HTML
+  Parameters: {"utf8"=>"✓", "code"=>"12345", "commit"=>"Submit"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mProviderCode Load (0.1ms)[0m  SELECT "provider_codes".* FROM "provider_codes" WHERE "provider_codes"."code" = '12345' AND "provider_codes"."user_id" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  UPDATE "provider_codes" SET "user_id" = 1, "user_name" = 'foo', "updated_at" = '2016-04-07 15:41:08.665428' WHERE "provider_codes"."id" = 1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mProvider Load (0.1ms)[0m  SELECT "providers".* FROM "providers" 
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  UPDATE "providers" SET "usedCodes" = 1, "updated_at" = '2016-04-07 15:41:08.669208' WHERE "providers"."id" = 1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mUPDATE "providers" SET "unclaimCodes" = 0, "updated_at" = '2016-04-07 15:41:08.670611' WHERE "providers"."id" = 1[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  UPDATE "users" SET "code" = '12345', "updated_at" = '2016-04-07 15:41:08.672051' WHERE "users"."id" = 1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mVendor Load (0.1ms)[0m  SELECT "vendors".* FROM "vendors" 
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered sessions/customer.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 17.8ms (Views: 5.6ms | ActiveRecord: 1.2ms)
+Started GET "/logout" for 127.0.0.1 at 2016-04-07 08:41:08 -0700
+Processing by SessionsController#destroy as HTML
+Redirected to http://www.example.com/
+Completed 302 Found in 0.7ms (ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2016-04-07 08:41:08 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 2.1ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+Started GET "/auth/facebook" for 127.0.0.1 at 2016-04-07 08:41:08 -0700
+Started GET "/auth/facebook/callback" for 127.0.0.1 at 2016-04-07 08:41:08 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"provider"=>"facebook"}
+  [1m[35mProvider Load (0.1ms)[0m  SELECT "providers".* FROM "providers" WHERE "providers"."provider" = 'facebook' AND "providers"."email" IS NULL LIMIT 1
+  [1m[36mVendor Load (0.1ms)[0m  [1mSELECT "vendors".* FROM "vendors" WHERE "vendors"."provider" = 'facebook' AND "vendors"."email" IS NULL LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."provider" = 'facebook' AND "users"."uid" = '1234' LIMIT 1
+Redirected to http://www.example.com/sessions/customer
+Completed 302 Found in 2.2ms (ActiveRecord: 0.3ms)
+Started GET "/sessions/customer" for 127.0.0.1 at 2016-04-07 08:41:08 -0700
+Processing by SessionsController#customer as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mVendor Load (0.1ms)[0m  SELECT "vendors".* FROM "vendors" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered sessions/customer.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 5.5ms (Views: 4.0ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "providers" ("created_at", "email", "history", "name", "provider", "removedCodes", "unclaimCodes", "updated_at", "uploadedCodes", "usedCodes") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 07 Apr 2016 15:41:08 UTC +00:00], ["email", "amazon@amazon.com"], ["history", nil], ["name", "Amazon"], ["provider", "facebook"], ["removedCodes", 0], ["unclaimCodes", 0], ["updated_at", Thu, 07 Apr 2016 15:41:08 UTC +00:00], ["uploadedCodes", 0], ["usedCodes", 0]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "provider_codes" ("code", "created_at", "email", "name", "provider_id", "updated_at", "user_id", "user_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["code", "12345"], ["created_at", Thu, 07 Apr 2016 15:41:08 UTC +00:00], ["email", nil], ["name", "Amazon"], ["provider_id", 1], ["updated_at", Thu, 07 Apr 2016 15:41:08 UTC +00:00], ["user_id", nil], ["user_name", nil]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mUPDATE "providers" SET "uploadedCodes" = 1, "updated_at" = '2016-04-07 15:41:08.736799' WHERE "providers"."id" = 1[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  UPDATE "providers" SET "unclaimCodes" = 1, "updated_at" = '2016-04-07 15:41:08.738462' WHERE "providers"."id" = 1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2016-04-07 08:41:08 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 4.7ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+Started GET "/auth/facebook" for 127.0.0.1 at 2016-04-07 08:41:08 -0700
+Started GET "/auth/facebook/callback" for 127.0.0.1 at 2016-04-07 08:41:08 -0700
+Started GET "/auth/failure?message=invalid_crendentials&strategy=facebook" for 127.0.0.1 at 2016-04-07 08:41:08 -0700
+Processing by SessionsController#failure as HTML
+  Parameters: {"message"=>"invalid_crendentials", "strategy"=>"facebook"}
+Redirected to http://www.example.com/
+Completed 302 Found in 0.7ms (ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2016-04-07 08:41:08 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 2.3ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml

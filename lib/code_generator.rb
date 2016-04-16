@@ -1,13 +1,8 @@
 class CodeGenerator
   COPRIME = Figaro.env.code_coprime!.to_i
   GENERATOR = Figaro.env.code_generator!.to_i
-  # CAUTION!! The number of digits in the format string will be different
-  #  from the number in each capture group in the regex, and are sensitive
-  #  to the values 
-  def self.format ; '%04d%02d%04d%02d' ; end  # day,product,seq,product
-  def self.format_regex ; /^(\d\d)(\d\d\d)(\d\d\d)(\d\d)$/ ; end
 
-  attr_reader :coprime, :generator, :seq, :format_string, :format_regex
+  attr_reader :coprime, :generator, :seq
 
   def initialize(sequence_start=0,coprime=COPRIME,generator=GENERATOR)
     @coprime,@generator = coprime,generator

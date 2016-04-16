@@ -3,3 +3,4 @@ application.yml
 db/*.sqlite3
 tmp/
 coverage
+db/{development,test,production}.sqlite3
