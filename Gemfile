@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.18'
+gem 'rails', '3.2.22.1'
 gem 'rake'
 gem 'rails_12factor'
 gem 'ffi', '1.9.6'
