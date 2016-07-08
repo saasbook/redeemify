@@ -1,7 +1,7 @@
 class Vendor < ActiveRecord::Base 
 	# require 'csv'
 	has_many :vendorCodes
-	attr_accessible :history, :provider, :email, :name , :description, :instruction, :website, :comment , :helpLink, :expiration, :cashValue, :usedCodes, :uploadedCodes, :unclaimCodes, :removedCodes
+	attr_accessor :history, :provider, :email, :name , :description, :instruction, :website, :comment , :helpLink, :expiration, :cashValue, :usedCodes, :uploadedCodes, :unclaimCodes, :removedCodes
 	before_create :defaultValue
 
 	def defaultValue

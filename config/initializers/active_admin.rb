@@ -172,7 +172,7 @@ ActiveAdmin.setup do |config|
   #     end
   #   end
 
-  config.show_comments_in_menu = false
+  #config.show_comments_in_menu = false
 
 
   # == Download Links

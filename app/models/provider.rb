@@ -1,6 +1,6 @@
 class Provider < ActiveRecord::Base
 	has_many :providerCodes
-  	attr_accessible :email, :history, :name, :provider, :usedCodes, :uploadedCodes, :unclaimCodes, :removedCodes
+  	attr_accessor :email, :history, :name, :provider, :usedCodes, :uploadedCodes, :unclaimCodes, :removedCodes
 
   	before_create :defaultValue
 
