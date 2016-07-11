@@ -783,7 +783,7 @@
   },
   "RSpec": {
     "coverage": {
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/controllers/application_controller.rb": [
+      "/Users/mattlindsey/Documents/github/redeemify/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -801,15 +801,15 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/helpers/application_helper.rb": [
+      "/Users/mattlindsey/Documents/github/redeemify/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/helpers/sessions_helper.rb": [
+      "/Users/mattlindsey/Documents/github/redeemify/app/helpers/sessions_helper.rb": [
         1,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/models/admin_user.rb": [
+      "/Users/mattlindsey/Documents/github/redeemify/app/models/admin_user.rb": [
         1,
         null,
         null,
@@ -817,104 +817,13 @@
         null,
         null,
         null,
-        1,
-        null,
-        null
-      ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/admin_user.rb": [
-        1,
-        1,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        null,
-        null,
-        1,
-        null,
-        1,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        null,
-        null
-      ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/dashboard.rb": [
-        1,
-        null,
-        1,
-        null,
-        1,
-        0,
-        0,
-        0,
-        0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/provider_codes.rb": [
-        1,
-        1,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        null,
-        1,
-        1,
         1,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/models/provider_code.rb": [
+      "/Users/mattlindsey/Documents/github/redeemify/app/admin/admin_user.rb": [
         1,
         1,
         1,
-        1,
-        null
-      ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/providers.rb": [
-        1,
-        1,
-        1,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        null,
-        0,
-        0,
-        null,
         0,
         0,
         0,
@@ -934,7 +843,97 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/models/provider.rb": [
+      "/Users/mattlindsey/Documents/github/redeemify/app/admin/dashboard.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/mattlindsey/Documents/github/redeemify/app/admin/provider_codes.rb": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/mattlindsey/Documents/github/redeemify/app/models/provider_code.rb": [
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/mattlindsey/Documents/github/redeemify/app/admin/providers.rb": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null
+      ],
+      "/Users/mattlindsey/Documents/github/redeemify/app/models/provider.rb": [
         1,
         1,
         1,
@@ -951,7 +950,7 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/users.rb": [
+      "/Users/mattlindsey/Documents/github/redeemify/app/admin/users.rb": [
         1,
         1,
         1,
@@ -978,7 +977,7 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/models/user.rb": [
+      "/Users/mattlindsey/Documents/github/redeemify/app/models/user.rb": [
         1,
         1,
         1,
@@ -991,7 +990,7 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/vendor_codes.rb": [
+      "/Users/mattlindsey/Documents/github/redeemify/app/admin/vendor_codes.rb": [
         1,
         1,
         1,
@@ -1009,14 +1008,14 @@
         1,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/models/vendor_code.rb": [
+      "/Users/mattlindsey/Documents/github/redeemify/app/models/vendor_code.rb": [
         1,
         1,
         1,
         1,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/admin/vendors.rb": [
+      "/Users/mattlindsey/Documents/github/redeemify/app/admin/vendors.rb": [
         1,
         1,
         1,
@@ -1056,7 +1055,7 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/models/vendor.rb": [
+      "/Users/mattlindsey/Documents/github/redeemify/app/models/vendor.rb": [
         1,
         null,
         1,
@@ -1153,7 +1152,7 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/controllers/providers_controller.rb": [
+      "/Users/mattlindsey/Documents/github/redeemify/app/controllers/providers_controller.rb": [
         1,
         null,
         1,
@@ -1247,7 +1246,7 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/controllers/sessions_controller.rb": [
+      "/Users/mattlindsey/Documents/github/redeemify/app/controllers/sessions_controller.rb": [
         1,
         null,
         1,
@@ -1455,7 +1454,7 @@
         null,
         null
       ],
-      "/Users/YoungNguyen/Documents/Spring 2015/CS169/Project/iteration4-1/update/thai/redeemify/app/controllers/vendors_controller.rb": [
+      "/Users/mattlindsey/Documents/github/redeemify/app/controllers/vendors_controller.rb": [
         1,
         1,
         null,
@@ -1561,6 +1560,6 @@
         null
       ]
     },
-    "timestamp": 1430546514
+    "timestamp": 1468255113
   }
 }
