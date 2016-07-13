@@ -1,10 +1,10 @@
 require 'spec_helper'
 require 'rails_helper'
 
- 
+
 describe SessionsController do
 
- 
+
   before :each do
     request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:amazon]
   end
@@ -36,11 +36,11 @@ describe SessionsController do
         expect(response).to render_template :show
     end
   end
-  
 
- 
+
+
   describe "#create" do
- 
+
     it "should successfully create a user" do
       expect {
         post :create, provider: :amazon
@@ -48,7 +48,7 @@ describe SessionsController do
     end
 
 
- 
+
     it "should successfully create a session" do
       session[:user_id].should be_nil
       post :create, provider: :amazon
@@ -57,7 +57,7 @@ describe SessionsController do
       flash[:notice].include?("wrong")
       session[:user_id].should_not be_nil
 
-      # session[:user_id].should == 
+      # session[:user_id].should ==
 
     end
 
@@ -80,13 +80,13 @@ describe SessionsController do
       v.save!
 
 
-      a = v.vendorCodes.create!(:code => "123", :vendor => v, :instruction => "instruction", :help => "help link", :expiration => "05/02/2015")
+      a = v.vendorCodes.create!(:code => "123", :vendor => v)
       a.save!
       get :customer
       expect(response).to render_template :customer
     end
   end
-  
+
 
   describe "#destroy" do
     before do
@@ -109,7 +109,7 @@ describe SessionsController do
       flash[:notice].should == "Signed out!"
       session[:user_id].should be_nil
     end
- 
+
     it "should redirect to the new page" do
       delete :destroy
       flash[:notice].should == "Signed out!"

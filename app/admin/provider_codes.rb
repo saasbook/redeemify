@@ -1,11 +1,13 @@
 ActiveAdmin.register ProviderCode do
   menu :priority => 6
-index do   
+  permit_params :user_name, :email, :code
+  
+index do
     column :user_name
-    column :email                                                 
+    column :email
     column :code
     column "Provider", :name
-    column :created_at                                     
+    column :created_at
   end
   filter :user_name
   filter :email
