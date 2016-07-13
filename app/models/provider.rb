@@ -1,6 +1,7 @@
 class Provider < ActiveRecord::Base
 	has_many :providerCodes
-  	attr_accessor :email, :history, :name, :provider, :usedCodes, :uploadedCodes, :unclaimCodes, :removedCodes
+	  # TODO: USE STRONG PARAMETERS
+  	#attr_accessible :email, :history, :name, :provider, :usedCodes, :uploadedCodes, :unclaimCodes, :removedCodes
 
   	before_create :defaultValue
 
@@ -11,5 +12,5 @@ class Provider < ActiveRecord::Base
 		self.removedCodes = 0
 	end
 
-  	
+
 end
