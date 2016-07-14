@@ -1,13 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.18'
+gem 'rails', '4.2.6'
 gem 'rake'
 gem 'rails_12factor'
 gem 'ffi', '1.9.6'
-gem 'sass', '~> 3.2.0'
-gem 'activeadmin'#, '0.6.2'
-
-
+gem 'sass'
+gem 'activeadmin', github: 'activeadmin'
 
 gem 'gon'
 # gem 'rabl-rails'
@@ -15,7 +13,7 @@ gem 'gchartrb'
 
 gem "therubyracer"
 gem "less-rails"
-gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-3-x' # For 3.x
+#gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-3-x' # For 3.x
 gem 'rails3-generators'
 group :development, :test do
   gem 'sqlite3'
@@ -35,8 +33,8 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.6'
-  gem 'coffee-rails', '~> 3.2.2'
+  gem 'sass-rails'
+  gem 'coffee-rails', '~> 4.0.0'
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-ui-rails'
   gem 'twitter-bootstrap-rails'
@@ -47,6 +45,7 @@ gem 'jquery-rails'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
+gem 'devise'
 # gem 'omniauth-twitter'
 gem 'omniauth'
 gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'

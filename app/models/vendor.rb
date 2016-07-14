@@ -1,7 +1,7 @@
-class Vendor < ActiveRecord::Base 
+class Vendor < ActiveRecord::Base
 	# require 'csv'
 	has_many :vendorCodes
-	attr_accessible :history, :provider, :email, :name , :description, :instruction, :website, :comment , :helpLink, :expiration, :cashValue, :usedCodes, :uploadedCodes, :unclaimCodes, :removedCodes
+
 	before_create :defaultValue
 
 	def defaultValue
@@ -18,11 +18,11 @@ class Vendor < ActiveRecord::Base
   		date = ""
     	f = File.open(file.path, "r")
 		f.each_line do |row|
-			row = row.gsub(/\s+/, "")  # 12 3 4 --> 1234, 
+			row = row.gsub(/\s+/, "")  # 12 3 4 --> 1234,
 			if row !=  ""   # don't get any blank code
-				if type == "vendor"	
+				if type == "vendor"
 			      	a = current.vendorCodes.create!(:code => row, :name => current.name , :vendor => current)
-			   
+
 			    else
 			    	a = current.providerCodes.create!(:code => row, :name => current.name , :provider => current)
 			    end
@@ -31,7 +31,7 @@ class Vendor < ActiveRecord::Base
 		end # end CSV.foreach
 		f.close
 		history = current.history
-		
+
 	    date = Time.now.to_formatted_s(:long_ordinal)
 	    if history == nil
 	    	history = "#{date}+++++#{comment}+++++#{numberOfCodes.to_s}|||||"
@@ -90,6 +90,6 @@ class Vendor < ActiveRecord::Base
 	    return histories_array
   	end
 
-  
+
 
 end

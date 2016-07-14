@@ -29,11 +29,10 @@ Auth::Application.routes.draw do
   get 'providers/remove_codes'
   get 'providers/clear_history'
 
-
-  match "/auth/:provider/callback", to: "sessions#create"
-  match "/auth/failure", to: "sessions#failure"
-  match "/logout", to: "sessions#destroy", :as => "logout"
-  match "/logout", to: "vendors#destroy", :as => "logout2"
+  match "/auth/:provider/callback", to: "sessions#create", via: [:get, :post]
+  match "/auth/failure", to: "sessions#failure", via: [:get, :post]
+  match "/logout", to: "sessions#destroy", :as => "logout", via: [:get, :post]
+  match "/logout", to: "vendors#destroy", :as => "logout2", via: [:get, :post]
   resources :sessions
   resources :users do
     resources :vendorcodes
