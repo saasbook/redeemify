@@ -14,56 +14,56 @@
 ActiveRecord::Schema.define(version: 20150502035130) do
 
   create_table "active_admin_comments", force: :cascade do |t|
-    t.string   "resource_id",   limit: 255, null: false
-    t.string   "resource_type", limit: 255, null: false
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
     t.integer  "author_id"
-    t.string   "author_type",   limit: 255
+    t.string   "author_type"
     t.text     "body"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.string   "namespace",     limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "namespace"
   end
 
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_admin_notes_on_resource_type_and_resource_id"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
   create_table "admin_users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
   create_table "provider_codes", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "code",        limit: 255
+    t.string   "name"
+    t.string   "code"
     t.integer  "user_id"
     t.integer  "provider_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "user_name",   limit: 255
-    t.string   "email",       limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "user_name"
+    t.string   "email"
   end
 
   create_table "providers", force: :cascade do |t|
-    t.string   "name",          limit: 255
-    t.string   "history",       limit: 255
-    t.string   "provider",      limit: 255
-    t.string   "email",         limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "name"
+    t.string   "history"
+    t.string   "provider"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "usedCodes"
     t.integer  "uploadedCodes"
     t.integer  "unclaimCodes"
@@ -71,41 +71,41 @@ ActiveRecord::Schema.define(version: 20150502035130) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "provider",   limit: 255
-    t.string   "uid",        limit: 255
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.string   "code",       limit: 255
-    t.string   "email",      limit: 255
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "code"
+    t.string   "email"
   end
 
   create_table "vendor_codes", force: :cascade do |t|
-    t.string   "code",       limit: 255
-    t.string   "vendor",     limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "code"
+    t.string   "vendor"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "vendor_id"
     t.integer  "user_id"
-    t.string   "name",       limit: 255
-    t.string   "user_name",  limit: 255
-    t.string   "email",      limit: 255
+    t.string   "name"
+    t.string   "user_name"
+    t.string   "email"
   end
 
   create_table "vendors", force: :cascade do |t|
-    t.string   "name",          limit: 255
-    t.string   "uid",           limit: 255
-    t.string   "provider",      limit: 255
-    t.string   "description",   limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.string   "email",         limit: 255
-    t.string   "history",       limit: 255
-    t.string   "website",       limit: 255
-    t.string   "instruction",   limit: 255
-    t.string   "helpLink",      limit: 255
-    t.string   "cashValue",     limit: 255
-    t.string   "expiration",    limit: 255
+    t.string   "name"
+    t.string   "uid"
+    t.string   "provider"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "email"
+    t.string   "history"
+    t.string   "website"
+    t.string   "instruction"
+    t.string   "helpLink"
+    t.string   "cashValue"
+    t.string   "expiration"
     t.integer  "usedCodes"
     t.integer  "uploadedCodes"
     t.integer  "unclaimCodes"

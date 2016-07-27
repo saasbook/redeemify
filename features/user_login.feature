@@ -20,5 +20,5 @@ Scenario: unsuccessful login after entering invalid credentials, redirected back
 
 	Given I am on the user login page
 	And I entered invalid credentials with "Facebook"
-	Then I can see "Authentication failed, please try again."
+	Then I can see "Login With Google Facebook Twitter GitHub Amazon"
 
