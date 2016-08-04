@@ -21,7 +21,7 @@ Scenario:
     Then I am on the user login page
     Then I am signed in as a vendor "Github" and user ID "12345" with "facebook"
     Then show me the page
-    And I have updated the vendor home
+    And I have updated the vendor profile
     Then the vendor "uploadedCodes" should be "4"
     When I press "remove-unclaimed-codes" link
     Then the vendor "unclaimCodes" should be "0"

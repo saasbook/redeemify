@@ -15,7 +15,6 @@ Scenario:
         
     Then I am on the user login page
     Given I am signed in as a provider "Amazon"
-    And I have updated the provider home
     Then the provider "uploadedCodes" should be "2"
-    When I press "remove-unclaimed-codes" link
+    When I press "Download And Remove Unclaimed Codes" link
     Then the provider "unclaimCodes" should be "0"

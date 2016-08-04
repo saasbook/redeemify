@@ -13,7 +13,6 @@ Scenario:
         
     Given I am on the user login page
     Then I am signed in as a vendor "Github" and user ID "12345" with "facebook"
-    And I have updated the vendor home
     And I press "upload" link
     Then I should be on the vendor upload page
     And I attach a file with vendor codes inside
@@ -26,7 +25,6 @@ Scenario:
     
     Given I am on the user login page
     Then I am signed in as a provider "Amazon"
-    And I have updated the provider home
     And I press "upload" link
     Then I should be on the provider upload page
     And I attach a file with provider codes inside
