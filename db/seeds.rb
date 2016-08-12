@@ -12,6 +12,6 @@ when "development"
 
   Vendor.create!(name: "VendorOne", uid: 111, provider: "github", description: "Github (1 mth free micro)",
     website: "google.com", helpLink: "google.com/help", cashValue: 25)
-  VendorCode.create(code: 'xP78vvjk3V', vendor_id: 111, user_id: 123, name: "GitHub Micro", user_name: "UserOne")
+  VendorCode.create(code: 'xP78vvjk3V', vendor_id: 111, user_id: nil, name: "GitHub Micro", user_name: nil)
 end
 
