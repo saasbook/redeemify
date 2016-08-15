@@ -46,7 +46,7 @@
  <form onclick="confirmation()" color = "#000" > Download And Remove Unclaimed Codes</form > 
 </div>
 
-<%= link_to "Download And Remove Unclaimed Codes", '/providers/remove_codes', {:id => "remove-unclaimed-codes" , :style => 'color:#000'} %>
+<%= link_to "Download And Remove Unclaimed Codes", remove_codes_providers_path, {:id => "remove-unclaimed-codes" , :style => 'color:#000'} %>
 <div class = "button_confirm">
  <form onclick="confirmation()" color = "#000" > Download And Remove Unclaimed Codes</form >
 </div>
@@ -135,7 +135,7 @@
       var answer = confirm("Do you want to remove " + gon.codes["unclaim"] + " unclaimed codes?")
       unclaim = gon.codes["unclaim"]
       if (answer){
-        window.location = "/providers/remove_codes";
+        window.location = "<%= remove_codes_providers_path %>";
         alert(unclaim + " unclaimed codes have been removed");
         window.location = "/providers/home";
       }
