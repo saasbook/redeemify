@@ -26,7 +26,7 @@ group :development, :test do
   gem 'test-unit'
   gem 'database_cleaner'
 end
-group :production do
+group :production, :staging do
   gem 'pg'
 end
 
