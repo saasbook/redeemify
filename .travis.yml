@@ -10,7 +10,6 @@ before_script:
 - bundle exec rake db:test:prepare
 deploy:
   provider: heroku
-  on: staging
   app:
     staging: redeemify-staging
   run: rake db:migrate
