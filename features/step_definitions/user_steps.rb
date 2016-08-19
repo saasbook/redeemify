@@ -198,3 +198,10 @@ end
 And /^I attach a file with provider codes inside$/ do
   attach_file('file', File.join(Rails.root, 'features', 'upload-file', 'test.txt'))
 end
+
+Given(/^I have updated the provider home$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+Then(/^I have updated the vendor home$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
