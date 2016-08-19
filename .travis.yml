@@ -16,13 +16,3 @@ deploy:
   run: rake db:migrate
   api_key:
     secure: p7gxD9gUpUxitjhVmgBW6+WXVKfILhbPOIrd5FDlh8wndlsjwhiaSEbFlO3m8C1b/t2W+BK2GM+Ohh35FU9pEM8K1Vy+trLPQ+DJiknSbQuYN5vLBpby3x6owTAOYvmV0/myi4sJV64q1egfkhOee/v4tUrMrKrGzdT/cdrB54lwCF/OLd7fWa03JU2HrauCFv6wgmTjn9ku1w1nfZ9SJ0wcK6bPtOu5+QU0Cg04k9ETAzS+uLUsN6gBQvO8t814PJRTbQYIJQpoGBqgCHwYZHnjkNhUL3klXIvpR1jpWJL6245xYktz5FFlwbZbQhQy4OOSs/l6Ny9vtvQt1qep/xnpTiLQbCf4L1xtEmy/LODbPzJpUVfWp/gOFY5JBQWY8ZPBF/CltXDB480r0zUI7erFnIbNE3TgsIxancjF41fhIkirrNntDnwievF1r01XBtufxZsLKyE4zv0P1sc+ITtKKeXXSPC4KVvEtR+q41NPFfRVQDPBCJDcq4rPHakPujJD66GuJAdsS47vDWwfuIa9tVWZMWSZn8R3d4p2b8VHwgwQtEcygv7/JxJNqeFGcdvN+9496T5QDGZhvJy/fdh3Y1gW/FoIcMmu9Mr3koAWuX8CxFpqZKRWRuVkXDajAI3E++rpaVAtMoevJoE8EjKE8hhbGotYuFZMUePW40A=
-=======
-  - 2.3.0
-before_install:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-before_script:
-  - bundle exec rake db:create:all
-  - bundle exec rake db:migrate
-  - bundle exec rake db:test:prepare
->>>>>>> upstream/master
