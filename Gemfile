@@ -16,7 +16,7 @@ gem "less-rails"
 #gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-3-x' # For 3.x
 gem 'rails3-generators'
 group :development, :test do
-  gem 'sqlite3'
+  # gem 'sqlite3'
   gem "factory_girl_rails"
   gem "guard-rspec"
   gem 'cucumber-rails', :require => false
@@ -25,6 +25,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'test-unit'
   gem 'database_cleaner'
+  gem 'pg'
 end
 group :production, :staging do
   gem 'pg'
