@@ -6,7 +6,7 @@ Our default working branch is `master`.  We do work by creating branches off `ma
 Each developer will usually work with a [fork](https://help.github.com/articles/fork-a-repo/) of the [main repository on Strawberry Canyon](https://github.com/strawberrycanyon/redeemify). Before starting work on a new feature or bugfix, please ensure you have [synced your fork to upstream/develop](https://help.github.com/articles/syncing-a-fork/):
 
 ```
-git pull upstream develop
+git pull upstream master
 ```
 
 Note that you should be re-syncing daily (even hourly at very active times) on your feature/bugfix branch to ensure that you are always building on top of very latest develop code.
