@@ -1,8 +1,6 @@
 Development Process
 ------------------
 
-Please see [the project setup guide](docs/project_setup.md) to get set up with the project for development.
-
 Our default working branch is `master`.  We do work by creating branches off `master` for new features and bugfixes.  Any feature should include appropriate Cucumber acceptance tests and RSpec unit tests.  We try to avoid view and controller specs, and focus purely on unit tests at the model and service level where possible.  A bugfix may include an acceptance test depending on where the bug occurred, but fixing a bug should start with the creation of a test that replicates the bug, so that any bugfix submission will include an appropriate test as well as the fix itself.
 
 Each developer will usually work with a [fork](https://help.github.com/articles/fork-a-repo/) of the [main repository on Strawberry Canyon](https://github.com/strawberrycanyon/redeemify). Before starting work on a new feature or bugfix, please ensure you have [synced your fork to upstream/develop](https://help.github.com/articles/syncing-a-fork/):
@@ -14,7 +12,6 @@ git pull upstream develop
 Note that you should be re-syncing daily (even hourly at very active times) on your feature/bugfix branch to ensure that you are always building on top of very latest develop code.
 
 Every pull request should be for a corresponding GitHub issue/
-```
 
 Please ensure that each commit in your pull request makes a single coherent change and that the overall pull request only includes commits related to the specific GitHub issue that the pull request is addressing.  This helps the project managers understand the PRs and merge them more quickly.
 
@@ -31,7 +28,6 @@ In your pull request description please include a sensible description of your c
 
 ```
 This PR adds a CONTRIBUTING.md file and a docs directory
-
 fixes #799
 ```
 
