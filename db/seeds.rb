@@ -19,6 +19,8 @@ case Rails.env
    User.create!(provider: "Amazon", uid: 123, name: "matthew.r.lindsey@gmail.com")
    Vendor.create!(name: "www.amazon.com", uid: 123, provider: "Amazon", description: "$10 AWS Credit",
                   website: "amazon.com", helpLink: "amazon.com/help", cashValue: "$10")
-   VendorCode.create(code: 'xP78vvjk3V', vendor_id: 1)
+   VendorCode.create(code: 'xP78vvjk3K', vendor_id: 1)
+   VendorCode.create(code: 'yF35ovem3V', vendor_id: 1)
+   VendorCode.create(code: 'zL92pcje3M', vendor_id: 1)
 
  end
