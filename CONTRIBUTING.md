@@ -21,7 +21,7 @@ Whatever you are working on, or however far you get please do open a "Work in Pr
 Before you make a pull request it is a great idea to sync again to the upstream develop branch to reduce the chance that there will be any merge conflicts arising from other PRs that have been merged to develop since you started work:
 
 ```
-git pull upstream develop
+git pull upstream master
 ```
 
 In your pull request description please include a sensible description of your code and a tag `fixes #<issue-id>` e.g. :
