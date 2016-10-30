@@ -18,7 +18,7 @@ class ProvidersController < ApplicationController
 # ---------------
   def home
     @provider = Provider.find(session[:provider_id])
-    @providerCodes= @provider.providerCodes
+    @redeemifyCodes= @provider.redeemifyCodes
 
     @histories_array=[]
 
@@ -35,13 +35,13 @@ class ProvidersController < ApplicationController
 
   def upload_page
     @provider = Provider.find(session[:provider_id])
-    @providerCodes= @provider.providerCodes.all
+    @redeemifyCodes= @provider.redeemifyCodes.all
   end
 
 
   def remove_codes
     current_provider=Provider.find(session[:provider_id])
-    flag = current_provider.providerCodes.where(:user_id => nil)
+    flag = current_provider.redeemifyCodes.where(:user_id => nil)
     if flag.count == 0
       redirect_to '/providers/home ', :flash => { :error => "There's No Unclaimed Codes" }
     else

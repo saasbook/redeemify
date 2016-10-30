@@ -2,10 +2,10 @@ Feature: Enter Provider Code (Story 1b)
 
     As a user
     So that I can view my offers
-    I want to enter the provider code
+    I want to enter the redeemify code
 
 Background:
-	Given the following provider codes exist:
+	Given the following redeemify codes exist:
     | code  | provider   | created_at | updated_at | vendor_id | user_id |
     | 12345 | Amazon     | 01-01-2015 | 01-01-2016 | 1         |    nil  |
 

@@ -7,7 +7,7 @@ Feature: User View Offer (Story 3)
 Background:
 
     Given a vendor "Github" and user ID "1" registered with "facebook"
-    Given the following provider codes exist:
+    Given the following redeemify codes exist:
     | code  | vendor   | created_at | updated_at | vendor_id | user_id |
     | 12345 | Amazon   | 01-01-2015 | 01-01-2016 | 1         |    nil  |
 
@@ -21,7 +21,7 @@ Background:
 Scenario:
     
     Given I am on the user login page
-    And I have already registered with "facebook" and provider code "12345"
+    And I have already registered with "facebook" and redeemify code "12345"
     Given I am signed in with "facebook"
     Then I can see "Github"
     And I can see "12345"

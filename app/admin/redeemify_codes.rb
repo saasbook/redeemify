@@ -1,4 +1,4 @@
-ActiveAdmin.register ProviderCode do
+ActiveAdmin.register RedeemifyCode do
   menu :priority => 6
   permit_params :user_name, :email, :code
   

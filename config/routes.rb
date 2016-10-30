@@ -54,7 +54,7 @@ Auth::Application.routes.draw do
       post :update_profile
       get :remove_codes
     end
-    resources :providercodes
+    resources :redeemifycodes
   end
   ActiveAdmin.routes(self)
 end
