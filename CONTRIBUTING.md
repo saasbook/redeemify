@@ -52,7 +52,8 @@ We recommend the [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide)
 Developer Tips
 --------------
 
-1. Follow the following steps to try out and debug Redeemify in development connecting to Google+ using OAuth:
+1. Follow the following steps to try out and debug Redeemify in development connecting to Google+ using OAuth.
+   There might be an easier way, but this works!
 
    a. Submit a PR to add the following line to db/seeds.rb, adding your Google/Google+ ID (or just add temporarily):
       ```
@@ -68,10 +69,16 @@ Developer Tips
       GOOGLE_SECRET: [secret]
       ```
    
-   d. run `rake db:reset`, restart the app, clear any application cookies, and try logging in to Reedemify http://localhost:3000 with Google+.
-   
-   e. If not working, try temporarily modifying the file config/environments/development.rb to comment out the followin line:
+   d. Temporarily modify the file config/environments/development.rb to comment out the followin line, but don't commit it:
       ```
       # OmniAuth.config.test_mode = true
       ```
- 
+      
+   e. Temporarily remove the following lines from the file app/views/sessions/new.html.erb, but don't commit it:
+       ```
+       <a id="developer-auth" href="/auth/developer" class="auth_provider">
+        Developer
+       </a>
+       ```
+       
+   f. run `rake db:reset`, restart the app, clear any application cookies in your browser, and try logging in to Reedemify http://localhost:3000 with Google+.
