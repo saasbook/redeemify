@@ -1,5 +1,7 @@
 coverage/
 tmp/
+log/
+public/assets
 db/*.sqlite3
 .idea/
 config/application.yml
