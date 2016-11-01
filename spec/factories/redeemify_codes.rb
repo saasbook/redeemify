@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :provider_code do
+  factory :redeemify_code do
     name "MyString"
 code "MyString"
 user_id 1

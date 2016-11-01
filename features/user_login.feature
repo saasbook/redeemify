@@ -5,14 +5,14 @@ Feature: User Login (Story 2)
 	I want to be able to login to my existing account with a third party authentication to see my offers
 
 Background:
-	Given the following provider codes exist:
+	Given the following redeemify codes exist:
     | code  | provider   | created_at | updated_at | vendor_id | user_id |
     | 12345 | Amazon     | 01-01-2015 | 01-01-2016 | 1         |    nil  |
 
 Scenario: successful login after entering valid credentials
 	
 	Given I am on the user login page
-	And I have already registered with "facebook" and provider code "12345"
+	And I have already registered with "facebook" and redeemify code "12345"
     Then I am signed in with "facebook"
 	Then I can see "Total Offer Value"
 

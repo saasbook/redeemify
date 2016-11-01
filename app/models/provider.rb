@@ -1,5 +1,5 @@
 class Provider < ActiveRecord::Base
-	has_many :providerCodes
+	has_many :redeemifyCodes
 
   before_create :defaultValue
 

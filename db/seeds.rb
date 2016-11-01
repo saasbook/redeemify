@@ -3,6 +3,7 @@
 
 raise "I refuse to destroy the production database!" if Rails.env.production?
 
+# SuperUser
 AdminUser.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
 
 case Rails.env

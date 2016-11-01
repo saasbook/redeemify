@@ -24,7 +24,7 @@ class Vendor < ActiveRecord::Base
 			      	a = current.vendorCodes.create!(:code => row, :name => current.name , :vendor => current)
 
 			    else
-			    	a = current.providerCodes.create!(:code => row, :name => current.name , :provider => current)
+			    	a = current.redeemifyCodes.create!(:code => row, :name => current.name , :provider => current)
 			    end
 			    numberOfCodes = numberOfCodes + 1
 		    end
@@ -55,7 +55,7 @@ class Vendor < ActiveRecord::Base
   		if type == "vendor"
   			unclaimedCodes=current.vendorCodes.where(:user_id => nil)
   		else
-  			unclaimedCodes=current.providerCodes.where(:user_id => nil)
+  			unclaimedCodes=current.redeemifyCodes.where(:user_id => nil)
   		end
 
   		num = current.unclaimCodes

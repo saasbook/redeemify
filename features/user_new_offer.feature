@@ -5,7 +5,7 @@ Feature: User New Offer
     I want to be updated when any vendors change or add their offer
 
 Background:
-    Given the following provider codes exist:
+    Given the following redeemify codes exist:
     | code  | provider   | created_at | updated_at | vendor_id | user_id |
     | 12345 | Amazon     | 01-01-2015 | 01-01-2016 | 1         |    nil  |
 
@@ -19,7 +19,7 @@ Background:
 Scenario: vendor change offer profile
     
     Given I am on the user login page
-    And I have already registered with "facebook" and provider code "12345"
+    And I have already registered with "facebook" and redeemify code "12345"
     Then I am signed in with "facebook"
     Then I can see "Github"
     Given I press "logout" link

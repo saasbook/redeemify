@@ -7,7 +7,7 @@ Feature: Vendor Login as User
 Background:
 	
 	Given a vendor "Github" and user ID "12345" registered with "facebook"
-    And the following provider codes exist:
+    And the following redeemify codes exist:
     | code  | provider | upload     | expiry_date | code_type |
     | 12345 | Amazon   | 01-01-2015 | 01-01-2016  | free_repo |
 
