@@ -61,7 +61,8 @@ Developer Tips
       ```
       
    b. Get and save your GOOGLE_KEY and GOOGLE_SECRET for "your_id@gmail.com" by following directions at https://developers.google.com/+/web/api/rest/oauth
-   
+      See # http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys
+      
    c. In your local repo, create or modify config/application.yml to contain the GOOGLE_KEY and GOOGLE_SECRET for your Google+ account as follows:
       ```
       # Google account: your_id@gmail.com
@@ -73,12 +74,28 @@ Developer Tips
       ```
       # OmniAuth.config.test_mode = true
       ```
-      
-   e. Temporarily remove the following lines from the file app/views/sessions/new.html.erb, but don't commit it:
-       ```
-       <a id="developer-auth" href="/auth/developer" class="auth_provider">
-        Developer
-       </a>
-       ```
        
-   f. run `rake db:reset`, restart the app, clear any application cookies in your browser, and try logging in to Reedemify http://localhost:3000 with Google+.
+   e. run `rake db:reset`, restart the app, clear any application cookies in your browser, and try logging in to Reedemify http://localhost:3000 with Google+.
+
+2. To use Amazon instead of google, and a Vendor instead of Provider.
+   Note that below is a Work-In-Progress as it's complicated to setup a new Amazon 'application' under your developer id.
+
+    a. Submit a PR to add the following line to db/seeds.rb, adding your Amazon ID (or just add temporarily):
+       See http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys
+       
+       Vendor.create!(name: "Amazon", provider: "amazon_oath2", email: "matthew.r.lindsey@gmail.com",  description: "AWS Testing",
+                         website: "matthewrlindsey.org", helpLink: "matthewrlindsey.org/help", cashValue: "$8")
+                         
+    b. Get and save your AMAZON_KEY and AMAZON_SECRET for "your_id@amazon.com"
+        Setup yourself as an 'Amazon Developer' and see https://developer.amazon.com/lwa/sp/overview.html
+        See # http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys
+       
+    c. In your local repo, create or modify config/application.yml to contain the AMAZON_KEY and AMAZON_SECRET for your Amazon account as follows:
+      ```
+      AMAZON_KEY:     amzn1.application-oa2-client.[key]
+      AMAZON_SECRET:  [secret]
+      ```
+    d. (as above in 1.)
+
+    e. (as above in 1.)
+      

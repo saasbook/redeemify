@@ -21,9 +21,15 @@ case Rails.env
    VendorCode.create(code: 'yF35ovem3V', vendor_id: 1)
    VendorCode.create(code: 'zL92pcje3M', vendor_id: 1)
 
-   # Add myself as a "Google" Provider User to test Provider code uploads
+   # Add myself as a "Google" Provider to test Provider code uploads
    # Other developers feel free to create a PR to add yourself
    # Note that you must also modify config/application.yml to contain the GOOGLE_KEY and GOOGLE_SECRET for your
    # Google+ account as described at https://developers.google.com/+/web/api/rest/oauth
    Provider.create!(name: "Google",provider: "google_oauth2", email: "matthew.r.lindsey@gmail.com")
- end
+
+   # Add myself as a "Amazon" Vendor to test Vendor code uploads
+   # Note that you must also modify config/application.yml to contain the AMAZON_KEY and AMAZON_SECRET for your Amazon
+   # account as in http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys
+   Vendor.create!(name: "Amazon", provider: "amazon_oath2", email: "matthew.r.lindsey@gmail.com",  description: "AWS Testing",
+                  website: "matthewrlindsey.org", helpLink: "matthewrlindsey.org/help", cashValue: "$8")
+end
