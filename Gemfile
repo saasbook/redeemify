@@ -26,7 +26,9 @@ group :development, :test do
   gem 'simplecov'
   gem 'test-unit'
   gem 'database_cleaner'
-  gem 'pg'
+  gem 'irbtools-more', require: 'irbtools/binding'
+  gem 'byebug'
+  gem 'meta_request'
 end
 group :production, :staging do
   gem 'pg'
@@ -40,6 +42,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-ui-rails'
   gem 'twitter-bootstrap-rails'
+  gem 'inline_svg'
 end
 
 gem 'jquery-rails'

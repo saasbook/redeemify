@@ -25,7 +25,8 @@ case Rails.env
    # Other developers feel free to create a PR to add yourself
    # Note that you must also modify config/application.yml to contain the GOOGLE_KEY and GOOGLE_SECRET for your
    # Google+ account as described at https://developers.google.com/+/web/api/rest/oauth
-   Provider.create!(name: "Google",provider: "google_oauth2", email: "matthew.r.lindsey@gmail.com")
+   Provider.create!(name: "Google", provider: "google_oauth2", email: "matthew.r.lindsey@gmail.com")
+   Provider.create!(name: "Google", provider: "google_oauth2", email: "kiko.pineda@gmail.com")
 
    # Add myself as a "Amazon" Vendor to test Vendor code uploads
    # Note that you must also modify config/application.yml to contain the AMAZON_KEY and AMAZON_SECRET for your Amazon

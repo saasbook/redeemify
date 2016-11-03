@@ -9,7 +9,7 @@ en:
     loginInstruction: "Instruction 1:\nInstruction 2:\nInstruction 3:\n"
     yourcode: "Your Redeemify Code: "
     offervalue: "Total Offer Value: "
-    instruction: "Click on vendor's name to redeem your code!"
+    instruction: "Click on vendor's name to redeem your code:"
     showhide: "Show/Hide"
     vendorcode: "Code:"
     expirationdate: "Expiration Date:"

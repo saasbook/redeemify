@@ -1,7 +1,3 @@
-<html lang="en">
-<head>
-<meta>
-<title>Redeemify | Customer</title>
 <script language="javascript" type="text/javascript">
 $(document).ready(function(){
     $(".toggler").click(function(e){
@@ -9,116 +5,129 @@ $(document).ready(function(){
         $('.cat'+$(this).attr('data-prod-cat')).toggle();
     });
 });
-
 </script>
-</head>
 
+<div class="welcome mdl-layout mdl-js-layout">
+  <header class="mdl-layout__header">
+  <div class="mdl-layout-icon"></div>
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title"><%= image_tag "logo2.png", alt: "redeemify_logo", class: "redeemify_logo" %>Redeemify</span>
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <span class="account">
+        <%= t 'customer.login' %> <%= current_user.provider.upcase  %> | <%= t 'customer.name' %> <%= current_user.name %> | <%= link_to "Logout", logout_path, :id => "logout", class: "logout" %>
+        </span>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Redeemify</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="/">Home</a>
+      <a class="mdl-navigation__link" href="#">About</a>
+      <a class="mdl-navigation__link" href="/logout">Logout</a>
+    </nav>
+  </div>
 
+<!-- Card -->
+  <div class="redeemify-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__supporting-text">
+      <h5><%= t 'customer.yourcode' %> <%= @current_code %></h5>
+      <h5><%= t 'customer.offervalue' %> $ <%= @total %></h5>
+    </div>
+ </div>
 
- <p class="account"><%= t 'customer.login' %> <%= current_user.provider.upcase  %> | <%= t 'customer.name' %> <%= current_user.name %> | <%= link_to "Logout", logout_path, :id => "logout" %></p>
-<div id="welcome">
-
-    <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %></h1>
-</div>
-
-<br>
-
-
-
-
-<div class = "customer_home_numcode">
-<a class="r1"><%= t 'customer.yourcode' %></a>
-<a style = "color:#1fb5fc">   <%= @current_code %></a>
-<br>
-<a class="r2"><%= t 'customer.offervalue' %></a>
-<a style="color:#7bd215"> $<%= @total %></a>
-</div>
-<br>
-<div class = "warning">
 <% if flash[:alert] != nil %>
+  <div class="warning">
     <% flash.keys.each do |k| %> 
        <center><font color="black"><%= flash[k] %></font></center>
     <% end %> 
-<% end %>
-</div>
-
-
-<p class = "customer_notice"> <%= t 'customer.instruction' %> </p>
-
-<% if @vendor_user %>
-<div class = "button-single">
-  <div class = "row1">
-    <%= link_to "Login as a vendor", '/sessions/change_to_vendor', {:id => "vendor-login", :style => 'color:#000'} %>
-
   </div>
+<% end %>
+
+<br>
+<br>
+
+<span class="customer_notice"><%= t 'customer.instruction' %></span>
+<% if @vendor_user %>
+  <div class = "button-single">
+    <div class = "row1">
+      <%= link_to "Login as a vendor", '/sessions/change_to_vendor', {:id => "vendor-login", :style => 'color:#000'} %>
+    </div>
   </div>
   <br>
 <% end %>
 
- <% @list_codes.each do |vendor, code| %>
- <div class = "customer_table">
-
-
-   <!--    <div class="vendor_group"> -->
-        
-        <table class = "vendor_header">
+<% @list_codes.each do |vendor, code| %>
+  <div class="customer-table">
+    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
         <tr>
-          
-        <td class="vendor_name"><%= link_to vendor, @website[vendor],  {:style => 'color:#fd7330', :target => '_blank'} %> </td>
-        <td class="vendor_code" style ="color:#1fb5fc"><%= code %></td>
-        <td class="vendor_value" >$<%= @cashValue[vendor] %></td>
-        <td class="vendor_expiration"><%= @expiration[vendor] %></td>
-
-        <td class="show_hide"><a href="#" class="toggler" data-prod-cat="<%= cycle('1','2','3','4','5','6','7','8','9','10') -%>" style="color:#8e8e8e"><%= t 'customer.showhide' %></a></td>
-        </table>
-
-<div class="cat<%=current_cycle %>" style="display:none">
-<table>
-      <tr class="vendor_oddd">
-        <td class="vendor_group1"><%= t 'customer.vendorcode' %></td>
-        <td class="vendor_group3"><%= code %></td>
-      <tr class="vendor_even">
-        <td class="vendor_group1"><%= t 'customer.expirationdate' %></td>
-        <td class="vendor_group3"><%= @expiration[vendor] %></td>
-      <tr class="vendor_oddd">
-        <td class="vendor_group1"><%= t 'customer.cashvalue' %></td>
-        <td class="vendor_group3">$<%= @cashValue[vendor] %></td>
-      <tr class="vendor_even">
-        <td class="vendor_group1"><%= t 'customer.description' %></td>
-        <td class="vendor_group3"><%= @description[vendor] %></td>
-      <tr class="vendor_oddd">
-        <td class="vendor_group1"><%= t 'customer.vendorinstruction' %></td>
-        <td class="vendor_group3"><%= @instruction[vendor] %></td>
-      <tr class="vendor_even">
-        <td class="vendor_group1"><%= t 'customer.help' %></td>
-        <td class="vendor_group3"><%= @help[vendor] %></td>
-</table>
-
-      
-</div>
-  
-
-</div>
+          <td class="mdl-data-table__cell--non-numeric">Vendor:</td>
+          <td><%= link_to vendor, @website[vendor], style: 'color:#fd7330', target: '_blank' %></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">Expiration:</td>
+          <td><%= @expiration[vendor] %></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.vendorcode' %></td>
+          <td><%= code %></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.expirationdate' %></td>
+          <td><%= @expiration[vendor] %></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.cashvalue' %></td>
+          <td>$ <%= @cashValue[vendor] %></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.description' %></td>
+          <td><%= @description[vendor] %></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.vendorinstruction' %></td>
+          <td><%= @instruction[vendor] %></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.help' %></td>
+          <td><%= @help[vendor] %></td>
+        </tr>
+    </table>
+  </div>
 <% end %>
-<h5 align="center"><%= t 'customer.deleteaccount' %></h5>
-<div class="home1">
 
-<p class="homee"><%= link_to image_tag('delete_user-512.png', :style => '30x20'), '/sessions/delete_page', {:id => "delete-account", :style => 'color:#000'} %></p>
+<span class="delete-account"><%= t 'customer.deleteaccount' %></span>
+<div class="home1">
+  <a href="/sessions/delete_page" onclick="false"><i class="account-delete-dialog material-icons">delete</i></a>
+      <dialog class="mdl-dialog">
+        <h4 class="mdl-dialog__title">Caution!</h4>
+        <div class="mdl-dialog__content">
+          <p>If you delete your account, all of your information will be removed from the app database.
+             Moreover, you will no longer have access to your Redeemify and vendor offer's codes.</p>
+          <h4>Are you sure?</h4>
+        </div> 
+        <div class="mdl-dialog__actions">
+          <button type="button" class="mdl-button close">No</button>
+          <a href="/sessions/delete_account" class="mdl-button">Delete!</a>
+        </div>
+      </dialog>
+  <%#= link_to content_tag(:i, 'delete', class: 'material-icons'), '/sessions/delete_page', {:id => "delete-account", :style => 'color:#000'} %>
 </div>
 
-
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script>
+  var dialog = document.querySelector('dialog');
+  var showDialogButton = document.querySelector('.account-delete-dialog');
+  if (! dialog.showModal) {
+    dialogPolyfill.registerDialog(dialog);
+  }
+  showDialogButton.addEventListener('click', function() {
+    dialog.showModal();
+  });
+  dialog.querySelector('.close').addEventListener('click', function() {
+    dialog.close();
+  });
+  $('.account-delete-dialog').click(function(e){
+    event.preventDefault();
+  });
+</script>
