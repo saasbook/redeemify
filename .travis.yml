@@ -1,14 +1,14 @@
 language: ruby
 rvm:
-- 2.3.1
+- 2.3.0
 sudo: false
 before_install:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 before_script:
 - gpg --passphrase "$KEY" --output config/application.yml --decrypt config/application.yml.asc
-- rake db:create:all
-- rake db:migrate
+- bundle exec rake db:create:all
+- bundle exec rake db:migrate
 deploy:
   provider: heroku
   app:
