@@ -28,17 +28,12 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'guard-rspec'
-  gem 'pg'
   gem 'rspec-rails', '~> 3.0'
   gem 'simplecov'
   gem 'test-unit'
   gem 'irbtools-more', require: 'irbtools/binding'
   gem 'byebug'
   gem 'meta_request'
-end
-
-group :production, :staging do
-  gem 'pg'
 end
 
 group :development do
