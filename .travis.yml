@@ -1,17 +1,12 @@
 language: ruby
 rvm:
 - 2.3.1
-sudo: required
-services:
-- postgresql
+sudo: false
 before_install:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
-- gem install bundler
-- gem install rake
 before_script:
 - gpg --passphrase "$KEY" --output config/application.yml --decrypt config/application.yml.asc
-- psql -c 'create database redeemify_test;' -U postgres
 - bundle exec rake db:create:all
 - bundle exec rake db:migrate
 deploy:
