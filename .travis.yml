@@ -7,8 +7,8 @@ before_install:
 - sh -e /etc/init.d/xvfb start
 before_script:
 - gpg --passphrase "$KEY" --output config/application.yml --decrypt config/application.yml.asc
-- bundle exec rake db:create:all
-- bundle exec rake db:migrate
+- rake db:create:all
+- rake db:migrate
 deploy:
   provider: heroku
   app:
