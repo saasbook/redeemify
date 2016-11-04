@@ -73,13 +73,31 @@ textarea:focus {
 
 .formcode {text-align: center; padding-top: 5px}
 
-#welcome {height: 10em ; width : 100%; padding-top: 5px;letter-spacing: 5px;
+/*#welcome {height: 10em ; width : 100%; padding-top: 5px;letter-spacing: 5px;
   background: #333742; color: #FFFFFF}
 #welcome h1 {font-family: 'Circula'; letter-spacing: 5px;font-size: 72px ;
   letter-spacing: 5px; text-align: center; margin: 20px auto;}
-.logininstruction {width:500; margin: auto; text-align: center;height: auto;white-space: pre-wrap;}
+edit*/ 
+
+/*#welcome { height: 10em ; width : 100%; padding-top: 5px;letter-spacing: 5px; }*/
+
+
+/*.redeemify_logo {
+  height: 50px;
+  width: 200px;
+}
+*/
+.redeemify_logo {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+}
+
+/*.logininstruction {width:500; margin: auto; text-align: center; height: auto; white-space: pre-wrap;}*/
+// .logininstruction {width:500; margin-top: 50px; text-align: center; height: auto; white-space: pre-wrap; }
+// .logininstruction {width:500; text-align: center; white-space: pre-wrap; }
 .up_view {height: 5em; width: 10em;}
-.account{text-align: right}
+/*.account{text-align: right}*/
 .vendor_home_numcode {background: #e5e5e5;  margin-left:  auto; margin-right:auto; width: 200px; height: 160px; border-radius: 10px; margin-top: 15px; 
     border-radius: 6px 6px 6px 6px;
   border-style: none solid solid none;
@@ -128,13 +146,14 @@ textarea:focus {
   background: #44c4ff; color: #FFFFFF; background-position: center; margin-top: 10px}
 .vendor h1 { margin: 0; padding-top: 3px; font-family: Helvetica Neue; font-size: 30px ; letter-spacing: 2px}
 
-.loginwith { height: 40px; text-align: center; width : 540px; margin-top: 5em; margin-left: auto; margin-right: auto;
-  background: #333742; color: #FFFFFF; background-position: center; }
-.loginwith2 { height: 40px; text-align: center; width : 300px; margin-top: 5em; margin-left: auto; margin-right: auto;
-  background: #333742; color: #FFFFFF; background-position: center} 
- .loginwith3 { height: 30px; text-align: center; width : 200px; margin-left: auto; margin-right: auto;
+/*.loginwith { height: 40px; text-align: center; width : 540px; margin-top: 5em; margin-left: auto; margin-right: auto;
+  background: #333742; color: #FFFFFF; background-position: center; }*/
+  /*.loginwith { color: #757575; }*/
+/*.loginwith2 { height: 40px; text-align: center; width : 300px; margin-top: 5em; margin-left: auto; margin-right: auto;
+  background: #333742; color: #FFFFFF; background-position: center} */
+/* .loginwith3 { height: 30px; text-align: center; width : 200px; margin-left: auto; margin-right: auto;
   background: #333742; color: #FFFFFF; background-position: center;padding-top: 10px}  
-.loginwith h1 { margin: 0; padding-top: 3px; font-family: Helvetica Neue; font-size: 20px ; }
+*//*.loginwith h1 { margin: 0; padding-top: 3px; font-family: Helvetica Neue; font-size: 20px ; }*/
 .loginwith2 h1 { margin: 0; padding-top: 3px; font-family: Helvetica Neue; font-size: 20px ; }
 .loginwith3 h4 { margin-top: 10px; padding-top: 10px; font-family: Helvetica Neue; font-size: 20px ; }
 
@@ -388,8 +407,8 @@ div.tooltip h3 {
 
 #amazon-auth {padding-left : 2px;}
 */
-.customer_notice {color:red; text-align: center; font-style: italic;}
-.vendor_table table {margin-top: 20px;border-collapse: collapse; margin-left: auto; margin-right:auto ; width:90%; table-layout: fixed}
+.customer_notice {color:#757575; text-align: center; font-weight: 900; }
+/* .vendor_table table {margin-top: 20px;border-collapse: collapse; margin-left: auto; margin-right:auto ; width:90%; table-layout: fixed}
 .vendor_table table, th { border :none}
 .toggler {text-align: right;color:#e3d3e3;}
 .vendor_table table, tr, td {height:25px;white-space: pre-wrap;}
@@ -403,18 +422,18 @@ div.tooltip h3 {
 .vendor_header td.show_hide {text-align: right; font-size: 12px;width: 20%;}
 
 .vendor_header td.vendor_code {font-size: 12px;width:30%;}
-.vendor_header td.vendor_expiration {font-size: 12px;width:20%;}
+.vendor_header td.vendor_expiration {font-size: 12px;width:20%;} */
 .middle{text-align: center}
 /*.customer_table table {border-collapse: collapse; border: 0px;width : 100%;margin-left: auto; margin-right: auto;table-layout: fixed}*/
 /*.customer_table table.vendor_group1 {width:20%;}
 
 .customer_table table.vendor_group3 {width:80%; word-wrap: break-word;}*/
 /*.customer_table table td {word-wrap: break-word;}*/
-.customer_table table tr td {border-collapse: collapse; border: 0px;word-spacing: break-word}
+/* .customer_table table tr td {border-collapse: collapse; border: 0px;word-spacing: break-word}
 .customer_table table, tr,td {border-collapse: collapse;  }
 .customer_table{padding: none !important; margin :none !important; background: #f0f0f0;width :50%;margin-left: auto; margin-right: auto; table-layout: fixed;margin-bottom: 0px !important; margin-top: 0px !important}
 .more {display: none}
-
+ */
 .codes {width:50%;}
 .upload_text{font-size: 13px; font-family: Helvetica Neue; text-align: left; margin-left: 300px;
               color: #000000; height : 20px;}
@@ -441,7 +460,7 @@ div.tooltip h3 {
 .vendor_group3 {text-align: left;padding-left: 10px; white-space: pre-wrap}
 .vendor_oddd {background : #d7d7d7;height: 20px !important}
 
-.button_customer {width: 150px; margin:auto;}
+ .button_customer {width: 150px; margin:auto;}
 .button_vendor {width: 120px; margin:auto;}
 
 .button_delete{-webkit-border-radius:200px;-moz-border-radius:200px;border-radius:200px;display:inline-block;font-weight:bold;font-size:1.0em;font-family:Helvetica, Arial, sans-serif
@@ -477,10 +496,9 @@ div.tooltip h3 {
               background:linear,-90deg,#fff,#f1f1f1;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='ie-hex-str(#fff)', 
                 endColorstr='ie-hex-str(#f1f1f1)');-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='ie-hex-str(#fff)', 
                 endColorstr='ie-hex-str(#f1f1f1)');cursor:pointer;}
-.button_confirm a:link{text-decoration: none}
+.button_confirm a:link{text-decoration: none} 
 
-
-.warning {background: #ffcccc;margin:auto;}
+.warning { background: #ffcccc; width: 350px; display: block; text-align: center; margin: 0px auto 20px; padding: 5px; border-radius: 5px; }
 .notice {background: #befcc4;margin:auto; height: auto}
 .deletepage {width:300px; margin:auto;text-align: center}
 .oddd{background: #f0f0f0;}
@@ -490,9 +508,10 @@ div.tooltip h3 {
 .group-buttons {width:710px; margin: auto;}
 .group-buttons2 {width:424px; margin: auto; margin-top: 0px !important}
 .button-single {width:150px; margin: auto;padding-top: 5px}
-.home1 {width : 45px; margin: auto;padding-top: 10px}
+// .home1 {width : 45px; margin: auto; padding-top: 10px}
+.home1 { text-align: center; }
 .submit {width : 80px; margin-left: 300px}
-.homee { -webkit-border-radius:200px;-moz-border-radius:200px;border-radius:200px;display:inline-block;font-weight:bold;font-size:1.0em;font-family:Helvetica, Arial, sans-serif
+/* .homee { -webkit-border-radius:200px;-moz-border-radius:200px;border-radius:200px;display:inline-block;font-weight:bold;font-size:1.0em;font-family:Helvetica, Arial, sans-serif
               ;line-height:12px;margin-right:3px;padding:8px 10px 10px;text-decoration:none;
               -webkit-font-smoothing:antialiased;background:#fff;background:-webkit-linear-gradient(-90deg, #fff, #e7e7e7);
               background:-moz-linear-gradient(-90deg, #fff, #e7e7e7);
@@ -516,7 +535,7 @@ div.tooltip h3 {
                 endColorstr='ie-hex-str(#e7e7e7)');-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='ie-hex-str(#fff)', 
                 endColorstr='ie-hex-str(#e7e7e7)');box-shadow:0 1px 1px rgba(0,0,0,0.1),0 1px 0 0 rgba(255,255,255,0.8) inset;
                 border:solid 1px #c7c7c7;border-color:#c7c7c7;border-top-color:#d3d3d3;
-                border-right-color:#c7c7c7;border-bottom-color:#c2c2c2;border-left-color:#c7c7c7;text-shadow:#fff 0 1px 0;color:#5e6469}       
+                border-right-color:#c7c7c7;border-bottom-color:#c2c2c2;border-left-color:#c7c7c7;text-shadow:#fff 0 1px 0;color:#5e6469}      */  
 .row1 a:link{text-decoration: none;}
 /*black-button*/
 /*text-align: center;-webkit-border-radius:200px;-moz-border-radius:200px;border-radius:200px;
@@ -554,15 +573,16 @@ div.tooltip h3 {
 
 
 
-table td.vendor {text-align: center}
+/* table td.vendor {text-align: center}
 table tr.list {height : 100px;}
 table tr.header th.vendor{ width: 200px}
 table tr.header th.description { width: auto}
 table tr.header th.code { width: 200px}
 table tr.list td.description{  text-align: top;word-wrap: auto;}
-table tr.list td.code{  text-align: top;word-wrap: auto;text-align: center}
+table tr.list td.code{  text-align: top;word-wrap: auto;text-align: center} */
+
 .auth_providers {
-  height: 150px;
+  height: 50px;
   width: 540px;
   margin: 2px auto;
 }

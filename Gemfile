@@ -32,6 +32,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'simplecov'
   gem 'test-unit'
+  gem 'irbtools-more', require: 'irbtools/binding'
+  gem 'byebug'
+  gem 'meta_request'
 end
 
 group :production, :staging do
@@ -47,5 +50,6 @@ group :assets do
   gem 'jquery-ui-rails'
   gem 'sass-rails'
   gem 'twitter-bootstrap-rails'
+  gem 'inline_svg'
   gem 'uglifier', '>= 1.0.3'
 end

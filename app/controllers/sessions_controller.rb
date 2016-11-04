@@ -77,7 +77,7 @@ class SessionsController < ApplicationController
               @total = @total.round(2) 
             else
               @list_codes[vendor.name] = "Not Available"
-              flash.now[:alert] = 'Some Offers\' code are not available at this time, please come back later'
+              flash.now[:alert] = 'Some offers\' code are not available at this time, please come back later'
             end 
               @instruction[vendor.name] = vendor.instruction
               @help[vendor.name] = vendor.helpLink
@@ -88,7 +88,8 @@ class SessionsController < ApplicationController
             # debugger
           end
         else # the provider code is not match
-          redirect_to '/sessions/new', :flash => { :error => "wrong code!" }
+          flash.now[:error] = "Your code is either invalid or has been redeemed already.<br />Please enter a valid redeemify code.".html_safe
+          render :new
         end
 
       else
@@ -121,7 +122,7 @@ class SessionsController < ApplicationController
               @total = @total.round(2)
             else
               @list_codes[vendor.name] = "Not Available"
-              flash.now[:alert] = 'Some Offers\' code are not available at this time, please come back later'
+              flash.now[:alert] = 'Some offers\' code are not available at this time, please come back later'
             end 
             @instruction[vendor.name] = vendor.instruction
             @help[vendor.name] = vendor.helpLink
@@ -160,7 +161,7 @@ class SessionsController < ApplicationController
         end
       end
       session[:user_id] = nil
-      redirect_to root_url, :flash => { :notice => "Your account has been deleted" }
+      redirect_to root_url, :flash => { :notice => "Your account has been deleted." }
     end
   end
 

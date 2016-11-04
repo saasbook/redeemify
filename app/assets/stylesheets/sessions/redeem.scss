@@ -1,0 +1,11 @@
+.logout {
+  &:link { text-decoration: none; }
+  &:hover { text-decoration: none; color: rgb(255,64,129); }
+}
+
+#show-dialog {
+  display: block;
+  margin: 150px auto 0px;
+  width: 500px;
+}
+

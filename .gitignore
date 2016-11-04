@@ -5,3 +5,9 @@ public/assets
 db/*.sqlite3
 .idea/
 config/application.yml
+
+# Ruby version managers
+.ruby-version
+.rvmrc
+.ruby-gemset
+.tool-versions
