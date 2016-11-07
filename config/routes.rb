@@ -32,6 +32,8 @@ Auth::Application.routes.draw do
   match "/logout", to: "sessions#destroy", :as => "logout", via: [:get, :post]
   match "/logout", to: "vendors#destroy", :as => "logout2", via: [:get, :post]
   resources :sessions
+
+  get '/users/:user_id/redeemifycodes/:id'
   resources :users do
     resources :vendorcodes
     resources :provider
