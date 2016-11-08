@@ -2,6 +2,7 @@ Auth::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   root to: "sessions#new"
+
   get 'sessions/customer'
   get 'sessions/index'
   get 'sessions/show'
@@ -31,15 +32,15 @@ Auth::Application.routes.draw do
   match "/auth/failure", to: "sessions#failure", via: [:get, :post]
   match "/logout", to: "sessions#destroy", :as => "logout", via: [:get, :post]
   match "/logout", to: "vendors#destroy", :as => "logout2", via: [:get, :post]
+
   resources :sessions
 
-  get '/users/:user_id/redeemifycodes/:id'
+  #match "/users/:user_id/redeemify_codes/:code", to: "redeemify_codes#show", via: [:get]
   resources :users do
-    resources :vendorcodes
     resources :provider
+    resources :redeemify_codes, shallow: true
   end
 
-  
   resources :vendors do
     collection do
       post :import
@@ -49,7 +50,6 @@ Auth::Application.routes.draw do
     resources :vendorcodes
   end
 
-
   resources :providers do
     collection do
       post :import2
@@ -58,5 +58,6 @@ Auth::Application.routes.draw do
     end
     resources :redeemifycodes
   end
+
   ActiveAdmin.routes(self)
 end
