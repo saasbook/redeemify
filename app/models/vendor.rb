@@ -9,7 +9,6 @@ class Vendor < ActiveRecord::Base
 		self.uploadedCodes = 0
 		self.unclaimCodes = 0
 		self.removedCodes = 0
-		self.cashValue = "0.00"
 	end
 
 
