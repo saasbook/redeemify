@@ -7,8 +7,6 @@ class ProvidersController < ApplicationController
     if params[:file].nil?
       redirect_to '/providers/upload_page', :flash => { :error => "You have not upload a file" }
     else
-      current_provider=Provider.find(session[:provider_id])
-      
       Vendor.import(params[:file], current_provider,params[:comment], "provider")
       redirect_to '/providers/home', notice: "Codes imported"
     end
@@ -17,7 +15,7 @@ class ProvidersController < ApplicationController
 
 # ---------------
   def home
-    @provider = Provider.find(session[:provider_id])
+    @provider = Provider.find(session[:provider_id]) #can also replace this with current_provider, but must update as well in the views
     @redeemifyCodes= @provider.redeemifyCodes
 
     @histories_array=[]
@@ -34,13 +32,12 @@ class ProvidersController < ApplicationController
 
 
   def upload_page
-    @provider = Provider.find(session[:provider_id])
+    @provider = Provider.find(session[:provider_id]) #can also replace this with current_provider, but must update as well in the views
     @redeemifyCodes= @provider.redeemifyCodes.all
   end
 
 
   def remove_codes
-    current_provider=Provider.find(session[:provider_id])
     flag = current_provider.redeemifyCodes.where(:user_id => nil)
     if flag.count == 0
       redirect_to '/providers/home ', :flash => { :error => "There's No Unclaimed Codes" }
@@ -51,15 +48,14 @@ class ProvidersController < ApplicationController
   end
 
   def clear_history
-    current_provider=Provider.find(session[:provider_id])
     if current_provider.history.nil?
       redirect_to '/providers/home', :flash => { :error => "History is empty" }
-    else  
+    else
       current_provider.update_attribute(:history, nil)
       redirect_to '/providers/home', notice: "Cleared History"
     end
   end
- 
+
 
 
   def show
