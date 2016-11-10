@@ -35,6 +35,7 @@ group :development, :test do
   gem 'irbtools-more', require: 'irbtools/binding'
   gem 'byebug'
   gem 'meta_request'
+  gem 'shoulda-matchers'
 end
 
 group :development do
