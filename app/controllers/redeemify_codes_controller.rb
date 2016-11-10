@@ -3,7 +3,6 @@ class RedeemifyCodesController < ApplicationController
   before_action :set_code, only: [:show]
 
   def show
-    # TODO: CHECK THAT CODE IS OWNED BY THE USER: if redeemify_codes_params[:code]...
     render json: @code
   end
 
@@ -11,7 +10,8 @@ class RedeemifyCodesController < ApplicationController
 
   def set_code
     if current_user then
-     @code = VendorCode.find_by user_id: current_user
+      @code = VendorCode.find_by user_id: current_user
+
     end
   end
 

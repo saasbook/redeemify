@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 gem 'activeadmin', :git => 'https://github.com/activeadmin/activeadmin.git'
+gem 'active_model_serializers'
 gem 'devise'
 gem 'ffi', '1.9.6'
 gem 'figaro'
