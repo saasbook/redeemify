@@ -461,7 +461,6 @@ DEPENDENCIES
   irbtools-more
   jquery-rails
   jquery-ui-rails
-  less-rails
   meta_request
   omniauth
   omniauth-amazon
