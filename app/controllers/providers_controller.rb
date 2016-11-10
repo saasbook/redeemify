@@ -7,7 +7,7 @@ class ProvidersController < ApplicationController
     if params[:file].nil?
       redirect_to '/providers/upload_page', :flash => { :error => "You have not upload a file" }
     else
-      Vendor.import(params[:file], current_provider,params[:comment], "provider")
+      Vendor.import(params[:file], current_provider, params[:comment], "provider")
       redirect_to '/providers/home', notice: "Codes imported"
     end
   end
@@ -15,25 +15,21 @@ class ProvidersController < ApplicationController
 
 # ---------------
   def home
-    @provider = Provider.find(session[:provider_id]) #can also replace this with current_provider, but must update as well in the views
-    @redeemifyCodes= @provider.redeemifyCodes
-
+    @redeemifyCodes= current_provider.redeemifyCodes
     @histories_array=[]
 
-    if  @provider.history != nil
-      @histories_array = Vendor.homeSet(@provider.history)
+    if  current_provider.history != nil
+      @histories_array = Vendor.homeSet(current_provider.history)
     end
 
-    @hash = {"uploaded" => @provider.uploadedCodes,  "used" => @provider.usedCodes, "unclaim" => @provider.unclaimCodes, "removed" => @provider.removedCodes }
+    @hash = {"uploaded" => current_provider.uploadedCodes,  "used" => current_provider.usedCodes, "unclaim" => current_provider.unclaimCodes, "removed" => current_provider.removedCodes }
     gon.codes = @hash
-    gon.history = @provider.history
-
+    gon.history = current_provider.history
   end
 
 
   def upload_page
-    @provider = Provider.find(session[:provider_id]) #can also replace this with current_provider, but must update as well in the views
-    @redeemifyCodes= @provider.redeemifyCodes.all
+    @redeemifyCodes= current_provider.redeemifyCodes.all
   end
 
 
@@ -56,15 +52,11 @@ class ProvidersController < ApplicationController
     end
   end
 
-
-
   def show
   end
 
   def edit
   end
-
-
 
   def hello
   end
@@ -83,6 +75,5 @@ class ProvidersController < ApplicationController
 
   def logout
   end
-
 
 end
