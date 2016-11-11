@@ -33,15 +33,15 @@ $(document).ready(function(){
   <div class="redeemify-card-square mdl-card mdl-shadow--2dp">
     <div class="mdl-card__supporting-text">
       <h5><%= t 'customer.yourcode' %> <%= @current_code %></h5>
-      <h5><%= t 'customer.offervalue' %> $ <%= @total %></h5>
+      <h5><%= t 'customer.offervalue' %>$<%= @total %></h5>
     </div>
  </div>
 
 <% if flash[:alert] != nil %>
   <div class="warning">
-    <% flash.keys.each do |k| %> 
+    <% flash.keys.each do |k| %>
        <center><font color="black"><%= flash[k] %></font></center>
-    <% end %> 
+    <% end %>
   </div>
 <% end %>
 
@@ -79,7 +79,7 @@ $(document).ready(function(){
         </tr>
         <tr>
           <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.cashvalue' %></td>
-          <td>$ <%= @cashValue[vendor] %></td>
+          <td><%= @cashValue[vendor] %></td>
         </tr>
         <tr>
           <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.description' %></td>
@@ -106,7 +106,7 @@ $(document).ready(function(){
           <p>If you delete your account, all of your information will be removed from the app database.
              Moreover, you will no longer have access to your Redeemify and vendor offer's codes.</p>
           <h4>Are you sure?</h4>
-        </div> 
+        </div>
         <div class="mdl-dialog__actions">
           <button type="button" class="mdl-button close">No</button>
           <a href="/sessions/delete_account" class="mdl-button">Delete!</a>

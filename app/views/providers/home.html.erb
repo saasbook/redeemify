@@ -1,27 +1,27 @@
 
 
-<p class="account"><%= t 'provider.login' %><%= @provider.provider.upcase  %> | <%= t 'provider.name' %> <%= @provider.name %> | <%= link_to "Log out", logout_path, :id => "logout" %></p>
+<p class="account"><%= t 'provider.login' %><%= current_provider.provider.upcase  %> | <%= t 'provider.name' %> <%= current_provider.name %> | <%= link_to "Log out", logout_path, :id => "logout" %></p>
 <div id="welcome">
 
     <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %></h1>
   </div>
 <% if flash[:error] != nil %>
 <div class = "warning">
-    <% flash.keys.each do |k| %> 
+    <% flash.keys.each do |k| %>
        <center><font color="black"><%= flash[k] %></font></center>
-    <% end %> 
+    <% end %>
 </div>
 <br>
 <% end %>
 
-    
+
 
 
 <% if flash[:notice] != nil %>
 <div class = "notice">
-    <% flash.keys.each do |k| %> 
+    <% flash.keys.each do |k| %>
        <center><font color="black"><%= flash[k] %></font></center>
-    <% end %> 
+    <% end %>
 </div>
 <br>
 <% end %>
@@ -43,7 +43,7 @@
 	 <%= link_to "Upload New Codes", '/providers/upload_page', {:id => "upload" , :style => 'color:#000'} %>
 </div>
 <div class = "button_confirm">
- <form onclick="confirmation()" color = "#000" > Download And Remove Unclaimed Codes</form > 
+ <form onclick="confirmation()" color = "#000" > Download And Remove Unclaimed Codes</form >
 </div>
 
 <%= link_to "Download And Remove Unclaimed Codes", remove_codes_providers_path, {:id => "remove-unclaimed-codes" , :style => 'color:#000'} %>
@@ -54,7 +54,7 @@
 </div>
 
 <br>
-   
+
 <h4 class="history"><%= t 'provider.history' %></h4>
 
 <center><%= link_to "Clear History", '/providers/clear_history', {:id => "clear-history", :style => 'color:#000'} %></center>
@@ -74,9 +74,9 @@
       <td width = "50%"><%= t 'provider.col2' %></td>
       <td width = "25%"><%= t 'provider.col3' %></td>
     </tr>
-  
+
 <tbody>
-  
+
     <% @histories_array.each do |history| %>
       <tr class="<%= cycle('evenn', 'oddd') -%>">
         <td width = "20%"><%= history[0] %></td>
@@ -130,7 +130,7 @@
   function confirmation() {
     if (gon.codes["unclaim"] == 0) {
       alert("you have no unclaimed code to remove");
-    } 
+    }
     else {
       var answer = confirm("Do you want to remove " + gon.codes["unclaim"] + " unclaimed codes?")
       unclaim = gon.codes["unclaim"]
@@ -145,7 +145,7 @@
   function confirmation2() {
     if (gon.history == null) {
       alert("You have no history");
-    } 
+    }
     else {
       var answer = confirm("All the histories will be removed\n\n\t     Are you sure?")
       if (answer) {

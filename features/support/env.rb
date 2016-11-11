@@ -29,7 +29,7 @@ require 'cucumber/rails'
 #
 ActionController::Base.allow_rescue = false
 
-Capybara.default_host = 'example.org'
+Capybara.default_host = 'http://www.example.com'
 
 OmniAuth.config.test_mode = true
 OmniAuth.config.add_mock(:facebook, {
