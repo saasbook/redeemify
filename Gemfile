@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 gem 'activeadmin', :git => 'https://github.com/activeadmin/activeadmin.git'
+gem 'active_model_serializers'
 gem 'devise'
 gem 'ffi', '1.9.6'
 gem 'figaro'
@@ -17,7 +18,6 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter', :git => 'https://github.com/arunagw/omniauth-twitter'
 gem 'pg'
 gem 'rails', '4.2.7.1'
-gem 'rails3-generators'
 gem 'rails_12factor'
 gem 'rake'
 gem 'sass'
@@ -36,6 +36,7 @@ group :development, :test do
   gem 'byebug'
   gem 'meta_request'
   gem 'shoulda-matchers'
+  gem 'meta_request' #to enable RailsPanel plugin in Chrome
 end
 
 group :development do
