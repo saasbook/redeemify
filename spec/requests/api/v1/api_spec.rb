@@ -4,6 +4,8 @@ require 'spec_helper'
 RSpec.describe RedeemifyCodesController, type: :request do
   describe "GET /users/:user_id/redeemify_codes/:code" do
 
+    subject(:make_get_request) { get '/redeemify_codes/:id', format: :json, params: { id: @rcode.code } }
+
     before do
       @user   = FactoryGirl.create :user, name: 'Joe'
       @rcode  = FactoryGirl.create :redeemify_code, { code: '1234', user_id: @user.id }
@@ -13,12 +15,12 @@ RSpec.describe RedeemifyCodesController, type: :request do
     end
 
     it "returns success" do
-      get '/redeemify_codes/:id', format: :json, params: { id: @rcode.code }
+      make_get_request
       expect(response).to have_http_status(200)
     end
 
     it "returns the bundled codes" do
-      get '/redeemify_codes/:id', format: :json, params: { id: @rcode.code }
+      make_get_request
       body = JSON.parse(response.body)
       code_value = body['code'] #['data']['attributes']['code']
       expect(code_value) == 'asdf'
