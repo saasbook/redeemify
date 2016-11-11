@@ -9,9 +9,8 @@ class RedeemifyCodesController < ApplicationController
   private
 
   def set_code
-    if current_user then
+    if current_user
       @code = VendorCode.find_by user_id: current_user
-
     end
   end
 
