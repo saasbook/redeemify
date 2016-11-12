@@ -1,14 +1,11 @@
 require 'spec_helper'
 require 'rails_helper'
 
-
 describe SessionsController do
-
 
   before :each do
     request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:amazon]
   end
-
 
 
   describe "#new" do
@@ -18,10 +15,11 @@ describe SessionsController do
     end
   end
 
+
   describe "#show" do
     before do
       post :create, provider: :amazon
-      flash[:notice].should == "Signed in!"
+      expect(flash[:notice]).to eq("Signed in!")
     end
 
     it "renders the about template" do
@@ -38,7 +36,6 @@ describe SessionsController do
   end
 
 
-
   describe "#create" do
 
     it "should successfully create a user" do
@@ -47,18 +44,15 @@ describe SessionsController do
       }.to change{ User.count }.by(1)
     end
 
-
-
     it "should successfully create a session" do
-      session[:user_id].should be_nil
+      expect(session[:user_id]).to be_nil
       post :create, provider: :amazon
       get 'customer'
       # flash[:notice].should == "Signed in!"
       flash[:notice].include?("wrong")
-      session[:user_id].should_not be_nil
+      expect(session[:user_id]).not_to be_nil
 
       # session[:user_id].should ==
-
     end
 
     it "renders the about template" do
@@ -68,17 +62,17 @@ describe SessionsController do
 
     it "should redirect the user to the root url/new page" do
       post :create, provider: :amazon
-      flash[:notice].should == "Signed in!"
-      response.should redirect_to '/sessions/new'
+      expect(flash[:notice]).to eq("Signed in!")
+      expect(response).to redirect_to '/sessions/new'
     end
   end
+
 
   describe "#customer" do
     it "should redirect the user to the customer page" do
       v = Vendor.create! :name => "thai" , :uid => "54321", :provider => "amazon"
       v.history = "+++++April 3rd, 2015 23:51+++++Code Description+++++05/02/2015+++++2|||||"
       v.save!
-
 
       a = v.vendorCodes.create!(:code => "123", :vendor => v)
       a.save!
@@ -104,20 +98,17 @@ describe SessionsController do
     end
 
     it "should clear the session" do
-      session[:user_id].should_not be_nil
+      expect(session[:user_id]).not_to be_nil
       delete :destroy
-      flash[:notice].should == "Signed out!"
-      session[:user_id].should be_nil
+      expect(flash[:notice]).to eq("Signed out!")
+      expect(session[:user_id]).to be_nil
     end
 
     it "should redirect to the new page" do
       delete :destroy
-      flash[:notice].should == "Signed out!"
-      response.should redirect_to root_url
+      expect(flash[:notice]).to eq("Signed out!")
+      expect(response).to redirect_to root_url
     end
   end
-
-
-
 
 end
