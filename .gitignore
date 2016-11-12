@@ -10,6 +10,7 @@ config/application.yml
 
 # Ruby version managers
 .ruby-version
-.rvmrc
 .ruby-gemset
+.rvmrc
 .tool-versions
+

@@ -33,7 +33,7 @@ group :development, :test do
   gem 'test-unit'
   gem 'irbtools-more', require: 'irbtools/binding'
   gem 'byebug'
-  gem 'meta_request'
+  gem 'meta_request' #to enable RailsPanel plugin in Chrome
 end
 
 group :development do
