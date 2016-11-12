@@ -14,10 +14,19 @@ describe ProvidersController do
       v.save!
 
       session[:provider_id] = v.id
+
       expect(session[:provider_id]).not_to be_nil
 
       get 'upload_page'
       expect(response).to render_template :upload_page
+    end
+    
+    it "renders the home page with the provider name" do
+      google = FactoryGirl.create(:provider)
+      allow(controller).to receive(:current_provider).and_return(google)
+      get :home
+      expect(response).to render_template(:home)
+      expect(response.body).to match(/Google Oauth/)
     end
   end
 
