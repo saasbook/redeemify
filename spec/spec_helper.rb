@@ -7,7 +7,6 @@ SimpleCov.start 'rails'
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
-  require 'rspec/autorun'
  
   OmniAuth.config.test_mode = true
   omniauth_hash = { 'provider' => 'amazon',
