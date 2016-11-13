@@ -1,6 +1,7 @@
+require 'rails_helper'
 require 'spec_helper'
 
-describe Api::V1::UsersController do
+describe Api::V1::UsersController, type: :request do
   before(:each) { request.headers['Accept'] = "application/vnd.redeemify.v1" }
 
   describe "GET #show" do

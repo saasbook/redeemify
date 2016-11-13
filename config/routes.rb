@@ -1,7 +1,7 @@
 require 'api_constraints'
 
 Auth::Application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config, :users
+  devise_for :admin_users, ActiveAdmin::Devise.config
 
   root to: "sessions#new"
 
@@ -61,7 +61,8 @@ Auth::Application.routes.draw do
     resources :redeemifycodes
   end
 
-  # Api definition
+  ActiveAdmin.routes(self)
+
   namespace :api, defaults: { format: :json },
             constraints: { subdomain: 'api' }, path: '/'  do
     scope module: :v1,
@@ -70,5 +71,4 @@ Auth::Application.routes.draw do
     end
   end
 
-  ActiveAdmin.routes(self)
 end

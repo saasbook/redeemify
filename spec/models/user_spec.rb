@@ -4,8 +4,8 @@ RSpec.describe User, :type => :model do
   before { @user = FactoryGirl.build(:user) }
   it { should respond_to(:auth_token) }
   it { should validate_uniqueness_of(:auth_token) }
-  it { should validate_presence_of(:email) }
-  it { should validate_uniqueness_of(:email) }
+  #it { should validate_presence_of(:email) }
+  #it { should validate_uniqueness_of(:email) }
 
   subject { @user }
 
