@@ -6,7 +6,7 @@
 
 How it works:
 
-0. A user receives a "redemption code" (like a gift card code), perhaps
+0. A user receives a "redemption code" (AKA "Redeemify Code" like a gift card code), perhaps
 because they paid for it, or perhaps as a
 result of buying something.  
 
@@ -23,7 +23,7 @@ from different vendors, to be redeemed at their respective sites.
 For this discussion, we'll use the following specific use case:
 
 0. User buys a copy of "Engineering Software as a
-Service" on Amazon
+Service" on Amazon 
 
 0. User receives a redemption code via separate email
 from Amazon after purchase
@@ -49,7 +49,7 @@ list of valid redemption codes.  The idea is one code is handed out with
 each purchase, and that code enables a `User` to login to Redeemify with
 their choice of 3rd party auth.  Once a particular code has been
 associated with an identity on Redeemify, it can't be associated with
-another identity, i.e. a `ProviderCode` can only be redeemed once.
+another identity, i.e. a `RedeemifyCode` can only be redeemed once.
 
 * GitHub, CodeClimate, etc. are each a `Vendor`: an entity that provides
 some promotion that is part of a redemption bundle.  The promotion is
