@@ -145,6 +145,7 @@ Given /^a vendor "(.*?)" and user ID "(.*?)" registered with "(.*?)"$/ do |name,
   vendor.email = 'test@gmail.com'
   vendor.cashValue = '1'
   vendor.save
+  User.create!(:provider => 'facebook', :uid => '123456', :name => 'Joe', :code => '1234', :email => 'admin@example.com', :auth_token => 'asdfghjkl')
 end
 
 And /^I have already registered with "([^"]*)" and redeemify code "([^"]*)"$/ do |provider, code|
@@ -204,4 +205,20 @@ Given(/^I have updated the provider home$/) do
 end
 Then(/^I have updated the vendor home$/) do
   pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given /the client requests a list of codes/ do
+  r = RedeemifyCode.find_by_code('12345')
+  u = User.find_by_name('Joe')
+  get '/redeemify_codes/:id', format: :json, params: { id: r.code }
+end
+
+Then /the response is a list containing three codes/ do
+  #data = MultiJson.load(last_response.body)
+  body = JSON.parse(last_response.body)
+  c = 0
+  body['code'].each do |code|
+    c = c + 1
+  end
+  expect(data.count) == 3
 end
