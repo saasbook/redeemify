@@ -11,7 +11,7 @@ git pull upstream master
 
 Note that you should be re-syncing daily (even hourly at very active times) on your feature/bugfix branch to ensure that you are always building on top of very latest develop code.
 
-Every pull request should be for a corresponding GitHub issue/
+Every pull request should be for a corresponding GitHub issue or Pivotal Tracker story.
 
 Please ensure that each commit in your pull request makes a single coherent change and that the overall pull request only includes commits related to the specific GitHub issue that the pull request is addressing.  This helps the project managers understand the PRs and merge them more quickly.
 
@@ -30,8 +30,13 @@ In your pull request description please include a sensible description of your c
 This PR adds a CONTRIBUTING.md file and a docs directory
 fixes #799
 ```
+Or add a link to the Pivotal Tracker story
+```
+This PR is for story
+https://www.pivotaltracker.com/story/show/134506351
+```
 
-which will associate the pull request with the issue in github.
+which will associate the pull request with the issue in github or the story in Pivatol tracker.
 
 See also [more details on submitting pull requests](how_to_submit_a_pull_request_on_github.md).
 
