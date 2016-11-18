@@ -114,6 +114,10 @@ GEM
       gherkin (~> 4.0)
       multi_json (>= 1.7.5, < 2.0)
       multi_test (>= 0.1.2)
+    cucumber-api-steps (0.13)
+      cucumber (>= 1.2.1)
+      jsonpath (>= 0.1.2)
+      rspec (>= 2.12.0)
     cucumber-core (1.5.0)
       gherkin (~> 4.0)
     cucumber-rails (1.4.5)
@@ -239,6 +243,8 @@ GEM
       jsonapi-renderer (= 0.1.1.beta1)
     jsonapi-parser (0.1.1.beta3)
     jsonapi-renderer (0.1.1.beta1)
+    jsonpath (0.5.8)
+      multi_json
     jwt (1.5.6)
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
@@ -456,6 +462,7 @@ DEPENDENCIES
   byebug
   capybara
   coffee-rails (~> 4.0.0)
+  cucumber-api-steps
   cucumber-rails
   database_cleaner
   devise
