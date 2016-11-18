@@ -1,8 +1,8 @@
 Feature: Api GET
 
-  As an api-client
-  So that I get a list of vendor codes
-  I want to be able to login to my existing account with a third party authentication to see my codes
+  As an API client
+  So that I can display a vendor code in another location
+  I would like access to a vendor code
 
   Scenario: List codes
     Given a vendor "Github" and user ID "1" registered with "facebook"
