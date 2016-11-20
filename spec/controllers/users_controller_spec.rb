@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'spec_helper'
 
 RSpec.describe Api::V1::UsersController do
-  describe "GET /users/:id" do
+  describe "GET /api/users/:id" do
 
     subject(:make_get_request) { get :show, id: @user.id }
 
