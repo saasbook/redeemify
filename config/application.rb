@@ -25,7 +25,7 @@ end
 module Auth
   class Application < Rails::Application
     # Custom Rack middlewares
-    config.middleware.use "Proxy"
+    config.middleware.use "Proxy" if ["development", "test"].include? Rails.env
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
