@@ -33,19 +33,21 @@ ActionController::Base.allow_rescue = false
 Capybara.default_host = 'http://www.example.com'
 
 OmniAuth.config.test_mode = true
-OmniAuth.config.add_mock(:facebook, {
-  :uid => '12345',
-  :nickname => 'fooman',
-  :user_info => {
-    :first_name => 'Foo',
-    :last_name => 'Man'
-  }
-})
+
+#TODO: Remove following as soon as we're sure it's not needed.
+#OmniAuth.config.add_mock(:facebook, {
+#  :uid => '12345',
+#  :nickname => 'fooman',
+#  :user_info => {
+#    :first_name => 'Foo',
+#    :last_name => 'Man'
+#  }
+#})
 
 # Remove/comment out the lines below if your app doesn't have a database.
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
 begin
-  DatabaseCleaner.strategy = :transaction
+  DatabaseCleaner.strategy = :truncation
 rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end

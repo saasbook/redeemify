@@ -146,6 +146,13 @@ Given /^a vendor "(.*?)" and user ID "(.*?)" registered with "(.*?)"$/ do |name,
   vendor.email = 'test@gmail.com'
   vendor.cashValue = '1'
   vendor.save
+  user = User.new
+  user.name = 'Joe'
+  user.uid  = 'xyz123'
+  user.email = 'user@gmail.com'
+  user.provider = 'amazon'
+  user.save!
+  p user
 end
 
 And /^I have already registered with "([^"]*)" and redeemify code "([^"]*)"$/ do |provider, code|
@@ -205,10 +212,6 @@ Given(/^I have updated the provider home$/) do
 end
 Then(/^I have updated the vendor home$/) do
   pending # Write code here that turns the phrase above into concrete actions
-end
-
-Given /the client requests a list of codes/ do
-  get '/users/:id', { id: 1 }
 end
 
 Then /the response is a list containing three codes/ do
