@@ -11,7 +11,7 @@ git pull upstream master
 
 Note that you should be re-syncing daily (even hourly at very active times) on your feature/bugfix branch to ensure that you are always building on top of very latest develop code.
 
-Every pull request should be for a corresponding GitHub issue.
+Every pull request should be for a corresponding GitHub issue or Pivotal Tracker story.
 
 Please ensure that each commit in your pull request makes a single coherent change and that the overall pull request only includes commits related to the specific GitHub issue that the pull request is addressing.  This helps the project managers understand the PRs and merge them more quickly.
 
@@ -31,7 +31,7 @@ This PR adds a CONTRIBUTING.md file and a docs directory
 fixes #799
 ```
 
-which will associate the pull request with the issue in github.
+which will associate the pull request with the issue in GitHub or the story in Pivatol Tracker.
 
 See also [more details on submitting pull requests](https://github.com/AgileVentures/WebsiteOne/blob/develop/docs/how_to_submit_a_pull_request_on_github.md).
 
@@ -74,7 +74,7 @@ Developer Tips
     ```
     
     e. Run `rake db:reset`, `rake db:migrate`, restart the app, clear any application cookies in your browser, and try logging in to Reedemify http://localhost:3000 with Google+.
-    > To configure in cloud9 [follow these steps](http://pastebin.com/EkegaJBq).
+    > To configure in cloud9 [follow these steps](http://pastebin.com/bFwzGPUs).
 
 2. To use Amazon instead of Google, and a Vendor instead of Provider.
 Note that below is a Work-In-Progress as it's complicated to setup a new Amazon 'application' under your developer id.
