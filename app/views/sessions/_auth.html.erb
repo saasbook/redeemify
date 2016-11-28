@@ -1,0 +1,65 @@
+<main class="mdl-layout__content">
+  <div class="page-content">
+    
+    <div class="mdl-grid">
+      
+      <div class="mdl-cell mdl-cell--6-col left-column">
+        <h6 class="logininstruction">
+          <ul class='mdl-list'>
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content">Instruction 1</span>
+            </li>
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content">Instruction 2</span>
+            </li>
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content">Instruction 3</span>
+            </li>
+          </ul>
+        </h6>
+      </div>
+      
+      <div class="mdl-cell mdl-cell--6-col right-column">
+        <div class = "loginwith">
+          <h2>Sign-in:</h2>
+        </div>
+        <!-- <p class="loginwith"><strong>Please sign in through one of these services:</strong></p> -->
+        <div class="auth_providers">
+          <a id="github-auth" href="/auth/github" class="auth_provider">
+            <img src="assets/github_mark_64.png" alt="GitHub" class="github_login">
+          </a>
+          <a id="facebook-auth" href="/auth/facebook" class="auth_provider">
+            <img src="assets/fb.png" alt="Facebook" class="fb_login">
+          </a>
+          <a id="google-auth" href="/auth/google_oauth2" class="auth_provider">
+            <%= inline_svg 'google_light_normal' %>
+          </a>
+          <a id="amazon-auth" href="/auth/amazon" class="auth_provider">
+            <img src="assets/amazon_gold.png" alt="Login with Amazon" class="amazon_login">
+          </a>
+          <a id="twitter-auth" href="/auth/twitter" class="auth_provider">
+            <img src="assets/twitter.png" alt="Twitter" class="twitter_login">
+          </a>
+        </div><br/>
+        
+        <% if OmniAuth.config.test_mode == true  %>
+          <a id="developer-auth" href="/auth/developer"
+            class="mdl-button mdl-js-button mdl-js-ripple-effect
+              mdl-button--raised">
+            Developer
+          </a>
+        <% end %>
+      </div>
+    </div> <!-- end mdl-grid -->
+    <br>
+  </div> <!-- end page-content -->
+  
+  <% if flash[:notice].present? %>
+    <div class="flash_notice">
+      <% flash.keys.each do |key| %> 
+        <%= flash[key] %>
+      <% end %>
+    </div>
+  <% end %>
+
+</main>

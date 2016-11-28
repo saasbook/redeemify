@@ -13,10 +13,10 @@ Scenario: login successful after entering correct serial code
 	
 	Given I am on the user login page
     Then I am signed in with "facebook"
-    And I can see "Redeem Your Code"
+    And I can see "Redeem your code!"
 	When I fill in "code" with "9998"
 	And I press "submit" button
-	Then I can see "wrong code!"
+	Then I can see "Please enter a valid redeemify code"
 	When I fill in "code" with "12345"
 	And I press "submit" button
 	Then I should be on the offer page

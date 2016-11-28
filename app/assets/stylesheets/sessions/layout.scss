@@ -71,7 +71,10 @@ textarea:focus {
   margin-right: 150px;*/
 }
 
-.formcode {text-align: center; padding-top: 5px}
+.formcode {
+  text-align: center;
+  padding-top: 5px
+}
 
 /*#welcome {height: 10em ; width : 100%; padding-top: 5px;letter-spacing: 5px;
   background: #333742; color: #FFFFFF}
@@ -87,7 +90,7 @@ edit*/
   width: 200px;
 }
 */
-.redeemify_logo {
+#redeemify_logo {
   height: 50px;
   width: 50px;
   margin-right: 10px;
@@ -498,8 +501,28 @@ div.tooltip h3 {
                 endColorstr='ie-hex-str(#f1f1f1)');cursor:pointer;}
 .button_confirm a:link{text-decoration: none} 
 
-.warning { background: #ffcccc; width: 350px; display: block; text-align: center; margin: 0px auto 20px; padding: 5px; border-radius: 5px; }
-.notice {background: #befcc4;margin:auto; height: auto}
+.flash_error {
+  background: #ffcccc;
+  width: 350px;
+  display: block;
+  text-align: center;
+  margin: 0px auto 0px;
+  padding: 5px;
+  border-radius: 5px;
+  color: orangered;
+}
+
+.flash_notice {
+  text-align: center;
+  color: green;
+}
+
+.notice {
+  background: #befcc4;
+  margin:auto;
+  height: auto
+}
+
 .deletepage {width:300px; margin:auto;text-align: center}
 .oddd{background: #f0f0f0;}
 .evenn{background: #d7d7d7;} 
