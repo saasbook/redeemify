@@ -1,0 +1,165 @@
+<% if current_user %>
+  <div class="welcome mdl-layout mdl-js-layout">
+    <header class="mdl-layout__header">
+    <div class="mdl-layout-icon"></div>
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title"><%= image_tag "logo2.png", alt: "redeemify_logo", class: "redeemify_logo" %>Redeemify</span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <span class="account">
+            Login with: <%= current_user.provider.upcase  %> | Name: <%= current_user.name %> | <%= link_to "Logout", logout_path, :id => "logout", class: "logout" %>
+          </span>
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Redeemify</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="/">Home</a>
+        <a class="mdl-navigation__link" href="#">About</a>
+        <a class="mdl-navigation__link" href="/logout">Logout</a>
+      </nav>
+    </div>
+    <div class = "loginwith2">
+      <% if flash[:error] != nil %>
+        <div class="warning">
+          <% flash.keys.each do |k| %> 
+             <font color="black"><%= flash[k] %></font>
+          <% end %>
+        </div>
+      <% end %>
+      <button id="show-dialog" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">Redeem your code!</button>
+      <dialog class="mdl-dialog">
+        <h4 class="mdl-dialog__title"></h4>
+        <div class="mdl-dialog__content">
+          <% if @vendor_user %>
+            <div class="button-single">
+              <div class="row1">
+                <%= link_to "Login as a vendor", '/sessions/change_to_vendor', {:id => "vendor-login" , :style => 'color:#000'} %>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="formcode" id="code-form">
+            <%= form_tag("/sessions/customer", method: "get") do %>
+              <div class="field_text mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <div class="mdl-textfield__label">
+                <%= label_tag(:code, "Enter your code:") %>
+              </div>
+              <br>
+                <%= text_field_tag(:code, nil, class: "mdl-textfield__input") %>
+              </div>
+        </div> <!-- mdl-dialog__content -->
+              <br>
+              <div class="mdl-dialog__actions">
+                <%= submit_tag "Submit", :id => "submit", class: "redeem-submit-button mdl-button mdl-button--raised" %>
+                <button type="button" class="mdl-button close">Cancel</button>
+              </div>
+            <% end %>
+          </div> <!-- formcode -->
+      </dialog>
+
+    </div>
+  </div>
+
+<script>
+  var dialog = document.querySelector('dialog');
+  var showDialogButton = document.querySelector('#show-dialog');
+  if (! dialog.showModal) {
+    dialogPolyfill.registerDialog(dialog);
+  }
+  showDialogButton.addEventListener('click', function() {
+    dialog.showModal();
+  });
+  dialog.querySelector('.close').addEventListener('click', function() {
+    dialog.close();
+  });
+</script>
+
+<% else %>
+
+  <div class="welcome mdl-layout mdl-js-layout sign-home">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout-icon"></div>
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title"><img src="assets/logo2.png" alt="redeemify_logo" class="redeemify_logo">Redeemify</span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <a class="mdl-navigation__link" href="">Home</a>
+          <a class="mdl-navigation__link" href="">About</a>
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Redeemify</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="/">Home</a>
+        <a class="mdl-navigation__link" href="#">About</a>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+
+        <div class="mdl-grid">
+          
+          <div class="mdl-cell mdl-cell--6-col left-column">
+            <h6 class="logininstruction">
+              <ul class='mdl-list'>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">Instruction 1</span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">Instruction 2</span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">Instruction 3</span>
+                </li>
+              </ul>
+            </h6>
+          </div>
+
+          <div class="mdl-cell mdl-cell--6-col right-column">
+            <div class = "loginwith">
+              <h2>Sign-in:</h2>
+            </div>
+            <!-- <p class="loginwith"><strong>Please Sign in through one of these services:</strong></p> -->
+            <div class="auth_providers">
+              <a id="github-auth" href="/auth/github" class="auth_provider">
+              <img src="assets/github_mark_64.png" alt="Github" class="github_login">
+              </a>
+
+              <a id="facebook-auth" href="/auth/facebook" class="auth_provider">
+                <img src="assets/fb.png" alt="Facebook" class="fb_login">
+              </a>
+              
+              <a id="google-auth" href="/auth/google_oauth2" class="auth_provider">
+                <%= inline_svg 'google_light_normal' %>
+              </a>
+
+              <a id="amazon-auth" href="/auth/amazon" class="auth_provider">
+                <img src="assets/amazon_gold.png" alt="Login with Amazon" class="amazon_login">
+              </a>
+
+              <a id="twitter-auth" href="/auth/twitter" class="auth_provider">
+                <img src="assets/twitter.png" alt="Twitter" class="twitter_login">
+              </a>
+            </div>
+            <br>
+            <% if OmniAuth.config.test_mode == true  %>
+              <a id="developer-auth" href="/auth/developer" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">
+                Developer
+              </a>
+            <% end %>
+          </div>
+        </div> <!-- end mdl-grid -->
+        <br>
+      </div> <!-- end page-content -->
+      <% if flash[:notice] != nil %>
+        <% flash.keys.each do |k| %> 
+          <center><font color="green"><%= flash[k] %></font></center>
+        <% end %> 
+      <% end %>
+    </main>
+  </div>
+<% end %>
+
