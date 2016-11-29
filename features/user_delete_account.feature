@@ -14,7 +14,7 @@ Scenario: vendor change offer profile
     Given I am on the user login page
     And I have already registered with "facebook" and redeemify code "12345"
     Then I am signed in with "facebook"
-    When I press "delete-account" link
+    When I go to the delete page
     Then I press "delete-confirm" link
     Then my user should be deleted
  

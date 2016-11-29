@@ -212,3 +212,7 @@ When /^(?:|I )enter code "(.*)"$/ do |redeemify_code|
 	  And I press "submit" button
   }
 end
+
+When /^(?:|I )go to (.+)$/ do |page_name|
+  visit path_to(page_name)
+end

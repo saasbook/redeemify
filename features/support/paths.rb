@@ -22,6 +22,7 @@ module NavigationHelpers
     when /^the movies page$/ then '/movies'
     when /^the provider upload page$/ then '/providers/upload_page'
     when /^the admin login page$/ then '/admin/login'
+    when /^the delete page$/ then '/sessions/delete_page'
 
 
 
