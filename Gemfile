@@ -33,7 +33,10 @@ group :development, :test do
   gem 'test-unit'
   gem 'irbtools-more', require: 'irbtools/binding'
   gem 'byebug'
+
+  gem 'shoulda-matchers'
   gem 'meta_request' #to enable RailsPanel plugin in Chrome
+  gem 'ffaker'
 end
 
 group :development do
