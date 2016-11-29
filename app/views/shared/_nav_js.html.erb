@@ -1,0 +1,10 @@
+<div class="mdl-layout__drawer">
+  <span class="mdl-layout-title">Redeemify</span>
+  <nav class="mdl-navigation">
+    <a class="mdl-navigation__link" href="/">Home</a>
+    <a class="mdl-navigation__link" href="#">About</a>
+    <% if current_user %>
+      <a class="mdl-navigation__link" href="/logout">Logout</a>
+    <% end %>
+  </nav>
+</div>

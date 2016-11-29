@@ -1,0 +1,7 @@
+<% if flash[:error].present? %>
+  <div class="flash_error">
+    <% flash.keys.each do |key| %> 
+       <%= flash[key] %>
+    <% end %>
+  </div>
+<% end %>
