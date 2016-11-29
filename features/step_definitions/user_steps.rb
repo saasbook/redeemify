@@ -161,7 +161,7 @@ And /^I entered invalid credentials with "([^"]*)"$/ do |provider|
   click_link("#{provider.downcase}-auth")
 end
 
-Given /^(?:|I )can see "([^"]*)"$/ do |words|
+Given /^(?:|I )should see "([^"]*)"$/ do |words|
   if page.respond_to? :should
     page.should have_content(words)
   else
@@ -204,4 +204,11 @@ Given(/^I have updated the provider home$/) do
 end
 Then(/^I have updated the vendor home$/) do
   pending # Write code here that turns the phrase above into concrete actions
+end
+
+When /^(?:|I )enter code "(.*)"$/ do |redeemify_code|
+  steps %Q{
+	  When I fill in "code" with "#{redeemify_code}"
+	  And I press "submit" button
+  }
 end
