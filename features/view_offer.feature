@@ -23,5 +23,5 @@ Scenario:
     Given I am on the user login page
     And I have already registered with "facebook" and redeemify code "12345"
     Given I am signed in with "facebook"
-    Then I can see "Github"
-    And I can see "12345"
+    Then I should see "Github"
+    And I should see "12345"
