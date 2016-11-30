@@ -9,4 +9,4 @@ Feature: Register New Account
 
     Given I am on the user login page
     When I press "Developer" link
-    Then I can see "Redeem Your Code"
+    Then I should see "Redeem your code!"
