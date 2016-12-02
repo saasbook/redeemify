@@ -28,7 +28,8 @@ case Rails.env
    Provider.create!(name: "Google", provider: "google_oauth2", email: "matthew.r.lindsey@gmail.com")
    Provider.create!(name: "Google", provider: "google_oauth2", email: "kiko.pineda@gmail.com")
    Provider.create!(name: "Google", provider: "google_oauth2", email: "khlipun@gmail.com")
-
+   Provider.create!(name: "Google", provider: "google_oauth2", email: "uzzsen@gmail.com")
+   
    # Add myself as a "Amazon" Vendor to test Vendor code uploads
    # Note that you must also modify config/application.yml to contain the AMAZON_KEY and AMAZON_SECRET for your Amazon
    # account as in http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys
