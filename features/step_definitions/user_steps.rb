@@ -213,12 +213,3 @@ end
 Then(/^I have updated the vendor home$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
-
-Then /the response is a list containing three codes/ do
-  body = JSON.parse(last_response.body)
-  c = 0
-  body['code'].each do |code|
-    c = c + 1
-  end
-  expect(data.count) == 3
-end
