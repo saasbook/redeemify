@@ -8,26 +8,9 @@ $(document).ready(function(){
 </script>
 
 <div class="welcome mdl-layout mdl-js-layout">
-  <header class="mdl-layout__header">
-  <div class="mdl-layout-icon"></div>
-    <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title"><%= image_tag "logo2.png", alt: "redeemify_logo", class: "redeemify_logo" %>Redeemify</span>
-      <div class="mdl-layout-spacer"></div>
-      <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <span class="account">
-        <%= t 'customer.login' %> <%= current_user.provider.upcase  %> | <%= t 'customer.name' %> <%= current_user.name %> | <%= link_to "Logout", logout_path, :id => "logout", class: "logout" %>
-        </span>
-      </nav>
-    </div>
-  </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Redeemify</span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="/">Home</a>
-      <a class="mdl-navigation__link" href="#">About</a>
-      <a class="mdl-navigation__link" href="/logout">Logout</a>
-    </nav>
-  </div>
+  
+  <%= render :partial => 'shared/header' %>
+  <%= render :partial => 'shared/nav_js' %>
 
 <!-- Card -->
   <div class="redeemify-card-square mdl-card mdl-shadow--2dp">

@@ -18,9 +18,9 @@ Scenario:
 	And I fill in "comments" with "test comments"
 	Then show me the page
 	And I press "submit" button
-	Then I can see "Codes imported"
+	Then I should see "Codes imported"
 	Then I press "upload" link
 	And I attach a file with redeemify codes inside
 	And I fill in "comments" with "test comments"
 	And I press "submit" button
-	Then I can see "Codes imported"
+	Then I should see "Codes imported"

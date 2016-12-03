@@ -14,11 +14,11 @@ Scenario: successful login after entering valid credentials
 	Given I am on the user login page
 	And I have already registered with "facebook" and redeemify code "12345"
     Then I am signed in with "facebook"
-	Then I can see "Total Offer Value"
+	Then I should see "Total Offer Value"
 
 Scenario: unsuccessful login after entering invalid credentials, redirected back to home page
 
 	Given I am on the user login page
 	And I entered invalid credentials with "Facebook"
-	Then I can see "Login With"
+	Then I should see "Sign-in"
 

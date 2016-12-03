@@ -21,14 +21,14 @@ Scenario: vendor change offer profile
     Given I am on the user login page
     And I have already registered with "facebook" and redeemify code "12345"
     Then I am signed in with "facebook"
-    Then I can see "Github"
+    Then I should see "Github"
     Given I press "logout" link
 
     Then a vendor "Heroku" and user ID "3" registered with "facebook"
 
     Given I am on the user login page
     Then I am signed in with "facebook"
-    Then I can see "Heroku"
+    Then I should see "Heroku"
     Given I press "logout" link
 
     Then the following vendor codes exist:
@@ -37,4 +37,4 @@ Scenario: vendor change offer profile
 
     Given I am on the user login page
     Then I am signed in with "facebook"
-    Then I can see "Heroku"
+    Then I should see "Heroku"

@@ -21,6 +21,12 @@ gem 'rails_12factor'
 gem 'rake'
 gem 'sass'
 gem 'therubyracer'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'jquery-ui-rails'
+gem 'sass-rails'
+gem 'twitter-bootstrap-rails'
+gem 'inline_svg'
+gem 'uglifier', '>= 1.0.3'
 
 group :development, :test do
   gem 'capybara'
@@ -40,13 +46,4 @@ end
 
 group :development do
   gem 'eefgilm'
-end
-
-group :assets do
-  gem 'coffee-rails', '~> 4.0.0'
-  gem 'jquery-ui-rails'
-  gem 'sass-rails'
-  gem 'twitter-bootstrap-rails'
-  gem 'inline_svg'
-  gem 'uglifier', '>= 1.0.3'
 end
