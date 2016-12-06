@@ -39,31 +39,29 @@
 
 
 <div class = "group-buttons2">
-<div class = "row1">
-	 <%= link_to "Upload New Codes", '/providers/upload_page', {:id => "upload" , :style => 'color:#000'} %>
-</div>
-<div class = "button_confirm">
- <form onclick="confirmation()" color = "#000" > Download And Remove Unclaimed Codes</form >
+ <div class = "row1">
+  <%= link_to "Upload New Codes", '/providers/upload_page', {:id => "upload" , :style => 'color:#000'} %>
+ </div>
+
+ <form class = "row1" onclick="confirmation()" color = "#000">Download And Remove Unclaimed Codes</form>
+
+  <%= link_to "Download And Remove Unclaimed Codes", remove_codes_providers_path, {:id => "remove-unclaimed-codes" , :style => 'color:#000'} %>
+
+ <form class = "row1" onclick="confirmation()" color = "#000" >Download And Remove Unclaimed Codes</form>
 </div>
 
-<%= link_to "Download And Remove Unclaimed Codes", remove_codes_providers_path, {:id => "remove-unclaimed-codes" , :style => 'color:#000'} %>
-<div class = "button_confirm">
- <form onclick="confirmation()" color = "#000" > Download And Remove Unclaimed Codes</form >
-</div>
-
-</div>
 
 <br>
 
 <h4 class="history"><%= t 'provider.history' %></h4>
 
-<center><%= link_to "Clear History", '/providers/clear_history', {:id => "clear-history", :style => 'color:#000'} %></center>
+<center>
+ <%= link_to "Clear History", '/providers/clear_history', {:id => "clear-history", :style => 'color:#000'} %>
 
-<div class = "button_vendor">
+ <form class = "row1" onclick="confirmation2()" color = "#000">Clear History</form>
+</center>
 
-<form class = "button_confirm" onclick="confirmation2()">Clear History</form>
-
-</div>
+ 
 
 <div class = "vendor_table">
 
