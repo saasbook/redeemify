@@ -7,11 +7,7 @@ require 'rack-proxy'
 class Proxy < Rack::Proxy
    def perform_request(env)
      request = Rack::Request.new(env)
-     if request.path =~ %r{^/api}
-       #do nothing
-     else
-       @app.call(env)
-     end
+     unless request.path =~ %r{^/api} @app.call(env)
    end
 end
 
