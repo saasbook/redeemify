@@ -42,6 +42,10 @@ group :development, :test do
   gem 'meta_request' #to enable RailsPanel plugin in Chrome
 end
 
+group :test do
+  gem 'shoulda-matchers', '~> 3.1'
+end
+
 group :development do
   gem 'eefgilm'
 end
