@@ -40,6 +40,8 @@ group :development, :test do
   gem 'irbtools-more', require: 'irbtools/binding'
   gem 'byebug'
   gem 'meta_request' #to enable RailsPanel plugin in Chrome
+  gem 'cucumber-api-steps', :require => false
+  gem 'rack-proxy'
 end
 
 group :development do

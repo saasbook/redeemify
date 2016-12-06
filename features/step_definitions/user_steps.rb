@@ -1,5 +1,6 @@
 require 'uri'
 require 'cgi'
+
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
 #require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "omniauth"))
@@ -145,6 +146,13 @@ Given /^a vendor "(.*?)" and user ID "(.*?)" registered with "(.*?)"$/ do |name,
   vendor.email = 'test@gmail.com'
   vendor.cashValue = '1'
   vendor.save
+  user = User.new
+  user.name = 'Joe'
+  user.uid  = 'xyz123'
+  user.email = 'user@gmail.com'
+  user.provider = 'amazon'
+  user.save!
+  p user
 end
 
 And /^I have already registered with "([^"]*)" and redeemify code "([^"]*)"$/ do |provider, code|

@@ -1,10 +1,10 @@
 require 'rails_helper'
 require 'spec_helper'
 
-RSpec.describe RedeemifyCodesController, type: :request do
-  describe "GET /users/:user_id/redeemify_codes/:code" do
+RSpec.describe Api::V1::UsersController do
+  describe "GET /api/users/:id" do
 
-    subject(:make_get_request) { get '/redeemify_codes/:id', format: :json, params: { id: @rcode.code } }
+    subject(:make_get_request) { get :show, id: @user.id }
 
     before do
       @user   = FactoryGirl.create :user, name: 'Joe'
@@ -22,7 +22,7 @@ RSpec.describe RedeemifyCodesController, type: :request do
     it "returns the bundled codes" do
       make_get_request
       body = JSON.parse(response.body)
-      code_value = body['code'] #['data']['attributes']['code']
+      code_value = body['code']
       expect(code_value) == 'asdf'
     end
   end
