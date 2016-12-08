@@ -1,5 +1,6 @@
 require 'uri'
 require 'cgi'
+
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
 #require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "omniauth"))
@@ -39,11 +40,11 @@ Given /I am signed in as an admin/ do
   click_button("commit")
 end
 
-Given /the following provider codes exist/ do |provider_codes_table|
+Given /the following redeemify codes exist/ do |redeemify_codes_table|
   p = Provider.create!(:name => 'Amazon', :provider => 'facebook', :email => 'amazon@amazon.com')
   numberOfCodes = 0
-  provider_codes_table.hashes.each do |code|
-    p.providerCodes.create!(:code => code["code"], :name=> p.name, :provider => p)
+  redeemify_codes_table.hashes.each do |code|
+    p.redeemifyCodes.create!(:code => code["code"], :name=> p.name, :provider => p)
     numberOfCodes = numberOfCodes + 1
   end
   p.update_attribute(:uploadedCodes, p.uploadedCodes + numberOfCodes)
@@ -145,9 +146,16 @@ Given /^a vendor "(.*?)" and user ID "(.*?)" registered with "(.*?)"$/ do |name,
   vendor.email = 'test@gmail.com'
   vendor.cashValue = '1'
   vendor.save
+  user = User.new
+  user.name = 'Joe'
+  user.uid  = 'xyz123'
+  user.email = 'user@gmail.com'
+  user.provider = 'amazon'
+  user.save!
+  p user
 end
 
-And /^I have already registered with "([^"]*)" and provider code "([^"]*)"$/ do |provider, code|
+And /^I have already registered with "([^"]*)" and redeemify code "([^"]*)"$/ do |provider, code|
   set_omniauth()
   click_link("#{provider.downcase}-auth")
   fill_in("code", :with => code)
@@ -161,7 +169,7 @@ And /^I entered invalid credentials with "([^"]*)"$/ do |provider|
   click_link("#{provider.downcase}-auth")
 end
 
-Given /^(?:|I )can see "([^"]*)"$/ do |words|
+Given /^(?:|I )should see "([^"]*)"$/ do |words|
   if page.respond_to? :should
     page.should have_content(words)
   else
@@ -195,6 +203,24 @@ And /^I attach a file with vendor codes inside$/ do
   attach_file('file', File.join(Rails.root, 'features', 'upload-file', 'test.txt'))
 end
 
-And /^I attach a file with provider codes inside$/ do
+And /^I attach a file with redeemify codes inside$/ do
   attach_file('file', File.join(Rails.root, 'features', 'upload-file', 'test.txt'))
+end
+
+Given(/^I have updated the provider home$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+Then(/^I have updated the vendor home$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When /^(?:|I )enter code "(.*)"$/ do |redeemify_code|
+  steps %Q{
+	  When I fill in "code" with "#{redeemify_code}"
+	  And I press "submit" button
+  }
+end
+
+When /^(?:|I )go to (.+)$/ do |page_name|
+  visit path_to(page_name)
 end

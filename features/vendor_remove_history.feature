@@ -13,14 +13,13 @@ Scenario:
         
     Given I am on the user login page
     Then I am signed in as a vendor "Github" and user ID "12345" with "facebook"
-    And I have updated the vendor profile
     And I press "upload" link
     Then I should be on the vendor upload page
     And I attach a file with vendor codes inside
     And I press "submit" button
-    Then I can see "Codes imported"
+    Then I should see "Codes imported"
     When I press "clear-history" link
-    Then I can see "Cleared History"
+    Then I should see "Cleared History"
 
 Scenario:
     
@@ -28,9 +27,9 @@ Scenario:
     Then I am signed in as a provider "Amazon"
     And I press "upload" link
     Then I should be on the provider upload page
-    And I attach a file with provider codes inside
+    And I attach a file with redeemify codes inside
     And I fill in "comments" with "test comments"
     And I press "submit" button
-    Then I can see "Codes imported"
+    Then I should see "Codes imported"
     When I press "clear-history" link
-    Then I can see "Cleared History"
+    Then I should see "Cleared History"

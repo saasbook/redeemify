@@ -49,10 +49,10 @@ class SessionsController < ApplicationController
       @list_codes, @instruction, @description, @help, @expiration, @website, @cashValue, @total = {},{},{},{},{},{},{},0
 
       if current_user.code.nil? # provider code
-        providerCode = ProviderCode.where(:code => params[:code], :user_id => nil).first
-        if providerCode != nil # if provider code is match with enter code
+        redeemifyCode = RedeemifyCode.where(:code => params[:code], :user_id => nil).first
+        if redeemifyCode != nil # if provider code is match with enter code
           # 1st time
-          providerCode.update_attributes(:user_id => current_user.id, :user_name => current_user.name, :email => current_user.email)
+          redeemifyCode.update_attributes(:user_id => current_user.id, :user_name => current_user.name, :email => current_user.email)
           provider = Provider.all.first
           provider.update_attribute(:usedCodes, provider.usedCodes + 1)
           provider.update_attribute(:unclaimCodes, provider.unclaimCodes - 1)
@@ -77,7 +77,7 @@ class SessionsController < ApplicationController
               @total = @total.round(2) 
             else
               @list_codes[vendor.name] = "Not Available"
-              flash.now[:alert] = 'Some Offers\' code are not available at this time, please come back later'
+              flash.now[:alert] = 'Some offers\' code are not available at this time, please come back later'
             end 
               @instruction[vendor.name] = vendor.instruction
               @help[vendor.name] = vendor.helpLink
@@ -88,7 +88,8 @@ class SessionsController < ApplicationController
             # debugger
           end
         else # the provider code is not match
-          redirect_to '/sessions/new', :flash => { :error => "wrong code!" }
+          flash.now[:error] = "Your code is either invalid or has been redeemed already.<br />Please enter a valid redeemify code.".html_safe
+          render :new
         end
 
       else
@@ -121,7 +122,7 @@ class SessionsController < ApplicationController
               @total = @total.round(2)
             else
               @list_codes[vendor.name] = "Not Available"
-              flash.now[:alert] = 'Some Offers\' code are not available at this time, please come back later'
+              flash.now[:alert] = 'Some offers\' code are not available at this time, please come back later'
             end 
             @instruction[vendor.name] = vendor.instruction
             @help[vendor.name] = vendor.helpLink
@@ -148,8 +149,8 @@ class SessionsController < ApplicationController
     current_user = User.find(session[:user_id])
     if current_user != nil
       current_user.update_attributes(:name => "anonymous", :email => "anonymous", :provider => "anonymous")
-      providerCode = ProviderCode.where(:user_id => current_user.id).first
-      providerCode.update_attributes(:user_name =>"anonymous", :email => "anonymous")
+      redeemifyCode = RedeemifyCode.where(:user_id => current_user.id).first
+      redeemifyCode.update_attributes(:user_name =>"anonymous", :email => "anonymous")
       
       vendors = Vendor.all
       vendors.each do |vendor|
@@ -160,7 +161,7 @@ class SessionsController < ApplicationController
         end
       end
       session[:user_id] = nil
-      redirect_to root_url, :flash => { :notice => "Your account has been deleted" }
+      redirect_to root_url, :flash => { :notice => "Your account has been deleted." }
     end
   end
 

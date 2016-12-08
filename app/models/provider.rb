@@ -1,8 +1,7 @@
 class Provider < ActiveRecord::Base
-	has_many :providerCodes
-  	attr_accessible :email, :history, :name, :provider, :usedCodes, :uploadedCodes, :unclaimCodes, :removedCodes
+	has_many :redeemifyCodes
 
-  	before_create :defaultValue
+  before_create :defaultValue
 
 	def defaultValue
 		self.usedCodes = 0
@@ -11,5 +10,4 @@ class Provider < ActiveRecord::Base
 		self.removedCodes = 0
 	end
 
-  	
 end

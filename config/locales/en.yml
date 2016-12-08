@@ -7,9 +7,9 @@ en:
     login: "Logged via account: "
     name: "Name: "
     loginInstruction: "Instruction 1:\nInstruction 2:\nInstruction 3:\n"
-    yourcode: "Your Provider Code: "
+    yourcode: "Your Redeemify Code: "
     offervalue: "Total Offer Value: "
-    instruction: "Click on vendor's name to redeem your code!"
+    instruction: "Click on vendor's name to redeem your code:"
     showhide: "Show/Hide"
     vendorcode: "Code:"
     expirationdate: "Expiration Date:"
@@ -22,7 +22,7 @@ en:
   deletepage:
     attention: "Attention !!!"
     line1: "If you delete your account, all of your informations will be removed from the app database."
-    line2: "Moreover, you will no longer have access to your provider and vendor offer's codes"
+    line2: "Moreover, you will no longer have access to your Redeemify and vendor offer's codes"
     line3: "Are you sure?"
 
   vendor:

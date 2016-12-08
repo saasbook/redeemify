@@ -7,7 +7,7 @@ Feature: Vendor Login as User
 Background:
 	
 	Given a vendor "Github" and user ID "12345" registered with "facebook"
-    And the following provider codes exist:
+    And the following redeemify codes exist:
     | code  | provider | upload     | expiry_date | code_type |
     | 12345 | Amazon   | 01-01-2015 | 01-01-2016  | free_repo |
 
@@ -17,11 +17,11 @@ Scenario:
     Then I am on the user login page
     And I am signed in as a vendor "Github" and user ID "12345" with "facebook"
     And I have updated the vendor profile
-    Then I can see "Login as a user"
+    Then I should see "Login as a user"
     When I press "user-login" link
-    And I can see "Redeem Your Code"
+    And I should see "Redeem your code!"
     When I fill in "code" with "12345"
     And I press "submit" button
-    Then I can see "Total Offer Value"
+    Then I should see "Total Offer Value"
     And I press "vendor-login" link
-    Then I can see "Number of Codes Uploaded"
+    Then I should see "Number of Codes Uploaded"

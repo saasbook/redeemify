@@ -1,4 +1,4 @@
-<p class="account"><%= t 'provider.login' %><%= @provider.provider.upcase  %> | <%= t 'provider.name' %> <%= @provider.name %> | <%= link_to "Log out", logout_path, :id => "logout" %></p>
+<p class="account"><%= t 'provider.login' %><%= current_provider.provider.upcase  %> | <%= t 'provider.name' %> <%= current_provider.name %> | <%= link_to "Log out", logout_path, :id => "logout" %></p>
 <div id="welcome">
 
     <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %></h1>

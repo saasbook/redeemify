@@ -1,27 +1,27 @@
 
 
-<p class="account"><%= t 'provider.login' %><%= @provider.provider.upcase  %> | <%= t 'provider.name' %> <%= @provider.name %> | <%= link_to "Log out", logout_path, :id => "logout" %></p>
+<p class="account"><%= t 'provider.login' %><%= current_provider.provider.upcase  %> | <%= t 'provider.name' %> <%= current_provider.name %> | <%= link_to "Log out", logout_path, :id => "logout" %></p>
 <div id="welcome">
 
     <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %></h1>
   </div>
 <% if flash[:error] != nil %>
 <div class = "warning">
-    <% flash.keys.each do |k| %> 
+    <% flash.keys.each do |k| %>
        <center><font color="black"><%= flash[k] %></font></center>
-    <% end %> 
+    <% end %>
 </div>
 <br>
 <% end %>
 
-    
+
 
 
 <% if flash[:notice] != nil %>
 <div class = "notice">
-    <% flash.keys.each do |k| %> 
+    <% flash.keys.each do |k| %>
        <center><font color="black"><%= flash[k] %></font></center>
-    <% end %> 
+    <% end %>
 </div>
 <br>
 <% end %>
@@ -39,27 +39,29 @@
 
 
 <div class = "group-buttons2">
-<div class = "row1">
-	 <%= link_to "Upload New Codes", '/providers/upload_page', {:id => "upload" , :style => 'color:#000'} %>
-</div>
-<div class = "button_confirm">
- <form onclick="confirmation()" color = "#000" > Download And Remove Unclaimed Codes</form > 
+ <div class = "row1">
+  <%= link_to "Upload New Codes", '/providers/upload_page', {:id => "upload" , :style => 'color:#000'} %>
+ </div>
+
+ <form class = "row1" onclick="confirmation()" color = "#000">Download And Remove Unclaimed Codes</form>
+
+  <%= link_to "Download And Remove Unclaimed Codes", remove_codes_providers_path, {:id => "remove-unclaimed-codes" , :style => 'color:#000'} %>
+
+ <form class = "row1" onclick="confirmation()" color = "#000" >Download And Remove Unclaimed Codes</form>
 </div>
 
-</div>
 
 <br>
-   
+
 <h4 class="history"><%= t 'provider.history' %></h4>
 
- <!-- <center><%= link_to "Clear History", '/providers/clear_history', {:id => "clear-history", :style => 'color:#000'} %></center>  -->
+<center>
+ <%= link_to "Clear History", '/providers/clear_history', {:id => "clear-history", :style => 'color:#000'} %>
 
-<div class = "button_vendor">
+ <form class = "row1" onclick="confirmation2()" color = "#000">Clear History</form>
+</center>
 
-<form class = "button_confirm" onclick="confirmation2()">Clear History</form>
-
-</div>
-
+ 
 
 <div class = "vendor_table">
 
@@ -70,9 +72,9 @@
       <td width = "50%"><%= t 'provider.col2' %></td>
       <td width = "25%"><%= t 'provider.col3' %></td>
     </tr>
-  
+
 <tbody>
-  
+
     <% @histories_array.each do |history| %>
       <tr class="<%= cycle('evenn', 'oddd') -%>">
         <td width = "20%"><%= history[0] %></td>
@@ -126,12 +128,12 @@
   function confirmation() {
     if (gon.codes["unclaim"] == 0) {
       alert("you have no unclaimed code to remove");
-    } 
+    }
     else {
       var answer = confirm("Do you want to remove " + gon.codes["unclaim"] + " unclaimed codes?")
       unclaim = gon.codes["unclaim"]
       if (answer){
-        window.location = "/providers/remove_codes";
+        window.location = "<%= remove_codes_providers_path %>";
         alert(unclaim + " unclaimed codes have been removed");
         window.location = "/providers/home";
       }
@@ -141,7 +143,7 @@
   function confirmation2() {
     if (gon.history == null) {
       alert("You have no history");
-    } 
+    }
     else {
       var answer = confirm("All the histories will be removed\n\n\t     Are you sure?")
       if (answer) {

@@ -17,8 +17,8 @@ Scenario:
 	Then I should be on the vendor upload page
 	And I attach a file with vendor codes inside
 	And I press "submit" button
-	Then I can see "Codes imported"
+	Then I should see "Codes imported"
 	Then I press "upload" link
 	And I attach a file with vendor codes inside
 	And I press "submit" button
-	Then I can see "Codes imported"
+	Then I should see "Codes imported"

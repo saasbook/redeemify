@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :vendor_code do
     code "MyString"
-vendor "MyString"
+    user_id 1
   end
-
 end

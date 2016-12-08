@@ -1,7 +1,16 @@
 coverage/
-application.yml
-db/*.sqlite3
 tmp/
-coverage
-db/{development,test,production}.sqlite3
 log/
+public/assets
+db/*.sqlite3
+.idea/
+config/application.yml
+.rspec-local
+.byebug_history
+
+# Ruby version managers
+.ruby-version
+.ruby-gemset
+.rvmrc
+.tool-versions
+
