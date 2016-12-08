@@ -22,5 +22,6 @@ Scenario:
     Then I am signed in as a vendor "Github" and user ID "12345" with "facebook"
     Then the vendor "uploadedCodes" should be "4"
     Then the vendor "unclaimCodes" should be "4"
+    Then show me the page
     When I press "remove-unclaimed-codes" link
     Then the vendor "unclaimCodes" should be "0"
