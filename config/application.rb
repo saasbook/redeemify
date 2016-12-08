@@ -2,7 +2,6 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 require 'rack'
-require 'rack/proxy'
 
 class Proxy < Rack::Proxy
    def perform_request(env)
