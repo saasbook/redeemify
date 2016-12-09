@@ -18,6 +18,7 @@ gem 'omniauth-twitter', :git => 'https://github.com/arunagw/omniauth-twitter'
 gem 'pg'
 gem 'rails', '4.2.7.1'
 gem 'rails_12factor'
+gem 'rack-proxy'
 gem 'rake'
 gem 'sass'
 gem 'therubyracer'
@@ -41,7 +42,6 @@ group :development, :test do
   gem 'byebug'
   gem 'meta_request' #to enable RailsPanel plugin in Chrome
   gem 'cucumber-api-steps', :require => false
-  gem 'rack-proxy'
 end
 
 group :development do
