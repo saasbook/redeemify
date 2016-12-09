@@ -14,6 +14,10 @@ private
     @current_provider ||= Provider.find(session[:provider_id]) if session[:provider_id]
   end
 
+  def current_vendor
+    @vendor ||= Vendor.find(session[:vendor_id]) if session[:vendor_id]
+  end
+
   def new
   end
 end
