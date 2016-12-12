@@ -73,18 +73,18 @@ class SessionsController < ApplicationController
               vendor.update_attribute(:unclaimCodes, vendor.unclaimCodes - 1)
 
               @list_codes[vendor.name] = code.code
-              @total = @total + vendor.cashValue.gsub(/[^0-9\.]/,'').to_f
-              @total = @total.round(2) 
             else
               @list_codes[vendor.name] = "Not Available"
               flash.now[:alert] = 'Some offers\' code are not available at this time, please come back later'
             end 
-              @instruction[vendor.name] = vendor.instruction
-              @help[vendor.name] = vendor.helpLink
-              @expiration[vendor.name] = vendor.expiration
-              @website[vendor.name] = vendor.website
-              @cashValue[vendor.name] = vendor.cashValue
-              @description[vendor.name] = vendor.description
+            @instruction[vendor.name] = vendor.instruction
+            @help[vendor.name] = vendor.helpLink
+            @expiration[vendor.name] = vendor.expiration
+            @website[vendor.name] = vendor.website
+            @cashValue[vendor.name] = vendor.cashValue
+            @description[vendor.name] = vendor.description
+            @total = @total + vendor.cashValue.gsub(/[^0-9\.]/,'').to_f
+            @total = @total.round(2) 
             # debugger
           end
         else # the provider code is not match
@@ -99,6 +99,8 @@ class SessionsController < ApplicationController
 
         @vendors = Vendor.all
         @vendors.each do |vendor|
+          @total = @total + vendor.cashValue.gsub(/[^0-9\.]/,'').to_f
+          @total = @total.round(2)
           @vendorCodes = vendor.vendorCodes.where(:user_id => current_user.id).first
           if @vendorCodes != nil
             @list_codes[vendor.name] = @vendorCodes.code
@@ -108,8 +110,6 @@ class SessionsController < ApplicationController
             @website[vendor.name] = vendor.website
             @cashValue[vendor.name] = vendor.cashValue
             @description[vendor.name] = vendor.description
-            @total = @total + vendor.cashValue.gsub(/[^0-9\.]/,'').to_f
-            @total = @total.round(2)
           else
             code = vendor.vendorCodes.where(:user_id=>nil).first
             if code != nil
@@ -118,8 +118,6 @@ class SessionsController < ApplicationController
               vendor.update_attribute(:unclaimCodes, vendor.unclaimCodes - 1)
 
               @list_codes[vendor.name] = code.code
-              @total = @total + vendor.cashValue.gsub(/[^0-9\.]/,'').to_f
-              @total = @total.round(2)
             else
               @list_codes[vendor.name] = "Not Available"
               flash.now[:alert] = 'Some offers\' code are not available at this time, please come back later'
