@@ -21,7 +21,7 @@ Given /the following vendor codes exist/ do |vendor_codes_table|
   v = 0
   vendor_codes_table.hashes.each do |code|
     v = Vendor.find_by_name(code['vendor'])
-    v.vendorCodes.create!(:code => code["code"], :name => v.name, :vendor => v)
+    v.vendorCodes.create!(:code => code["code"], :name => v.name, :vendor => v, :user_id => code["user_id"])
     numberOfCodes = numberOfCodes + 1
   end
   if v != 0
@@ -137,14 +137,14 @@ Given /^I am signed in as a vendor "([^"]*)" and user ID "([^"]*)" with "([^"]*)
   click_link("#{provider.downcase}-auth")
 end
 
-Given /^a vendor "(.*?)" and user ID "(.*?)" registered with "(.*?)"$/ do |name, uid, provider|
+Given /^a vendor "(.*?)" and user ID "(.*?)" (?:with cash value "(.*?)" )?registered with "(.*?)"$/ do |name, uid, cashValue, provider|
   #@vendor1 = create(:vendor, :name => name, :uid => uid, :provider => provider)
   vendor = Vendor.new
   vendor.name = name
   vendor.uid = uid
   vendor.provider = provider
   vendor.email = 'test@gmail.com'
-  vendor.cashValue = '1'
+  vendor.cashValue = cashValue == nil ? 1 : cashValue
   vendor.save
   user = User.new
   user.name = 'Joe'
