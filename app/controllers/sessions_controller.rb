@@ -53,7 +53,7 @@ class SessionsController < ApplicationController
         if redeemifyCode != nil # if provider code is match with enter code
           # 1st time
           redeemifyCode.update_attributes(:user_id => current_user.id, :user_name => current_user.name, :email => current_user.email)
-          provider = Provider.all.first
+          provider = redeemifyCode.provider #Provider.all.first
           provider.update_attribute(:usedCodes, provider.usedCodes + 1)
           provider.update_attribute(:unclaimCodes, provider.unclaimCodes - 1)
 
