@@ -141,5 +141,13 @@ RSpec.configure do |config|
       example.run
     end
   end
+  
+  config.include Request::JsonHelpers, :type => :controller
+  config.include Request::HeadersHelpers, :type => :controller
+  
+  config.before(:each, type: :controller) do
+    include_default_accept_headers
+  end
+
 
 end

@@ -1,5 +1,8 @@
 FactoryGirl.define do
   factory :user do
-    name "MyString"
+    provider "google_oauth2"
+    uid "12345"
+    name "user"
+    email "user@domain.com"
   end
 end

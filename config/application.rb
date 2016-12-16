@@ -5,10 +5,10 @@ require 'rack'
 require 'rack-proxy'
 
 class Proxy < Rack::Proxy
-   def perform_request(env)
-     request = Rack::Request.new(env)
-     @app.call(env) unless request.path =~ %r{^/api}
-   end
+  def perform_request(env)
+    request = Rack::Request.new(env)
+    @app.call(env) unless request.path =~ %r{^api}
+  end
 end
 
 if defined?(Bundler)
@@ -22,6 +22,7 @@ module Auth
   class Application < Rails::Application
     # Custom Rack middlewares
     config.middleware.use "Proxy" if ["development", "test"].include? Rails.env
+    # config.middleware.use "Proxy", {ssl_verify_none: true}
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

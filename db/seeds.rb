@@ -27,7 +27,7 @@ case Rails.env
    # Google+ account as described at https://developers.google.com/+/web/api/rest/oauth
    Provider.create!(name: "Google", provider: "google_oauth2", email: "matthew.r.lindsey@gmail.com")
    Provider.create!(name: "Google", provider: "google_oauth2", email: "kiko.pineda@gmail.com")
-   Provider.create!(name: "Google", provider: "google_oauth2", email: "khlipun@gmail.com")
+   # Provider.create!(name: "Google", provider: "google_oauth2", email: "khlipun@gmail.com")
    Provider.create!(name: "Google", provider: "google_oauth2", email: "uzzsen@gmail.com")
    
    # Add myself as a "Amazon" Vendor to test Vendor code uploads

@@ -1,0 +1,23 @@
+ Gemfile                                                                    |  2 ++
+ Gemfile.lock                                                               | 10 ++++++++++
+ app/controllers/api/v1/users_controller.rb                                 | 29 +++++++++++++++++++++++++++++
+ app/views/providers/home.html.erb                                          | 28 +++++++++++++---------------
+ config/application.rb                                                      | 12 ++++++++++++
+ config/routes.rb                                                           | 11 +++++++++++
+ db/seeds.rb                                                                |  3 ++-
+ features/api_get.feature                                                   | 20 ++++++++++++++++++++
+ features/step_definitions/user_steps.rb                                    |  8 ++++++++
+ features/support/env.rb                                                    | 21 ++++++++++++---------
+ lib/api_constraints.rb                                                     | 10 ++++++++++
+ lib/spec/api_constraints_spec.rb                                           | 20 ++++++++++++++++++++
+ spec/{requests/api/v1/api_spec.rb => controllers/users_controller_spec.rb} | 10 +++++-----
+ 13 files changed, 154 insertions(+), 30 deletions(-)
+ create mode 100644 app/controllers/api/v1/users_controller.rb
+ create mode 100644 features/api_get.feature
+ create mode 100644 lib/api_constraints.rb
+ create mode 100644 lib/spec/api_constraints_spec.rb
+ rename spec/{requests/api/v1/api_spec.rb => controllers/users_controller_spec.rb} (69%)
+ 
+ Tasks:
+ Make refactoring of app/views/providers/home.html.erb
+ 
