@@ -43,94 +43,41 @@ class SessionsController < ApplicationController
 
 
   def customer
-    if session[:user_id] != nil
-      current_user = User.find(session[:user_id])
-      # debugger
+    if session[:user_id]
       @list_codes, @instruction, @description, @help, @expiration, @website, @cashValue, @total = {},{},{},{},{},{},{},0
 
-      if current_user.code.nil? # provider code
-        redeemifyCode = RedeemifyCode.where(:code => params[:code], :user_id => nil).first
-        if redeemifyCode != nil # if provider code is match with enter code
-          # 1st time
-          redeemifyCode.update_attributes(:user_id => current_user.id, :user_name => current_user.name, :email => current_user.email)
-          provider = redeemifyCode.provider #Provider.all.first
-          provider.update_attribute(:usedCodes, provider.usedCodes + 1)
-          provider.update_attribute(:unclaimCodes, provider.unclaimCodes - 1)
-
-
-          @current_code = params[:code]
-
-          current_user.code = @current_code
-          current_user.save!  
-
-          @vendors = Vendor.all
-
-          @vendors.each do |vendor|
-            code = vendor.vendorCodes.where(:user_id=>nil).first
-            if code != nil
-              code.update_attributes(:user_id => current_user.id, :user_name => current_user.name, :email => current_user.email)
-              vendor.update_attribute(:usedCodes, vendor.usedCodes + 1)
-              vendor.update_attribute(:unclaimCodes, vendor.unclaimCodes - 1)
-
-              @list_codes[vendor.name] = code.code
-            else
-              @list_codes[vendor.name] = "Not Available"
-              flash.now[:alert] = 'Some offers\' code are not available at this time, please come back later'
-            end 
-            @instruction[vendor.name] = vendor.instruction
-            @help[vendor.name] = vendor.helpLink
-            @expiration[vendor.name] = vendor.expiration
-            @website[vendor.name] = vendor.website
-            @cashValue[vendor.name] = vendor.cashValue
-            @description[vendor.name] = vendor.description
-            @total = @total + vendor.cashValue.gsub(/[^0-9\.]/,'').to_f
-            @total = @total.round(2) 
-            # debugger
-          end
-        else # the provider code is not match
+      if current_user.code.nil?
+        redeemifyCode = RedeemifyCode.serve_for params[:code] #look up newcomer's provider token
+        if redeemifyCode.nil? #sad path: no match for submitted token
           flash.now[:error] = "Your code is either invalid or has been redeemed already.<br />Please enter a valid redeemify code.".html_safe
           render :new
+        else #happy path: redeem the token
+          redeemifyCode.assign_to current_user
+          current_user.code = params[:code]
+          current_user.save!
         end
-
-      else
-        #2nd time
+      end
+        #setting up vendor codes for current user
         @current_code = current_user.code
-        @vendorCodes = VendorCode.where(:user_id => current_user.id)
-
-        @vendors = Vendor.all
-        @vendors.each do |vendor|
-          @total = @total + vendor.cashValue.gsub(/[^0-9\.]/,'').to_f
+        Vendor.all.each do |vendor|
+          vendorCodes = vendor.vendorCodes
+          code = vendorCodes.where(user: current_user).first || vendorCodes.where(user: [0,nil]).first
+          if code.nil?
+            @list_codes[vendor.name] = "Not Available"
+            flash.now[:alert] = 'Some offers\' code are not available at this time, please come back later'
+          elsif code.user_id.nil? && vendorCodes.find_by(user: current_user).nil?
+            code.assign_to current_user
+          end  
+          @list_codes[vendor.name] ||= code.code
+          @instruction[vendor.name] ||= vendor.instruction
+          @help[vendor.name] ||= vendor.helpLink
+          @expiration[vendor.name] ||= vendor.expiration
+          @website[vendor.name] ||= vendor.website
+          @cashValue[vendor.name] ||= vendor.cashValue
+          @description[vendor.name] ||= vendor.description
+          @total += vendor.cashValue.gsub(/[^0-9\.]/,'').to_f
           @total = @total.round(2)
-          @vendorCodes = vendor.vendorCodes.where(:user_id => current_user.id).first
-          if @vendorCodes != nil
-            @list_codes[vendor.name] = @vendorCodes.code
-            @instruction[vendor.name] = vendor.instruction
-            @help[vendor.name] = vendor.helpLink
-            @expiration[vendor.name] = vendor.expiration
-            @website[vendor.name] = vendor.website
-            @cashValue[vendor.name] = vendor.cashValue
-            @description[vendor.name] = vendor.description
-          else
-            code = vendor.vendorCodes.where(:user_id=>nil).first
-            if code != nil
-              code.update_attributes(:user_id => current_user.id, :user_name => current_user.name, :email => current_user.email)
-              vendor.update_attribute(:usedCodes, vendor.usedCodes + 1)
-              vendor.update_attribute(:unclaimCodes, vendor.unclaimCodes - 1)
-
-              @list_codes[vendor.name] = code.code
-            else
-              @list_codes[vendor.name] = "Not Available"
-              flash.now[:alert] = 'Some offers\' code are not available at this time, please come back later'
-            end 
-            @instruction[vendor.name] = vendor.instruction
-            @help[vendor.name] = vendor.helpLink
-            @expiration[vendor.name] = vendor.expiration
-            @website[vendor.name] = vendor.website
-            @cashValue[vendor.name] = vendor.cashValue
-            @description[vendor.name] = vendor.description
-          end
         end
-      end  #else
     end
     if session[:vendor_id] != nil
       @vendor_user = session[:vendor_id]
