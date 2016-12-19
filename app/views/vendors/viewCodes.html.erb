@@ -1,4 +1,4 @@
-<p>Account from: <%= @vendor.provider.upcase  %> | <%= @vendor.name %> | <%= link_to "Logout", logout_path, :id => "logout" %></p>
+<p>Account from: <%= current_vendor.provider.upcase  %> | <%= current_vendor.name %> | <%= link_to "Logout", logout_path, :id => "logout" %></p>
 <div id="welcome">
 
     <h1> <%= image_tag('logo.png', :size => '100x100', :class => 'logo' ) %> REDEEMIFY</h1>
@@ -8,7 +8,7 @@
   </div>
   <div class = "upload_group">
   <div class = "upload_vendor">
-<p class="vendor_name"><%= @vendor.name %></p>
+<p class="vendor_name"><%= current_vendor.name %></p>
 </div>
 </div>
 <p class="backtohome"><%= link_to image_tag("home.jpg",size:"30x30"), '/vendors/home' %></p>

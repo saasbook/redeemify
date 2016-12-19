@@ -2,7 +2,7 @@
 
 
 
-<p class="account"><%= t 'vendor.login' %><%= @vendor.provider.upcase  %> | <%= t 'vendor.name' %> <%= @vendor.name %> | <%= link_to "Logout", logout_path, :id => "logout" %></p>
+<p class="account"><%= t 'vendor.login' %><%= current_vendor.provider.upcase  %> | <%= t 'vendor.name' %> <%= current_vendor.name %> | <%= link_to "Logout", logout_path, :id => "logout" %></p>
 <div id="welcome">
 
     <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %></h1>
@@ -24,24 +24,24 @@
 
 
     <h3 class="upload_text" ><%= t 'editprofile.cashvalue' %><span id='question'>?</span></h3> 
-    <textarea name="cashValue" id="cashValue" cols="8" rows="2"  ><%= @vendor.cashValue %></textarea>
+    <textarea name="cashValue" id="cashValue" cols="8" rows="2"  ><%= current_vendor.cashValue %></textarea>
 
     <h3 class="upload_text"><%= t 'editprofile.expiration' %><span id='question2'>?</span> </h3> 
-    <% if @vendor.expiration == nil %>
+    <% if current_vendor.expiration == nil %>
     <input type="text" name="expiration" id="expiration"  cols="1" rows="1" placeholder = "mm/dd/yyyy"></input>
     <% else %>
-    <input type="text" name="expiration" id="expiration"  cols="1" rows="1" value =<%= @vendor.expiration %>></input>
+    <input type="text" name="expiration" id="expiration"  cols="1" rows="1" value =<%= current_vendor.expiration %>></input>
     <% end %>
 
     <h3 class="upload_text"><%= t 'editprofile.help' %><span id='question3'>?</span></h3> 
-    <textarea name="helpLink" id = "helpLink" cols="50" rows="2"  ><%= @vendor.helpLink %></textarea>
+    <textarea name="helpLink" id = "helpLink" cols="50" rows="2"  ><%= current_vendor.helpLink %></textarea>
 
 
     <h3 class="upload_text"><%= t 'editprofile.description' %><span id='question4'>?</span></h3> 
-    <textarea name="description" id = "description" cols="50" rows="4"  ><%= @vendor.description %></textarea>
+    <textarea name="description" id = "description" cols="50" rows="4"  ><%= current_vendor.description %></textarea>
 
     <h3 class="upload_text"><%= t 'editprofile.instruction' %><span id='question5'>?</span></h3> 
-    <textarea name="instruction" id="instruction" cols="50" rows="4" ><%= @vendor.instruction %></textarea>
+    <textarea name="instruction" id="instruction" cols="50" rows="4" ><%= current_vendor.instruction %></textarea>
 
     <br>
     <br>
