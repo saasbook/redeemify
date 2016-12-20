@@ -6,12 +6,17 @@ class RedeemifyCode < ActiveRecord::Base
 
   validates_presence_of :code
   
-  def self.serve_for(code)
-    RedeemifyCode.where(:code => code, :user => nil).first
+  def self.serve(myUser, myCode)
+    rCode = self.where(code: myCode, user: nil).first #look up newcomer's provider token
+    if rCode #happy path: redeem the token
+      rCode.assign_to myUser
+      myUser.code = myCode
+      myUser.save!
+    end
   end
   
-  def assign_to(current_user)
-    self.update_attributes(:user_id => current_user.id, :user_name => current_user.name, :email => current_user.email)
+  def assign_to(myUser)
+    self.update_attributes(:user_id => myUser.id, :user_name => myUser.name, :email => myUser.email)
     provider = self.provider
     #debugger
     provider.update_attribute(:usedCodes, provider.usedCodes + 1)
