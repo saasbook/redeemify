@@ -47,28 +47,20 @@ class SessionsController < ApplicationController
       @list_codes, @instruction, @description, @help, @expiration, @website, @cashValue, @total = {},{},{},{},{},{},{},0
 
       if current_user.code.nil?
-        redeemifyCode = RedeemifyCode.serve_for params[:code] #look up newcomer's provider token
-        if redeemifyCode.nil? #sad path: no match for submitted token
+        unless RedeemifyCode.serve current_user, params[:code] 
+        #sad path: no match for submitted token
           flash.now[:error] = "Your code is either invalid or has been redeemed already.<br />Please enter a valid redeemify code.".html_safe
           render :new
-        else #happy path: redeem the token
-          redeemifyCode.assign_to current_user
-          current_user.code = params[:code]
-          current_user.save!
-        end
+        end  
       end
         #setting up vendor codes for current user
         @current_code = current_user.code
-        Vendor.all.each do |vendor|
-          vendorCodes = vendor.vendorCodes
-          code = vendorCodes.where(user: current_user).first || vendorCodes.where(user: [0,nil]).first
-          if code.nil?
-            @list_codes[vendor.name] = "Not Available"
-            flash.now[:alert] = 'Some offers\' code are not available at this time, please come back later'
-          elsif code.user_id.nil? && vendorCodes.find_by(user: current_user).nil?
-            code.assign_to current_user
-          end  
-          @list_codes[vendor.name] ||= code.code
+        vendors = Vendor.all
+        vendors.each do |vendor|
+          code = vendor.serve_code current_user
+          flash.now[:alert] = 'Some offers\' code are not available at this time, please come back later' unless code
+          
+          @list_codes[vendor.name] ||= code ? code.code : "Not Available"
           @instruction[vendor.name] ||= vendor.instruction
           @help[vendor.name] ||= vendor.helpLink
           @expiration[vendor.name] ||= vendor.expiration
@@ -91,7 +83,7 @@ class SessionsController < ApplicationController
   end
 
   def delete_account
-    current_user = User.find(session[:user_id])
+#    current_user = User.find(session[:user_id])
     if current_user != nil
       current_user.update_attributes(:name => "anonymous", :email => "anonymous", :provider => "anonymous")
       redeemifyCode = RedeemifyCode.where(:user_id => current_user.id).first

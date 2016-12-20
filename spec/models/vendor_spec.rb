@@ -12,5 +12,33 @@ RSpec.describe Vendor, :type => :model do
     vendor = FactoryGirl.create(:vendor)
     expect(vendor.cashValue).to eq("$10")
   end
+  
+  describe '#serve_code' do
+    before :all do
+      @vendor = FactoryGirl.create :vendor
+      @vendor.vendorCodes.create code: "MyCode"
+      (1..3).each do |i| 
+        @vendor.vendorCodes.create code: "000" + i.to_s, user: FactoryGirl.create(:user)
+      end  
+      @myUser = FactoryGirl.create :user
+    end  
+    
+    it "serves vendor code for new user" do
+      expect(@vendor.serve_code @myUser).to be_truthy
+      expect((@vendor.serve_code @myUser).code).to match(/MyCode/)
+    end
+    
+    it "serves vendor code for returning user" do
+      @vendor.serve_code @myUser
+      expect((@vendor.serve_code @myUser).code).to match(/MyCode/)
+    end
+    
+    it "returns nil when codes for a given vendor have already been served" do
+      newUser = FactoryGirl.create :user, name: "Joe"
+      @vendor.serve_code @myUser
+      expect(@vendor.serve_code newUser).to be_falsy
+    end  
+  end
+  
 
 end
