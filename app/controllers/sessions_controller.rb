@@ -50,7 +50,7 @@ class SessionsController < ApplicationController
         unless RedeemifyCode.serve current_user, params[:code] 
         #sad path: no match for submitted token
           flash.now[:error] = "Your code is either invalid or has been redeemed already.<br />Please enter a valid redeemify code.".html_safe
-          render :new
+          render :new ; return
         end  
       end
         #setting up vendor codes for current user
