@@ -35,4 +35,5 @@ case Rails.env
    # account as in http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys
    Vendor.create!(name: "Amazon", provider: "amazon_oath2", email: "matthew.r.lindsey@gmail.com",  description: "AWS Testing",
                   website: "matthewrlindsey.org", helpLink: "matthewrlindsey.org/help", cashValue: "$8")
+   Vendor.create!(name: "Alexander", provider: "google_oauth2", email: "khlipun@gmail.com")
 end
