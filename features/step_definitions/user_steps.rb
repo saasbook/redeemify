@@ -41,14 +41,24 @@ Given /I am signed in as an admin/ do
 end
 
 Given /the following redeemify codes exist/ do |redeemify_codes_table|
-  p = Provider.create!(:name => 'Amazon', :provider => 'facebook', :email => 'amazon@amazon.com')
-  numberOfCodes = 0
+  p2 = Provider.create!(:name => 'Github', :provider => 'google', :email => 'github@github.com')
+  p1 = Provider.create!(:name => 'Amazon', :provider => 'facebook', :email => 'amazon@amazon.com')
+  p1_numberOfCodes = 0
+  p2_numberOfCodes = 0
   redeemify_codes_table.hashes.each do |code|
-    p.redeemifyCodes.create!(:code => code["code"], :name=> p.name, :provider => p)
-    numberOfCodes = numberOfCodes + 1
+    if code["provider"] == 'Amazon'
+      p1.redeemifyCodes.create!(:code => code["code"], :name=> code["provider"], :provider_id => p1.id)
+      p1_numberOfCodes = p1_numberOfCodes + 1
+    else  
+      p2.redeemifyCodes.create!(:code => code["code"], :name=> code["provider"], :provider_id => p2.id)
+      p2_numberOfCodes = p2_numberOfCodes + 1
+    end  
   end
-  p.update_attribute(:uploadedCodes, p.uploadedCodes + numberOfCodes)
-  p.update_attribute(:unclaimCodes, p.unclaimCodes + numberOfCodes)
+  p1.update_attribute(:uploadedCodes, p1.uploadedCodes + p1_numberOfCodes)
+  p1.update_attribute(:unclaimCodes, p1.unclaimCodes + p1_numberOfCodes)
+  p2.update_attribute(:uploadedCodes, p2.uploadedCodes + p2_numberOfCodes)
+  p2.update_attribute(:unclaimCodes, p2.unclaimCodes + p2_numberOfCodes)
+
 end
 
 Given /a provider "([^"]*)" exist$/ do |provider_name|
@@ -87,16 +97,14 @@ Then /the vendor "([^"]*)" should be "([^"]*)"$/ do |attribute, value|
 end
 
 Then /the provider "([^"]*)" should be "([^"]*)"$/ do |attribute, value|
+  p = Provider.find_by_name("Amazon")
   if attribute == "uploadedCodes"
-    p = Provider.find_by_name("Amazon")
-    if p.uploadedCodes != value.to_i
-      raise "uploadedCodes value is not the same with test value"
-    end
+      raise "uploadedCodes value is not the same with test value" if p.uploadedCodes != value.to_i
   elsif attribute == "unclaimCodes"
-    p = Provider.find_by_name("Amazon")
-    if p.unclaimCodes != value.to_i
-      raise "unclaimCodes value is not the same with test value"
-    end
+      raise "unclaimCodes value is not the same with test value" if p.unclaimCodes != value.to_i
+  elsif attribute == "usedCodes"  
+      raise "usedCodes value is not the same with test value" if p.usedCodes != value.to_i
+  
   end
     
 end

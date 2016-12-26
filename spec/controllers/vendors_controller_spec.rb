@@ -4,7 +4,8 @@ require 'rails_helper'
 describe VendorsController do
 
   describe "#home" do
-     it "renders the about template" do
+    render_views  
+    it "renders the about template" do
       expect(session[:vendor_id]).to be_nil
 
       v = Vendor.create :name => "thai" , :uid => "54321", :provider => "amazon"
@@ -22,6 +23,15 @@ describe VendorsController do
       get 'viewCodes'
       expect(response).to render_template :viewCodes
     end
+    
+    it "renders the home page showing vendor's provider" do
+      amazon = FactoryGirl.create(:vendor)
+      allow(controller).to receive(:current_vendor).and_return(amazon)
+      get :home
+      expect(response).to render_template(:home)
+      expect(response.body).to match(/Amazon Oauth/i)
+    end
+
   end
 
   describe "#edit" do
@@ -35,6 +45,32 @@ describe VendorsController do
      it "renders the about template" do
         get 'index' # or :new
         expect(response).to render_template :index
+    end
+  end
+
+  describe "#upload_page" do
+    render_views
+    it "renders the upload page with the vendor's provider" do
+      amazon = FactoryGirl.create(:vendor)
+      allow(controller).to receive(:current_vendor).and_return(amazon)
+      get :upload_page
+      expect(response).to render_template(:upload_page)
+      expect(response.body).to match(/Amazon Oauth/i)
+    end
+  end
+  
+  describe "#profile" do
+    render_views
+    it "renders the profile page with vendor's expiration, description, helpLink, instruction" do
+      amazon = FactoryGirl.create(:vendor)
+      allow(controller).to receive(:current_vendor).and_return(amazon)
+      get :profile
+      expect(response).to render_template(:profile)
+      
+      expect(response.body).to match(/MyExpiration/)
+      expect(response.body).to match(/MyDescription/)
+      expect(response.body).to match(/MyHelpLink/)
+      expect(response.body).to match(/MyInstruction/)      
     end
   end
 

@@ -5,4 +5,22 @@ class RedeemifyCode < ActiveRecord::Base
   #accepts_nested_attributes_for :vendor_codes
 
   validates_presence_of :code
+  
+  def self.serve(myUser, myCode)
+    rCode = self.where(code: myCode, user: nil).first #look up newcomer's provider token
+    if rCode #happy path: redeem the token
+      rCode.assign_to myUser
+      myUser.code = myCode
+      myUser.save!
+    end
+  end
+  
+  def assign_to(myUser)
+    self.update_attributes(:user_id => myUser.id, :user_name => myUser.name, :email => myUser.email)
+    provider = self.provider
+    #debugger
+    provider.update_attribute(:usedCodes, provider.usedCodes + 1)
+    provider.update_attribute(:unclaimCodes, provider.unclaimCodes - 1)
+  end
+  
 end

@@ -11,8 +11,7 @@ class VendorsController < ApplicationController
     if params[:file].nil?
       redirect_to '/vendors/upload_page', :flash => { :error => "You have not upload a file" }
     else
-      current_vendor=Vendor.find(session[:vendor_id])
-      Vendor.import(params[:file], current_vendor,params[:comment], "vendor")
+      Vendor.import(params[:file], current_vendor, params[:comment], "vendor")
       redirect_to '/vendors/home', notice: "Codes imported"
     end
   end
@@ -20,34 +19,30 @@ class VendorsController < ApplicationController
 
 # ---------------
   def home
-    @vendor = Vendor.find(session[:vendor_id])
 
     @histories_array = []
-    if @vendor.history != nil
-      @histories_array = Vendor.homeSet(@vendor.history)
+    if current_vendor.history != nil
+      @histories_array = Vendor.homeSet(current_vendor.history)
     end
 
-    @hash = {"uploaded" => @vendor.uploadedCodes,"used" => @vendor.usedCodes, "unclaim" => @vendor.unclaimCodes, "removed" => @vendor.removedCodes }
+    @hash = {"uploaded" => current_vendor.uploadedCodes,"used" => current_vendor.usedCodes, "unclaim" => current_vendor.unclaimCodes, "removed" => current_vendor.removedCodes }
     gon.codes = @hash
-    gon.history = @vendor.history
+    gon.history = current_vendor.history
 
   end
 
 
   def upload_page
-    @vendor = Vendor.find(session[:vendor_id])
-    @vendorcodes= @vendor.vendorCodes.all
+    @vendorcodes= current_vendor.vendorCodes.all
   end
 
 
   def profile
-    @vendor = Vendor.find(session[:vendor_id])
-    @vendorcodes = @vendor.vendorCodes.all
+    @vendorcodes = current_vendor.vendorCodes.all
   end
 
   def update_profile
-    current_vendor=Vendor.find(session[:vendor_id])
-   
+
     @info = {}
     cash = params[:cashValue]
     cash = cash.gsub(/\s+/, "")
@@ -63,7 +58,6 @@ class VendorsController < ApplicationController
   end
 
   def remove_codes   #:usedCodes, :uploadedCodes, :totalCodes, :unclaimCodes, :removedCodes
-    current_vendor=Vendor.find(session[:vendor_id])
     flag = current_vendor.vendorCodes.where(:user_id => nil)
     if flag.count == 0
       redirect_to '/vendors/home', :flash => { :error => "There's No Unclaimed Codes" }
@@ -75,7 +69,6 @@ class VendorsController < ApplicationController
 
 
   def clear_history
-    current_vendor=Vendor.find(session[:vendor_id])
     if current_vendor.history.nil?
       redirect_to '/vendors/home', :flash => { :error => "History is empty" }
     else  
@@ -85,7 +78,6 @@ class VendorsController < ApplicationController
   end
 
   def change_to_user
-    current_vendor=Vendor.find(session[:vendor_id])
     current_user=User.find_by_provider_and_email(current_vendor.provider, current_vendor.email)
     if current_user.nil?
      current_user =  User.create!(:provider => current_vendor.provider, :name => current_vendor.name, :email => current_vendor.email)
