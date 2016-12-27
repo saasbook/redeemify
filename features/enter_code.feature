@@ -11,6 +11,9 @@ Background:
     | 12345 | Amazon     | 01-01-2015 | 01-01-2016 | 1         |    nil  |
 
 	Given I am on the user login page
+	And I should see "1. Click on the desired login method."
+	And I should see "2. Enter the Redeemify Code that you recieved."
+	And I should see "3. Receive new codes for free stuff!"
   When I am signed in with "facebook"
   Then I should see "Redeem your code!"
 
