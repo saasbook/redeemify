@@ -146,7 +146,6 @@ Given /^I am signed in as a vendor "([^"]*)" and user ID "([^"]*)" with "([^"]*)
 end
 
 Given /^a vendor "(.*?)" and user ID "(.*?)" (?:with cash value "(.*?)" )?registered with "(.*?)"$/ do |name, uid, cashValue, provider|
-  #@vendor1 = create(:vendor, :name => name, :uid => uid, :provider => provider)
   vendor = Vendor.new
   vendor.name = name
   vendor.uid = uid
@@ -159,7 +158,7 @@ Given /^a vendor "(.*?)" and user ID "(.*?)" (?:with cash value "(.*?)" )?regist
   user.uid  = 'xyz123'
   user.email = 'user@gmail.com'
   user.provider = 'amazon'
-  user.save!
+  user.save
   p user
 end
 

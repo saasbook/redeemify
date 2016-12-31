@@ -1,4 +1,0 @@
-Changes: 12 Mar 2015
-
-1. Removed make_new_account.feature because we are not handling username and password registration
-2. We did not implement the redeem code feature because it involves database and our customer only want us to do third party authentication only for this iteration
