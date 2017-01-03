@@ -1,4 +1,4 @@
-class RedeemifyCodesController < ApplicationController
+class RedeemifyCodeController < ApplicationController
 
   before_action :set_code, only: [:show]
 
