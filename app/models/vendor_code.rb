@@ -10,5 +10,9 @@ class VendorCode < ActiveRecord::Base
     vendor.update_attribute(:unclaimCodes, vendor.unclaimCodes - 1)
   end  
 
+  def self.anonymize_all!(myUser)
+    vCodes = where user: myUser
+    vCodes.update_all user_name: "anonymous", email: "anonymous@anonymous.com" if vCodes
+  end  
 	
 end

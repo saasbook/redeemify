@@ -15,6 +15,11 @@ Scenario: vendor change offer profile
     And I have already registered with "facebook" and redeemify code "12345"
     Then I am signed in with "facebook"
     When I go to the delete page
-    Then I press "delete-confirm" link
+    And press "delete-confirm" link
     Then my user should be deleted
+    
+    When I am signed in with "facebook"
+    And I enter code "12345"
+    Then I should see "Your code is either invalid or has been redeemed already"
+
  
