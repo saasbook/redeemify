@@ -110,7 +110,7 @@ Then /the provider "([^"]*)" should be "([^"]*)"$/ do |attribute, value|
 end
 
 Then /my user should be deleted$/ do
-  u = User.find_by_name("foo")
+  u = User.find_by_name("name")
   if u
     raise "User is not deleted"
   end

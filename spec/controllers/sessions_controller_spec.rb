@@ -81,6 +81,46 @@ describe SessionsController do
     end
   end
 
+  describe "#delete_account" do
+    before do
+      post :create, provider: :amazon
+    end
+    it "it should call the user#anonymize! method" do
+        expect_any_instance_of(User).to receive(:anonymize!).with(no_args)
+        allow(RedeemifyCode).to receive(:anonymize!).with(any_args)
+        allow(VendorCode).to receive(:anonymize_all!).with(any_args)
+        get 'delete_account'
+    end
+    it "it should call the RedeemifyCode.anonymize! method" do
+        allow_any_instance_of(User).to receive(:anonymize!).with(no_args)
+        expect(RedeemifyCode).to receive(:anonymize!).with(any_args)
+        allow(VendorCode).to receive(:anonymize_all!).with(any_args)
+        get 'delete_account'
+    end
+    it "it should call the VendorCode.anonymize_all! method" do
+        allow_any_instance_of(User).to receive(:anonymize!).with(no_args)
+        allow(RedeemifyCode).to receive(:anonymize!).with(any_args)
+        expect(VendorCode).to receive(:anonymize_all!).with(any_args)
+        get 'delete_account'
+    end
+    it "should clear the session" do
+        allow_any_instance_of(User).to receive(:anonymize!).with(no_args)
+        allow(RedeemifyCode).to receive(:anonymize!).with(any_args)
+        allow(VendorCode).to receive(:anonymize_all!).with(any_args)
+        
+        get 'delete_account'
+        expect(session[:user_id]).to be_nil
+    end
+    it "should redirect to the root template, notify user of the account deletion" do
+        allow_any_instance_of(User).to receive(:anonymize!).with(no_args)
+        allow(RedeemifyCode).to receive(:anonymize!).with(any_args)
+        allow(VendorCode).to receive(:anonymize_all!).with(any_args)
+
+        get 'delete_account'
+        expect(response).to redirect_to root_url
+        expect(flash[:notice]).to eq("Your account has been deleted.")
+    end
+  end  
 
   describe "#destroy" do
     before do

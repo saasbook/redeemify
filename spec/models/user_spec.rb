@@ -11,4 +11,13 @@ describe User do
   it { should respond_to(:email) }
   
   it { should be_valid }
+  
+  describe "#anonymize" do
+    before { @user.anonymize! }
+    it "should have 'anonymous' name, email, provider" do
+      expect(@user.name).to eq("anonymous")
+      expect(@user.email).to eq("anonymous@anonymous.com")
+      expect(@user.provider).to eq("anonymous")
+    end
+  end  
 end

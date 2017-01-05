@@ -14,4 +14,13 @@ class User < ActiveRecord::Base
       user.email = auth["info"]["email"] || "developer@email.com"
     end
   end
+    
+  def anonymize!
+    unless self.nil?
+      self.name = "anonymous"
+      self.email = "anonymous@anonymous.com"
+      self.provider = "anonymous"
+      self.save!
+    end  
+  end  
 end
