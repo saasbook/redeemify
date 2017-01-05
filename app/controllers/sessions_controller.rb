@@ -88,7 +88,7 @@ class SessionsController < ApplicationController
       RedeemifyCode.anonymize! current_user
       VendorCode.anonymize_all! current_user
 
-      session[:user_id] = nil
+      session.delete(:user_id)
       redirect_to root_url, :flash => { :notice => "Your account has been deleted." }
     end
   end
