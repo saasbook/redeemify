@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }
+                    uniqueness: { case_sensitive: false, conditions: 
+                      -> { where.not(email: 'anonymous@anonymous.com') } }
 	has_many :vendorCodes
   def self.create_with_omniauth(auth)
     create! do |user|
@@ -20,6 +21,7 @@ class User < ActiveRecord::Base
       self.name = "anonymous"
       self.email = "anonymous@anonymous.com"
       self.provider = "anonymous"
+      self.uid = "anonymous"
       self.save!
     end  
   end  
