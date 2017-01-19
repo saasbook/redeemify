@@ -1,233 +1,38 @@
-require 'uri'
-require 'cgi'
-
-require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
-require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
-#require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "omniauth"))
-
-module WithinHelpers
-  def with_scope(locator)
-    locator ? within(*selector_for(locator)) { yield } : yield
-  end
-end
-World(WithinHelpers)
-
-Then /^show me the page$/ do
-  save_and_open_page
-end
-
-Given /the following vendor codes exist/ do |vendor_codes_table|
-  numberOfCodes = 0
-  v = 0
-  vendor_codes_table.hashes.each do |code|
-    v = Vendor.find_by_name(code['vendor'])
-    v.vendorCodes.create!(:code => code["code"], :name => v.name, :vendor => v, :user_id => code["user_id"])
-    numberOfCodes = numberOfCodes + 1
-  end
-  if v != 0
-    v.update_attribute(:uploadedCodes, v.uploadedCodes + numberOfCodes)
-    v.update_attribute(:unclaimCodes, v.unclaimCodes + numberOfCodes)
-  end
-end
-
-Given /I have already registered as an admin/ do
-  AdminUser.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
-end
-
-Given /I am signed in as an admin/ do
-  fill_in("admin_user_email", :with => "admin@example.com")
-  fill_in("admin_user_password", :with => "password")
-  click_button("commit")
-end
-
-Given /the following redeemify codes exist/ do |redeemify_codes_table|
-  p2 = Provider.create!(:name => 'Github', :provider => 'google', :email => 'github@github.com')
-  p1 = Provider.create!(:name => 'Amazon', :provider => 'facebook', :email => 'amazon@amazon.com')
-  p1_numberOfCodes = 0
-  p2_numberOfCodes = 0
-  redeemify_codes_table.hashes.each do |code|
-    if code["provider"] == 'Amazon'
-      p1.redeemifyCodes.create!(:code => code["code"], :name=> code["provider"], :provider_id => p1.id)
-      p1_numberOfCodes = p1_numberOfCodes + 1
-    else  
-      p2.redeemifyCodes.create!(:code => code["code"], :name=> code["provider"], :provider_id => p2.id)
-      p2_numberOfCodes = p2_numberOfCodes + 1
-    end  
-  end
-  p1.update_attribute(:uploadedCodes, p1.uploadedCodes + p1_numberOfCodes)
-  p1.update_attribute(:unclaimCodes, p1.unclaimCodes + p1_numberOfCodes)
-  p2.update_attribute(:uploadedCodes, p2.uploadedCodes + p2_numberOfCodes)
-  p2.update_attribute(:unclaimCodes, p2.unclaimCodes + p2_numberOfCodes)
-
-end
-
-Given /a provider "([^"]*)" exist$/ do |provider_name|
-  p = Provider.create!(:name => provider_name, :provider => "facebook", :email => "amazon@amazon.com")
-end
-
-Given /I am signed in as a provider "([^"]*)"$/ do |provider_name|
-  p = Provider.find_by_name(provider_name)
-  name = p.name
-  provider = p.provider
-  email = p.email
-  disable_test_omniauth()
-  set_omniauth_provider(:name => name, :provider => provider, :email=> email)
-  click_link("#{provider.downcase}-auth")
-end
-
-Given /the following vendors exist/ do |vendors_table|
-  vendors_table.hashes.each do |vendor|
-    Vendor.create(vendor)
-  end
-end
-
-Then /the vendor "([^"]*)" should be "([^"]*)"$/ do |attribute, value|
-  if attribute == "uploadedCodes"
-    v = Vendor.find_by_name("Github")
-    if v.uploadedCodes != value.to_i
-      raise "uploadedCodes value is not the same with test value"
-    end
-  elsif attribute == "unclaimCodes"
-    v = Vendor.find_by_name("Github")
-    if v.unclaimCodes != value.to_i
-      raise "unclaimCodes value is not the same with test value"
-    end
-  end
-    
-end
-
-Then /the provider "([^"]*)" should be "([^"]*)"$/ do |attribute, value|
-  p = Provider.find_by_name("Amazon")
-  if attribute == "uploadedCodes"
-      raise "uploadedCodes value is not the same with test value" if p.uploadedCodes != value.to_i
-  elsif attribute == "unclaimCodes"
-      raise "unclaimCodes value is not the same with test value" if p.unclaimCodes != value.to_i
-  elsif attribute == "usedCodes"  
-      raise "usedCodes value is not the same with test value" if p.usedCodes != value.to_i
-  
-  end
-    
-end
-
-Then /my user should be deleted$/ do
-  u = User.find_by_name("name")
-  if u
-    raise "User is not deleted"
-  end
-end
-
-Given /^(?:|I )am on (.+)$/ do |page_name|
-    visit path_to(page_name)
-end
-
-And /^I have updated the vendor profile/ do
-  click_link("update-profile")
-  fill_in("cashValue", :with => "1")
-  fill_in("expiration", :with => "11/11/2015")
-  fill_in("description", :with => "description")
-  fill_in("helpLink", :with => "www")
-  fill_in("instruction", :with => "instruction")
-  click_button("submit")
-end
-
-And /^(?:|I )have never registered$/ do
-  disable_test_omniauth()
-end
-
-Given /^I am signed in with "([^"]*)"$/ do |provider|
+When /^(?:|I am )logging in through OAuth as a user$/ do
   set_omniauth()
-  click_link("#{provider.downcase}-auth")
+  click_link('google-auth')
 end
 
-Given /^I am signed in as a vendor "([^"]*)" and user ID "([^"]*)" with "([^"]*)"$/ do |name, uid, provider|
-  disable_test_omniauth()
-  set_omniauth_vendor(:name => name, :uid => uid, :provider => provider, :email=> 'test@gmail.com')
-  click_link("#{provider.downcase}-auth")
-end
-
-Given /^a vendor "(.*?)" and user ID "(.*?)" (?:with cash value "(.*?)" )?registered with "(.*?)"$/ do |name, uid, cashValue, provider|
-  vendor = Vendor.new
-  vendor.name = name
-  vendor.uid = uid
-  vendor.provider = provider
-  vendor.email = 'test@gmail.com'
-  vendor.cashValue = cashValue == nil ? 1 : cashValue
-  vendor.save
-  user = User.new
-  user.name = 'Joe'
-  user.uid  = 'xyz123'
-  user.email = 'user@gmail.com'
-  user.provider = 'amazon'
-  user.save
-  p user
-end
-
-And /^I have already registered with "([^"]*)" and redeemify code "([^"]*)"$/ do |provider, code|
+Given /^(?:|I have )signed in through OAuth as a user$/ do
+  p = Provider.create(name: 'Amazon', provider: 'amazon', 
+        email: 'test@amazon.com')
+  p.redeemifyCodes.create(code: '12345')
   set_omniauth()
-  click_link("#{provider.downcase}-auth")
-  fill_in("code", :with => code)
-  click_button("Submit")
-  click_link("logout")
+  visit(root_path)
+  click_link('google-auth')
+  fill_in("code", with: '12345')
+  click_button('submit')
 end
 
-
-And /^I entered invalid credentials with "([^"]*)"$/ do |provider|
-  set_invalid_omniauth()
-  click_link("#{provider.downcase}-auth")
+And /^(?:|I )should see option to delete account$/ do
+  page.should have_content('Delete your account')
 end
 
-Given /^(?:|I )should see "([^"]*)"$/ do |words|
-  if page.respond_to? :should
-    page.should have_content(words)
-  else
-    assert page.has_content?(text)
-  end
+When /^(?:|I )delete account$/ do
+  click_link('delete-account')
+  expect(page).to have_current_path('/sessions/delete_page')
+  click_link('delete-confirm')
 end
 
-When /^(?:|I )press "([^"]*)" link$/ do |link|
-  if link.eql? "Log out"
-    click_link("logout")
-  else
-    click_link(link)
-  end
+And /^(?:|I )should see message about successful account deletion$/ do
+  page.should have_content('Your account has been deleted')
 end
 
-When /^(?:|I )press "([^"]*)" button$/ do |button|
-  click_button(button)
-end
-
-Then /^(?:|I )should be on (.+)$/ do |page_name|
-  current_path = URI.parse(current_url).path
-  current_path.respond_to? :should
-  current_path.should == path_to(page_name)
-end
-
-When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
-  fill_in(field, :with => value)
-end
-
-And /^I attach a file with vendor codes inside$/ do
-  attach_file('file', File.join(Rails.root, 'features', 'upload-file', 'test.txt'))
-end
-
-And /^I attach a file with redeemify codes inside$/ do
-  attach_file('file', File.join(Rails.root, 'features', 'upload-file', 'test.txt'))
-end
-
-Given(/^I have updated the provider home$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-Then(/^I have updated the vendor home$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-When /^(?:|I )enter code "(.*)"$/ do |redeemify_code|
-  steps %Q{
-	  When I fill in "code" with "#{redeemify_code}"
-	  And I press "submit" button
-  }
-end
-
-When /^(?:|I )go to (.+)$/ do |page_name|
-  visit path_to(page_name)
+And /^(?:|I )should not have a possibility to log in with the same redeemify code$/ do
+  set_omniauth()
+  click_link('google-auth')
+  page.should have_content('Redeem your code!')
+  fill_in('code', with: '12345')
+  click_button('submit')
+  page.should have_content('Your code is either invalid or has been redeemed already')
 end
