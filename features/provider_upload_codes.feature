@@ -13,6 +13,11 @@ Scenario: Successful uploading of codes
   When I upload an appropriate file with provider codes
   Then I should be on the provider page
   And I should see message about successful uploading
+  
+Scenario: Failed submission of code duplicates and those in excess of valid length
+
+  When I upload an inappropriate file with provider codes
+  Then number of uploaded provider codes should be 1
 
 # Scenario: Unsuccessful uploading of codes
   

@@ -8,17 +8,20 @@ Given /^(?:|I (?:am |have ))(?:logging|signed) in through OAuth as a provider(?:
 end
 
 When /^(?:|I (?:|have ))upload(?:|ed)(?:| an (in)?appropriate) file(?:| with provider codes)$/ do |inappropriate|
-  unless inappropriate
     click_link('upload')
     expect(page).to have_current_path('/providers/upload_page')
+  unless inappropriate
     attach_file('file', 
       File.join(Rails.root, 'features', 'upload-file', 'test.txt'))
-    click_button('submit')
+  else
+    attach_file('file', 
+      File.join(Rails.root, 'features', 'upload-file', 'invalid_codes_test.txt'))
   end
+    click_button('submit')
 end
 
 Then /^(?:|I )should see message about successful uploading$/ do
-  page.should have_content('Codes imported')
+  page.should have_content(/(?:\d+\s+c|C)ode(s?) imported/)
 end
 
 Then /number of (\w+) provider codes should be (\d+)$/ do |attribute, value|

@@ -41,5 +41,41 @@ RSpec.describe Vendor, :type => :model do
     end  
   end
   
+    describe 'Vendor.import' do
+      include Rack::Test::Methods
+      include ActionDispatch::TestProcess
+      
+      before :all do
+        
+        @codesFile = fixture_file_upload("test.txt")
+        @erCodesFile = fixture_file_upload("invalid_codes_test.txt")
+        @vendor = FactoryGirl.create :vendor
+        @provider = FactoryGirl.create :provider
+        #@codesFile = Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/test.txt"))
+        #@erCodesFile = Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/invalid_codes_test.txt"))
+        @comment = "Test Comment"
+      end  
+    
+     it "updates the number of Redeemify codes by the number of unique valid strings in the upload file" do
+       expect{Vendor.import(@codesFile, @provider, @comment, "provider")}.to change {@provider.uploadedCodes}.by(3)
+     end   
+   
+     it "returns import report as a Hash instance" do
+       expect(Vendor.import(@codesFile, @provider, @comment, "provider")).to be_an_instance_of Hash
+     end
+     
+     it "returns a Hash instance having :errCodes and :submittedCodes as keys" do
+       expect(Vendor.import(@codesFile, @provider, @comment, "provider")).to match errCodes: an_instance_of(Fixnum), submittedCodes: an_instance_of(Fixnum)
+     end
+     
+     it "returns a Hash instance with validation errors as strings each related to arrays of rejected codes" do
+       expect(Vendor.import(@erCodesFile, @provider, @comment, "provider")).to match(
+         errCodes: an_instance_of(Fixnum), 
+         submittedCodes: an_instance_of(Fixnum),
+         "already registered" => an_instance_of(Array),
+         "longer than 255 characters" => an_instance_of(Array))
+     end   
+     
+    end
 
 end
