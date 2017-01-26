@@ -56,31 +56,31 @@ RSpec.describe Vendor, :type => :model do
         @comment = "Test Comment"
       end  
     
-     it "updates the number of Vendor codes by the number of unique valid strings in the upload file" do
+     it "updates Vendor set of codes by number of unique valid strings taken from upload file" do
        expect{Vendor.import(@codesFile, @vendor, @comment, "vendor")}.to change {@vendor.uploadedCodes}.by(3)
      end   
    
-     it "updates the number of Redeemify codes by the number of unique valid strings in the upload file" do
+     it "updates Redeemify set of access codes by number of unique valid strings taken from upload file" do
        expect{Vendor.import(@codesFile, @provider, @comment, "provider")}.to change {@provider.uploadedCodes}.by(3)
      end   
    
-     it "returns vendor codes serializing report as a Hash instance" do
+     it "returns Vendor codes serializing report as a Hash" do
        expect(Vendor.import(@codesFile, @vendor, @comment, "vendor")).to be_an_instance_of Hash
      end
      
-     it "returns Redeemify codes serializing report as a Hash instance" do
+     it "returns Redeemify codes serializing report as a Hash" do
        expect(Vendor.import(@codesFile, @provider, @comment, "provider")).to be_an_instance_of Hash
      end
      
-     it "returns, for vendor codes, a Hash instance having :errCodes and :submittedCodes as keys" do
+     it "returns, for Vendor codes, a Hash having :errCodes and :submittedCodes as keys" do
        expect(Vendor.import(@codesFile, @vendor, @comment, "vendor")).to match errCodes: an_instance_of(Fixnum), submittedCodes: an_instance_of(Fixnum)
      end
      
-     it "returns, for Redeemify codes, a Hash instance having :errCodes and :submittedCodes as keys" do
+     it "returns, for Redeemify codes, a Hash having :errCodes and :submittedCodes as keys" do
        expect(Vendor.import(@codesFile, @provider, @comment, "provider")).to match errCodes: an_instance_of(Fixnum), submittedCodes: an_instance_of(Fixnum)
      end
      
-     it "returns, for vendor codes, a Hash instance with validation errors as strings each related to arrays of rejected codes" do
+     it "returns, for Vendor codes, a Hash with validation errors as string keys each related to array of rejected codes" do
        expect(Vendor.import(@erCodesFile, @vendor, @comment, "vendor")).to match(
          errCodes: an_instance_of(Fixnum), 
          submittedCodes: an_instance_of(Fixnum),
@@ -88,7 +88,7 @@ RSpec.describe Vendor, :type => :model do
          "longer than 255 characters" => an_instance_of(Array))
      end   
      
-     it "returns, for Redeemify codes, a Hash instance with validation errors as strings each related to arrays of rejected codes" do
+     it "returns, for Redeemify codes, a Hash with validation errors as string keys each related to array of rejected codes" do
        expect(Vendor.import(@erCodesFile, @provider, @comment, "provider")).to match(
          errCodes: an_instance_of(Fixnum), 
          submittedCodes: an_instance_of(Fixnum),
@@ -97,5 +97,4 @@ RSpec.describe Vendor, :type => :model do
      end   
      
     end
-
 end

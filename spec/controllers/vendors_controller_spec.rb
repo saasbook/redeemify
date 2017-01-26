@@ -87,20 +87,20 @@ describe VendorsController do
       expect(flash[:error]).to eq("You have not selected a file to upload")
     end
     
-    it "it redirects to the home page and notifies user of codes successfully uploaded" do
+    it "redirects to the home page and notifies user of codes successfully uploaded" do
       allow(Vendor).to receive(:import).and_return(@hash)
       post :import, file: !nil
       expect(response).to redirect_to(:vendors_home)
       expect(flash[:notice]).to match(/5 codes imported/)
     end
     
-    it "it calls #validation_errors_content to generate report content" do
+    it "calls #validation_errors_content to generate report content" do
       allow(Vendor).to receive(:import).and_return(@errHash)
       expect(controller).to receive(:validation_errors_content).with(@errHash)
       post :import, file: !nil
     end  
 
-    it "it calls #send_data prompting user to download error report" do
+    it "calls #send_data prompting user to download error report" do
       
       content = "N codes submitted to update the code set"
       file = {filename: "#{@errHash[:errCodes]}_codes_rejected_at_submission_details.txt"}

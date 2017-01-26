@@ -21,7 +21,7 @@ When /^(?:|I (?:|have ))upload(?:|ed)(?:| an (in)?appropriate) file(?:| with pro
 end
 
 Then /^(?:|I )should see message about successful uploading$/ do
-  page.should have_content(/(?:\d+\s+c)ode(s?) imported/)
+  page.should have_content(/(\d+) code(s?) imported/)
 end
 
 Then /number of (\w+) provider codes should be (\d+)$/ do |attribute, value|
