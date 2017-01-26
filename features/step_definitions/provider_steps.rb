@@ -21,7 +21,7 @@ When /^(?:|I (?:|have ))upload(?:|ed)(?:| an (in)?appropriate) file(?:| with pro
 end
 
 Then /^(?:|I )should see message about successful uploading$/ do
-  page.should have_content(/(?:\d+\s+c|C)ode(s?) imported/)
+  page.should have_content(/(?:\d+\s+c)ode(s?) imported/)
 end
 
 Then /number of (\w+) provider codes should be (\d+)$/ do |attribute, value|
@@ -35,6 +35,10 @@ Then /number of (\w+) provider codes should be (\d+)$/ do |attribute, value|
       raise "usedCodes != #{value}" if p.usedCodes != value.to_i
   end
 end
+
+Then /^I should receive a file "([^"]*)"$/ do |filename| 
+   page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+end  
 
 When /^(?:|I )follow the logout link$/ do
   click_link('logout')

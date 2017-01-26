@@ -17,7 +17,8 @@ Scenario: Successful uploading of codes
 Scenario: Failed submission of code duplicates and those in excess of valid length
 
   When I upload an inappropriate file with provider codes
-  Then number of uploaded provider codes should be 1
+  Then I should receive a file "2_codes_rejected_at_submission_details.txt"
+  And number of uploaded provider codes should be 1
 
 # Scenario: Unsuccessful uploading of codes
   

@@ -3,6 +3,10 @@ class VendorCode < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :redeemify_code
 	
+  validates :code, presence: true,  uniqueness: {message: "already registered"},
+                   length: { maximum: 255, message: "longer than 255 characters" }
+	
+	
   def assign_to(current_user)
     self.update_attributes(user: current_user, user_name: current_user.name, email: current_user.email)
     vendor = self.vendor

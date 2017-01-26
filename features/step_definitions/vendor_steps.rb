@@ -18,13 +18,16 @@ Given /^the vendor "(.*)" has registered offers$/ do |vendor|
 end
 
 When /^(?:|I (?:|have ))upload(?:|ed)(?:| an (in)?appropriate) file(?:| with vendor codes)$/ do |inappropriate|
-  unless inappropriate
     click_link('upload')
     expect(page).to have_current_path('/vendors/upload_page')
+  unless inappropriate
     attach_file('file',
       File.join(Rails.root, 'features', 'upload-file', 'test.txt'))
-    click_button('submit')
+  else
+    attach_file('file',
+      File.join(Rails.root, 'features', 'upload-file', 'invalid_codes_test.txt'))
   end
+    click_button('submit')
 end
 
 Then /^number of (\w+) vendor codes should be (\d+)$/ do |attribute, value|
@@ -38,6 +41,11 @@ Then /^number of (\w+) vendor codes should be (\d+)$/ do |attribute, value|
       raise "usedCodes != #{value}" if v.usedCodes != value.to_i
     end
 end
+
+#Then /^I should receive a file "([^"]*)"$/ do |filename| 
+#   page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+#end  
+
 
 Then /^(?:|I )should see option to log in as a user$/ do
   page.should have_content('Login as a user')

@@ -10,10 +10,19 @@ class VendorsController < ApplicationController
   def import
     if params[:file].nil?
       redirect_to '/vendors/upload_page',
-      :flash => { :error => "You have not upload a file" }
+      :flash => { :error => "You have not selected a file to upload" }
     else
-      Vendor.import(params[:file], current_vendor, params[:comment], "vendor")
-      redirect_to '/vendors/home', notice: "Codes imported"
+      importStatus = Vendor.import(params[:file], current_vendor,
+                    params[:comment], "vendor")
+      failedCodes = importStatus[:errCodes]
+      if failedCodes != 0
+        importedCodes = importStatus[:submittedCodes] - importStatus[:errCodes]
+        content = validation_errors_content(importStatus)
+        send_data(content, :filename => "#{failedCodes}_#{'code'.pluralize(failedCodes)}_rejected_at_submission_details.txt")
+      else
+        redirect_to '/vendors/home', 
+        :flash => {notice: "#{importStatus[:submittedCodes]} #{'code'.pluralize(importStatus[:submittedCodes])} imported"}
+      end
     end
   end
 
