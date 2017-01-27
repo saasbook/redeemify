@@ -77,8 +77,8 @@ describe VendorsController do
   describe "#import" do
     render_views
     before do
-      @hash = {errCodes: 0, submittedCodes: 5}
-      @errHash = {errCodes: 2, submittedCodes: 5}
+      @hash = {err_codes: 0, submitted_codes: 5}
+      @err_hash = {err_codes: 2, submitted_codes: 5}
     end  
 
     it "renders the upload page and notifies user when no file is picked to upload" do
@@ -95,17 +95,17 @@ describe VendorsController do
     end
     
     it "calls #validation_errors_content to generate report content" do
-      allow(Vendor).to receive(:import).and_return(@errHash)
-      expect(controller).to receive(:validation_errors_content).with(@errHash)
+      allow(Vendor).to receive(:import).and_return(@err_hash)
+      expect(controller).to receive(:validation_errors_content).with(@err_hash)
       post :import, file: !nil
     end  
 
     it "calls #send_data prompting user to download error report" do
       
       content = "N codes submitted to update the code set"
-      file = {filename: "#{@errHash[:errCodes]}_codes_rejected_at_submission_details.txt"}
-      allow(Vendor).to receive(:import).and_return(@errHash)
-      allow(controller).to receive(:validation_errors_content).with(@errHash).and_return(content)
+      file = {filename: "#{@err_hash[:err_codes]}_codes_rejected_at_submission_details.txt"}
+      allow(Vendor).to receive(:import).and_return(@err_hash)
+      allow(controller).to receive(:validation_errors_content).with(@err_hash).and_return(content)
       expect(controller).to receive(:send_data).with(content, file) {controller.render nothing: true}
       post :import, file: !nil
     end  

@@ -14,13 +14,13 @@ class Vendor < ActiveRecord::Base
 
   	def self.import(file, current, comment, type)
   		date = ""
-        serializedCodes = 0
-        serializeErrors = {submittedCodes: 0}
+        serialized_codes = 0
+        serialize_errors = {submitted_codes: 0}
     	f = File.open(file.path, "r")
 		f.each_line do |row|
 			row = row.gsub(/\s+/, "")  # 12 3 4 --> 1234,
 			if row !=  ""   # don't get any blank code
-			  serializeErrors[:submittedCodes] +=1
+			  serialize_errors[:submitted_codes] +=1
 			  begin	
 				if type == "vendor"
 			      	a = current.vendorCodes.build(:code => row, :name => current.name , :vendor => current)
@@ -29,13 +29,13 @@ class Vendor < ActiveRecord::Base
 			    	a = current.redeemifyCodes.build(:code => row, :name => current.name , :provider => current)
 			    	a.save!
 			    end
-			    serializedCodes += 1
+			    serialized_codes += 1
 			  rescue
-			    errStr = a.errors[:code].join(', ')
-			    serializeErrors[errStr] ||=[]
-			    serializeErrors[errStr] << a.code
+			    err_str = a.errors[:code].join(', ')
+			    serialize_errors[err_str] ||=[]
+			    serialize_errors[err_str] << a.code
 			  end
-			    serializeErrors[:errCodes] = serializeErrors[:submittedCodes] - serializedCodes
+			    serialize_errors[:err_codes] = serialize_errors[:submitted_codes] - serialized_codes
 			end
 		end # end CSV.foreach
 		f.close
@@ -43,15 +43,15 @@ class Vendor < ActiveRecord::Base
 
 	    date = Time.now.to_formatted_s(:long_ordinal)
 	    if history == nil
-	    	history = "#{date}+++++#{comment}+++++#{serializedCodes.to_s}|||||"
+	    	history = "#{date}+++++#{comment}+++++#{serialized_codes.to_s}|||||"
 	    else
-	    	history = "#{history}#{date}+++++#{comment}+++++#{serializedCodes.to_s}|||||"
+	    	history = "#{history}#{date}+++++#{comment}+++++#{serialized_codes.to_s}|||||"
 	    end
 	    current.update_attribute(:history, history)
-	    current.update_attribute(:uploadedCodes, current.uploadedCodes + serializedCodes)
-	    current.update_attribute(:unclaimCodes, current.unclaimCodes + serializedCodes)
+	    current.update_attribute(:uploadedCodes, current.uploadedCodes + serialized_codes)
+	    current.update_attribute(:unclaimCodes, current.unclaimCodes + serialized_codes)
 
-        return serializeErrors
+        return serialize_errors
         
   	end # end self.import(file)
 

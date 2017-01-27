@@ -12,16 +12,16 @@ class VendorsController < ApplicationController
       redirect_to '/vendors/upload_page',
       :flash => { :error => "You have not selected a file to upload" }
     else
-      importStatus = Vendor.import(params[:file], current_vendor,
+      import_status = Vendor.import(params[:file], current_vendor,
                     params[:comment], "vendor")
-      failedCodes = importStatus[:errCodes]
-      if failedCodes != 0
-        importedCodes = importStatus[:submittedCodes] - importStatus[:errCodes]
-        content = validation_errors_content(importStatus)
-        send_data(content, :filename => "#{failedCodes}_#{'code'.pluralize(failedCodes)}_rejected_at_submission_details.txt")
+      fail_codes = import_status[:err_codes]
+      if fail_codes != 0
+        imported_codes = import_status[:submitted_codes] - import_status[:err_codes]
+        content = validation_errors_content(import_status)
+        send_data(content, :filename => "#{fail_codes}_#{'code'.pluralize(fail_codes)}_rejected_at_submission_details.txt")
       else
         redirect_to '/vendors/home', 
-        :flash => {notice: "#{importStatus[:submittedCodes]} #{'code'.pluralize(importStatus[:submittedCodes])} imported"}
+        :flash => {notice: "#{import_status[:submitted_codes]} #{'code'.pluralize(import_status[:submitted_codes])} imported"}
       end
     end
   end
