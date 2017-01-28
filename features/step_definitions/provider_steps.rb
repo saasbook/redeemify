@@ -20,6 +20,10 @@ When /^(?:|I (?:|have ))upload(?:|ed)(?:| an (in)?appropriate) file(?:| with pro
     click_button('submit')
 end
 
+When /^(?:|I) add these codes by uploading the file$/ do
+  step "upload an inappropriate file with provider codes"
+end  
+
 Then /^(?:|I )should see message about successful uploading$/ do
   page.should have_content(/(\d+) code(s?) imported/)
 end
@@ -36,9 +40,34 @@ Then /number of (\w+) provider codes should be (\d+)$/ do |attribute, value|
   end
 end
 
+Then /^the invalid provider codes should not be uploaded$/ do
+  step "number of uploaded provider codes should be 1"
+end
+
+When /^some provider codes in my file are invalid$/ do
+    p = Provider.find_by_name("Amazon")
+    file=File.open(File.join(Rails.root, 'features', 'upload-file', 'invalid_codes_test.txt'),"r")
+    err_codes=0; codes = []
+    file.each_line do |row|
+			row = row.gsub(/\s+/, "")
+			if row !=  "" &&
+			  ( codes.any? {|c| c == row} || RedeemifyCode.find_by(code: row) || row.length > 255 )
+			    err_codes += 1
+      end
+        codes << row
+    end
+    err_codes.should > 0
+end
+
 Then /^I should receive a file "([^"]*)"$/ do |filename| 
    page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
 end  
+
+Then /^I should be notified of rejected codes through file download$/ do
+  filename = "_rejected_at_submission_details.txt"
+  page.response_headers['Content-Disposition'].should include "filename="
+  page.response_headers['Content-Disposition'].should include #{filename}
+end
 
 When /^(?:|I )follow the logout link$/ do
   click_link('logout')

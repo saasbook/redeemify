@@ -30,6 +30,11 @@ When /^(?:|I (?:|have ))upload(?:|ed)(?:| an (in)?appropriate) file(?:| with ven
     click_button('submit')
 end
 
+When /^(?:|I) update my set of codes by uploading the file$/ do
+  step "upload an inappropriate file with vendor codes"
+end  
+
+
 Then /^number of (\w+) vendor codes should be (\d+)$/ do |attribute, value|
   v = Vendor.find_by_name("GitHub")
   case attribute
@@ -41,6 +46,26 @@ Then /^number of (\w+) vendor codes should be (\d+)$/ do |attribute, value|
       raise "usedCodes != #{value}" if v.usedCodes != value.to_i
     end
 end
+
+Then /^the invalid vendor codes should not be uploaded$/ do
+  step "number of uploaded vendor codes should be 1"
+end
+
+When /^some vendor codes in my file are invalid$/ do
+    p = Provider.find_by_name("GitHub")
+    file=File.open(File.join(Rails.root, 'features', 'upload-file', 'invalid_codes_test.txt'),"r")
+    err_codes=0; codes = []
+    file.each_line do |row|
+			row = row.gsub(/\s+/, "")
+			if row !=  "" &&
+			  ( codes.any? {|c| c == row} || VendorCode.find_by(code: row) || row.length > 255 )
+			    err_codes += 1
+      end
+        codes << row
+    end
+    err_codes.should > 0
+end
+
 
 #Then /^I should receive a file "([^"]*)"$/ do |filename| 
 #   page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")

@@ -14,12 +14,13 @@ Scenario: Successful uploading of codes
   Then I should be on the vendor page
   And I should see message about successful uploading
   
-Scenario: Failed submission of code duplicates and those in excess of valid length
+Scenario: Rejection of invalid vendor codes
 
-  When I upload an inappropriate file with vendor codes
-  Then I should receive a file "2_codes_rejected_at_submission_details.txt"
-  And number of uploaded vendor codes should be 1
-  
+   When some vendor codes in my file are invalid
+   And I update my set of codes by uploading the file
+   Then the invalid vendor codes should not be uploaded
+   And I should be notified of rejected codes through file download
+
 
 # Scenario: Unsuccessful uploading of codes
   
