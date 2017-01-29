@@ -34,6 +34,13 @@ When /^(?:|I) update my set of codes by uploading the file$/ do
   step "upload an inappropriate file with vendor codes"
 end  
 
+When /^(?:|I) upload an empty file for new vendor codes$/ do
+    click_link('upload')
+    expect(page).to have_current_path('/vendors/upload_page')
+    attach_file('file', 
+      File.join(Rails.root, 'features', 'upload-file', 'blank_test.txt'))
+    click_button('submit')
+end
 
 Then /^number of (\w+) vendor codes should be (\d+)$/ do |attribute, value|
   v = Vendor.find_by_name("GitHub")

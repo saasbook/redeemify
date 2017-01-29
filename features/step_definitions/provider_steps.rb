@@ -22,12 +22,25 @@ end
 
 When /^(?:|I) add these codes by uploading the file$/ do
   step "upload an inappropriate file with provider codes"
-end  
+end
+
+When /^(?:|I) upload an empty file for new provider codes$/ do
+    click_link('upload')
+    expect(page).to have_current_path('/providers/upload_page')
+    attach_file('file', 
+      File.join(Rails.root, 'features', 'upload-file', 'blank_test.txt'))
+    click_button('submit')
+end
+
 
 Then /^(?:|I )should see message about successful uploading$/ do
   page.should have_content(/(\d+) code(s?) imported/)
 end
 
+Then /^I should be alerted of no detected codes$/ do
+  page.should have_content "No codes detected! Please check your upload file"
+end  
+  
 Then /number of (\w+) provider codes should be (\d+)$/ do |attribute, value|
   p = Provider.find_by_name("Amazon")
   case attribute

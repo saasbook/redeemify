@@ -20,11 +20,13 @@ Scenario: Rejection of invalid provider codes
    And I add these codes by uploading the file
    Then the invalid provider codes should not be uploaded
    And I should be notified of rejected codes through file download
-
-#  When I upload an inappropriate file with provider codes
-#  Then I should receive a file "2_codes_rejected_at_submission_details.txt"
-#  And number of uploaded provider codes should be 1
-
+   
+Scenario: Uploading of file with codes missing (blank file)
+  
+  When I upload an empty file for new provider codes
+  Then I should be on the provider upload page
+  And I should be alerted of no detected codes
+   
 # Scenario: Unsuccessful uploading of codes
   
 #   When I upload an inappropriate file

@@ -20,6 +20,12 @@ Scenario: Rejection of invalid vendor codes
    And I update my set of codes by uploading the file
    Then the invalid vendor codes should not be uploaded
    And I should be notified of rejected codes through file download
+   
+Scenario: Uploading of file with codes missing (blank file)
+  
+  When I upload an empty file for new vendor codes
+  Then I should be on the vendor upload page
+  And I should be alerted of no detected codes
 
 
 # Scenario: Unsuccessful uploading of codes
