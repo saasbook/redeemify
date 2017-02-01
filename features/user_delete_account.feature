@@ -1,20 +1,18 @@
-Feature: User Delete Account
-
-	As a user
-    So that I can remove all my information from Redeemify app
-    I want to delete my account
+Feature: Deleting the user account
+  
+  As a user
+  So that I can remove all my information from the redeemify app
+  I want to delete my account
 
 Background:
-    Given the following redeemify codes exist:
-    | code  | provider   | created_at | updated_at | vendor_id | user_id |
-    | 12345 | Amazon     | 01-01-2015 | 01-01-2016 | 1         |    nil  |
+  
+  When I have signed in through OAuth as a user
+  Then I should be on the offers page
+  And I should see option to delete account
 
-Scenario: vendor change offer profile
-    
-    Given I am on the user login page
-    And I have already registered with "facebook" and redeemify code "12345"
-    Then I am signed in with "facebook"
-    When I go to the delete page
-    Then I press "delete-confirm" link
-    Then my user should be deleted
- 
+Scenario: Successful deletion
+  
+  When I delete account
+  Then I should be on the user login page
+  And I should see message about successful account deletion
+  And I should not have a possibility to log in with the same redeemify code

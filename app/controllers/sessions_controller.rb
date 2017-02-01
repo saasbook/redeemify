@@ -83,21 +83,12 @@ class SessionsController < ApplicationController
   end
 
   def delete_account
-#    current_user = User.find(session[:user_id])
     if current_user != nil
-      current_user.update_attributes(:name => "anonymous", :email => "anonymous", :provider => "anonymous")
-      redeemifyCode = RedeemifyCode.where(:user_id => current_user.id).first
-      redeemifyCode.update_attributes(:user_name =>"anonymous", :email => "anonymous")
-      
-      vendors = Vendor.all
-      vendors.each do |vendor|
-        vendorCode = vendor.vendorCodes.where(:user_id => current_user.id).first
-        if vendorCode != nil
-          vendorCode.update_attributes(:user_name => "anonymous", :email => "anonymous")
-          
-        end
-      end
-      session[:user_id] = nil
+      current_user.anonymize!
+      RedeemifyCode.anonymize! current_user
+      VendorCode.anonymize_all! current_user
+
+      session.delete(:user_id)
       redirect_to root_url, :flash => { :notice => "Your account has been deleted." }
     end
   end

@@ -1,4 +1,0 @@
-Changes: Mar 11 2015
-
-1. Changed user story 1 to more accurately reflect the series of steps that occurs prior, during and after 3rd party authentication
-2. Added another user story (split up initiating 3rd party login and actually entering the provider code)

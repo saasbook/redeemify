@@ -15,38 +15,21 @@ module NavigationHelpers
       
     when /^the vendor upload page$/ then '/vendors/upload_page'
     when /^the code entry page$/ then '/sessions/enter'
-    when /^the offer page$/ then '/sessions/customer'
+    when /^the offers page$/ then '/sessions/customer'
     when /^the vendor page$/ then '/vendors/home'
-    when /^the user login page$/ then root_url
-    when /^the (RottenPotatoes )?home\s?page$/ then '/movies'
-    when /^the movies page$/ then '/movies'
+    when /^the user login page$/ then root_path
     when /^the provider upload page$/ then '/providers/upload_page'
     when /^the admin login page$/ then '/admin/login'
     when /^the delete page$/ then '/sessions/delete_page'
-
-
-
-
+    when /^the new session page$/ then '/sessions/new'
+    when /^the provider page$/ then '/providers/home'
+    when /^the vendor upload page$/ then '/vendors/upload_page'
+    
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
-
-    when /^the edit page for "(.*)"/
-      m = Movie.find_by_title($1)
-      edit_movie_path(m)
-
-    when /^the details page for "(.*)"/
-      m = Movie.find_by_title($1)
-      movie_path(m)
-
-    when /^the Similar Movies page for "(.*)"/
-      m = Movie.find_by_title($1)
-      same_director_path(m)
-
-
-
 
     else
       begin

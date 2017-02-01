@@ -2,7 +2,16 @@ require 'api_constraints'
 
 Auth::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
-
+  
+  namespace :api, defaults: { format: :json } do
+    scope module: :v1,
+      constraints: ApiConstraints.new(version: 1, default: true) do
+        resources :users, :only => [:show, :create, :update, :destroy] do
+          resources :redeemify_code, shallow: true
+        end
+      end
+  end
+  
   root to: "sessions#new"
 
   get 'sessions/customer'
@@ -23,7 +32,6 @@ Auth::Application.routes.draw do
 
   get 'vendors/new'
 
-
   get 'providers/index'
   get 'providers/home'
   get 'providers/edit'
@@ -39,7 +47,6 @@ Auth::Application.routes.draw do
   
   resources :users do
     resources :provider
-    resources :redeemify_codes, shallow: true
   end
 
   resources :vendors do
@@ -61,13 +68,5 @@ Auth::Application.routes.draw do
   end
 
   ActiveAdmin.routes(self)
-
-  namespace :api, defaults: { format: :json },
-            constraints: { subdomain: 'api' }, path: '/'  do
-    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
-      resources :users, :only => [:show, :create, :update, :destroy]
-      resources :sessions, :only => [:create, :destroy]
-    end
-  end
-
+  
 end

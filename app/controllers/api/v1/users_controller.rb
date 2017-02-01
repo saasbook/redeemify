@@ -14,6 +14,15 @@ class Api::V1::UsersController < ApplicationController
       render json: { errors: user.errors }, status: 422
     end
   end
+  
+  def update
+    user = User.find(params[:id])
+    if user.update(user_params)
+      render json: user, status: 200, location: [:api, user]
+    else
+      render json: { errors: user.errors }, status: 422
+    end
+  end
 
   def destroy
     user = User.find(params[:id])
@@ -24,6 +33,6 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:provider, :uid, :name, :email)
   end
 end

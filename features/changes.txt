@@ -1,6 +1,0 @@
-Updated: 3/3/2015
-
-Changes made to user stories:
-
-- The customer told us on 3/2/2015 that we should not keep the user's password. Instead, we should conduct all logins via 3rd party authentication. We modiefied the make_new_account and user_login features to reflect that.
-- We also deleted the View Offer user story because we realized that there was no action involved in that feature, and so we could combine it with other features.
