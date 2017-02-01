@@ -25,13 +25,17 @@ When /^(?:|I (?:|have ))upload(?:|ed)(?:| an (in)?appropriate) file(?:| with ven
       File.join(Rails.root, 'features', 'upload-file', 'test.txt'))
   else
     attach_file('file',
-      File.join(Rails.root, 'features', 'upload-file', 'invalid_codes_test.txt'))
+      File.join(Rails.root, 'features', 'upload-file', 'test.csv'))
   end
     click_button('submit')
 end
 
 When /^(?:|I) update my set of codes by uploading the file$/ do
-  step "upload an inappropriate file with vendor codes"
+    click_link('upload')
+    expect(page).to have_current_path('/vendors/upload_page')
+    attach_file('file', 
+      File.join(Rails.root, 'features', 'upload-file', 'invalid_codes_test.txt'))
+    click_button('submit')
 end  
 
 When /^(?:|I) upload an empty file for new vendor codes$/ do

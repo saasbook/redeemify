@@ -15,13 +15,17 @@ When /^(?:|I (?:|have ))upload(?:|ed)(?:| an (in)?appropriate) file(?:| with pro
       File.join(Rails.root, 'features', 'upload-file', 'test.txt'))
   else
     attach_file('file', 
-      File.join(Rails.root, 'features', 'upload-file', 'invalid_codes_test.txt'))
+      File.join(Rails.root, 'features', 'upload-file', 'test.csv'))
   end
     click_button('submit')
 end
 
 When /^(?:|I) add these codes by uploading the file$/ do
-  step "upload an inappropriate file with provider codes"
+    click_link('upload')
+    expect(page).to have_current_path('/providers/upload_page')
+    attach_file('file', 
+      File.join(Rails.root, 'features', 'upload-file', 'invalid_codes_test.txt'))
+    click_button('submit')
 end
 
 When /^(?:|I) upload an empty file for new provider codes$/ do
@@ -40,6 +44,12 @@ end
 Then /^I should be alerted of no detected codes$/ do
   page.should have_content "No codes detected! Please check your upload file"
 end  
+  
+Then /^I should be alerted of inappropriate format for the upload file$/ do
+  page.should have_content "Wrong file format! Please upload '.txt' file"
+
+end
+  
   
 Then /number of (\w+) provider codes should be (\d+)$/ do |attribute, value|
   p = Provider.find_by_name("Amazon")

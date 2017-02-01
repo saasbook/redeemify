@@ -10,13 +10,13 @@ class ProvidersController < ApplicationController
     else
       import_status = Vendor.import(params[:file], current_provider,
                     params[:comment], "provider")
-      fail_codes = import_status[:err_codes] || 0
-      if fail_codes > 0
+      fail_codes = import_status[:err_codes]
+      if import_status[:err_file]
+        flash[:error] = import_status[:err_file]
+        redirect_to '/providers/upload_page' 
+      elsif fail_codes > 0
         content = validation_errors_content(import_status)
         send_data(content, :filename => "#{fail_codes}_#{'code'.pluralize(fail_codes)}_rejected_at_submission_details.txt")
-      elsif import_status[:submitted_codes] == 0
-        flash[:error] = "No codes detected! Please check your upload file"
-        redirect_to '/providers/upload_page' 
       else                                
         flash[:notice] = "#{import_status[:submitted_codes]} #{'code'.pluralize(import_status[:submitted_codes])} imported" 
         redirect_to '/providers/home'

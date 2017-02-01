@@ -22,14 +22,14 @@ private
     now = Time.now.to_formatted_s(:long_ordinal)
     all_codes = err_Hash[:submitted_codes]
     err_codes = err_Hash[:err_codes]
-    content = "#{all_codes} new #{'code'.pluralize(all_codes)} submitted to update the code set on #{now}\n"
-    content = "#{content}#{err_codes} #{'code'.pluralize(err_codes)} failed through validation checks, comprising\n" if err_codes
+    content = "#{all_codes} new #{'code'.pluralize(all_codes)} submitted to update the code set on #{now}\r\n"
+    content = "#{content}#{err_codes} #{'code'.pluralize(err_codes)} failed through validation checks, comprising\r\n" if err_codes
      
     err_Hash.each do |key, value|
       
       if value.is_a? Array
-        content = "#{content}\n#{value.length} #{'code'.pluralize(value.length)} #{key}:\n"
-        value.each {|c| content = "#{content}#{c}\n"}   
+        content = "#{content}\r\n#{value.length} #{'code'.pluralize(value.length)} #{key}:\r\n"
+        value.each {|c| content = "#{content}#{c}\r\n"}   
       end  
     end  
     content

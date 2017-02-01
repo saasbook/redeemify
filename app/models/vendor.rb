@@ -13,9 +13,12 @@ class Vendor < ActiveRecord::Base
 
 
   	def self.import(file, current, comment, type)
-  		date = ""
-        serialized_codes = 0
-        serialize_errors = {submitted_codes: 0}
+        
+        serialize_errors, serialized_codes, date = {submitted_codes: 0}, 0, ""
+        
+        serialize_errors[:err_file] = file_check file.path
+        return serialize_errors if serialize_errors[:err_file]
+        
     	f = File.open(file.path, "r")
 		f.each_line do |row|
 			row = row.gsub(/\s+/, "")  # 12 3 4 --> 1234,
@@ -54,6 +57,12 @@ class Vendor < ActiveRecord::Base
         return serialize_errors
         
   	end # end self.import(file)
+  	
+  	def self.file_check(file_path)
+        return "Wrong file format! Please upload '.txt' file" unless file_path =~/.txt$/
+        return "No codes detected! Please check your upload file" if File.zero? file_path
+    end    
+  		
 
 
   	def self.update_profile_vendor(current_vendor,info)

@@ -27,7 +27,12 @@ Scenario: Uploading of file with codes missing (blank file)
   Then I should be on the vendor upload page
   And I should be alerted of no detected codes
 
-
+Scenario: Uploading a file of wrong format
+  
+  When I upload an inappropriate file with vendor codes
+  Then I should be on the vendor upload page
+  And I should be alerted of inappropriate format for the upload file
+  
 # Scenario: Unsuccessful uploading of codes
   
 #   When I upload inappropriate file
