@@ -13,36 +13,56 @@ class Vendor < ActiveRecord::Base
 
 
   	def self.import(file, current, comment, type)
-  		numberOfCodes = 0
-  		date = ""
+        
+        serialize_errors, serialized_codes, date = {submitted_codes: 0}, 0, ""
+        
+        serialize_errors[:err_file] = file_check file.path
+        return serialize_errors if serialize_errors[:err_file]
+        
     	f = File.open(file.path, "r")
 		f.each_line do |row|
 			row = row.gsub(/\s+/, "")  # 12 3 4 --> 1234,
 			if row !=  ""   # don't get any blank code
+			  serialize_errors[:submitted_codes] +=1
+			  begin	
 				if type == "vendor"
-			      	a = current.vendorCodes.create!(:code => row, :name => current.name , :vendor => current)
-
+			      	a = current.vendorCodes.build(:code => row, :name => current.name , :vendor => current)
+                    a.save!
 			    else
-			    	a = current.redeemifyCodes.create!(:code => row, :name => current.name , :provider => current)
+			    	a = current.redeemifyCodes.build(:code => row, :name => current.name , :provider => current)
+			    	a.save!
 			    end
-			    numberOfCodes = numberOfCodes + 1
-		    end
+			    serialized_codes += 1
+			  rescue
+			    err_str = a.errors[:code].join(', ')
+			    serialize_errors[err_str] ||=[]
+			    serialize_errors[err_str] << a.code
+			  end
+			    serialize_errors[:err_codes] = serialize_errors[:submitted_codes] - serialized_codes
+			end
 		end # end CSV.foreach
 		f.close
 		history = current.history
 
 	    date = Time.now.to_formatted_s(:long_ordinal)
 	    if history == nil
-	    	history = "#{date}+++++#{comment}+++++#{numberOfCodes.to_s}|||||"
+	    	history = "#{date}+++++#{comment}+++++#{serialized_codes.to_s}|||||"
 	    else
-	    	history = "#{history}#{date}+++++#{comment}+++++#{numberOfCodes.to_s}|||||"
+	    	history = "#{history}#{date}+++++#{comment}+++++#{serialized_codes.to_s}|||||"
 	    end
 	    current.update_attribute(:history, history)
-	    current.update_attribute(:uploadedCodes, current.uploadedCodes + numberOfCodes)
-	    current.update_attribute(:unclaimCodes, current.unclaimCodes + numberOfCodes)
+	    current.update_attribute(:uploadedCodes, current.uploadedCodes + serialized_codes)
+	    current.update_attribute(:unclaimCodes, current.unclaimCodes + serialized_codes)
 
-
+        return serialize_errors
+        
   	end # end self.import(file)
+  	
+  	def self.file_check(file_path)
+        return "Wrong file format! Please upload '.txt' file" unless file_path =~/.txt$/
+        return "No codes detected! Please check your upload file" if File.zero? file_path
+    end    
+  		
 
 
   	def self.update_profile_vendor(current_vendor,info)

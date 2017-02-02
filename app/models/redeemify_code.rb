@@ -4,7 +4,9 @@ class RedeemifyCode < ActiveRecord::Base
   has_many :vendor_codes
   #accepts_nested_attributes_for :vendor_codes
 
-  validates_presence_of :code
+  #validates_presence_of :code
+  validates :code, presence: true,  uniqueness: {message: "already registered"},
+                   length: { maximum: 255, message: "longer than 255 characters" }
   
   def self.serve(myUser, myCode)
     rCode = self.where(code: myCode, user: nil).first #look up newcomer's provider token
