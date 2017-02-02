@@ -17,6 +17,23 @@ private
   def current_vendor
     @vendor ||= Vendor.find(session[:vendor_id]) if session[:vendor_id]
   end
+  
+  def validation_errors_content(err_Hash)
+    now = Time.now.to_formatted_s(:long_ordinal)
+    all_codes = err_Hash[:submitted_codes]
+    err_codes = err_Hash[:err_codes]
+    content = "#{all_codes} new #{'code'.pluralize(all_codes)} submitted to update the code set on #{now}\r\n"
+    content = "#{content}#{err_codes} #{'code'.pluralize(err_codes)} failed through validation checks, comprising\r\n" if err_codes
+     
+    err_Hash.each do |key, value|
+      
+      if value.is_a? Array
+        content = "#{content}\r\n#{value.length} #{'code'.pluralize(value.length)} #{key}:\r\n"
+        value.each {|c| content = "#{content}#{c}\r\n"}   
+      end  
+    end  
+    content
+  end  
 
   def new
   end

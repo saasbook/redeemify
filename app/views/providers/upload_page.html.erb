@@ -5,7 +5,7 @@
 </div>
 
 <% if flash[:error] != nil %>
-<div class = "warning">
+<div class = "flash_error">
     <% flash.keys.each do |k| %> 
        <center><font color="black"><%= flash[k] %></font></center>
     <% end %> 
@@ -26,7 +26,7 @@
 <% end %>
 
 
-<h4 class="loginwith3"><%= t 'providerupload.header' %></h4>
+<h4 class="loginwith3"><center><%= t 'providerupload.header' %></center></h4>
  <div class = "home1">
  <p class="homee"><%= link_to image_tag('home2.png', :size =>'40x40'), '/providers/home' %></p>
 </div>
