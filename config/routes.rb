@@ -23,7 +23,7 @@ Auth::Application.routes.draw do
   get 'vendors/home'
   get 'vendors/edit'
   get 'vendors/upload_page'
-  get 'vendors/viewCodes'
+  get 'vendors/view_codes'
   get 'vendors/profile'
   get 'vendors/change_to_user'
   get 'vendors/clear_history'
@@ -60,7 +60,7 @@ Auth::Application.routes.draw do
 
   resources :providers do
     collection do
-      post :import2
+      post :import
       post :update_profile
       get :remove_codes
     end

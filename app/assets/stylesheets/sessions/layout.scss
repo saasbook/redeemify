@@ -144,11 +144,6 @@ edit*/
   background: #05e177; color: #FFFFFF; background-position: center; margin-top: 10px}
 .customer h1 { margin: 0; padding-top: 3px; font-family: Helvetica Neue; font-size: 30px ; letter-spacing: 2px}
 
-.vendor { height: 40px; text-align: center; width : 350px
-; margin-top: 5em; margin-left: auto; margin-right: auto;
-  background: #44c4ff; color: #FFFFFF; background-position: center; margin-top: 10px}
-.vendor h1 { margin: 0; padding-top: 3px; font-family: Helvetica Neue; font-size: 30px ; letter-spacing: 2px}
-
 /*.loginwith { height: 40px; text-align: center; width : 540px; margin-top: 5em; margin-left: auto; margin-right: auto;
   background: #333742; color: #FFFFFF; background-position: center; }*/
   /*.loginwith { color: #757575; }*/
@@ -270,8 +265,7 @@ edit*/
    
     color: white;
     display: none;
-  
-    
+
     top: 400px;      
     left: 395px;
      
@@ -289,7 +283,7 @@ span#question {
   height: 16px;
   background-color: #89A4CC;
   line-height: 16px;
-  color: White;
+  color: white;
   font-size: 13px;
   font-weight: bold;
   border-radius: 8px;
@@ -437,15 +431,20 @@ div.tooltip h3 {
 .customer_table{padding: none !important; margin :none !important; background: #f0f0f0;width :50%;margin-left: auto; margin-right: auto; table-layout: fixed;margin-bottom: 0px !important; margin-top: 0px !important}
 .more {display: none}
  */
-.codes {width:50%;}
 .upload_text{font-size: 13px; font-family: Helvetica Neue; text-align: left; margin-left: 300px;
               color: #000000; height : 20px;}
 
+
 .headerr {height: 25px; font-family: Helvetica Neue; font-size: 12px;background: #5a6065; color: #FFFFFF}
-.upload_vendor { margin-left: auto; margin-right: auto; font-family: Helvetica Neue}
-.upload_vendor p.vendor_name {font-size: 24px; text-align: center; padding-top: 3px}
 .profile {margin-left: auto !important; margin-right: auto !important; position: center;}
-#comments {text-align: left !important; display: block !important; width: 40%;margin-left: 300px !important; }
+
+#comments {
+  text-align: left !important;
+  display: block !important;
+  width: 40%;
+  margin: 0 auto;
+}
+
 #cashValue {display: block !important;width : 100px !important; height:20px !important;margin-left: 300px !important;}
 #expiration {display: block !important;width : 100px !important; height: 20px !important;margin-left: 300px !important;}
 #helpLink {display: block !important;width : 30% !important;margin-left: 300px !important;}
@@ -454,14 +453,21 @@ div.tooltip h3 {
 
 
 
-.backtohome {height: 40px; width:40px;text-align: left}
 .history{text-align: center; font-size: 18px}
 
 
 .vendor_group1 {text-align: left;padding-left: 10px;font-size: 12px; width:120px; font-family: Helvetica Neue; }
 .vendor_group2 {text-align: left;padding-left: 10px;}
 .vendor_group3 {text-align: left;padding-left: 10px; white-space: pre-wrap}
-.vendor_oddd {background : #d7d7d7;height: 20px !important}
+
+.odd_row {
+  background: #fff;
+  height: 2.5em;
+}
+.even_row {
+  background: #f0f0f0;
+  height: 2.5em;
+}
 
  .button_customer {width: 150px; margin:auto;}
 .button_vendor {width: 120px; margin:auto;}
@@ -509,7 +515,7 @@ div.tooltip h3 {
   margin: 0px auto 0px;
   padding: 5px;
   border-radius: 5px;
-  color: orangered;
+  color: black;
 }
 
 .flash_notice {
@@ -518,6 +524,7 @@ div.tooltip h3 {
 }
 
 .notice {
+  text-align: center;
   background: #befcc4;
   margin:auto;
   height: auto
@@ -527,12 +534,10 @@ div.tooltip h3 {
 .oddd{background: #f0f0f0;}
 .evenn{background: #d7d7d7;} 
 /*#b2e4fa*/
-.upload_group {text-align: center; margin-left: auto; margin-right: auto}
 .group-buttons {width:710px; margin: auto;}
 .group-buttons2 {width:424px; margin: auto; margin-top: 0px !important}
 .button-single {width:150px; margin: auto;padding-top: 5px}
-// .home1 {width : 45px; margin: auto; padding-top: 10px}
-.home1 { text-align: center; }
+.home1 {width : 45px; margin: auto; padding-top: 10px}
 .submit {width : 80px; margin-left: 300px}
 /* .homee { -webkit-border-radius:200px;-moz-border-radius:200px;border-radius:200px;display:inline-block;font-weight:bold;font-size:1.0em;font-family:Helvetica, Arial, sans-serif
               ;line-height:12px;margin-right:3px;padding:8px 10px 10px;text-decoration:none;
@@ -649,4 +654,68 @@ table tr.list td.code{  text-align: top;word-wrap: auto;text-align: center} */
 
 form .field, form .actions {
   margin: 12px 0;
+}
+
+.center {
+  text-align: center;
+}
+
+.upload_title {
+  text-align: left;
+  margin-left: 30%;
+  margin-top: 2.5em;
+  margin-bottom: 2em;
+  font-size: small;
+}
+
+.upload_codes {
+  text-align: left;
+  margin-left: 30%;
+  margin-bottom: 2em;
+}
+
+.upload_comment {
+  text-align: left;
+  margin-left: 30%;
+  margin-bottom: 1em;
+}
+
+.upload_submit {
+  text-align: left;
+  margin-left: 30%;
+  margin-top: 2em;
+}
+
+.vendor_codes_table {
+  width: 95%;
+  margin: 2.5em auto;
+  
+  thead {
+    text-align: left;
+  }
+  
+  tr {
+    line-height: 5;
+  }
+  
+  td {
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+  
+  td.width_5 {
+    width: 5%;
+  }
+  
+  td.width_10 {
+    width: 10%;
+  }
+  
+  td.width_25 {
+    width: 25%;
+  }
+}
+
+.vendor_codes_table, th, tr {
+  border-collapse: collapse;
 }

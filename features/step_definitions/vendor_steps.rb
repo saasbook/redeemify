@@ -101,5 +101,5 @@ When /^(?:|I )follow the link to (.*)$/ do |action|
 end
 
 Then /^(?:|I )should see message about successful removing of history$/ do
-  page.should have_content('Cleared History')
+  page.should have_content('History was cleared')
 end

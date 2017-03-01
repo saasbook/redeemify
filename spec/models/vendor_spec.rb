@@ -41,7 +41,7 @@ RSpec.describe Vendor, :type => :model do
     end  
   end
   
-    describe 'Vendor.import' do
+    describe 'Offeror.import' do
       include Rack::Test::Methods
       include ActionDispatch::TestProcess
       
@@ -57,44 +57,44 @@ RSpec.describe Vendor, :type => :model do
       end  
       
       it "updates Vendor set of codes by number of unique valid strings taken from upload file" do
-        allow(Vendor).to receive(:file_check).with(any_args).and_return nil
-        expect{Vendor.import(@codes_file, @vendor, @comment, "vendor")}.to change {@vendor.uploadedCodes}.by(3)
+        allow(Offeror).to receive(:file_check).with(any_args).and_return nil
+        expect{Offeror.import(@codes_file, @vendor, @comment)}.to change {@vendor.uploadedCodes}.by(3)
       end   
    
       it "updates Redeemify set of access codes by number of unique valid strings taken from upload file" do
-        allow(Vendor).to receive(:file_check).with(any_args).and_return nil
-        expect{Vendor.import(@codes_file, @provider, @comment, "provider")}.to change {@provider.uploadedCodes}.by(3)
+        allow(Offeror).to receive(:file_check).with(any_args).and_return nil
+        expect{Offeror.import(@codes_file, @provider, @comment)}.to change {@provider.uploadedCodes}.by(3)
       end   
    
       it "returns Vendor codes serializing report as a Hash" do
-        allow(Vendor).to receive(:file_check).with(any_args).and_return nil
-        expect(Vendor.import(@codes_file, @vendor, @comment, "vendor")).to be_an_instance_of Hash
+        allow(Offeror).to receive(:file_check).with(any_args).and_return nil
+        expect(Offeror.import(@codes_file, @vendor, @comment)).to be_an_instance_of Hash
       end
      
       it "returns Redeemify codes serializing report as a Hash" do
-        allow(Vendor).to receive(:file_check).with(any_args).and_return nil
-        expect(Vendor.import(@codes_file, @provider, @comment, "provider")).to be_an_instance_of Hash
+        allow(Offeror).to receive(:file_check).with(any_args).and_return nil
+        expect(Offeror.import(@codes_file, @provider, @comment)).to be_an_instance_of Hash
       end
      
       it "returns, for Vendor codes, a Hash having :err_codes and :submitted_codes as keys" do
-        allow(Vendor).to receive(:file_check).with(any_args).and_return nil
-        expect(Vendor.import(@codes_file, @vendor, @comment, "vendor")).
+        allow(Offeror).to receive(:file_check).with(any_args).and_return nil
+        expect(Offeror.import(@codes_file, @vendor, @comment)).
                to match err_codes: an_instance_of(Fixnum),
                         submitted_codes: an_instance_of(Fixnum),
                         err_file: nil
       end
      
       it "returns, for Redeemify codes, a Hash having :errCodes and :submittedCodes as keys" do
-        allow(Vendor).to receive(:file_check).with(any_args).and_return nil
-        expect(Vendor.import(@codes_file, @provider, @comment, "provider")).
+        allow(Offeror).to receive(:file_check).with(any_args).and_return nil
+        expect(Offeror.import(@codes_file, @provider, @comment)).
                to match err_codes: an_instance_of(Fixnum), 
                         submitted_codes: an_instance_of(Fixnum),
                         err_file: nil
       end
      
       it "returns, for Vendor codes, a Hash with validation errors as string keys each related to array of rejected codes" do
-        allow(Vendor).to receive(:file_check).with(any_args).and_return nil
-        expect(Vendor.import(@er_codes_file, @vendor, @comment, "vendor")).
+        allow(Offeror).to receive(:file_check).with(any_args).and_return nil
+        expect(Offeror.import(@er_codes_file, @vendor, @comment)).
               to match err_codes: an_instance_of(Fixnum), 
                        submitted_codes: an_instance_of(Fixnum),
                        err_file: nil,
@@ -103,8 +103,8 @@ RSpec.describe Vendor, :type => :model do
       end   
      
       it "returns, for Redeemify codes, a Hash with validation errors as string keys each related to array of rejected codes" do
-        allow(Vendor).to receive(:file_check).with(any_args).and_return nil
-        expect(Vendor.import(@er_codes_file, @provider, @comment, "provider")).
+        allow(Offeror).to receive(:file_check).with(any_args).and_return nil
+        expect(Offeror.import(@er_codes_file, @provider, @comment)).
               to match err_codes: an_instance_of(Fixnum), 
                        submitted_codes: an_instance_of(Fixnum),
                        err_file: nil,
@@ -113,29 +113,29 @@ RSpec.describe Vendor, :type => :model do
       end
      
       it "receives a notification from :file_check of the wrong upload file format" do
-        expect(Vendor).to receive(:file_check).with(@er_file_format.path).
+        expect(Offeror).to receive(:file_check).with(@er_file_format.path).
                and_return "Wrong file format! Please upload '.txt' file"
-        Vendor.import(@er_file_format, @vendor, @comment, "vendor")
+        Offeror.import(@er_file_format, @vendor, @comment)
       end
      
       it "receives a notification from :file_check of the empty upload file" do
-        expect(Vendor).to receive(:file_check).with(@empty_file.path).
+        expect(Offeror).to receive(:file_check).with(@empty_file.path).
               and_return "No codes detected! Please check your upload file"
-        Vendor.import(@empty_file, @vendor, @comment, "vendor")
+        Offeror.import(@empty_file, @vendor, @comment)
       end   
     
       it "returns a Hash with :err_file notification of the empty upload file" do
-        allow(Vendor).to receive(:file_check).with(any_args).
+        allow(Offeror).to receive(:file_check).with(any_args).
               and_return "No codes detected! Please check your upload file"
-        expect(Vendor.import(@empty_file, @vendor, @comment, "vendor")).
+        expect(Offeror.import(@empty_file, @vendor, @comment)).
               to match submitted_codes: 0, 
                        err_file: "No codes detected! Please check your upload file"
       end   
 
       it "returns a Hash with :err_file notification of the wrong file format" do
-        allow(Vendor).to receive(:file_check).with(any_args).
+        allow(Offeror).to receive(:file_check).with(any_args).
               and_return "Wrong file format! Please upload '.txt' file"
-        expect(Vendor.import(@er_file_format, @vendor, @comment, "vendor")).
+        expect(Offeror.import(@er_file_format, @vendor, @comment)).
               to match submitted_codes: 0, 
                        err_file: "Wrong file format! Please upload '.txt' file"
       end   

@@ -1,0 +1,37 @@
+<%= render :partial => 'shared/offeror_header' %>
+
+<h4 class="center">
+  Uploaded codes by <%= current_vendor.name %>
+</h4>
+
+<div class="center">
+  <%= link_to image_tag("home2.png", alt: "/vendors/home", size: "40x40"),
+    '/vendors/home' %>
+</div>
+
+<table class="vendor_codes_table">
+  <thead>
+    <tr>
+      <th>Codes</th>
+      <th>Value</th>
+      <th>Expiration</th>
+      <th>Description</th>
+      <th>Instruction</th>
+      <th>Help</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @vendor_codes.each do |vendor_codes_list| %>
+      <tr class="<%= cycle('odd_row', 'even_row') %>">
+        <td class="width_25"><%= vendor_codes_list.code %></td>
+        <td class="width_10"><%= current_vendor.cashValue %></td>
+        <td class="width_10">
+          <%= Date.strptime(current_vendor.expiration, '%m/%d/%Y') %>
+        </td>
+        <td class="width_25"></td><%= current_vendor.description %></td>
+        <td class="width_25"><%= current_vendor.instruction %></td>
+        <td class="width_5"><%= link_to 'link', current_vendor.helpLink %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

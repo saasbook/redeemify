@@ -32,6 +32,4 @@ class RedeemifyCode < ActiveRecord::Base
         rCode.save!
       end  
   end
-  
-  
 end
