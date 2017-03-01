@@ -1,60 +1,26 @@
 module Offeror
   
-  def self.import(file, current, comment)
-    serialize_errors, serialized_codes = {submitted_codes: 0}, 0
-    serialize_errors[:err_file] = file_check(file.path)
-    return serialize_errors if serialize_errors[:err_file]
-    f = File.open(file.path, "r")
-      f.each_line do |row|
-        row = row.gsub(/\s+/, "") # eliminate spaces in a row
-        if row != ""
-          serialize_errors[:submitted_codes] += 1
-          begin
-            a = add_code(current, row)
-            a.save!
-            serialized_codes += 1
-          rescue
-            err_str = a.errors[:code].join(', ')
-            serialize_errors[err_str] ||= []
-            serialize_errors[err_str] << a.code
-          end
-          serialize_errors[:err_codes] =
-            serialize_errors[:submitted_codes] - serialized_codes
-        end
-      end
-    f.close
+  def self.import(file, offeror, comment)
+    @processed_codes, @approved_codes = {submitted_codes: 0}, 0
+    @processed_codes[:err_file] = file_check(file.path)
+    return @processed_codes if @processed_codes[:err_file]
     
-    @serialized_codes = serialized_codes
-    @comment = comment
-    update_history(current)
-    current.update_attribute(:uploadedCodes, current.uploadedCodes + serialized_codes)
-    current.update_attribute(:unclaimCodes, current.unclaimCodes + serialized_codes)
-    return serialize_errors
+    process_codes(file, offeror)
+    
+    update_history(offeror, comment)
+
+    return @processed_codes
   end
   
-  def self.remove_unclaimed_codes(current)
-    if current.is_a? Vendor
-      unclaimed_codes = current.vendorCodes.where(:user_id => nil)
-    else
-      unclaimed_codes = current.redeemifyCodes.where(:user_id => nil)
-    end
+  def self.remove_unclaimed_codes(offeror)
+    define_role(offeror)
     
-    num = current.unclaimCodes
-    date = Time.now.to_formatted_s(:long_ordinal)
+    remove_codes(offeror)
     
-    history = current.history
-    history = "#{history}#{date}\tCodes were removed\t-#{num}\n"
-    current.update_attribute(:history, history)
+    reflect_in_history(offeror)
     
-    contents = "There are #{num} unclaimed codes, removed on #{date}\r\n\r\n"
-    unclaimed_codes.each do |code|
-      contents = "#{contents}#{code.code}\r\n"
-      code.destroy
-    end
-    current.update_attribute(:unclaimCodes, 0)
-    current.update_attribute(:removedCodes, current.removedCodes + num)
-    
-    return contents
+    offeror.update(unclaimCodes: 0, removedCodes: offeror.removedCodes + @num)
+    return @contents
   end
   
   def self.home_set(histories)
@@ -74,29 +40,76 @@ module Offeror
   
   private
   
+  def self.file_check(file_path)
+    return "Wrong file format! Please upload '.txt' file" unless file_path =~/.txt$/
+    return "No codes detected! Please check your upload file" if File.zero? file_path
+  end
+  
+  def self.process_codes(file, offeror)
+    f = File.open(file.path, "r")
+      f.each_line do |row|
+        row = row.gsub(/\s+/, "") # eliminate spaces in a row
+        if row != ""
+          @processed_codes[:submitted_codes] += 1
+          begin
+            a = add_code(offeror, row)
+            a.save!
+            @approved_codes += 1
+          rescue
+            err_str = a.errors[:code].join(', ')
+            @processed_codes[err_str] ||= []
+            @processed_codes[err_str] << a.code
+          end
+          @processed_codes[:err_codes] =
+            @processed_codes[:submitted_codes] - @approved_codes
+        end
+      end
+    f.close
+    offeror.update(uploadedCodes: offeror.uploadedCodes + @approved_codes,
+      unclaimCodes: offeror.unclaimCodes + @approved_codes)
+  end
+  
   def self.add_code(offeror, code)
     if offeror.is_a? Vendor
-      offeror.vendorCodes.build(:code => code, :name => offeror.name,
-        :vendor => offeror)
+      offeror.vendorCodes.build(code: code, name: offeror.name, vendor: offeror)
     else
-      offeror.redeemifyCodes.build(:code => code, :name => offeror.name,
-        :provider => offeror)
+      offeror.redeemifyCodes.build(code: code, name: offeror.name,
+        provider: offeror)
     end
   end
   
-  def self.update_history(offeror)
+  def self.update_history(offeror, comment)
     history = offeror.history
     date = Time.now.to_formatted_s(:long_ordinal)
     if history.nil?
-      history = "#{date}\t#{@comment}\t#{@serialized_codes}\n"
+      history = "#{date}\t#{comment}\t#{@approved_codes}\n"
     else
-      history = "#{history}#{date}\t#{@comment}\t#{@serialized_codes}\n"
+      history = "#{history}#{date}\t#{comment}\t#{@approved_codes}\n"
     end
     offeror.update_attribute(:history, history)
   end
   
-  def self.file_check(file_path)
-    return "Wrong file format! Please upload '.txt' file" unless file_path =~/.txt$/
-    return "No codes detected! Please check your upload file" if File.zero? file_path
+  def self.define_role(offeror)
+    if offeror.is_a? Vendor
+      @unclaimed_codes = offeror.vendorCodes.where(:user_id => nil)
+    else
+      @unclaimed_codes = offeror.redeemifyCodes.where(:user_id => nil)
+    end
+  end
+  
+  def self.remove_codes(offeror)
+    @num = offeror.unclaimCodes
+    @date = Time.now.to_formatted_s(:long_ordinal)
+    @contents = "There are #{@num} unclaimed codes, removed on #{@date}\r\n\r\n"
+    @unclaimed_codes.each do |code|
+      @contents = "#{@contents}#{code.code}\r\n"
+      code.destroy
+    end
+  end
+  
+  def self.reflect_in_history(offeror)
+    history = offeror.history
+    history = "#{history}#{@date}\tCodes were removed\t-#{@num}\n"
+    offeror.update_attribute(:history, history)
   end
 end
