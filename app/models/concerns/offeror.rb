@@ -37,8 +37,9 @@ module Offeror
       code.destroy
     end
     
-    reflect_in_history
-    
+    comment = "Codes were removed"
+    update_history(comment)
+
     self.update(unclaimCodes: 0, removedCodes: self.removedCodes + @num)
     return @contents
   end
@@ -93,11 +94,4 @@ module Offeror
     end
     self.update_attribute(:history, history)
   end
-
-  def reflect_in_history
-    history = self.history
-    history = "#{history}#{@date}\tCodes were removed\t-#{@num}\n"
-    self.update_attribute(:history, history)
-  end
-
 end
