@@ -10,7 +10,7 @@ describe ProvidersController do
       expect(session[:provider_id]).to be_nil
 
       v = Provider.create :name => "thai" , :provider => "amazon"
-      v.history = "+++++April 3rd, 2015 23:51+++++Code Description+++++05/02/2015+++++2|||||"
+      v.history = "April 3rd, 2015 23:51\tCode Description\t05/02/2015\t2\n"
       v.save!
 
       session[:provider_id] = v.id
@@ -59,6 +59,7 @@ describe ProvidersController do
   describe "#import" do
     render_views
     before do
+      @provider = create(:provider)
       @hash = {err_codes: 0, submitted_codes: 5}
       @err_hash = {err_codes: 2, submitted_codes: 5}
     end  
@@ -70,26 +71,29 @@ describe ProvidersController do
     end
     
     it "redirects to the home page and notifies user of codes successfully uploaded" do
-      allow(Offeror).to receive(:import).and_return(@hash)
+      allow(controller).to receive(:current_provider).and_return(@provider)
+      allow(@provider).to receive(:import).and_return(@hash)
       post :import, file: !nil
       expect(response).to redirect_to(:providers_home)
       expect(flash[:notice]).to match(/5 codes imported/)
     end
     
     it "calls #validation_errors_content to generate report content" do
-      allow(Offeror).to receive(:import).and_return(@err_hash)
+      allow(controller).to receive(:current_provider).and_return(@provider)
+      allow(@provider).to receive(:import).and_return(@err_hash)
       expect(controller).to receive(:validation_errors_content).with(@err_hash)
       post :import, file: !nil
     end  
 
     it "calls #send_data prompting user to download error report" do
-      
       content = "N codes submitted to update the code set"
       file = {filename: "#{@err_hash[:err_codes]}_codes_rejected_at_submission_details.txt"}
-      allow(Offeror).to receive(:import).and_return(@err_hash)
+      allow(controller).to receive(:current_provider).and_return(@provider)
+      allow(@provider).to receive(:import).and_return(@err_hash)
       allow(controller).to receive(:validation_errors_content).with(@err_hash).and_return(content)
       expect(controller).to receive(:send_data).with(content, file) {controller.render nothing: true}
       post :import, file: !nil
     end  
   end
 end
+

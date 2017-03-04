@@ -77,6 +77,7 @@ describe VendorsController do
   describe "#import" do
     render_views
     before do
+      @vendor = create(:vendor)
       @hash = {err_codes: 0, submitted_codes: 5}
       @err_hash = {err_codes: 2, submitted_codes: 5}
     end  
@@ -88,14 +89,16 @@ describe VendorsController do
     end
     
     it "redirects to the home page and notifies user of codes successfully uploaded" do
-      allow(Offeror).to receive(:import).and_return(@hash)
+      allow(controller).to receive(:current_vendor).and_return(@vendor)
+      allow(@vendor).to receive(:import).and_return(@hash)
       post :import, file: !nil
       expect(response).to redirect_to(:vendors_home)
       expect(flash[:notice]).to match(/5 codes imported/)
     end
     
     it "calls #validation_errors_content to generate report content" do
-      allow(Offeror).to receive(:import).and_return(@err_hash)
+      allow(controller).to receive(:current_vendor).and_return(@vendor)
+      allow(@vendor).to receive(:import).and_return(@err_hash)
       expect(controller).to receive(:validation_errors_content).with(@err_hash)
       post :import, file: !nil
     end  
@@ -103,7 +106,8 @@ describe VendorsController do
     it "calls #send_data prompting user to download error report" do
       content = "N codes submitted to update the code set"
       file = {filename: "#{@err_hash[:err_codes]}_codes_rejected_at_submission_details.txt"}
-      allow(Offeror).to receive(:import).and_return(@err_hash)
+      allow(controller).to receive(:current_vendor).and_return(@vendor)
+      allow(@vendor).to receive(:import).and_return(@err_hash)
       allow(controller).to receive(:validation_errors_content).with(@err_hash).and_return(content)
       expect(controller).to receive(:send_data).with(content, file) {controller.render nothing: true}
       post :import, file: !nil
