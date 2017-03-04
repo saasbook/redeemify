@@ -20,8 +20,7 @@ module Import
       redirect_to "/#{params[:controller]}/upload_page", 
         :flash => { :error => "You have not selected a file to upload" }
     else
-      import_status = Offeror.import(params[:file], current_offeror,
-                    params[:comment])
+      import_status = current_offeror.import(params[:file], params[:comment])
       fail_codes = import_status[:err_codes]
       if import_status[:err_file]
         flash[:error] = import_status[:err_file]
@@ -43,7 +42,7 @@ module Import
       redirect_to "/#{params[:controller]}/home",
         :flash => { :error => "There are no unclaimed codes" }
     else
-      contents = Offeror.remove_unclaimed_codes(current_offeror)
+      contents = current_offeror.remove_unclaimed_codes(offeror_codes)
       send_data contents, :filename => "unclaimed_codes.txt"
     end
   end

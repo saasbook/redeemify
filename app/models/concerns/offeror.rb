@@ -1,28 +1,5 @@
 module Offeror
-  
-  def self.import(file, offeror, comment)
-    @processed_codes, @approved_codes = {submitted_codes: 0}, 0
-    @processed_codes[:err_file] = file_check(file.path)
-    return @processed_codes if @processed_codes[:err_file]
-    
-    process_codes(file, offeror)
-    
-    update_history(offeror, comment)
 
-    return @processed_codes
-  end
-  
-  def self.remove_unclaimed_codes(offeror)
-    define_role(offeror)
-    
-    remove_codes(offeror)
-    
-    reflect_in_history(offeror)
-    
-    offeror.update(unclaimCodes: 0, removedCodes: offeror.removedCodes + @num)
-    return @contents
-  end
-  
   def self.home_set(histories)
     if histories.blank?
       return []
@@ -37,22 +14,50 @@ module Offeror
       return histories_array
     end
   end
+
+  def import(file, comment)
+    @processed_codes, @approved_codes = {submitted_codes: 0}, 0
+    @processed_codes[:err_file] = file_check(file.path)
+    return @processed_codes if @processed_codes[:err_file]
+    
+    process_codes(file)
+    
+    update_history(comment)
+    
+    return @processed_codes
+  end
+  
+  def remove_unclaimed_codes(offeror_codes)
+    @unclaimed_codes = offeror_codes.where(user_id: nil)
+    @num = self.unclaimCodes
+    @date = Time.now.to_formatted_s(:long_ordinal)
+    @contents = "There are #{@num} unclaimed codes, removed on #{@date}\r\n\r\n"
+    @unclaimed_codes.each do |code|
+      @contents = "#{@contents}#{code.code}\r\n"
+      code.destroy
+    end
+    
+    reflect_in_history
+    
+    self.update(unclaimCodes: 0, removedCodes: self.removedCodes + @num)
+    return @contents
+  end
   
   private
   
-  def self.file_check(file_path)
+  def file_check(file_path)
     return "Wrong file format! Please upload '.txt' file" unless file_path =~/.txt$/
     return "No codes detected! Please check your upload file" if File.zero? file_path
   end
-  
-  def self.process_codes(file, offeror)
+
+  def process_codes(file)
     f = File.open(file.path, "r")
       f.each_line do |row|
-        row = row.gsub(/\s+/, "") # eliminate spaces in a row
-        if row != ""
+        row = row.gsub(/\s+/, "")
+        unless row.empty?
           @processed_codes[:submitted_codes] += 1
           begin
-            a = add_code(offeror, row)
+            a = add_code(row)
             a.save!
             @approved_codes += 1
           rescue
@@ -65,51 +70,34 @@ module Offeror
         end
       end
     f.close
-    offeror.update(uploadedCodes: offeror.uploadedCodes + @approved_codes,
-      unclaimCodes: offeror.unclaimCodes + @approved_codes)
+    self.update(uploadedCodes: self.uploadedCodes + @approved_codes,
+      unclaimCodes: self.unclaimCodes + @approved_codes)
   end
-  
-  def self.add_code(offeror, code)
-    if offeror.is_a? Vendor
-      offeror.vendorCodes.build(code: code, name: offeror.name, vendor: offeror)
+
+  def add_code(code)
+    if self.is_a? Vendor 
+      self.vendorCodes.build(code: code, name: self.name, vendor: self)
     else
-      offeror.redeemifyCodes.build(code: code, name: offeror.name,
-        provider: offeror)
+      self.redeemifyCodes.build(code: code, name: self.name,
+        provider: self)
     end
   end
-  
-  def self.update_history(offeror, comment)
-    history = offeror.history
+
+  def update_history(comment)
+    history = self.history
     date = Time.now.to_formatted_s(:long_ordinal)
     if history.nil?
       history = "#{date}\t#{comment}\t#{@approved_codes}\n"
     else
       history = "#{history}#{date}\t#{comment}\t#{@approved_codes}\n"
     end
-    offeror.update_attribute(:history, history)
+    self.update_attribute(:history, history)
   end
-  
-  def self.define_role(offeror)
-    if offeror.is_a? Vendor
-      @unclaimed_codes = offeror.vendorCodes.where(:user_id => nil)
-    else
-      @unclaimed_codes = offeror.redeemifyCodes.where(:user_id => nil)
-    end
-  end
-  
-  def self.remove_codes(offeror)
-    @num = offeror.unclaimCodes
-    @date = Time.now.to_formatted_s(:long_ordinal)
-    @contents = "There are #{@num} unclaimed codes, removed on #{@date}\r\n\r\n"
-    @unclaimed_codes.each do |code|
-      @contents = "#{@contents}#{code.code}\r\n"
-      code.destroy
-    end
-  end
-  
-  def self.reflect_in_history(offeror)
-    history = offeror.history
+
+  def reflect_in_history
+    history = self.history
     history = "#{history}#{@date}\tCodes were removed\t-#{@num}\n"
-    offeror.update_attribute(:history, history)
+    self.update_attribute(:history, history)
   end
+
 end
