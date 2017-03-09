@@ -46,13 +46,6 @@ en:
     popup4: "e.g This offer grants the user 5 additional free private repositories for 2 years."
     popup5: "To redeem the offer, visit github.com/awesomedeal to enter the promo code!"
 
-  vendorupload:
-    header: "Upload New Codes"
-    line1: "Attach .txt file"
-    line2: "(please upload '.txt' file, each code per line)"
-    comment: "Comment: "
-    popup: "Comment for the upload. e.g: This is new 238 codes from github for this uploaded codes"
-
   provider:
     login: "Logged via account: "
     name: "Name: "
@@ -60,9 +53,9 @@ en:
     col1: "Upload/Remove Date"
     col2: "Comment"
     col3: "Number of Codes Uploaded/Removed"
-  providerupload:
-    header: "Upload New Codes"
-    line1: "Attach .txt file"
-    line2: "(please upload '.txt' file, each code per line)"
-    comment: "Comment: "
-    popup: "Comment for the upload. e.g: This is new 238 codes from github for this uploaded codes "
+  
+  offeror:
+    login:    "Logged via account: "
+    name:     "Name: "
+    header:   "Upload New Codes"
+    comment:  "Comment:"

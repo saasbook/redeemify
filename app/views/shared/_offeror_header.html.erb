@@ -1,0 +1,14 @@
+<header class="mdl-layout__header">
+  <div class="mdl-layout__header-row">
+    <span class="mdl-layout-title">
+      <%= image_tag("logo2.png", alt: "redeemify_logo", id: "redeemify_logo") %>
+        Redeemify
+    </span>
+    <div class="mdl-layout-spacer"></div>
+      <span class="account">
+        <%= t 'offeror.login' %><%= current_offeror.provider.upcase  %> | 
+        <%= t 'offeror.name' %><%= current_offeror.name %> | 
+        <%= link_to "Logout", logout_path, :id => "logout" %>
+      </span>
+  </div>
+</header>
