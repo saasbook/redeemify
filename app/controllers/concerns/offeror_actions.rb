@@ -1,4 +1,4 @@
-module Import
+module OfferorActions
   
   def upload_page
   end
@@ -8,7 +8,7 @@ module Import
 
     @hash = { "uploaded" => current_offeror.uploadedCodes,
               "used" => current_offeror.usedCodes,
-              "unclaim" => current_offeror.unclaimCodes,
+              "unclaimed" => current_offeror.unclaimCodes,
               "removed" => current_offeror.removedCodes }
 
     gon.codes = @hash
@@ -36,15 +36,24 @@ module Import
     end
   end
   
-  def remove_codes
-    flag = offeror_codes.where(:user_id => nil)
-    if flag.count == 0
+  def remove_unclaimed_codes
+    if offeror_codes.where(user_id: nil).count.zero?
       redirect_to "/#{params[:controller]}/home",
         :flash => { :error => "There are no unclaimed codes" }
     else
-      contents = current_offeror.remove_unclaimed_codes(offeror_codes)
-      send_data contents, :filename => "unclaimed_codes.txt"
+      current_offeror.remove_unclaimed_codes(offeror_codes)
+      redirect_to "/#{params[:controller]}/home",
+        :flash => { :notice => "Codes were removed" }
     end
+  end
+  
+  def download_unclaimed_codes
+    unclaimed_codes = current_offeror.download_unclaimed_codes(offeror_codes)
+    send_data(unclaimed_codes, filename: "unclaimed_codes.txt")
+  end
+  
+  def view_codes
+    @offeror_codes = offeror_codes.all
   end
 
   def clear_history
@@ -54,7 +63,15 @@ module Import
     else
       current_offeror.update_attribute(:history, nil)
       redirect_to "/#{params[:controller]}/home",
-        notice: "History was cleared"
+        :flash => { :notice => "History was cleared" }
+    end
+  end
+  
+  private
+
+  def require_login
+    unless current_offeror
+      redirect_to '/' and return
     end
   end
 end

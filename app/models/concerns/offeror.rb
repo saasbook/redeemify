@@ -30,20 +30,26 @@ module Offeror
   def remove_unclaimed_codes(offeror_codes)
     @unclaimed_codes = offeror_codes.where(user_id: nil)
     @num = self.unclaimCodes
-    @date = Time.now.to_formatted_s(:long_ordinal)
-    @contents = "There are #{@num} unclaimed codes, removed on #{@date}\r\n\r\n"
     @unclaimed_codes.each do |code|
-      @contents = "#{@contents}#{code.code}\r\n"
       code.destroy
     end
     
     comment = "Codes were removed"
     update_history(comment)
-
     self.update(unclaimCodes: 0, removedCodes: self.removedCodes + @num)
-    return @contents
   end
   
+  def download_unclaimed_codes(offeror_codes)
+    @unclaimed_codes = offeror_codes.where(user_id: nil)
+    @num = self.unclaimCodes
+    @date = Time.now.to_formatted_s(:long_ordinal)
+    @contents = "There are #{@num} unclaimed codes, downloaded on #{@date}\r\n\r\n"
+    @unclaimed_codes.each do |code|
+      @contents = "#{@contents}#{code.code}\r\n"
+    end
+    return @contents
+  end
+
   private
   
   def file_check(file_path)

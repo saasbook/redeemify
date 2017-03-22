@@ -1,0 +1,94 @@
+<%= render :partial => 'shared/offeror_header' %>
+<%= render :partial => 'shared/messages' %>
+
+<div id="barchart_values"></div>
+
+<table class="links_table">
+  <tr>
+    <td class="row1"><%= link_to "Upload new codes",
+      "/#{params[:controller]}/upload_page", id: "upload" %></td>
+    <% if offeror_codes.present? %>
+      <td class="row1"><%= link_to "View codes",
+        "/#{params[:controller]}/view_codes", id: "view_codes" %></td>
+    <% end %>
+    <% if current_offeror.unclaimCodes > 0 %>
+      <td class="row1"><%= link_to "Download unclaimed codes",
+        "/#{params[:controller]}/download_unclaimed_codes",
+        id: "download_unclaimed_codes" %></td>
+      <td class="row1"><%= link_to "Remove unclaimed codes",
+        "/#{params[:controller]}/remove_unclaimed_codes", id: "remove_unclaimed_codes",
+        data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+  </tr>
+  <% if current_vendor %>
+    <tr>
+      <td class="row1"><%= link_to "Update profile",
+        '/vendors/profile', id: "update_profile" %></td>
+      <td class="row1"><%= link_to "Change to user",
+        '/vendors/change_to_user', id: "change_to_user" %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h4 class="history"><%=t 'offeror.history' %></h4>
+
+<div class="center">
+  <div class="row1">
+    <%= link_to "Clear history", "/#{params[:controller]}/clear_history",
+      id: "clear_history" %>
+  </div>
+</div>
+
+<table class="history_table">
+  <thead>
+    <tr>
+      <td class="width_25"><%=t 'history.column_1' %></td>
+      <td class="width_50"><%=t 'history.column_2' %></td>
+      <td class="width_25"><%=t 'history.column_3' %></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @histories_array.each do |history| %>
+      <tr class="<%= cycle('even_row', 'odd_row') -%>">
+        <td><%= history[0] %></td>
+        <td><%= history[1] %></td>
+        <td><%= history[2] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {packages: ['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  
+  function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+    ["Codes", "Quantity", { role: "style" } ],
+    ["Uploaded", gon.codes["uploaded"], "#080dcc"],
+    ["Used", gon.codes["used"], "#ffff00"],
+    ["Unclaimed", gon.codes["unclaimed"], "#0c9200"],
+    ["Removed", gon.codes["removed"], "#ff4500"]
+  ]);
+  
+  var view = new google.visualization.DataView(data);
+  view.setColumns([0, 1,
+                    { calc: "stringify",
+                      sourceColumn: 1,
+                      type: "string",
+                      role: "annotation" },
+                    2]);
+  var options = {
+    title: "Codes",
+    width: 400,
+    height: 200,
+    bar: {groupWidth: "95%"},
+    legend: {position: "none"}
+  };
+  
+  var chart = new google.visualization.BarChart(
+    document.getElementById("barchart_values"));
+  chart.draw(view, options);
+}
+</script>

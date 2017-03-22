@@ -1,5 +1,6 @@
 class ProvidersController < ApplicationController
-  include Import
+  include OfferorActions
+  before_action :require_login
   
   def index
   end

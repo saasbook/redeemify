@@ -8,94 +8,87 @@ $(document).ready(function(){
 </script>
 
 <div class="welcome mdl-layout mdl-js-layout">
-  
   <%= render :partial => 'shared/header' %>
   <%= render :partial => 'shared/nav_js' %>
 
-<!-- Card -->
   <div class="redeemify-card-square mdl-card mdl-shadow--2dp">
     <div class="mdl-card__supporting-text">
       <h5><%= t 'customer.yourcode' %> <%= @current_code %></h5>
       <h5><%= t 'customer.offervalue' %>$<%= @total %></h5>
     </div>
- </div>
-
-<% if flash[:alert] != nil %>
-  <div class="warning">
-    <% flash.keys.each do |k| %>
-       <center><font color="black"><%= flash[k] %></font></center>
-    <% end %>
   </div>
-<% end %>
 
-<br>
-<br>
-
-<span class="customer_notice"><%= t 'customer.instruction' %></span>
-<% if @vendor_user %>
-  <div class = "button-single">
-    <div class = "row1">
-      <%= link_to "Login as a vendor", '/sessions/change_to_vendor', {:id => "vendor-login", :style => 'color:#000'} %>
+  <% if flash[:alert].present? %>
+    <div class="warning">
+      <% flash.keys.each do |key| %>
+         <%= flash[key] %>
+      <% end %>
     </div>
-  </div>
-  <br>
-<% end %>
+  <% end %>
+  
+  <span class="customer_notice"><%= t 'customer.instruction' %></span>
+  <% if @vendor_user %>
+    <div class="button-single">
+      <div class="row1">
+        <%= link_to "Change to vendor", '/sessions/change_to_vendor',
+          {:id => "change_to_vendor", :style => 'color:#000'} %>
+      </div>
+    </div>
+  <% end %>
 
-<% @list_codes.each do |vendor, code| %>
-  <div class="customer-table">
-    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-        <tr>
-          <td class="mdl-data-table__cell--non-numeric">Vendor:</td>
-          <td><%= link_to vendor, @website[vendor], style: 'color:#fd7330', target: '_blank' %></td>
-        </tr>
-        <tr>
-          <td class="mdl-data-table__cell--non-numeric">Expiration:</td>
-          <td><%= @expiration[vendor] %></td>
-        </tr>
-        <tr>
-          <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.vendorcode' %></td>
-          <td><%= code %></td>
-        </tr>
-        <tr>
-          <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.expirationdate' %></td>
-          <td><%= @expiration[vendor] %></td>
-        </tr>
-        <tr>
-          <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.cashvalue' %></td>
-          <td><%= @cashValue[vendor] %></td>
-        </tr>
-        <tr>
-          <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.description' %></td>
-          <td><%= @description[vendor] %></td>
-        </tr>
-        <tr>
-          <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.vendorinstruction' %></td>
-          <td><%= @instruction[vendor] %></td>
-        </tr>
-        <tr>
-          <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.help' %></td>
-          <td><%= @help[vendor] %></td>
-        </tr>
-    </table>
-  </div>
-<% end %>
+  <% @codes.each do |vendor, code| %>
+    <div class="customer-table">
+      <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric">Vendor:</td>
+            <td><%= link_to vendor, @website[vendor], style: 'color:#fd7330', target: '_blank' %></td>
+          </tr>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.vendorcode' %></td>
+            <td><%= code %></td>
+          </tr>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.expirationdate' %></td>
+            <td><%= @expiration[vendor] %></td>
+          </tr>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.cashvalue' %></td>
+            <td><%= @cashValue[vendor] %></td>
+          </tr>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.description' %></td>
+            <td><%= @description[vendor] %></td>
+          </tr>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.vendorinstruction' %></td>
+            <td><%= @instruction[vendor] %></td>
+          </tr>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.help' %></td>
+            <td><%= @helpLink[vendor] %></td>
+          </tr>
+      </table>
+    </div>
+  <% end %>
 
-<span class="delete-account"><%= t 'customer.deleteaccount' %></span>
-<div class="home1">
-  <a href="/sessions/delete_page" id="delete-account" onclick="false"><i class="account-delete-dialog material-icons">delete</i></a>
-      <dialog class="mdl-dialog">
-        <h4 class="mdl-dialog__title">Caution!</h4>
-        <div class="mdl-dialog__content">
-          <p>If you delete your account, all of your information will be removed from the app database.
-             Moreover, you will no longer have access to your Redeemify and vendor offer's codes.</p>
-          <h4>Are you sure?</h4>
-        </div>
-        <div class="mdl-dialog__actions">
-          <button type="button" class="mdl-button close">No</button>
-          <a href="/sessions/delete_account" class="mdl-button">Delete!</a>
-        </div>
-      </dialog>
-  <%#= link_to content_tag(:i, 'delete', class: 'material-icons'), '/sessions/delete_page', {:id => "delete-account", :style => 'color:#000'} %>
+  <span class="delete-account"><%= t 'customer.deleteaccount' %></span>
+  <div class="bin-icon">
+    <a href="/sessions/delete_page" id="delete-account" onclick="false">
+      <i class="account-delete-dialog material-icons">delete</i>
+    </a>
+    <dialog class="mdl-dialog">
+      <h4 class="mdl-dialog__title">Caution!</h4>
+      <div class="mdl-dialog__content">
+        <p>If you delete your account, all of your information will be removed from the app database.
+           Moreover, you will no longer have access to your Redeemify and vendor offer's codes.</p>
+        <h4>Are you sure?</h4>
+      </div>
+      <div class="mdl-dialog__actions">
+        <button type="button" class="mdl-button close">No</button>
+        <a href="/sessions/delete_account" class="mdl-button">Delete!</a>
+      </div>
+    </dialog>
+  </div>
 </div>
 
 <script>

@@ -1,135 +1,116 @@
 class SessionsController < ApplicationController
-  
+  before_action :require_login, except: [:new, :create]
+
   def new
-    if session[:vendor_id] != nil
+    if session[:vendor_id].present?
       @vendor_user = session[:vendor_id]
     end
-    if current_user == nil
-      @user = User.new
+  end
+
+  def create
+    if offeror.present?
+      log_in(offeror)
+      redirect_to "/#{offeror.class.to_s.downcase.pluralize}/home",
+        notice: "Welcome, #{offeror.name}"
     else
-      if current_user.code.nil?
-        @user = User.new
+      user = find_or_create_user
+      log_in(user)
+      if user.code.present?
+        redirect_to '/sessions/customer'
       else
-        redirect_to '/sessions/customer', notice: "Already register call from sessions#new"
+        redirect_to '/sessions/new', notice: "Signed in!"
       end
     end
   end
-
-
-  def create  # Need to implement whether it's vendor or user
-    auth = request.env["omniauth.auth"]
-    
-    provider = Provider.find_by_provider_and_email(auth["provider"], auth["info"]["email"])
-    if provider != nil
-      session[:provider_id]= provider.id
-      redirect_to '/providers/home', notice: "home page, Provider"
-    else
-      vendor = Vendor.find_by_provider_and_email(auth["provider"], auth["info"]["email"])
-      if vendor != nil
-        session[:vendor_id]= vendor.id
-        redirect_to '/vendors/home', notice: "home page, vendor"
-      else
-        user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
-        # debugger
-        session[:user_id] = user.id
-        if user.code.nil? 
-          redirect_to '/sessions/new', notice: "Signed in!"
-        else
-          redirect_to '/sessions/customer'
-        end
-      end
-    end
-  end
-
-
+  
   def customer
     if session[:user_id]
-      @list_codes, @instruction, @description, @help, @expiration, @website, @cashValue, @total = {},{},{},{},{},{},{},0
-
       if current_user.code.nil?
-        unless RedeemifyCode.serve current_user, params[:code] 
-        #sad path: no match for submitted token
-          flash.now[:error] = "Your code is either invalid or has been redeemed already.<br />Please enter a valid redeemify code.".html_safe
+        unless RedeemifyCode.serve(current_user, params[:code])
+          flash.now[:error] = 
+            'Your code is either invalid or has been redeemed already.
+              <br>Please enter a valid redeemify code.'.html_safe
           render :new ; return
-        end  
-      end
-        #setting up vendor codes for current user
-        @current_code = current_user.code
-        vendors = Vendor.all
-        vendors.each do |vendor|
-          code = vendor.serve_code current_user
-          flash.now[:alert] = 'Some offers\' code are not available at this time, please come back later' unless code
-          
-          @list_codes[vendor.name] ||= code ? code.code : "Not Available"
-          @instruction[vendor.name] ||= vendor.instruction
-          @help[vendor.name] ||= vendor.helpLink
-          @expiration[vendor.name] ||= vendor.expiration
-          @website[vendor.name] ||= vendor.website
-          @cashValue[vendor.name] ||= vendor.cashValue
-          @description[vendor.name] ||= vendor.description
-          @total += vendor.cashValue.gsub(/[^0-9\.]/,'').to_f
-          @total = @total.round(2)
         end
+      end
+      set_vendor_code(current_user)
     end
-    if session[:vendor_id] != nil
+    if session[:vendor_id].present?
       @vendor_user = session[:vendor_id]
     end
   end
-
-
-
+  
   def delete_page
-    
   end
 
   def delete_account
-    if current_user != nil
+    if current_user.present?
       current_user.anonymize!
       RedeemifyCode.anonymize! current_user
       VendorCode.anonymize_all! current_user
-
       session.delete(:user_id)
-      redirect_to root_url, :flash => { :notice => "Your account has been deleted." }
+      redirect_to root_url, notice: "Your account has been deleted"
     end
   end
 
-
   def destroy
-    session[:user_id] = nil
-    session[:vendor_id] = nil
-    session[:provider_id] = nil
+    session.delete(:user_id)
+    session.delete(:vendor_id)
+    session.delete(:provider_id)
     gon.clear
     redirect_to root_url, notice: "Signed out!"
   end
 
-
-
   def failure
-    redirect_to root_url, alert: "Authentication failed, please try again."
+    redirect_to root_url, alert: "Authentication failed, please try again"
   end
 
   def change_to_vendor
     session[:user_id] = nil
-    redirect_to '/vendors/home', notice: "Change to Vendor Account"
+    redirect_to '/vendors/home', notice: "Changed to vendor account"
   end
 
-  def hello_user
+  private
+  
+  def require_login
+    unless current_user
+      redirect_to '/' and return
+    end
+  end
+  
+  def offeror
+    auth = request.env["omniauth.auth"]
+    Provider.find_by_provider_and_email(auth["provider"], auth["info"]["email"]) || 
+    Vendor.find_by_provider_and_email(auth["provider"], auth["info"]["email"])
   end
 
-  def welcome_user
+  def log_in(user)
+    key = "#{user.class.to_s.downcase}_id".to_sym
+    session[key] = user.id
   end
 
-  def enter_user
+  def find_or_create_user
+    auth = request.env["omniauth.auth"]
+    User.find_by_provider_and_uid(auth["provider"], auth["uid"]) ||
+    User.create_with_omniauth(auth)
   end
-
-  def exit_user
+  
+  def set_vendor_code(current_user)
+    set_instance_variables
+    Vendor.all.each do |vendor|
+      vendor_code = vendor.serve_code(current_user)
+      flash.now[:alert] = t('missing_offer') unless vendor_code
+      @codes[vendor.name] ||= vendor_code ? vendor_code.code : 'Not available'
+      vendor.attributes.slice('cashValue', 'expiration', 'description',
+        'instruction', 'website', 'helpLink').each { 
+          |key, value| instance_variable_get("@#{key}")[vendor.name] ||= value }
+      @total += vendor.cashValue.gsub(/[^0-9\.]/,'').to_f.round(2)
+    end
   end
-
-  def login_user
+  
+  def set_instance_variables
+    @codes, @instruction, @description, @helpLink, @expiration, @website,
+    @cashValue, @total = {}, {}, {}, {}, {}, {}, {}, 0
+    @current_code = current_user.code
   end
-
-  def logout_user
-  end
-
-
 end

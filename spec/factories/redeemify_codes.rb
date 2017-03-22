@@ -1,9 +1,10 @@
 FactoryGirl.define do
-  factory :redeemify_code do
-    name "MyString"
-    code "MyString"
-    user_id 1
-    provider_id 1
+  sequence :code do |n|
+    "000#{n}"
   end
-
+  
+  factory :redeemify_code do
+    code
+    user_id nil
+  end
 end

@@ -15,5 +15,5 @@ Scenario: Successful removing of codes
   
   Given I have signed in through OAuth as a vendor "GitHub"
   Then number of uploaded vendor codes should be 2
-  When I follow the link to remove codes
+  When I follow the link to remove unclaimed codes
   Then number of unclaimed vendor codes should be 0

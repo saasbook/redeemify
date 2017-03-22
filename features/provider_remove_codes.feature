@@ -15,5 +15,5 @@ Scenario: Successful removing of codes
   
   Given I have signed in through OAuth as a provider "Amazon"
   Then number of uploaded provider codes should be 2
-  When I follow the link to remove codes
+  When I follow the link to remove unclaimed codes
   Then number of unclaimed provider codes should be 0

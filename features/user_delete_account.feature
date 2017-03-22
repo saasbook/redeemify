@@ -6,7 +6,7 @@ Feature: Deleting the user account
 
 Background:
   
-  When I have signed in through OAuth as a user
+  When I have signed in through OAuth as a registered user
   Then I should be on the offers page
   And I should see option to delete account
 

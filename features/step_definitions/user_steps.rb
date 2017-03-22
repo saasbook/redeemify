@@ -3,7 +3,7 @@ When /^(?:|I am )logging in through OAuth as a user$/ do
   click_link('google-auth')
 end
 
-Given /^(?:|I have )signed in through OAuth as a user$/ do
+Given /^(?:|I have )signed in through OAuth as a(?:| registered) user$/ do
   p = Provider.create(name: 'Amazon', provider: 'amazon', 
         email: 'test@amazon.com')
   p.redeemifyCodes.create(code: '12345')
