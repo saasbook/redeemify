@@ -83,10 +83,9 @@ module Offeror
 
   def add_code(code)
     if self.is_a? Vendor 
-      self.vendorCodes.build(code: code, name: self.name, vendor: self)
+      self.vendorCodes.build(code: code, name: self.name)
     else
-      self.redeemifyCodes.build(code: code, name: self.name,
-        provider: self)
+      self.redeemifyCodes.build(code: code, name: self.name)
     end
   end
 
