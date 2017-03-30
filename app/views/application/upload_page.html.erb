@@ -6,8 +6,8 @@
 </h4>
 
 <div class="center">
-  <%= link_to image_tag('home2.png', alt: "/vendors/home", :size =>'40x40'),
-    "/#{params[:controller]}/home" %>
+  <%= link_to image_tag('home2.png', alt: "/#{params[:controller]}/home",
+    :size =>'40x40'), "/#{params[:controller]}/home" %>
 </div>
 
 <%= form_tag "/#{params[:controller]}/import", multipart: true do %>
@@ -17,16 +17,14 @@
   </div>
 
   <div class="upload_codes">
-    <%= file_field_tag :file %> 
+    <%= file_field_tag :file %>
   </div>
   
   <div class="upload_comment">
     <%= t 'offeror.comment' %>
-  </div> 
-
-  <textarea name="comment" id="comments" cols="50" rows="5"></textarea>
-
-  <div class="upload_submit">
-    <%= submit_tag "Submit", :id => "submit" %>
   </div>
+  
+  <%= text_area_tag :comment, nil, rows: 5, cols: 50 %>
+  
+  <%= submit_tag "Submit", id: "submit", class: "submit" %>
 <% end %>

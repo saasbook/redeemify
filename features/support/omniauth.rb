@@ -20,7 +20,6 @@ def set_omniauth_vendor(info)
       :email => info[:email]
     }
   })
-
 end
 
 def set_omniauth_provider(info)
@@ -34,20 +33,6 @@ def set_omniauth_provider(info)
     }
   })
 end
-
-# def set_omniauth_provider(opts = {})
-#   OmniAuth.config.test_mode = true
-#   OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
-#   	:provider => :facebook,
-#     :uid => "1234",
-#     :info => {
-#       :name => "name",
-#       :email => "test@domain.com",
-#       :user_role => 'provider'
-#     }
-#   })
-# end
-
 
 def set_invalid_omniauth(opts = {})
   credentials = { :provider => :facebook,

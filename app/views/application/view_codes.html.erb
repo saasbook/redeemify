@@ -1,0 +1,45 @@
+<%= render :partial => 'shared/offeror_header' %>
+
+<h4 class="center">
+  Uploaded codes by <%= current_offeror.name %>
+</h4>
+
+<div class="center">
+  <%= link_to image_tag("home2.png", alt: "/#{params[:controller]}/home",
+    size: "40x40"), "/#{params[:controller]}/home" %>
+</div>
+
+<table class="codes_table">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <% if current_vendor %>
+        <th>Value</th>
+        <th>Expiration</th>
+        <th>Description</th>
+        <th>Instruction</th>
+        <th>Help</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @offeror_codes.each do |code| %>
+      <tr class="<%= cycle('odd_row', 'even_row') -%>">
+        <td class="width_25"><%= code.code %></td>
+        <% if current_vendor %>
+          <td class="width_10"><%= current_vendor.cashValue %></td>
+          <td class="width_10">
+            <% if current_vendor.expiration.present? %>
+              <%= Date.strptime(current_vendor.expiration, '%m/%d/%Y') %>
+            <% end %>
+          </td>
+          <td class="width_25"><%= current_vendor.description %></td>
+          <td class="width_25"><%= current_vendor.instruction %></td>
+          <td class="width_5">
+            <%= link_to 'link', current_vendor.helpLink %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

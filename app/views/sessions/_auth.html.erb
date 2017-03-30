@@ -1,6 +1,8 @@
 <main class="mdl-layout__content">
   <div class="page-content">
     
+    <%= render :partial => 'shared/messages' %>
+    
     <div class="mdl-grid">
       
       <div class="mdl-cell mdl-cell--6-col left-column">
@@ -53,13 +55,4 @@
     </div> <!-- end mdl-grid -->
     <br>
   </div> <!-- end page-content -->
-  
-  <% if flash[:notice].present? %>
-    <div class="flash_notice">
-      <% flash.keys.each do |key| %> 
-        <%= flash[key] %>
-      <% end %>
-    </div>
-  <% end %>
-
 </main>

@@ -25,37 +25,32 @@ en:
     line2: "Moreover, you will no longer have access to your Redeemify and vendor offer's codes"
     line3: "Are you sure?"
 
-  vendor:
-    login: "Logged via account: "
-    name: "Name: "
-    history: "History"
-    col1: "Upload/Remove Date"
-    col2: "Comment"
-    col3: "Number of Codes Uploaded/Removed"
 
-  editprofile:
-    header: "Update Your Profile "
-    cashvalue: "Cash Value "
-    expiration: "Expiration Date "
-    help: "Help Link "
-    description: "Offer's Descriptions "
-    instruction: "Instructions to redeem the code "
-    popup1: "Value for each coupon code, e.g 1.45 = $1.45"
-    popup2: "The date your coupons are expired"
-    popup3: "Offer's help link, e.g github.com/help"
-    popup4: "e.g This offer grants the user 5 additional free private repositories for 2 years."
-    popup5: "To redeem the offer, visit github.com/awesomedeal to enter the promo code!"
-
-  provider:
-    login: "Logged via account: "
-    name: "Name: "
-    history: "History"
-    col1: "Upload/Remove Date"
-    col2: "Comment"
-    col3: "Number of Codes Uploaded/Removed"
-  
   offeror:
     login:    "Logged via account: "
     name:     "Name: "
     header:   "Upload New Codes"
     comment:  "Comment:"
+    history:  "History"
+  
+  history:
+    column_1: "Date"
+    column_2: "Comment"
+    column_3: "Number of codes"
+  
+  profile:
+    header:       "Update Your Profile"
+    cash_value:   "Cash value"
+    expiration:   "Expiration date"
+    help_link:    "Help link"
+    description:  "Description"
+    instruction:  "Instruction"
+    
+  placeholder:
+    cash_value:   "Value for each code, e.g. $10"
+    expiration:   "mm/dd/yyyy"
+    help_link:    "Link to the page with additional information"
+    description:  "Premium account for 1 month"
+    instruction:  "Follow this page and enter the code"
+
+  missing_offer: "Some offers are not available at this time, please come back later"

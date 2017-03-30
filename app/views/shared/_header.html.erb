@@ -11,7 +11,7 @@
         <span class="account">
           Login with: <%= current_user.provider.upcase  %> | 
           Name: <%= current_user.name %> | 
-          <%= link_to "Logout", logout_path, :id => "logout", class: "logout" %>
+          <%= link_to "Logout", logout_path, :id => "logout" %>
         </span>
       <% else %>
         <a class="mdl-navigation__link" href="/">Home</a>

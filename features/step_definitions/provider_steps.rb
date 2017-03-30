@@ -8,8 +8,8 @@ Given /^(?:|I (?:am |have ))(?:logging|signed) in through OAuth as a provider(?:
 end
 
 When /^(?:|I (?:|have ))upload(?:|ed)(?:| an (in)?appropriate) file(?:| with provider codes)$/ do |inappropriate|
-    click_link('upload')
-    expect(page).to have_current_path('/providers/upload_page')
+  click_link('upload')
+  expect(page).to have_current_path('/providers/upload_page')
   unless inappropriate
     attach_file('file', 
       File.join(Rails.root, 'features', 'upload-file', 'test.txt'))
@@ -17,7 +17,7 @@ When /^(?:|I (?:|have ))upload(?:|ed)(?:| an (in)?appropriate) file(?:| with pro
     attach_file('file', 
       File.join(Rails.root, 'features', 'upload-file', 'test.csv'))
   end
-    click_button('submit')
+  click_button('submit')
 end
 
 When /^(?:|I) add these codes by uploading the file$/ do

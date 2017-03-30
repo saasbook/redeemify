@@ -37,13 +37,11 @@ describe SessionsController do
 
 
   describe "#create" do
-
     it "should successfully create a user" do
       expect {
         post :create, provider: :amazon
       }.to change{ User.count }.by(1)
     end
-
     it "should successfully create a session" do
       expect(session[:user_id]).to be_nil
       post :create, provider: :amazon
@@ -51,7 +49,6 @@ describe SessionsController do
       # flash[:notice].should == "Signed in!"
       flash[:notice].include?("wrong")
       expect(session[:user_id]).not_to be_nil
-
       # session[:user_id].should ==
     end
 
@@ -67,15 +64,10 @@ describe SessionsController do
     end
   end
 
-
   describe "#customer" do
     it "should redirect the user to the customer page" do
-      v = Vendor.create! :name => "thai" , :uid => "54321", :provider => "amazon"
-      v.history = "+++++April 3rd, 2015 23:51+++++Code Description+++++05/02/2015+++++2|||||"
-      v.save!
-
-      a = v.vendorCodes.create!(:code => "123", :vendor => v)
-      a.save!
+      user = create(:user, code: '12345')
+      allow(controller).to receive(:current_user).and_return(user)
       get :customer
       expect(response).to render_template :customer
     end
@@ -118,7 +110,7 @@ describe SessionsController do
 
         get 'delete_account'
         expect(response).to redirect_to root_url
-        expect(flash[:notice]).to eq("Your account has been deleted.")
+        expect(flash[:notice]).to eq("Your account has been deleted")
     end
   end  
 
