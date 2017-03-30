@@ -1,4 +1,5 @@
 class RedeemifyCode < ActiveRecord::Base
+  include Offeror
   belongs_to :provider
   belongs_to :user
   has_many :vendor_codes
@@ -18,11 +19,8 @@ class RedeemifyCode < ActiveRecord::Base
   end
   
   def assign_to(user)
-    self.update_attributes(user_id: user.id, user_name: user.name,
-      email: user.email)
-    provider = self.provider
-    provider.update_attribute(:usedCodes, provider.usedCodes + 1)
-    provider.update_attribute(:unclaimCodes, provider.unclaimCodes - 1)
+    self.update(user_id: user.id, user_name: user.name, email: user.email)
+    update_codes_statistics(self.provider)
   end
   
   def self.anonymize!(user)

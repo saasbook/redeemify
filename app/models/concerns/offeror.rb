@@ -49,8 +49,13 @@ module Offeror
     end
     return @contents
   end
-
+  
   private
+  
+  def update_codes_statistics(offeror)
+    offeror.update(usedCodes: offeror.usedCodes + 1,
+      unclaimCodes: offeror.unclaimCodes - 1)
+  end
   
   def file_check(file_path)
     return "Wrong file format! Please upload '.txt' file" unless file_path =~/.txt$/
@@ -83,10 +88,9 @@ module Offeror
 
   def add_code(code)
     if self.is_a? Vendor 
-      self.vendorCodes.build(code: code, name: self.name, vendor: self)
+      self.vendorCodes.build(code: code, name: self.name)
     else
-      self.redeemifyCodes.build(code: code, name: self.name,
-        provider: self)
+      self.redeemifyCodes.build(code: code, name: self.name)
     end
   end
 
