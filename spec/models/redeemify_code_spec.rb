@@ -25,10 +25,10 @@ RSpec.describe RedeemifyCode, :type => :model do
   end
   
   describe "RedeemifyCode.anonymize" do
-    it 'should anonymize user_name, email attributes ' do
+    it 'should anonymize user_name, email attributes' do
       @rcode.assign_to @user
       RedeemifyCode.anonymize! @user
-      anonymized_token = @provider.redeemifyCodes.find_by code: @rcode.code      #debugger
+      anonymized_token = @provider.redeemifyCodes.find_by code: @rcode.code
       
       expect(anonymized_token.user_name).to eq("anonymous")
       expect(anonymized_token.email).to eq("anonymous@anonymous.com")      

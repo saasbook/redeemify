@@ -36,7 +36,6 @@ describe Api::V1::UsersController, :type => :controller do
       end
     end
     
-    # Task: strengthen the validations for the user
     context "when is not created" do
       before(:each) do
         @invalid_user_attributes = { email: "example@domain.com", name: "user" }

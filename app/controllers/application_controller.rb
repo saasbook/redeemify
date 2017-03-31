@@ -29,7 +29,7 @@ private
   def offeror_codes
     provider? ? current_provider.redeemifyCodes : current_vendor.vendorCodes
   end
-  
+
   def validation_errors_content(err_hash)
     now = Time.now.to_formatted_s(:long_ordinal)
     all_codes = err_hash[:submitted_codes]

@@ -30,21 +30,32 @@ module Offeror
   def remove_unclaimed_codes(offeror_codes)
     @unclaimed_codes = offeror_codes.where(user_id: nil)
     @num = self.unclaimCodes
-    @date = Time.now.to_formatted_s(:long_ordinal)
-    @contents = "There are #{@num} unclaimed codes, removed on #{@date}\r\n\r\n"
     @unclaimed_codes.each do |code|
-      @contents = "#{@contents}#{code.code}\r\n"
       code.destroy
     end
     
     comment = "Codes were removed"
     update_history(comment)
-
     self.update(unclaimCodes: 0, removedCodes: self.removedCodes + @num)
+  end
+  
+  def download_unclaimed_codes(offeror_codes)
+    @unclaimed_codes = offeror_codes.where(user_id: nil)
+    @num = self.unclaimCodes
+    @date = Time.now.to_formatted_s(:long_ordinal)
+    @contents = "There are #{@num} unclaimed codes, downloaded on #{@date}\r\n\r\n"
+    @unclaimed_codes.each do |code|
+      @contents = "#{@contents}#{code.code}\r\n"
+    end
     return @contents
   end
   
   private
+  
+  def update_codes_statistics(offeror)
+    offeror.update(usedCodes: offeror.usedCodes + 1,
+      unclaimCodes: offeror.unclaimCodes - 1)
+  end
   
   def file_check(file_path)
     return "Wrong file format! Please upload '.txt' file" unless file_path =~/.txt$/
@@ -77,10 +88,9 @@ module Offeror
 
   def add_code(code)
     if self.is_a? Vendor 
-      self.vendorCodes.build(code: code, name: self.name, vendor: self)
+      self.vendorCodes.build(code: code, name: self.name)
     else
-      self.redeemifyCodes.build(code: code, name: self.name,
-        provider: self)
+      self.redeemifyCodes.build(code: code, name: self.name)
     end
   end
 

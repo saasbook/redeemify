@@ -1,127 +1,49 @@
+<%= render :partial => 'shared/offeror_header' %>
+<%= render :partial => 'shared/messages' %>
 
+<h4 class="center">
+  <%= t 'profile.header' %>
+</h4>
 
-
-
-<p class="account"><%= t 'vendor.login' %><%= current_vendor.provider.upcase  %> | <%= t 'vendor.name' %> <%= current_vendor.name %> | <%= link_to "Logout", logout_path, :id => "logout" %></p>
-<div id="welcome">
-
-    <h1> <%= image_tag('logo.png', :size => '400x100', :class => 'logo' ) %></h1>
+<div class="center">
+  <%= link_to image_tag('home2.png', alt: '/vendors/home', :size => '40x40'),
+    "/vendors/home" %>
 </div>
 
+<%= form_tag update_profile_vendors_path, multipart: true do %>
 
-<h4 class="loginwith3"><%= t 'editprofile.header' %></h4>  <%= form_tag update_profile_vendors_path, multipart: true do %>
-
-    <div class = "home1">
- <p class="homee"><%= link_to image_tag('home2.png', :size =>'40x40'), '/vendors/home' %></p>
-</div>
-
-<% if flash[:error] != nil %>
-<br>
-    <% flash.keys.each do |k| %> 
-       <center><font color="red"><%= flash[k] %></font></center>
-    <% end %> 
+  <div class="profile">
+    <%= label_tag :cash_value, t('profile.cash_value') %>
+    <%= text_field_tag :cash_value, current_vendor.cashValue,
+      placeholder: t('placeholder.cash_value') %>
+    
+    <%= label_tag :expiration, t('profile.expiration') %>
+    <% if current_vendor.expiration.blank? %>
+      <%= text_field_tag :expiration, nil,
+        placeholder: t('placeholder.expiration') %>
+    <% else %>
+      <%= text_field_tag :expiration, current_vendor.expiration %>
+    <% end %>
+    
+    <%= label_tag :help_link, t('profile.help_link') %>
+    <%= text_field_tag :help_link, current_vendor.helpLink,
+      placeholder: t('placeholder.help_link') %>
+    
+    <%= label_tag :description, t('profile.description') %>
+    <%= text_field_tag :description, current_vendor.description,
+      placeholder: t('placeholder.description') %>
+    
+    <%= label_tag :instruction, t('profile.instruction') %>
+    <%= text_field_tag :instruction, current_vendor.instruction,
+      placeholder: t('placeholder.instruction') %>
+  </div>
+  
+  <%= submit_tag "Submit", id: "submit", class: "submit" %>
 <% end %>
 
 
-    <h3 class="upload_text" ><%= t 'editprofile.cashvalue' %><span id='question'>?</span></h3> 
-    <textarea name="cashValue" id="cashValue" cols="8" rows="2"  ><%= current_vendor.cashValue %></textarea>
-
-    <h3 class="upload_text"><%= t 'editprofile.expiration' %><span id='question2'>?</span> </h3> 
-    <% if current_vendor.expiration == nil %>
-    <input type="text" name="expiration" id="expiration"  cols="1" rows="1" placeholder = "mm/dd/yyyy"></input>
-    <% else %>
-    <input type="text" name="expiration" id="expiration"  cols="1" rows="1" value =<%= current_vendor.expiration %>></input>
-    <% end %>
-
-    <h3 class="upload_text"><%= t 'editprofile.help' %><span id='question3'>?</span></h3> 
-    <textarea name="helpLink" id = "helpLink" cols="50" rows="2"  ><%= current_vendor.helpLink %></textarea>
-
-
-    <h3 class="upload_text"><%= t 'editprofile.description' %><span id='question4'>?</span></h3> 
-    <textarea name="description" id = "description" cols="50" rows="4"  ><%= current_vendor.description %></textarea>
-
-    <h3 class="upload_text"><%= t 'editprofile.instruction' %><span id='question5'>?</span></h3> 
-    <textarea name="instruction" id="instruction" cols="50" rows="4" ><%= current_vendor.instruction %></textarea>
-
-    <br>
-    <br>
-
-
-
-
-
-  <div class = "submit">
-    <%= submit_tag "SUBMIT", :id => "submit"%>
-  <% end %>
-  </div>
-  <br>
-  <br>
-<div id='popup1'><%= t 'editprofile.popup1' %></div>
-<div id='popup2'><%= t 'editprofile.popup2' %></div>
-<div id='popup3'><%= t 'editprofile.popup3' %></div>
-<div id='popup4'><%= t 'editprofile.popup4' %></div>
-<div id='popup5'><%= t 'editprofile.popup5' %></div>
-   <script>
-    $(document).ready(function() {
-    $('#question').hover(function() {
-        $('#popup1').show();
-    }, function() {
-        $('#popup1').hide();
-    });
-});
-    </script>
-    <script>
-    $(document).ready(function() {
-    $('#question2').hover(function() {
-        $('#popup2').show();
-    }, function() {
-        $('#popup2').hide();
-    });
-});
-    </script>
-    <script>
-    $(document).ready(function() {
-    $('#question3').hover(function() {
-        $('#popup3').show();
-    }, function() {
-        $('#popup3').hide();
-    });
-});
-    </script>
-    <script>
-    $(document).ready(function() {
-    $('#question4').hover(function() {
-        $('#popup4').show();
-    }, function() {
-        $('#popup4').hide();
-    });
-});
-    </script>
-    <script>
-    $(document).ready(function() {
-    $('#question5').hover(function() {
-        $('#popup5').show();
-    }, function() {
-        $('#popup5').hide();
-    });
-});
-    </script>
-
-
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>jQuery UI Datepicker - Default functionality</title>
-
-  <script>
+<script>
   $(function() {
-    $( "#expiration" ).datepicker();
+    $("#expiration").datepicker();
   });
-  </script>
-</head>
-
-</html>
-
-
-
+</script>
