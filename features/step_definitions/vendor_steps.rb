@@ -1,6 +1,6 @@
 Given /^(?:|I (?:am |have ))(?:logging|signed) in through OAuth as a vendor(?:| "(.*)")$/ do |vendor|
   v = Vendor.find_by_name("#{vendor}") || Vendor.create(name: "GitHub",
-        provider: "github", uid: "uid", email: "test@github.com", cashValue: "$10")
+        provider: "github", uid: "uid", email: "test@github.com", cash_value: 10)
   visit(root_path)
   disable_test_omniauth()
   set_omniauth_vendor(v)
@@ -9,7 +9,7 @@ end
 
 Given /^the vendor "(.*)" has registered offers$/ do |vendor|
   v = Vendor.find_by_name("#{vendor}") || Vendor.create(name: "#{vendor}",
-        provider: "github", email: "test@vendor.com", cashValue: "$10")
+        provider: "github", email: "test@vendor.com", cash_value: 10)
   disable_test_omniauth()
   set_omniauth_vendor(v)
   visit(root_path)
@@ -50,11 +50,11 @@ Then /^number of (\w+) vendor codes should be (\d+)$/ do |attribute, value|
   v = Vendor.find_by_name("GitHub")
   case attribute
     when "uploaded"
-      raise "uploadedCodes != #{value}" if v.uploadedCodes != value.to_i
+      raise "uploaded_codes != #{value}" if v.uploaded_codes != value.to_i
     when "unclaimed"
-      raise "unclaimedCodes != #{value}" if v.unclaimCodes != value.to_i
+      raise "unclaimed_codes != #{value}" if v.unclaimed_codes != value.to_i
     when "used"
-      raise "usedCodes != #{value}" if v.usedCodes != value.to_i
+      raise "used_codes != #{value}" if v.used_codes != value.to_i
     end
 end
 

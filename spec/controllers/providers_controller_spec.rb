@@ -97,7 +97,7 @@ describe ProvidersController do
       @provider = create(:provider)
     end
     it "displays the error message when there are no unclaimed codes" do
-      @provider.unclaimCodes = 0
+      @provider.unclaimed_codes = 0
       allow(controller).to receive(:current_provider).and_return(@provider)
       get :remove_unclaimed_codes
       expect(response).to redirect_to(:providers_home)
@@ -105,13 +105,13 @@ describe ProvidersController do
     end
     it "removes unclaimed codes" do
       create_list(:redeemify_code, 5, provider_id: @provider.id)
-      @provider.unclaimCodes = 5
+      @provider.unclaimed_codes = 5
       expect(@provider.redeemifyCodes.count).to eq(5)
-      expect(@provider.unclaimCodes).to eq(5)
+      expect(@provider.unclaimed_codes).to eq(5)
       allow(controller).to receive(:current_provider).and_return(@provider)
       get :remove_unclaimed_codes
       expect(@provider.redeemifyCodes.count).to eq(0)
-      expect(@provider.unclaimCodes).to eq(0)
+      expect(@provider.unclaimed_codes).to eq(0)
       expect(response).to redirect_to(:providers_home)
       expect(flash[:notice]).to eq("Codes were removed")
     end

@@ -17,7 +17,6 @@ describe VendorsController do
       expect(response).to render_template :profile
       get 'upload_page'
       expect(response).to render_template :upload_page
-
       get 'view_codes'
       expect(response).to render_template :view_codes
     end
@@ -118,10 +117,10 @@ describe VendorsController do
       @vendor = create(:vendor)
     end
     it "updates vendor profile" do
-      expect(@vendor.cashValue).to eq("$10")
+      expect(@vendor.cash_value).to eq(10)
       allow(controller).to receive(:current_vendor).and_return(@vendor)
-      post :update_profile, cash_value: "$15"
-      expect(@vendor.cashValue).to eq("$15")
+      post :update_profile, cash_value: 15
+      expect(@vendor.cash_value).to eq(15)
       expect(response).to redirect_to(:vendors_home)
       expect(flash[:notice]).to eq("Profile updated")
     end
@@ -132,7 +131,7 @@ describe VendorsController do
       @vendor = create(:vendor)
     end
     it "displays the error message when there are no unclaimed codes" do
-      @vendor.unclaimCodes = 0
+      @vendor.unclaimed_codes = 0
       allow(controller).to receive(:current_vendor).and_return(@vendor)
       get :remove_unclaimed_codes
       expect(response).to redirect_to(:vendors_home)
@@ -140,13 +139,13 @@ describe VendorsController do
     end
     it "removes unclaimed codes" do
       create_list(:vendor_code, 5, vendor_id: @vendor.id)
-      @vendor.unclaimCodes = 5
+      @vendor.unclaimed_codes = 5
       expect(@vendor.vendorCodes.count).to eq(5)
-      expect(@vendor.unclaimCodes).to eq(5)
+      expect(@vendor.unclaimed_codes).to eq(5)
       allow(controller).to receive(:current_vendor).and_return(@vendor)
       get :remove_unclaimed_codes
       expect(@vendor.vendorCodes.count).to eq(0)
-      expect(@vendor.unclaimCodes).to eq(0)
+      expect(@vendor.unclaimed_codes).to eq(0)
       expect(response).to redirect_to(:vendors_home)
       expect(flash[:notice]).to eq("Codes were removed")
     end

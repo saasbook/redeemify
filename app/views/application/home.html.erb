@@ -11,7 +11,7 @@
       <td class="row1"><%= link_to "View codes",
         "/#{params[:controller]}/view_codes", id: "view_codes" %></td>
     <% end %>
-    <% if current_offeror.unclaimCodes > 0 %>
+    <% if current_offeror.unclaimed_codes > 0 %>
       <td class="row1"><%= link_to "Download unclaimed codes",
         "/#{params[:controller]}/download_unclaimed_codes",
         id: "download_unclaimed_codes" %></td>

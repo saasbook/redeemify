@@ -16,7 +16,7 @@ case Rails.env
 
    # Add a Vendor to administer the Amazon $10 vendor codes
    Vendor.create!(name: "www.amazon.com", provider: "amazon", description: "$10 AWS Credit",
-                  website: "amazon.com", helpLink: "amazon.com/help", cashValue: "$10")
+                  website: "amazon.com", help_link: "amazon.com/help", cash_value: "$10")
    VendorCode.create(code: 'xP78vvjk3K', vendor_id: 1)
    VendorCode.create(code: 'yF35ovem3V', vendor_id: 1)
    VendorCode.create(code: 'zL92pcje3M', vendor_id: 1)
@@ -34,6 +34,6 @@ case Rails.env
    # Note that you must also modify config/application.yml to contain the AMAZON_KEY and AMAZON_SECRET for your Amazon
    # account as in http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys
    # Vendor.create!(name: "Amazon", provider: "amazon_oath2", email: "matthew.r.lindsey@gmail.com",  description: "AWS Testing",
-   #                website: "matthewrlindsey.org", helpLink: "matthewrlindsey.org/help", cashValue: "$8")
-   Vendor.create!(name: "Alexander", provider: "google_oauth2", uid: "uid", cashValue: "$7", email: "khlipun@gmail.com")
+   #                website: "matthewrlindsey.org", help_link: "matthewrlindsey.org/help", cash_value: "$8")
+   Vendor.create!(name: "Alexander", provider: "google_oauth2", uid: "uid", cash_value: "$7", email: "khlipun@gmail.com")
 end
