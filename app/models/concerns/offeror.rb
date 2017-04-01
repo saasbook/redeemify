@@ -29,19 +29,19 @@ module Offeror
   
   def remove_unclaimed_codes(offeror_codes)
     @unclaimed_codes = offeror_codes.where(user_id: nil)
-    @num = self.unclaimCodes
+    @num = self.unclaimed_codes
     @unclaimed_codes.each do |code|
       code.destroy
     end
     
     comment = "Codes were removed"
     update_history(comment)
-    self.update(unclaimCodes: 0, removedCodes: self.removedCodes + @num)
+    self.update(unclaimed_codes: 0, removed_codes: self.removed_codes + @num)
   end
   
   def download_unclaimed_codes(offeror_codes)
     @unclaimed_codes = offeror_codes.where(user_id: nil)
-    @num = self.unclaimCodes
+    @num = self.unclaimed_codes
     @date = Time.now.to_formatted_s(:long_ordinal)
     @contents = "There are #{@num} unclaimed codes, downloaded on #{@date}\r\n\r\n"
     @unclaimed_codes.each do |code|
@@ -53,8 +53,8 @@ module Offeror
   private
   
   def update_codes_statistics(offeror)
-    offeror.update(usedCodes: offeror.usedCodes + 1,
-      unclaimCodes: offeror.unclaimCodes - 1)
+    offeror.update(used_codes: offeror.used_codes + 1,
+      unclaimed_codes: offeror.unclaimed_codes - 1)
   end
   
   def file_check(file_path)
@@ -82,8 +82,8 @@ module Offeror
         end
       end
     f.close
-    self.update(uploadedCodes: self.uploadedCodes + @approved_codes,
-      unclaimCodes: self.unclaimCodes + @approved_codes)
+    self.update(uploaded_codes: self.uploaded_codes + @approved_codes,
+      unclaimed_codes: self.unclaimed_codes + @approved_codes)
   end
 
   def add_code(code)

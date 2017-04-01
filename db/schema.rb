@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161030143818) do
+ActiveRecord::Schema.define(version: 20170401103239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,10 +56,11 @@ ActiveRecord::Schema.define(version: 20161030143818) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "usedCodes"
-    t.integer  "uploadedCodes"
-    t.integer  "unclaimCodes"
-    t.integer  "removedCodes"
+    t.integer  "used_codes"
+    t.integer  "uploaded_codes"
+    t.integer  "unclaimed_codes"
+    t.integer  "removed_codes"
+    t.string   "uid"
   end
 
   create_table "redeemify_codes", force: :cascade do |t|
@@ -85,7 +86,6 @@ ActiveRecord::Schema.define(version: 20161030143818) do
 
   create_table "vendor_codes", force: :cascade do |t|
     t.string   "code"
-    t.string   "vendor"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "vendor_id"
@@ -106,13 +106,13 @@ ActiveRecord::Schema.define(version: 20161030143818) do
     t.string   "history"
     t.string   "website"
     t.string   "instruction"
-    t.string   "helpLink"
-    t.string   "cashValue"
+    t.string   "help_link"
+    t.decimal  "cash_value",      precision: 5, scale: 2, default: 0.0
     t.string   "expiration"
-    t.integer  "usedCodes"
-    t.integer  "uploadedCodes"
-    t.integer  "unclaimCodes"
-    t.integer  "removedCodes"
+    t.integer  "used_codes"
+    t.integer  "uploaded_codes"
+    t.integer  "unclaimed_codes"
+    t.integer  "removed_codes"
   end
 
 end

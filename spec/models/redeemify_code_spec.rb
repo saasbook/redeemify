@@ -18,9 +18,9 @@ RSpec.describe RedeemifyCode, :type => :model do
       expect(@rcode.email).to eq(@user.email)
     end
     
-    it 'should update provider usedCodes and unclaimCodes attributes' do
-      expect{@rcode.assign_to(@user)}.to change{@provider.usedCodes}.by(1)
-      expect{@rcode.assign_to(@user)}.to change{@provider.unclaimCodes}.by(-1)
+    it 'should update provider used_codes and unclaimed_codes attributes' do
+      expect{@rcode.assign_to(@user)}.to change{@provider.used_codes}.by(1)
+      expect{@rcode.assign_to(@user)}.to change{@provider.unclaimed_codes}.by(-1)
     end    
   end
   

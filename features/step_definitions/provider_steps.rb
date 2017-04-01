@@ -47,19 +47,17 @@ end
   
 Then /^I should be alerted of inappropriate format for the upload file$/ do
   page.should have_content "Wrong file format! Please upload '.txt' file"
-
 end
-  
-  
+
 Then /number of (\w+) provider codes should be (\d+)$/ do |attribute, value|
   p = Provider.find_by_name("Amazon")
   case attribute
     when "uploaded"
-      raise "uploadedCodes != #{value}" if p.uploadedCodes != value.to_i
+      raise "uploaded_codes != #{value}" if p.uploaded_codes != value.to_i
     when "unclaimed"
-      raise "unclaimCodes != #{value}" if p.unclaimCodes != value.to_i
+      raise "unclaimed_codes != #{value}" if p.unclaimed_codes != value.to_i
     when "used"
-      raise "usedCodes != #{value}" if p.usedCodes != value.to_i
+      raise "used_codes != #{value}" if p.used_codes != value.to_i
   end
 end
 
