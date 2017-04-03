@@ -5,10 +5,10 @@ class Provider < ActiveRecord::Base
   before_create :default_value
 
 	def default_value
-		self.usedCodes = 0
-		self.uploadedCodes = 0
-		self.unclaimCodes = 0
-		self.removedCodes = 0
+		self.used_codes = 0
+		self.uploaded_codes = 0
+		self.unclaimed_codes = 0
+		self.removed_codes = 0
 	end
 
 end
