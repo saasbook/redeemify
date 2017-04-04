@@ -27,7 +27,7 @@
       <tr class="<%= cycle('odd_row', 'even_row') -%>">
         <td class="width_25"><%= code.code %></td>
         <% if current_vendor %>
-          <td class="width_10"><%= current_vendor.cashValue %></td>
+          <td class="width_10"><%= current_vendor.cash_value %></td>
           <td class="width_10">
             <% if current_vendor.expiration.present? %>
               <%= Date.strptime(current_vendor.expiration, '%m/%d/%Y') %>
@@ -36,7 +36,7 @@
           <td class="width_25"><%= current_vendor.description %></td>
           <td class="width_25"><%= current_vendor.instruction %></td>
           <td class="width_5">
-            <%= link_to 'link', current_vendor.helpLink %>
+            <%= link_to 'link', current_vendor.help_link %>
           </td>
         <% end %>
       </tr>

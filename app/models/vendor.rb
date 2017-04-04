@@ -5,15 +5,15 @@ class Vendor < ActiveRecord::Base
   before_create :default_value
   
   def default_value
-    self.usedCodes = 0
-    self.uploadedCodes = 0
-    self.unclaimCodes = 0
-    self.removedCodes = 0
+    self.used_codes = 0
+    self.uploaded_codes = 0
+    self.unclaimed_codes = 0
+    self.removed_codes = 0
   end
   
   def self.update_profile_vendor(current_vendor, info)
-    current_vendor.update_attributes(:cashValue => info["cashValue"],
-      :expiration => info["expiration"], :helpLink => info["helpLink"],
+    current_vendor.update(:cash_value => info["cash_value"],
+      :expiration => info["expiration"], :help_link => info["help_link"],
       :instruction => info["instruction"], :description => info["description"])
   end
   

@@ -6,10 +6,10 @@ module OfferorActions
   def home
     @histories_array = Offeror.home_set(current_offeror.history)
 
-    @hash = { "uploaded" => current_offeror.uploadedCodes,
-              "used" => current_offeror.usedCodes,
-              "unclaimed" => current_offeror.unclaimCodes,
-              "removed" => current_offeror.removedCodes }
+    @hash = { "uploaded" => current_offeror.uploaded_codes,
+              "used" => current_offeror.used_codes,
+              "unclaimed" => current_offeror.unclaimed_codes,
+              "removed" => current_offeror.removed_codes }
 
     gon.codes = @hash
     gon.history = current_offeror.history

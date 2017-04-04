@@ -101,16 +101,16 @@ class SessionsController < ApplicationController
       vendor_code = vendor.serve_code(current_user)
       flash.now[:alert] = t('missing_offer') unless vendor_code
       @codes[vendor.name] ||= vendor_code ? vendor_code.code : 'Not available'
-      vendor.attributes.slice('cashValue', 'expiration', 'description',
-        'instruction', 'website', 'helpLink').each { 
+      vendor.attributes.slice('cash_value', 'expiration', 'description',
+        'instruction', 'website', 'help_link').each { 
           |key, value| instance_variable_get("@#{key}")[vendor.name] ||= value }
-      @total += vendor.cashValue.gsub(/[^0-9\.]/,'').to_f.round(2)
+      @total += vendor.cash_value
     end
   end
   
   def set_instance_variables
-    @codes, @instruction, @description, @helpLink, @expiration, @website,
-    @cashValue, @total = {}, {}, {}, {}, {}, {}, {}, 0
+    @codes, @instruction, @description, @help_link, @expiration, @website,
+    @cash_value, @total = {}, {}, {}, {}, {}, {}, {}, 0
     @current_code = current_user.code
   end
 end

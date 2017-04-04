@@ -22,10 +22,10 @@ end
       expect(@vCode.email).to eq(@user.email)
     end
     
-    it 'updates vendor usedCodes and unclaimCodes attributes' do
+    it 'updates vendor used_codes and unclaimed_codes attributes' do
       @vCode.associate_with(@user)
-      expect{@vCode.associate_with(@user)}.to change{@vendor.usedCodes}.by(1)
-      expect{@vCode.associate_with(@user)}.to change{@vendor.unclaimCodes}.by(-1)
+      expect{@vCode.associate_with(@user)}.to change{@vendor.used_codes}.by(1)
+      expect{@vCode.associate_with(@user)}.to change{@vendor.unclaimed_codes}.by(-1)
     end    
   end
   
