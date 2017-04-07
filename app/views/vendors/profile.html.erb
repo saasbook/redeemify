@@ -14,7 +14,7 @@
 
   <div class="profile">
     <%= label_tag :cash_value, t('profile.cash_value') %>
-    <%= text_field_tag :cash_value, current_vendor.cashValue,
+    <%= text_field_tag :cash_value, current_vendor.cash_value,
       placeholder: t('placeholder.cash_value') %>
     
     <%= label_tag :expiration, t('profile.expiration') %>
@@ -26,7 +26,7 @@
     <% end %>
     
     <%= label_tag :help_link, t('profile.help_link') %>
-    <%= text_field_tag :help_link, current_vendor.helpLink,
+    <%= text_field_tag :help_link, current_vendor.help_link,
       placeholder: t('placeholder.help_link') %>
     
     <%= label_tag :description, t('profile.description') %>

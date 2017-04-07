@@ -28,8 +28,8 @@ Given /the following redeemify codes? exist/ do |redeemify_codes_table|
       p2_numberOfCodes += 1
     end  
   end
-  p1.update_attribute(:uploadedCodes, p1.uploadedCodes + p1_numberOfCodes)
-  p1.update_attribute(:unclaimCodes, p1.unclaimCodes + p1_numberOfCodes)
-  p2.update_attribute(:uploadedCodes, p2.uploadedCodes + p2_numberOfCodes)
-  p2.update_attribute(:unclaimCodes, p2.unclaimCodes + p2_numberOfCodes)
+  p1.update_attribute(:uploaded_codes, p1.uploaded_codes + p1_numberOfCodes)
+  p1.update_attribute(:unclaimed_codes, p1.unclaimed_codes + p1_numberOfCodes)
+  p2.update_attribute(:uploaded_codes, p2.uploaded_codes + p2_numberOfCodes)
+  p2.update_attribute(:unclaimed_codes, p2.unclaimed_codes + p2_numberOfCodes)
 end

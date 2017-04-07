@@ -3,14 +3,14 @@ require 'rails_helper'
 RSpec.describe Vendor, :type => :model do
   # pending "add some examples to (or delete) #{__FILE__}"
 
-  it 'sets correct cash value (#cashValue)' do
+  it 'sets correct cash value (#cash_value)' do
     vendor = FactoryGirl.create(:vendor)
-    expect(vendor.cashValue).not_to eq("0.00")
+    expect(vendor.cash_value).not_to eq(0)
   end
 
-  it '#cashValue' do
+  it '#cash_value' do
     vendor = FactoryGirl.create(:vendor)
-    expect(vendor.cashValue).to eq("$10")
+    expect(vendor.cash_value).to eq(10)
   end
   
   describe '#serve_code' do
@@ -58,12 +58,12 @@ RSpec.describe Vendor, :type => :model do
       
       it "updates Vendor set of codes by number of unique valid strings taken from upload file" do
         allow(@vendor).to receive(:file_check).with(any_args).and_return nil
-        expect{@vendor.import(@codes_file, @comment)}.to change {@vendor.uploadedCodes}.by(3)
+        expect{@vendor.import(@codes_file, @comment)}.to change {@vendor.uploaded_codes}.by(3)
       end
    
       it "updates Redeemify set of access codes by number of unique valid strings taken from upload file" do
         allow(@provider).to receive(:file_check).with(any_args).and_return nil
-        expect{@provider.import(@codes_file, @comment)}.to change {@provider.uploadedCodes}.by(3)
+        expect{@provider.import(@codes_file, @comment)}.to change {@provider.uploaded_codes}.by(3)
       end   
    
       it "returns Vendor codes serializing report as a Hash" do
