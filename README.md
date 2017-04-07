@@ -57,3 +57,9 @@ represented by a `VendorCode`.  For example, a GitHub `VendorCode` might
 be a string that can be redeemed as a promo code on GitHub for a month
 of free Micro account.
 
+## Services
+
+ Service                 |  Status      |
+|------------------------ | ----------------- |
+|*Deploys*                |         |
+| ProductionServer        | [redeemify-prod.herokuapp.com](http://redeemify-prod.herokuapp.com/)  |
