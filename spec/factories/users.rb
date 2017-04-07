@@ -3,6 +3,6 @@ FactoryGirl.define do
     provider "google_oauth2"
     uid "12345"
     name "user"
-    email "user@domain.com"
+    email "user@google.com"
   end
 end

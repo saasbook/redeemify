@@ -2,41 +2,38 @@ require 'spec_helper'
 require 'rails_helper'
 
 describe SessionsController do
-
   before :each do
     request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:amazon]
   end
 
-
-  describe "#new" do
-     it "renders the about template" do
-        get 'new' # or :new
-        expect(response).to render_template :new
+  describe "GET #new" do
+    it "renders the about template" do
+      get :new
+      expect(response).to render_template :new
     end
   end
 
-
-  describe "#show" do
+  describe "GET #show" do
     before do
       post :create, provider: :amazon
       expect(flash[:notice]).to eq("Signed in!")
     end
-
+    
     it "renders the about template" do
-        get 'failure'
-        get 'new' # or :new
-        expect(response).to render_template :new
+      get :failure
+      get :new
+      expect(response).to render_template :new
     end
-
-     it "renders the about template" do
-        get 'customer'
-        get :show # or :new
-        expect(response).to render_template :show
+    
+    it "renders the about template" do
+      get :customer
+      get :show
+      expect(response).to render_template :show
     end
   end
 
 
-  describe "#create" do
+  describe "POST #create" do
     it "should successfully create a user" do
       expect {
         post :create, provider: :amazon
@@ -45,26 +42,27 @@ describe SessionsController do
     it "should successfully create a session" do
       expect(session[:user_id]).to be_nil
       post :create, provider: :amazon
-      get 'customer'
-      # flash[:notice].should == "Signed in!"
-      flash[:notice].include?("wrong")
+      get :customer
       expect(session[:user_id]).not_to be_nil
-      # session[:user_id].should ==
     end
-
     it "renders the about template" do
-        get 'new' # or :new
-        expect(response).to render_template :new
+      get :new
+      expect(response).to render_template :new
     end
-
     it "should redirect the user to the root url/new page" do
       post :create, provider: :amazon
       expect(flash[:notice]).to eq("Signed in!")
       expect(response).to redirect_to '/sessions/new'
     end
+    it "should redirect registered user to the offers page" do
+      user = create(:user, code: "12345")
+      allow(User).to receive(:create_with_omniauth).and_return(user)
+      post :create, provider: :amazon
+      expect(response).to redirect_to('/sessions/customer')
+    end
   end
 
-  describe "#customer" do
+  describe "GET #customer" do
     it "should redirect the user to the customer page" do
       user = create(:user, code: '12345')
       allow(controller).to receive(:current_user).and_return(user)
@@ -73,7 +71,7 @@ describe SessionsController do
     end
   end
 
-  describe "#delete_account" do
+  describe "GET #delete_account" do
     before do
       post :create, provider: :amazon
     end
@@ -114,19 +112,19 @@ describe SessionsController do
     end
   end  
 
-  describe "#destroy" do
+  describe "DELETE #destroy" do
     before do
       post :create, provider: :amazon
     end
 
     it "renders the about template" do
-        get 'new' # or :new
-        expect(response).to render_template :new
+      get :new
+      expect(response).to render_template :new
     end
 
      it "renders the about template" do
-        get :show # or :new
-        expect(response).to render_template :show
+      get :show
+      expect(response).to render_template :show
     end
 
     it "should clear the session" do
@@ -142,5 +140,4 @@ describe SessionsController do
       expect(response).to redirect_to root_url
     end
   end
-
 end

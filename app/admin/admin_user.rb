@@ -1,4 +1,6 @@
 ActiveAdmin.register AdminUser do
+  permit_params :email, :password
+  
   menu :priority => 2
   index do
     column :email
@@ -8,7 +10,7 @@ ActiveAdmin.register AdminUser do
     actions
   end
 
-  config.filters= false
+  config.filters = false
 
   form do |f|
     f.inputs "Admin Details" do

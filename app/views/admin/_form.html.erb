@@ -1,0 +1,17 @@
+<%= semantic_form_for [:admin, resource] do |f| %>
+  <%= f.inputs "Provider Details" do %>
+    <%= f.input :name %>
+    <%= f.input :email %>
+    <%= f.input :provider, label: 'Log in through', :as => :select,
+      :collection => { :Amazon => "amazon", :Google => "google_oauth2",
+        :GitHub => "github", :Twitter => "twitter", :Facebook => "facebook" } %>
+    <% if resource.is_a? Vendor %>
+      <%= f.input :cash_value %>
+      <%= f.input :expiration %>
+      <%= f.input :description %>
+      <%= f.input :website %>
+      <%= f.input :help_link %>
+    <% end %>
+  <% end %>
+  <%= f.actions %>
+<% end %>
