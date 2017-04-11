@@ -13,8 +13,8 @@ $(document).ready(function(){
 
   <div class="redeemify-card-square mdl-card mdl-shadow--2dp">
     <div class="mdl-card__supporting-text">
-      <h5><%= t 'customer.yourcode' %> <%= @current_code %></h5>
-      <h5><%= t 'customer.offervalue' %>$<%= @total %></h5>
+      <h5><%= t 'customer.your_code' %> <%= @current_code %></h5>
+      <h5><%= t 'customer.offer_value' %><%= number_to_currency(@total) %></h5>
     </div>
   </div>
 
@@ -31,47 +31,51 @@ $(document).ready(function(){
     <div class="button-single">
       <div class="row1">
         <%= link_to "Change to vendor", '/sessions/change_to_vendor',
-          {:id => "change_to_vendor", :style => 'color:#000'} %>
+          {:id => "change_to_vendor"} %>
       </div>
     </div>
   <% end %>
-
-  <% @codes.each do |vendor, code| %>
-    <div class="customer-table">
-      <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric">Vendor:</td>
-            <td><%= link_to vendor, @website[vendor], style: 'color:#fd7330', target: '_blank' %></td>
-          </tr>
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.vendorcode' %></td>
-            <td><%= code %></td>
-          </tr>
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.expirationdate' %></td>
-            <td><%= @expiration[vendor] %></td>
-          </tr>
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.cashvalue' %></td>
-            <td><%= @cash_value[vendor] %></td>
-          </tr>
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.description' %></td>
-            <td><%= @description[vendor] %></td>
-          </tr>
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.vendorinstruction' %></td>
-            <td><%= @instruction[vendor] %></td>
-          </tr>
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.help' %></td>
-            <td><%= @help_link[vendor] %></td>
-          </tr>
-      </table>
+  
+  <div class="wrapper">
+    <div class="flex-container">
+      <% @codes.each do |vendor, code| %>
+        <div class="flex-item">
+          <table class="offer mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">Vendor:</td>
+              <td><%= link_to vendor, @website[vendor], style: 'color:#fd7330', target: '_blank' %></td>
+            </tr>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.vendor_code' %></td>
+              <td><%= code %></td>
+            </tr>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.expiration_date' %></td>
+              <td><%= @expiration[vendor] %></td>
+            </tr>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.cash_value' %></td>
+              <td><%= number_to_currency(@cash_value[vendor]) %></td>
+            </tr>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.description' %></td>
+              <td><%= @description[vendor] %></td>
+            </tr>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.vendor_instruction' %></td>
+              <td><%= @instruction[vendor] %></td>
+            </tr>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.help' %></td>
+              <td><%= link_to('link', @help_link[vendor]) if @help_link[vendor].present? %></td>
+            </tr>
+          </table>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 
-  <span class="delete-account"><%= t 'customer.deleteaccount' %></span>
+  <span class="delete-account"><%= t 'customer.delete_account' %></span>
   <div class="bin-icon">
     <a href="/sessions/delete_page" id="delete-account" onclick="false">
       <i class="account-delete-dialog material-icons">delete</i>

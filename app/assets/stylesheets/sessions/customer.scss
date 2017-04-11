@@ -4,9 +4,24 @@
   margin: 50px auto 25px;
 }
 
-.customer-table {
-  margin: 20px auto;
-  text-align: center;
+.flex-container {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.flex-item {
+  margin-top: 2.5em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.offer {
+  width: 330px;
+  table-layout: fixed;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 .delete-account {

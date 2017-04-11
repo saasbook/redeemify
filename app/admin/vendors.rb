@@ -1,7 +1,7 @@
 ActiveAdmin.register Vendor do
   menu :priority => 4
   permit_params :name, :email, :provider, :cash_value, :expiration, :website,
-    :help_link, :instruction, :help, :expiration
+    :help_link, :instruction, :help, :description
 
   index do
     column :name
@@ -9,7 +9,6 @@ ActiveAdmin.register Vendor do
     column "Log in through", :provider
     column :cash_value
     column :expiration
-    column :website
     column "# Used Codes", :used_codes
     column "# Unclaimed Codes", :unclaimed_codes
     column "# Uploaded Codes", :uploaded_codes
