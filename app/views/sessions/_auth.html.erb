@@ -1,7 +1,7 @@
 <main class="mdl-layout__content">
   <div class="page-content">
     
-    <%= render :partial => 'shared/messages' %>
+    <%= render 'shared/messages' %>
     
     <div class="mdl-grid">
       
@@ -22,11 +22,7 @@
       </div>
       
       <div class="mdl-cell mdl-cell--6-col right-column">
-        <div class = "loginwith">
-          <h2>Sign-in:</h2>
-        </div>
-        <!-- <p class="loginwith"><strong>Please sign in through one of these services:</strong></p> -->
-        <div class="auth_providers">
+        <h2>Sign-in:</h2>
           <a id="github-auth" href="/auth/github" class="auth_provider">
             <img src="assets/github_mark_64.png" alt="GitHub" class="github_login">
           </a>
@@ -42,7 +38,7 @@
           <a id="twitter-auth" href="/auth/twitter" class="auth_provider">
             <img src="assets/twitter.png" alt="Twitter" class="twitter_login">
           </a>
-        </div><br/>
+          <br/>
         
         <% if OmniAuth.config.test_mode == true  %>
           <a id="developer-auth" href="/auth/developer"

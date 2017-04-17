@@ -1,11 +1,6 @@
 <div class="welcome mdl-layout mdl-js-layout">
-  
-  <%= render :partial => 'shared/header' %>
-  <%= render :partial => 'shared/nav_js' %>
-  
-  <div class = "loginwith2">
-    <%= render :partial => 'shared/messages' %>
-    <%= render :partial => "enter_code" %>
-  </div>
-
+  <%= render 'shared/header' %>
+  <%= render 'shared/nav_js' %>
+  <%= render 'shared/messages' %>
+  <%= render 'form_for_redeemify_code' %>
 </div>

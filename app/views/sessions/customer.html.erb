@@ -1,15 +1,5 @@
-<script language="javascript" type="text/javascript">
-$(document).ready(function(){
-    $(".toggler").click(function(e){
-        e.preventDefault();
-        $('.cat'+$(this).attr('data-prod-cat')).toggle();
-    });
-});
-</script>
-
 <div class="welcome mdl-layout mdl-js-layout">
-  <%= render :partial => 'shared/header' %>
-  <%= render :partial => 'shared/nav_js' %>
+  <%= render 'shared/header' %>
 
   <div class="redeemify-card-square mdl-card mdl-shadow--2dp">
     <div class="mdl-card__supporting-text">
@@ -40,34 +30,50 @@ $(document).ready(function(){
     <div class="flex-container">
       <% @codes.each do |vendor, code| %>
         <div class="flex-item">
-          <table class="offer mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+          <table class="offer mdl-data-table mdl-js-data-table mdl-shadow--2dp">
             <tr>
               <td class="mdl-data-table__cell--non-numeric">Vendor:</td>
-              <td><%= link_to vendor, @website[vendor], style: 'color:#fd7330', target: '_blank' %></td>
+              <td><%= link_to vendor, @website[vendor], 
+                style: 'color:#fd7330', target: '_blank' %>
+              </td>
             </tr>
             <tr>
-              <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.vendor_code' %></td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <%= t 'customer.vendor_code' %>
+              </td>
               <td><%= code %></td>
             </tr>
             <tr>
-              <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.expiration_date' %></td>
+              <td class="mdl-data-table__cell--non-numeric">
+                  <%= t 'customer.expiration_date' %>
+              </td>
               <td><%= @expiration[vendor] %></td>
             </tr>
             <tr>
-              <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.cash_value' %></td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <%= t 'customer.cash_value' %>
+              </td>
               <td><%= number_to_currency(@cash_value[vendor]) %></td>
             </tr>
             <tr>
-              <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.description' %></td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <%= t 'customer.description' %>
+              </td>
               <td><%= @description[vendor] %></td>
             </tr>
             <tr>
-              <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.vendor_instruction' %></td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <%= t 'customer.vendor_instruction' %>
+              </td>
               <td><%= @instruction[vendor] %></td>
             </tr>
             <tr>
-              <td class="mdl-data-table__cell--non-numeric"><%= t 'customer.help' %></td>
-              <td><%= link_to('link', @help_link[vendor]) if @help_link[vendor].present? %></td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <%= t 'customer.help' %>
+              </td>
+              <td><%= link_to('link', 
+                @help_link[vendor]) if @help_link[vendor].present? %>
+              </td>
             </tr>
           </table>
         </div>
@@ -81,11 +87,13 @@ $(document).ready(function(){
       <i class="account-delete-dialog material-icons">delete</i>
     </a>
     <dialog class="mdl-dialog">
-      <h4 class="mdl-dialog__title">Caution!</h4>
+      <h4 class="mdl-dialog__title"><%= t 'delete_page.caution' %></h4>
       <div class="mdl-dialog__content">
-        <p>If you delete your account, all of your information will be removed from the app database.
-           Moreover, you will no longer have access to your Redeemify and vendor offer's codes.</p>
-        <h4>Are you sure?</h4>
+        <p>
+          <%= t 'delete_page.line1' %>
+          <%= t 'delete_page.line2' %>
+        </p>
+        <h4><%= t 'delete_page.line3' %></h4>
       </div>
       <div class="mdl-dialog__actions">
         <button type="button" class="mdl-button close">No</button>

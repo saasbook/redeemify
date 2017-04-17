@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
   helper_method :current_user, :current_provider, :current_vendor,
-    :current_offeror, :offeror_codes
+    :current_offeror, :offeror_codes, :authenticated_user
 
 private
 
@@ -28,6 +28,10 @@ private
   
   def offeror_codes
     provider? ? current_provider.redeemifyCodes : current_vendor.vendorCodes
+  end
+  
+  def authenticated_user
+    current_user || current_offeror
   end
 
   def validation_errors_content(err_hash)

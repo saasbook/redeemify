@@ -1,0 +1,19 @@
+// shared/_header.html.erb
+
+.redeemify_logo {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+}
+
+.logout {
+  
+  &:link { 
+    text-decoration: none;
+  }
+
+  &:hover { 
+    text-decoration: none;
+    color: rgb(255,64,129);
+  }
+}

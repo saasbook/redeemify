@@ -1,0 +1,30 @@
+.barchart {
+  width: 400px;
+  height: 200px;
+  margin: 2.5em auto;
+}
+
+.links_table {
+  margin: 0 auto;
+  text-align: center;
+
+  td {
+    margin: 0.5em 0.25em;
+  }
+}
+
+.history {
+  text-align: center;
+  font-size: 18px;
+}
+
+.history_table {
+  width: 100%;
+  border-collapse: collapse;
+  
+  td {
+    padding-left: 0.5em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+}

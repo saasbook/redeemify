@@ -2,10 +2,11 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-
-  customer:
+  user:
     login: "Logged via account: "
     name: "Name: "
+    
+  customer:
     your_code: "Your Redeemify Code: "
     offer_value: "Total Offer Value: "
     instruction: "Click on vendor's name to redeem your code:"
@@ -19,14 +20,13 @@ en:
     delete_account: "Delete your account"
 
   delete_page:
+    caution: "Caution!"
     attention: "Attention !!!"
     line1: "If you delete your account, all of your informations will be removed from the app database."
     line2: "Moreover, you will no longer have access to your Redeemify and vendor offer's codes"
     line3: "Are you sure?"
 
   offeror:
-    login:    "Logged via account: "
-    name:     "Name: "
     header:   "Upload New Codes"
     comment:  "Comment:"
     history:  "History"

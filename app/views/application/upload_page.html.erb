@@ -1,5 +1,5 @@
-<%= render :partial => 'shared/offeror_header' %>
-<%= render :partial => 'shared/messages' %>
+<%= render 'shared/header' %>
+<%= render 'shared/messages' %>
 
 <h4 class="center">
   <%= t 'offeror.header' %>
@@ -24,7 +24,7 @@
     <%= t 'offeror.comment' %>
   </div>
   
-  <%= text_area_tag :comment, nil, rows: 5, cols: 50 %>
+  <%= text_area_tag :comment, nil, rows: 5, cols: 50, class: "comment" %>
   
   <%= submit_tag "Submit", id: "submit", class: "submit" %>
 <% end %>

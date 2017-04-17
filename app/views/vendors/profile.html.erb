@@ -1,5 +1,5 @@
-<%= render :partial => 'shared/offeror_header' %>
-<%= render :partial => 'shared/messages' %>
+<%= render 'shared/header' %>
+<%= render 'shared/messages' %>
 
 <h4 class="center">
   <%= t 'profile.header' %>
@@ -12,7 +12,7 @@
 
 <%= form_tag update_profile_vendors_path, multipart: true do %>
 
-  <div class="profile">
+  <div class="vendor-profile">
     <%= label_tag :cash_value, t('profile.cash_value') %>
     <%= text_field_tag :cash_value, current_vendor.cash_value,
       placeholder: t('placeholder.cash_value') %>

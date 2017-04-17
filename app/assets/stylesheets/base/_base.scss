@@ -1,0 +1,27 @@
+body {
+  background-color: #ffffff;
+  font-family: Helvetica Neue, Arial, Verdana;
+  font-size: 12px;
+}
+
+a img {
+  border: none;
+}
+
+a {
+  color: #000000;
+}
+
+textarea {
+  border-radius: 5px 5px 5px 5px;
+  border-style: none solid solid none;
+  border-width: medium 1px 1px medium;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset;
+  font-family: Helvetica Neue;
+  padding: 5px;
+}
+
+textarea:focus {
+  background: none repeat scroll 0 0 #FFFFFF;
+  outline-width: 0;
+}
