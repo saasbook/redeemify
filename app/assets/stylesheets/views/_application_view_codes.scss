@@ -1,0 +1,15 @@
+.codes_table {
+  width: 95%;
+  margin: 2.5em auto;
+  border-collapse: collapse;
+  
+  thead, tr {
+    text-align: left;
+  }
+
+  td {
+    word-break: break-all;
+    word-wrap: break-word;
+    padding: 2em 0;
+  }
+}

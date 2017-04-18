@@ -25,7 +25,6 @@ gem 'therubyracer'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-ui-rails'
 gem 'sass-rails'
-gem 'twitter-bootstrap-rails'
 gem 'inline_svg'
 gem 'uglifier', '>= 1.0.3'
 

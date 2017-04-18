@@ -1,4 +1,4 @@
-<%= render :partial => 'shared/offeror_header' %>
+<%= render 'shared/header' %>
 
 <h4 class="center">
   Uploaded codes by <%= current_offeror.name %>
@@ -25,17 +25,19 @@
   <tbody>
     <% @offeror_codes.each do |code| %>
       <tr class="<%= cycle('odd_row', 'even_row') -%>">
-        <td class="width_25"><%= code.code %></td>
+        <td class="width25"><%= code.code %></td>
         <% if current_vendor %>
-          <td class="width_10"><%= current_vendor.cash_value %></td>
-          <td class="width_10">
+          <td class="width10">
+            <%= number_to_currency(current_vendor.cash_value) %>
+          </td>
+          <td class="width10">
             <% if current_vendor.expiration.present? %>
               <%= Date.strptime(current_vendor.expiration, '%m/%d/%Y') %>
             <% end %>
           </td>
-          <td class="width_25"><%= current_vendor.description %></td>
-          <td class="width_25"><%= current_vendor.instruction %></td>
-          <td class="width_5">
+          <td class="width25"><%= current_vendor.description %></td>
+          <td class="width25"><%= current_vendor.instruction %></td>
+          <td class="width5">
             <%= link_to 'link', current_vendor.help_link %>
           </td>
         <% end %>

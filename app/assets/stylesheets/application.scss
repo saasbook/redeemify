@@ -5,6 +5,8 @@
  *= require jquery-ui
  *= require_self
 */
-@import "dialog-polyfill.css";
 @import "material.min.css";
-@import "sessions/*";
+@import "base/*";
+@import "components/*";
+@import "patterns/*";
+@import "views/*";

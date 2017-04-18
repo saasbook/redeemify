@@ -1,7 +1,7 @@
-<%= render :partial => 'shared/offeror_header' %>
-<%= render :partial => 'shared/messages' %>
+<%= render 'shared/header' %>
+<%= render 'shared/messages' %>
 
-<div id="barchart_values"></div>
+<div id="barchart_values" class="barchart"></div>
 
 <table class="links_table">
   <tr>
@@ -16,8 +16,8 @@
         "/#{params[:controller]}/download_unclaimed_codes",
         id: "download_unclaimed_codes" %></td>
       <td class="row1"><%= link_to "Remove unclaimed codes",
-        "/#{params[:controller]}/remove_unclaimed_codes", id: "remove_unclaimed_codes",
-        data: { confirm: 'Are you sure?' } %></td>
+        "/#{params[:controller]}/remove_unclaimed_codes",
+        id: "remove_unclaimed_codes", data: { confirm: 'Are you sure?' } %></td>
     <% end %>
   </tr>
   <% if current_vendor %>
@@ -42,9 +42,9 @@
 <table class="history_table">
   <thead>
     <tr>
-      <td class="width_25"><%=t 'history.column_1' %></td>
-      <td class="width_50"><%=t 'history.column_2' %></td>
-      <td class="width_25"><%=t 'history.column_3' %></td>
+      <td class="width25"><%=t 'history.column_1' %></td>
+      <td class="width50"><%=t 'history.column_2' %></td>
+      <td class="width25"><%=t 'history.column_3' %></td>
     </tr>
   </thead>
   <tbody>

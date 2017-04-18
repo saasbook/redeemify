@@ -2,16 +2,17 @@
   <div class="mdl-layout-icon"></div>
   <div class="mdl-layout__header-row">
     <span class="mdl-layout-title">
-      <%= image_tag "logo2.png", alt: "redeemify_logo", id: "redeemify_logo" %>
-        Redeemify
+      <%= image_tag("logo2.png", alt: "redeemify logo", id: "redeemify_logo",
+        class: "redeemify_logo") %>
+          Redeemify
     </span>
     <div class="mdl-layout-spacer"></div>
     <nav class="mdl-navigation mdl-layout--large-screen-only">
-      <% if current_user %>
-        <span class="account">
-          Login with: <%= current_user.provider.upcase  %> | 
-          Name: <%= current_user.name %> | 
-          <%= link_to "Logout", logout_path, :id => "logout" %>
+      <% if authenticated_user %>
+        <span>
+          <%= t 'user.login' %><%= authenticated_user.provider.upcase  %> |
+          <%= t 'user.name' %><%= authenticated_user.name %> | 
+          <%= link_to "Logout", logout_path, id: "logout", class: "logout" %>
         </span>
       <% else %>
         <a class="mdl-navigation__link" href="/">Home</a>
