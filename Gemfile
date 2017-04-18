@@ -43,6 +43,10 @@ group :development, :test do
   gem 'cucumber-api-steps', :require => false
 end
 
+group :test do
+  gem 'codeclimate-test-reporter', '~> 1.0.0'
+end
+
 group :development do
   gem 'eefgilm'
 end

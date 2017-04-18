@@ -1,5 +1,5 @@
 [![Code Climate](https://codeclimate.com/github/strawberrycanyon/redeemify/badges/gpa.svg)](https://codeclimate.com/github/strawberrycanyon/redeemify)
-[![Issue Count](https://codeclimate.com/github/strawberrycanyon/redeemify/badges/issue_count.svg)](https://codeclimate.com/github/strawberrycanyon/redeemify)
+[![Test Coverage](https://codeclimate.com/github/strawberrycanyon/redeemify/badges/coverage.svg)](https://codeclimate.com/github/strawberrycanyon/redeemify/coverage)
 <a href="https://travis-ci.org/strawberrycanyon/redeemify"><img src="https://travis-ci.org/strawberrycanyon/redeemify.svg?branch=master"></a>
 
 # Redeemify: let users redeem "bundles" of offers
