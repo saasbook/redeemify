@@ -73,7 +73,7 @@ class SessionsController < ApplicationController
   private
   
   def require_login
-    unless current_user
+    unless authenticated_user
       redirect_to '/' and return
     end
   end
